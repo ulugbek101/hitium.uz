@@ -1,0 +1,63 @@
+{% load i18n %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="{% get_current_language as LANGUAGE_CODE %}{{ LANGUAGE_CODE }}">
+	<head>
+		<!-- Meta Tags for SEO -->
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<title>Hitium.uz | {% trans "Установка и монтаж промышленного оборудования в Узбекистане" %}</title>
+		<meta
+			name="description"
+			content="{% trans 'Профессиональная установка и монтаж промышленного оборудования в Узбекистане. Высокое качество и надежность.' %}"
+		/>
+		<meta
+			name="keywords"
+			content="{% trans 'Установка оборудования, монтаж промышленного оборудования, Узбекистан, Ташкент, Самарканд, Бухара, Навои, Фергана, Андижан, Наманган, промышленность, качество, надежность, Hitium.uz' %}"
+		/>
+		<meta name="author" content="Hitium.uz" />
+
+		<!-- Open Graph for Social Media -->
+		<meta
+			property="og:title"
+			content="Hitium.uz - {% trans 'Монтаж промышленного оборудования в Узбекистане' %}"
+		/>
+		<meta
+			property="og:description"
+			content="{% trans 'Профессиональный монтаж промышленного оборудования с гарантией качества в Узбекистане.' %}"
+		/>
+		<meta property="og:image" content="{% static 'images/og-image.jpg' %}" />
+		<meta property="og:url" content="https://hitium.uz" />
+		<meta property="og:type" content="website" />
+
+		<!-- Twitter Cards -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content="Hitium.uz - {% trans 'Монтаж промышленного оборудования в Узбекистане' %}" />
+		<meta name="twitter:description" content="{% trans 'Профессиональный монтаж промышленного оборудования с гарантией качества.' %}" />
+		<meta name="twitter:image" content="{% static 'images/og-image.jpg' %}" />
+
+		<link rel="canonical" href="https://hitium.uz" />
+
+		<!-- Favicon -->
+		<link rel="icon" href="{% static 'images/favicon-32x32.png' %}" type="image/x-icon" />
+		<link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/apple-touch-icon.png' %}" />
+		<link rel="manifest" href="{% static 'manifest.json' %}" />
+
+		<!-- CSS Optimization -->
+		<link rel="stylesheet" href="{% static 'css/index.css' %}" />
+
+		<!-- Asynchronous JavaScript -->
+		<script defer src="{% static 'js/index.js' %}"></script>
+
+		<!-- Tailwind CSS -->
+		<script src="https://cdn.tailwindcss.com"></script>
+
+		<!-- Icons -->
+		<script src="https://kit.fontawesome.com/2bd40b5115.js" crossorigin="anonymous"></script>
+	</head>
+	<body>
+        {% block content %} {% endblock content %} 
+        {% include 'components/_footer.html' %}
+	</body>
+</html>

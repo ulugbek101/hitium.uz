@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+
+{% block content %}
+<header style="background-position: center; background-size: contain; background-image: url('{% static 'images/home-page-header-bg.jpg' %}');" class="h-[100vh] w-full">
+    <div class="w-[1240px] px- m-auto">
+        {% include 'components/_nav.html' %} 
+        <div class="w-1/2 flex flex-col gap-[0.8rem]">
+            <h2 class="text-[2.5rem] text-white font-medium">{% trans 'Монтаж промышленного оборудования' %}</h2>
+            <span class="block h-1 w-20 bg-[#ed4721] my-4"></span>
+            <p class="text-[1.25rem] text-white">
+                {% blocktrans %}
+                    Наша фирма занимается изготовлением промышленного оборудования, монтажом линий розлива, изготовлением и монтажом систем вентиляции и промышленного кондиционирования воздуха, водоснабжения и канализации, холодоснабжения, монтажом под ключ всех видов котельного оборудования, изоляцией емкостей и трубопроводов.
+                {% endblocktrans %}
+            </p>
+            <div class="flex gap-[2rem] mt-[1.5rem]">
+                <button class="hover:-translate-y-2 text-white transition border border-[#ed4721] bg-[#ed4721] hover:opacity-90 py-[22px] active:scale-90 px-[36px] uppercase">Заказать услугу</button>
+                <button class="hover:-translate-y-2 text-white transition border border-white hover:bg-white hover:text-black hover:opacity-90 active:scale-90 py-[22px] px-[36px] uppercase">Наши работы</button>
+            </div>
+        </div>
+    </div>
+</header>
+<main>
+    <section class="max-w-[1200px] m-auto py-[8rem] flex items-center justify-between gap-8">
+        <div class="w-full">
+            <div class="grid grid-cols-2 gap-x-4 gap-y-8">
+                <div class="flex items-center gap-2 w-full px-8 py-16 border border-slate-300 hover:border-black hover:cursor-pointer hover:scale-105 active:scale-90 transition">
+                    <img class="w-[60px]" src="{% static 'images/services-1.png' %}" alt="{% trans 'СИСТЕМЫ ВЕНТИЛЯЦИИ' %}">
+                    <p>СИСТЕМЫ ВЕНТИЛЯЦИИ</p>
+                </div>
+                <div class="flex items-center gap-2 w-full px-8 py-16 border border-slate-300 hover:border-black hover:cursor-pointer hover:scale-105 active:scale-90 transition">
+                    <img class="w-[60px]" src="{% static 'images/services-2.png' %}" alt="{% trans 'МОНТАЖ ЛИНИЙ РОЗЛИВА' %}">
+                    <p>МОНТАЖ ЛИНИЙ РОЗЛИВА</p>
+                </div>
+                <div class="flex items-center gap-2 w-full px-8 py-16 border border-slate-300 hover:border-black hover:cursor-pointer hover:scale-105 active:scale-90 transition">
+                    <img class="w-[60px]" src="{% static 'images/services-3.png' %}" alt="{% trans 'ВОДОСНАБЖЕНИЕ И КАНАЛИЗАЦИЯ' %}">
+                    <p>ВОДОСНАБЖЕНИЕ И КАНАЛИЗАЦИЯ</p>
+                </div>
+                <div class="flex items-center gap-2 w-full px-8 py-16 border border-slate-300 hover:border-black hover:cursor-pointer hover:scale-105 active:scale-90 transition">
+                    <img class="w-[60px]" src="{% static 'images/services-4.png' %}" alt="{% trans 'ИЗОЛЯЦИЯ ЕМКОСТЕЙ И ТРУБОПРОВОДОВ' %}">
+                    <p>ИЗОЛЯЦИЯ ЕМКОСТЕЙ И ТРУБОПРОВОДОВ</p>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col gap-12 w-full">
+            <p class="text-[1.8rem] text-[#252525]">
+                У вас возникла необходимость поставить оборудование, запустить его и начать выпускать продукцию? Наши специалисты решат все задачи связанные с этим.
+                От планировки и монтажа оборудования до пуско-наладочных работ и запуска производства.
+            </p>
+            <a href="tel:+998974458838" class="uppercase bg-[#252525] text-white py-[1.5rem] px-[2rem] max-w-max active:scale-90 hover:opacity-90 transition hover:-translate-y-2">Позвонить</a>
+        </div>
+    </section>
+</main>
+{% endblock content %}
