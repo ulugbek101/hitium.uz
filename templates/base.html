@@ -63,5 +63,24 @@
 	<body>
         {% block content %} {% endblock content %} 
         {% include 'components/_footer.html' %}
+
+		<!-- Animation: Intersection API -->
+		<script>
+			document.addEventListener("DOMContentLoaded", () => {
+				const observer = new IntersectionObserver((entries) => {
+					entries.forEach(entry => {
+						if (entry.isIntersecting) {
+							entry.target.classList.add("opacity-100", "translate-y-0");
+						}
+					});
+				}, {
+					threshold: 0.2, // Trigger when 20% of the section is visible
+				});
+
+				document.querySelectorAll("section").forEach(section => {
+					observer.observe(section);
+				});
+			});
+		</script>
 	</body>
 </html>

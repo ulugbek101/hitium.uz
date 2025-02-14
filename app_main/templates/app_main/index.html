@@ -14,98 +14,57 @@
                 {% endblocktrans %}
             </p>
             <div class="flex gap-[2rem] mt-[1.5rem]">
-                <button class="hover:-translate-y-2 text-white transition border border-[#ed4721] bg-[#ed4721] hover:opacity-90 py-[22px] active:scale-90 px-[36px] uppercase">{% trans 'Заказать услугу' %}</button>
-                <button class="hover:-translate-y-2 text-white transition border border-white hover:bg-white hover:text-black hover:opacity-90 active:scale-90 py-[22px] px-[36px] uppercase">{% trans 'Наши работы' %}</button>
+                <a href="https://t.me/hitium" class="hover:-translate-y-2 text-white transition border border-[#ed4721] bg-[#ed4721] hover:opacity-90 py-[22px] active:scale-90 px-[36px] uppercase">{% trans 'Заказать услугу' %}</a>
+                <a href="#our-projects" class="hover:-translate-y-2 text-white transition border border-white hover:bg-white hover:text-black hover:opacity-90 active:scale-90 py-[22px] px-[36px] uppercase">{% trans 'Наши работы' %}</a>
             </div>
         </div>
     </div>
 </header>
+
 <main>
     <section class="fade-in opacity-0 translate-y-10 transition-all duration-500 max-w-[1200px] m-auto py-[8rem] flex items-center justify-between gap-8">
         <div class="w-full">
             <div class="grid grid-cols-2 gap-x-4 gap-y-8">
                 <div class="flex items-center gap-2 w-full px-8 py-16 border border-slate-300 hover:border-black hover:cursor-pointer hover:scale-105 active:scale-90 transition">
-                    <img class="w-[60px]" src="{% static 'images/services-1.png' %}" alt="{% trans 'СИСТЕМЫ ВЕНТИЛЯЦИИ' %}">
-                    <p>СИСТЕМЫ ВЕНТИЛЯЦИИ</p>
+                    <img class="w-[60px]" src="{% static 'images/services-1.png' %}" alt="{% trans 'системы вентиляции' %}">
+                    <p class="uppercase">{% trans 'системы вентиляции' %}</p>
                 </div>
                 <div class="flex items-center gap-2 w-full px-8 py-16 border border-slate-300 hover:border-black hover:cursor-pointer hover:scale-105 active:scale-90 transition">
-                    <img class="w-[60px]" src="{% static 'images/services-2.png' %}" alt="{% trans 'МОНТАЖ ЛИНИЙ РОЗЛИВА' %}">
-                    <p>МОНТАЖ ЛИНИЙ РОЗЛИВА</p>
+                    <img class="w-[60px]" src="{% static 'images/services-2.png' %}" alt="{% trans 'монтаж линий разлива' %}">
+                    <p class="uppercase">{% trans 'монтаж линий разлива' %}</p>
                 </div>
                 <div class="flex items-center gap-2 w-full px-8 py-16 border border-slate-300 hover:border-black hover:cursor-pointer hover:scale-105 active:scale-90 transition">
-                    <img class="w-[60px]" src="{% static 'images/services-3.png' %}" alt="{% trans 'ВОДОСНАБЖЕНИЕ И КАНАЛИЗАЦИЯ' %}">
-                    <p>ВОДОСНАБЖЕНИЕ И КАНАЛИЗАЦИЯ</p>
+                    <img class="w-[60px]" src="{% static 'images/services-3.png' %}" alt="{% trans 'водоснабжение и канализация' %}">
+                    <p class="uppercase">{% trans 'водоснабжение и канализация' %}</p>
                 </div>
                 <div class="flex items-center gap-2 w-full px-8 py-16 border border-slate-300 hover:border-black hover:cursor-pointer hover:scale-105 active:scale-90 transition">
-                    <img class="w-[60px]" src="{% static 'images/services-4.png' %}" alt="{% trans 'ИЗОЛЯЦИЯ ЕМКОСТЕЙ И ТРУБОПРОВОДОВ' %}">
-                    <p>ИЗОЛЯЦИЯ ЕМКОСТЕЙ И ТРУБОПРОВОДОВ</p>
+                    <img class="w-[60px]" src="{% static 'images/services-4.png' %}" alt="{% trans 'изоляция емкостей и трубопроводов' %}">
+                    <p class="uppercase">{% trans 'изоляция емкостей и трубопроводов' %}</p>
                 </div>
             </div>
         </div>
         <div class="flex flex-col gap-12 w-full">
             <p class="text-[1.8rem] text-[#252525]">
-                У вас возникла необходимость поставить оборудование, запустить его и начать выпускать продукцию? Наши специалисты решат все задачи связанные с этим.
-                От планировки и монтажа оборудования до пуско-наладочных работ и запуска производства.
-            </p>
-            <a href="tel:+998974458838" class="uppercase bg-[#252525] text-white py-[1.5rem] px-[2rem] max-w-max active:scale-90 hover:opacity-90 transition hover:-translate-y-2">Позвонить</a>
+                {% trans 'У вас возникла необходимость поставить оборудование, запустить его и начать выпускать продукцию? Наши специалисты решат все задачи связанные с этим. От планировки и монтажа оборудования до пуско-наладочных работ и запуска производства.' %}</p>
+            <a href="tel:+998974458838" class="uppercase bg-[#252525] text-white py-[1.5rem] px-[2rem] max-w-max active:scale-90 hover:opacity-90 transition hover:-translate-y-2">{% trans 'Позвонить' %} </a>
         </div>
     </section>
 
-    <section class="fade-in opacity-0 translate-y-10 transition-all duration-500 py-[8rem]" style="background-image: url({% static 'images/our-services-bg.jpg' %});">
+    <section id="our-projects" class="fade-in opacity-0 translate-y-10 transition-all duration-500 py-[8rem]" style="background-image: url({% static 'images/our-services-bg.jpg' %});">
         <div class="w-[1200px] m-auto">
             <div class="w-full flex items-center justify-between mb-16">
                 <h2 class="uppercase text-white text-4xl">{% trans 'Наши работы' %}</h2>
                 <button class="text-white transition border border-white hover:bg-white hover:text-black hover:opacity-90 active:scale-90 py-3 px-4 uppercase">{% trans 'Наши работы' %}</button>
             </div>
             <div class="grid grid-cols-4 gap-10">
-                <div class="border border-4 w-[15rem] h-[15rem] relative">
-                    <div class="absolute p-2 group top-0 left-0 w-full h-full transition bg-transparent hover:bg-[#ed4721] hover:bg-opacity-75 hover:cursor-pointer">
-                        <h3 class="transition text-transparent group-hover:text-white text-xl">{% trans 'Вентиляция бассейнов' %}</h3>
-                    </div>
-                    <img src="{% static 'images/our-works/1.jpg' %}" alt="{% trans 'Вентиляция бассейнов' %}">
-                </div>
-                <div class="border border-4 w-[15rem] h-[15rem] relative">
-                    <div class="absolute p-2 group top-0 left-0 w-full h-full transition bg-transparent hover:bg-[#ed4721] hover:bg-opacity-75 hover:cursor-pointer">
-                        <h3 class="transition text-transparent group-hover:text-white text-xl">{% trans 'Водопровод и канализация' %}</h3>
-                    </div>
-                    <img src="{% static 'images/our-works/2.jpg' %}" alt="{% trans 'Водопровод и канализация' %}">
-                </div>
-                <div class="border border-4 w-[15rem] h-[15rem] relative">
-                    <div class="absolute p-2 group top-0 left-0 w-full h-full transition bg-transparent hover:bg-[#ed4721] hover:bg-opacity-75 hover:cursor-pointer">
-                        <h3 class="transition text-transparent group-hover:text-white text-xl">{% trans 'Изготовление оборудования' %}</h3>
-                    </div>
-                    <img src="{% static 'images/our-works/3.jpg' %}" alt="{% trans 'Изготовление оборудования' %}">
-                </div>
-                <div class="border border-4 w-[15rem] h-[15rem] relative">
-                    <div class="absolute p-2 group top-0 left-0 w-full h-full transition bg-transparent hover:bg-[#ed4721] hover:bg-opacity-75 hover:cursor-pointer">
-                        <h3 class="transition text-transparent group-hover:text-white text-xl">{% trans 'Изоляция ёмкостей' %}</h3>
-                    </div>
-                    <img src="{% static 'images/our-works/4.jpg' %}" alt="{% trans 'Изоляция ёмкостей' %}">
-                </div>
-                <div class="border border-4 w-[15rem] h-[15rem] relative">
-                    <div class="absolute p-2 group top-0 left-0 w-full h-full transition bg-transparent hover:bg-[#ed4721] hover:bg-opacity-75 hover:cursor-pointer">
-                        <h3 class="transition text-transparent group-hover:text-white text-xl">{% trans 'Изоляция трубопроводов' %}</h3>
-                    </div>
-                    <img src="{% static 'images/our-works/5.jpg' %}" alt="{% trans 'Изоляция трубопроводов' %}">
-                </div>
-                <div class="border border-4 w-[15rem] h-[15rem] relative">
-                    <div class="absolute p-2 group top-0 left-0 w-full h-full transition bg-transparent hover:bg-[#ed4721] hover:bg-opacity-75 hover:cursor-pointer">
-                        <h3 class="transition text-transparent group-hover:text-white text-xl">{% trans 'Кондиционирование холодоснабжение' %}</h3>
-                    </div>
-                    <img src="{% static 'images/our-works/6.jpg' %}" alt="{% trans 'Кондиционирование холодоснабжение' %}">
-                </div>
-                <div class="border border-4 w-[15rem] h-[15rem] relative">
-                    <div class="absolute p-2 group top-0 left-0 w-full h-full transition bg-transparent hover:bg-[#ed4721] hover:bg-opacity-75 hover:cursor-pointer">
-                        <h3 class="transition text-transparent group-hover:text-white text-xl">{% trans 'Монтаж котельных' %}</h3>
-                    </div>
-                    <img src="{% static 'images/our-works/7.jpg' %}" alt="{% trans 'Монтаж котельных' %}">
-                </div>
-                <div class="border border-4 w-[15rem] h-[15rem] relative">
-                    <div class="absolute p-2 group top-0 left-0 w-full h-full transition bg-transparent hover:bg-[#ed4721] hover:bg-opacity-75 hover:cursor-pointer">
-                        <h3 class="transition text-transparent group-hover:text-white text-xl">{% trans 'Монтаж оборудования' %}</h3>
-                    </div>
-                    <img src="{% static 'images/our-works/8.jpg' %}" alt="{% trans 'Монтаж оборудования' %}">
-                </div>
+                {% for service_obj in services %}
+                    <a href="{% url 'service_detail' slug=service_obj.slug %}" class="border border-4 w-[15rem] h-[15rem] relative">
+                        <div class="absolute p-2 group top-0 left-0 w-full h-full transition bg-transparent hover:bg-[#ed4721] hover:bg-opacity-75 hover:cursor-pointer">
+                            <h3 class="transition text-transparent group-hover:text-white text-xl">{{ service_obj.name }}</h3>
+                        </div>
+                        <img src="/media/{{ service_obj.header_bg }}/" alt="{{ service_obj.name }}" style="height: 100%;">
+                    </a>
+                {% endfor %}
             </div>
         </div>
     </section>
@@ -175,13 +134,13 @@
             <div class="flex flex-col mt-20">
                 <img class="mb-16 w-10 h-10" src="{% static 'images/quote.png' %}" alt="Quote">
                 <div class="flex flex-col gap-10">
-                    <p class="text-3xl">У Нас более <span class="text-3xl text-[#ed4721]">25 лет опыта</span> в сварочных работах нержавеющей стали и монтажа оборудования предприятий пищевой промышленности</p>
+                    <p class="text-3xl">{% trans 'У Нас более <span class="text-3xl text-[#ed4721]">25 лет опыта</span> в сварочных работах нержавеющей стали и монтажа оборудования предприятий пищевой промышленности' %}</p>
                     <span class="h-1 w-20 bg-[#ed4721]"></span>
-                    <p class="text-xl">Независимо от того, строите ли вы новый офис или обновляете вентиляцию, вы можете рассчитывать на наши профессиональные и доступные услуги. Мы работаем с вами, чтобы обеспечить ремонт или установку ваших новых вентиляционных систем.</p>
+                    <p class="text-xl">{% trans 'Независимо от того, строите ли вы новый офис или обновляете вентиляцию, вы можете рассчитывать на наши профессиональные и доступные услуги. Мы работаем с вами, чтобы обеспечить ремонт или установку ваших новых вентиляционных систем.' %}</p>
                     <div class="flex gap-6">
                         <div class="flex flex-col gap-4">
-                            <span class="font-bold text-2xl whitespace-pre-line">Тимур Хисамов</span>
-                            <span class="text-xl">Директор HITIUM</span>
+                            <span class="font-bold text-2xl whitespace-pre-line">{% trans 'Тимур Хисамов' %}</span>
+                            <span class="text-xl">{% trans 'Директор HITIUM' %}</span>
                         </div>
                         <img src="{% static 'images/hero-sign.png' %}" alt="Sign">
                     </div>
@@ -193,9 +152,12 @@
 
     <section class="fade-in opacity-0 translate-y-10 transition-all duration-500 bg-[#efefef]">
         <div class="w-[1200px] m-auto text-center py-16">
-            <h3 class="text-[#A2A9AF] text-3xl mb-4">Наши клиенты</h3>
-            <p class="whitespace-pre-line text-[#A2A9AF] text-lg">Мы постоянно расширяем нашу систему, чтобы соответствовать 
-                потребностям местных клиентов и нормативным требованиям.</p>
+            <h3 class="text-[#A2A9AF] text-3xl mb-4">{% trans 'Наши клиенты' %}</h3>
+            <p class="whitespace-pre-line text-[#A2A9AF] text-lg">
+                {% blocktrans %}
+                    Мы постоянно расширяем нашу систему, чтобы соответствовать 
+                    потребностям местных клиентов и нормативным требованиям. 
+                {% endblocktrans %}</p>
             <div class="w-full overflow-hidden relative">
                 <div id="slider" class="flex transition-transform duration-500 ease-in-out">
                     <!-- 15 Images -->
@@ -220,58 +182,6 @@
     </section>
 </main>
 
-<footer class="pt-16 pb-32 bg-[#ed4721] text-white">
-    <div class="w-[1200px] m-auto">
-        <div class="text-center flex flex-col gap-10">
-            <div class="flex flex-col gap-2 mb-2">
-                <p class="text-sm">ДАВАЙТЕ РАБОТАТЬ ВМЕСТЕ</p>
-                <a href="mailto:info@hitium.uz" class="text-4xl">info@hitium.uz</a>
-            </div>
-            <div class="grid grid-cols-4">
-                <div class="group flex gap-2 text-start">
-                    <span class="material-icons text-[#252525] group-hover:text-white transition group-hover:cursor-pointer text-5xl">schedule</span>
-                    <div class="flex flex-col gap-2 group-hover:cursor-pointer">
-                        <span class="uppercase">Режим работы</span>
-                        <div class="flex flex-col gap-1">
-                            <span>Пн - Сб 9.00 - 18.00</span>
-                            <span class="text-[#252525]">Вс ЗАКРЫТО</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="group flex gap-2 text-start">
-                    <span class="material-icons text-[#252525] group-hover:text-white transition group-hover:cursor-pointer text-5xl">pin_drop</span>
-                    <div class="flex flex-col gap-2 group-hover:cursor-pointer">
-                        <span class="uppercase">Адрес</span>
-                        <div class="flex flex-col gap-1">
-                            <span>Мы скоро откроемся</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="group flex gap-2 text-start">
-                    <span class="material-icons text-[#252525] group-hover:text-white transition group-hover:cursor-pointer text-5xl">phonelink_ring</span>
-                    <div class="flex flex-col gap-2 group-hover:cursor-pointer">
-                        <span class="uppercase">Тел. номер</span>
-                        <div class="flex flex-col gap-1">
-                            <span>Пн - Сб 9.00 - 18.00</span>
-                            <span class="text-white">Позвоните нам 24/7</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="group flex gap-2 text-start">
-                    <span class="material-icons text-[#252525] group-hover:text-white transition group-hover:cursor-pointer text-5xl -rotate-45">send</span>
-                    <div class="flex flex-col gap-2 group-hover:cursor-pointer">
-                        <span class="uppercase">Напишите нам</span>
-                        <div class="flex flex-col gap-1">
-                            <a href="mailto:office@hitium.uz" class="underline">office@hitium.uz</a>
-                            <a href="mailto:info@hitium.uz" class="text-white underline">info@hitium.uz</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
-
 <!-- Slider movement -->
 <script>
     const slider = document.getElementById("slider");
@@ -290,24 +200,5 @@
         slider.style.transition = "transform 0.5s ease-in-out";
         slider.style.transform = `translateX(-${index * imageWidth}px)`;
     }, 2000);
-</script>
-
-<!-- Animation: Intersection API -->
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("opacity-100", "translate-y-0");
-                }
-            });
-        }, {
-            threshold: 0.2, // Trigger when 20% of the section is visible
-        });
-
-        document.querySelectorAll("section").forEach(section => {
-            observer.observe(section);
-        });
-    });
 </script>
 {% endblock content %}

@@ -1,0 +1,455 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-02-11 16:26+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: PROJECT/settings.py:107
+msgid "Русский"
+msgstr "Russian"
+
+#: PROJECT/settings.py:108
+msgid "O'zbek"
+msgstr "Uzbek"
+
+#: PROJECT/settings.py:109
+msgid "English"
+msgstr "English"
+
+#: app_main/templates/app_main/index.html:9
+msgid "Монтаж промышленного оборудования"
+msgstr "Installation of industrial equipment"
+
+#: app_main/templates/app_main/index.html:12
+msgid ""
+"\n"
+"                    Наша фирма занимается изготовлением промышленного "
+"оборудования, монтажом линий розлива, изготовлением и монтажом систем "
+"вентиляции и промышленного кондиционирования воздуха, водоснабжения и "
+"канализации, холодоснабжения, монтажом под ключ всех видов котельного "
+"оборудования, изоляцией емкостей и трубопроводов.\n"
+"                "
+msgstr ""
+"\n"
+"                    Our company specializes in manufacturing industrial "
+"equipment, installing bottling lines, designing and installing ventilation "
+"and industrial air conditioning systems, water supply and sewerage systems, "
+"refrigeration systems, turnkey boiler equipment installation, and insulation "
+"of tanks and pipelines.\n"
+"                "
+
+#: app_main/templates/app_main/index.html:17
+msgid "Заказать услугу"
+msgstr "Order a service"
+
+#: app_main/templates/app_main/index.html:18
+#: app_main/templates/app_main/index.html:56
+#: app_main/templates/app_main/index.html:57
+msgid "Наши работы"
+msgstr "Our works"
+
+#: app_main/templates/app_main/index.html:29
+#: app_main/templates/app_main/index.html:30
+msgid "системы вентиляции"
+msgstr "ventilation systems"
+
+#: app_main/templates/app_main/index.html:33
+#: app_main/templates/app_main/index.html:34
+msgid "монтаж линий разлива"
+msgstr "installation of bottling lines"
+
+#: app_main/templates/app_main/index.html:37
+#: app_main/templates/app_main/index.html:38
+msgid "водоснабжение и канализация"
+msgstr "water supply and sewerage"
+
+#: app_main/templates/app_main/index.html:41
+#: app_main/templates/app_main/index.html:42
+msgid "изоляция емкостей и трубопроводов"
+msgstr "insulation of tanks and pipelines"
+
+#: app_main/templates/app_main/index.html:48
+msgid ""
+"У вас возникла необходимость поставить оборудование, запустить его и начать "
+"выпускать продукцию? Наши специалисты решат все задачи связанные с этим. От "
+"планировки и монтажа оборудования до пуско-наладочных работ и запуска "
+"производства."
+msgstr ""
+"Do you need to install equipment, launch it, and start production ? Our "
+"specialists will handle all tasks related to this.From equipment planning "
+"and installation to commissioning and production startup."
+
+#: app_main/templates/app_main/index.html:49 templates/components/_nav.html:16
+msgid "Позвонить"
+msgstr "Call"
+
+#: app_main/templates/app_main/index.html:63
+#, fuzzy
+#| msgid "Монтаж промышленного оборудования"
+msgid "Монтаж оборудования"
+msgstr "Installation of industrial equipment"
+
+#: app_main/templates/app_main/index.html:74
+#: app_main/templates/app_main/index.html:77
+#: app_main/templates/app_main/index.html:81
+msgid "Разработка"
+msgstr "Development"
+
+#: app_main/templates/app_main/index.html:83
+#| msgid ""
+#| "Хороший проектировщик систем вентиляции и отопления изучает потребности "
+#| "конечных пользователей здания (сотрудников или жителей), выявляет "
+#| "особенности и собирает сведения для оценки качества воздуха внутри "
+#| "помещения, даже если жители или другие конечные пользователи не могут "
+#| "определить требования самостоятельно.\n"
+#| "                        "
+msgid ""
+"\n"
+"                            Хороший проектировщик систем вентиляции и "
+"отопления изучает потребности конечных пользователей здания (сотрудников или "
+"жителей), выявляет особенности и собирает сведения для оценки качества "
+"воздуха внутри помещения, даже если жители или другие конечные пользователи "
+"не могут определить требования самостоятельно.\n"
+"                        "
+msgstr ""
+"A good ventilation and heating system designer studies the needs of the "
+"building’s end-users (employees or residents), identifies features, and "
+"collects information to assess the air quality inside the building, even if "
+"the residents or other end-users are unable to specify the requirements "
+"themselves"
+
+#: app_main/templates/app_main/index.html:94
+#: app_main/templates/app_main/index.html:98
+#: app_main/templates/app_main/index.html:106
+msgid "Тех. поддержка ?"
+msgstr "Tech. support"
+
+#: app_main/templates/app_main/index.html:100
+msgid ""
+"\n"
+"                            Наши специалисты по обслуживанию систем "
+"кондиционирования поддерживают эксплуатационную готовность оборудования даже "
+"в самых тяжелых эксплуатационных условиях. Мы предлагаем вам полный спектр "
+"услуг от ввода в эксплуатацию до технического обслуживания.\n"
+"                        "
+msgstr ""
+"Our air conditioning system maintenance specialists ensure the operational "
+"readiness of the equipment even in the most challenging operating "
+"conditions. We offer a full range of services, from commissioning to "
+"technical maintenance"
+
+#: app_main/templates/app_main/index.html:110
+#: app_main/templates/app_main/index.html:113
+#: app_main/templates/app_main/index.html:117
+msgid "Почему мы ?"
+msgstr "Why us ?"
+
+#: app_main/templates/app_main/index.html:119
+msgid ""
+"- Опытные специалисты, для которых нет не решаемых задач в сфере монтажных "
+"работ.\n"
+"                        - Собственное оборудование – никаких затрат на его "
+"аренду.\n"
+"                        - Внимание к деталям обеспечивает точность, скорость "
+"и качество выполнения работ - минимум простоя оборудования за счёт "
+"тщательного изучения объекта до начала монтажа.\n"
+"                        - Доступные цены за счет большого опыта работы и "
+"идеально отлаженных бизнес процессов.\n"
+"                        Ну и просто… наша фирма изначально создана для "
+"решения сложных задач, мы ценим клиентов и дорожим репутацией.\n"
+"                        "
+msgstr ""
+"- Experienced specialists who can solve any challenges in the field of "
+"installation work.- Own equipment – no costs for renting it.- Attention to "
+"detail ensures precision, speed, and quality of work – minimal equipment "
+"downtime due to thorough site analysis before installation begins.- "
+"Affordable prices thanks to extensive experience and perfectly optimized "
+"business processes.And simply… our company was initially created to solve "
+"complex problems, we value our clients and cherish our reputation."
+
+#: app_main/templates/app_main/index.html:137
+msgid ""
+"У Нас более <span class=\"text-3xl text-[#ed4721]\">25 лет опыта</span> в "
+"сварочных работах нержавеющей стали и монтажа оборудования предприятий "
+"пищевой промышленности"
+msgstr ""
+"We have over <span class='text-3xl text-[#ed4721]'>25 years of experience</"
+"span> in stainless steel welding and equipment installation for food "
+"industry enterprises."
+
+#: app_main/templates/app_main/index.html:139
+msgid ""
+"Независимо от того, строите ли вы новый офис или обновляете вентиляцию, вы "
+"можете рассчитывать на наши профессиональные и доступные услуги. Мы работаем "
+"с вами, чтобы обеспечить ремонт или установку ваших новых вентиляционных "
+"систем."
+msgstr ""
+"Whether you are building a new office or upgrading the ventilation, you can "
+"rely on our professional and affordable services. We work with you to ensure "
+"the repair or installation of your new ventilation systems."
+
+#: app_main/templates/app_main/index.html:142
+msgid "Тимур Хисамов"
+msgstr "Timur Hisamov"
+
+#: app_main/templates/app_main/index.html:143
+msgid "Директор HITIUM"
+msgstr "HITIUM Director"
+
+#: app_main/templates/app_main/index.html:155
+msgid "Наши клиенты"
+msgstr "Our clients"
+
+#: app_main/templates/app_main/index.html:157
+msgid ""
+"\n"
+"                    Мы постоянно расширяем нашу систему, чтобы "
+"соответствовать \n"
+"                    потребностям местных клиентов и нормативным "
+"требованиям. \n"
+"                "
+msgstr ""
+"We are constantly expanding our system to meet the needs of local clients "
+"and regulatory requirements."
+
+#: app_main/templates/app_main/service_detail.html:26
+#: templates/components/_nav.html:31
+msgid "Наши услуги"
+msgstr "Our services"
+
+#: app_main/templates/app_main/service_detail.html:27
+msgid "Вентиляция бассейнов"
+msgstr "Pool ventilation"
+
+#: app_main/templates/app_main/service_detail.html:30
+msgid ""
+"Вентиляция бассейна – инженерная система, которая поддерживает оптимальные "
+"микроклиматические условия на объекте. Если такая система отсутствует, либо "
+"отрегулирована и настроена некорректно, то в бассейне не удастся достичь "
+"оптимальных параметров по влажности и температуре, будет чересчур душно. "
+"Одна из основных физических характеристик воды – испарение, а бассейн, с "
+"учетом большой площади поверхности, демонстрирует очень высокие показатели "
+"испарения."
+msgstr ""
+"Pool ventilation is an engineering system that maintains optimal "
+"microclimatic conditions at the facility. If such a system is absent or is "
+"incorrectly adjusted and configured, it will be impossible to achieve "
+"optimal humidity and temperature levels in the pool, and the air will be "
+"excessively stuffy. One of the main physical characteristics of water is "
+"evaporation, and a pool, given its large surface area, demonstrates very "
+"high evaporation rates."
+
+#: app_main/templates/app_main/service_detail.html:36
+msgid "Ценовая политика"
+msgstr "Pricing policy"
+
+#: app_main/templates/app_main/service_detail.html:37
+msgid "Стоимость рассчитывается на этапе подготовки коммерческого предложения."
+msgstr ""
+"The cost is calculated at the stage of preparing the commercial proposal."
+
+#: app_main/templates/app_main/service_detail.html:41
+msgid "Огромный опыт"
+msgstr "Enormous experience"
+
+#: app_main/templates/app_main/service_detail.html:42
+msgid "За время существования нашей компании мы выполнили более 300 работ."
+msgstr ""
+"During the existence of our company, we have completed over 300 projects."
+
+#: app_main/templates/app_main/service_detail.html:46
+msgid "Выполняем в срок"
+msgstr "We complete on time"
+
+#: app_main/templates/app_main/service_detail.html:47
+msgid ""
+"Все работы выполняются в обговоренные с клиентов время и ни на с секундочку "
+"позже!"
+msgstr ""
+"All work is completed within the time agreed upon with the client, and not a "
+"second later"
+
+#: app_main/templates/app_main/service_detail.html:51
+msgid "Гарантия качества"
+msgstr "Quality guarantee"
+
+#: app_main/templates/app_main/service_detail.html:52
+msgid "На все изготовленное нами оборудование дается 1 год гарантии."
+msgstr "All equipment manufactured by us comes with a 1-year warranty."
+
+#: app_main/templates/app_main/service_detail.html:62
+msgid ""
+"Для подробностей по услуге пишитеили звоните по номеру +998 97 445 88 38"
+msgstr "For details about the service, write or call at +998 97 445 88 38"
+
+#: app_main/templates/app_main/service_detail.html:77
+msgid "Всегда на связи"
+msgstr "Always available"
+
+#: app_main/templates/app_main/service_detail.html:81
+msgid "Сертифицированные специалисты"
+msgstr "Sertified specialists"
+
+#: app_main/templates/app_main/service_detail.html:85
+msgid "Гарантия & Тех. поддержка"
+msgstr "Guarantee & Tech. support"
+
+#: templates/base.html:10
+msgid "Установка и монтаж промышленного оборудования в Узбекистане"
+msgstr "Installation and assembly of industrial equipment in Uzbekistan"
+
+#: templates/base.html:17
+msgid ""
+"Профессиональная установка и монтаж промышленного оборудования в "
+"Узбекистане. Высокое качество и надежность."
+msgstr ""
+"Professional installation and assembly of industrial equipment in "
+"Uzbekistan. High quality and reliability."
+
+#: templates/base.html:21
+msgid ""
+"Установка оборудования, монтаж промышленного оборудования, Узбекистан, "
+"Ташкент, Самарканд, Бухара, Навои, Фергана, Андижан, Наманган, "
+"промышленность, качество, надежность, Hitium.uz"
+msgstr ""
+"Equipment installation, industrial equipment installation, Uzbekistan, "
+"Tashkent, Samarkand, Bukhara, Navoi, Fergana, Andijan, Namangan, industry, "
+"quality, reliability, Hitium.uz"
+
+#: templates/base.html:28 templates/base.html:40
+#, fuzzy
+#| msgid "Установка и монтаж промышленного оборудования в Узбекистане"
+msgid "Монтаж промышленного оборудования в Узбекистане"
+msgstr "Installation and assembly of industrial equipment in Uzbekistan"
+
+#: templates/base.html:32
+#, fuzzy
+#| msgid ""
+#| "Профессиональная установка и монтаж промышленного оборудования в "
+#| "Узбекистане. Высокое качество и надежность."
+msgid ""
+"Профессиональный монтаж промышленного оборудования с гарантией качества в "
+"Узбекистане."
+msgstr ""
+"Professional installation and assembly of industrial equipment in "
+"Uzbekistan. High quality and reliability."
+
+#: templates/base.html:41
+#, fuzzy
+#| msgid ""
+#| "Профессиональная установка и монтаж промышленного оборудования в "
+#| "Узбекистане. Высокое качество и надежность."
+msgid ""
+"Профессиональный монтаж промышленного оборудования с гарантией качества."
+msgstr ""
+"Professional installation and assembly of industrial equipment in "
+"Uzbekistan. High quality and reliability."
+
+#: templates/components/_footer.html:6
+msgid "Давайте работать вместе"
+msgstr "Let's work together"
+
+#: templates/components/_footer.html:13
+msgid "Режим работы"
+msgstr "Working hours"
+
+#: templates/components/_footer.html:16
+msgid "Вс ЗАКРЫТО"
+msgstr "Sun CLOSED"
+
+#: templates/components/_footer.html:23
+msgid "Адрес"
+msgstr "Address"
+
+#: templates/components/_footer.html:25
+msgid "Мы скоро откроемся"
+msgstr "We will open soon"
+
+#: templates/components/_footer.html:32
+msgid "Тел. номер"
+msgstr "Phone number"
+
+#: templates/components/_footer.html:34
+msgid "Пн - Сб 9.00 - 18.00"
+msgstr "Mon - Sat 9:00 - 18:00"
+
+#: templates/components/_footer.html:35
+msgid "Позвоните нам 24/7"
+msgstr "Call us 24/7"
+
+#: templates/components/_footer.html:42
+msgid "Напишите нам"
+msgstr "Contact us"
+
+#: templates/components/_nav.html:12
+msgid "Написать в телеграм"
+msgstr "Write via Telegram"
+
+#: templates/components/_nav.html:27
+msgid "Главная"
+msgstr "Home"
+
+#: templates/components/_nav.html:88
+msgid "Контакты"
+msgstr "Contacts"
+
+#, fuzzy
+#~| msgid "Наши работы"
+#~ msgid "наши работы"
+#~ msgstr "Our works"
+
+#, fuzzy
+#~| msgid "водоснабжение и канализация"
+#~ msgid "Водопровод и канализация"
+#~ msgstr "water supply and sewerage"
+
+#, fuzzy
+#~| msgid "Монтаж промышленного оборудования"
+#~ msgid "Изготовление оборудования"
+#~ msgstr "Installation of industrial equipment"
+
+#, fuzzy
+#~| msgid "изоляция емкостей и трубопроводов"
+#~ msgid "Изоляция ёмкостей"
+#~ msgstr "insulation of tanks and pipelines"
+
+#, fuzzy
+#~| msgid "изоляция емкостей и трубопроводов"
+#~ msgid "Изоляция трубопроводов"
+#~ msgstr "insulation of tanks and pipelines"
+
+#, fuzzy
+#~| msgid "Контакты"
+#~ msgid "Монтаж котельных"
+#~ msgstr "Contacts"
+
+#~ msgid "СИСТЕМЫ ВЕНТИЛЯЦИИ"
+#~ msgstr "VENTILATION SYSTEMS"
+
+#~ msgid "МОНТАЖ ЛИНИЙ РОЗЛИВА"
+#~ msgstr "INSTALLATION OF BOTTLING LINES"
+
+#~ msgid "ВОДОСНАБЖЕНИЕ И КАНАЛИЗАЦИЯ"
+#~ msgstr "WATER SUPPLY AND SEWERAGE"
+
+#~ msgid "ИЗОЛЯЦИЯ ЕМКОСТЕЙ И ТРУБОПРОВОДОВ"
+#~ msgstr "INSULATION OF TANKS AND PIPELINES"
+
+#, fuzzy
+#~| msgid "Наши услуги"
+#~ msgid "Наши услиги"
+#~ msgstr "Our services"

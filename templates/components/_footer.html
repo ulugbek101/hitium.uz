@@ -1,0 +1,52 @@
+{% load i18n %}
+<footer id="footer" class="pt-16 pb-32 bg-[#ed4721] text-white">
+    <div class="w-[1200px] m-auto">
+        <div class="text-center flex flex-col gap-10">
+            <div class="flex flex-col gap-2 mb-2">
+                <p class="text-sm uppercase">{% trans 'Давайте работать вместе' %}</p>
+                <a href="mailto:info@hitium.uz" class="text-4xl">info@hitium.uz</a>
+            </div>
+            <div class="grid grid-cols-4">
+                <div class="group flex gap-2 text-start">
+                    <span class="material-icons text-[#252525] group-hover:text-white transition group-hover:cursor-pointer text-5xl">schedule</span>
+                    <div class="flex flex-col gap-2 group-hover:cursor-pointer">
+                        <span>{% trans 'Режим работы' %}</span>
+                        <div class="flex flex-col gap-1">
+                            <span>Пн - Сб 9.00 - 18.00</span>
+                            <span class="text-[#252525]">{% trans 'Вс ЗАКРЫТО' %}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="group flex gap-2 text-start">
+                    <span class="material-icons text-[#252525] group-hover:text-white transition group-hover:cursor-pointer text-5xl">pin_drop</span>
+                    <div class="flex flex-col gap-2 group-hover:cursor-pointer">
+                        <span>{% trans 'Адрес' %}</span>
+                        <div class="flex flex-col gap-1">
+                            <span>{% trans 'Мы скоро откроемся' %}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="group flex gap-2 text-start">
+                    <span class="material-icons text-[#252525] group-hover:text-white transition group-hover:cursor-pointer text-5xl">phonelink_ring</span>
+                    <div class="flex flex-col gap-2 group-hover:cursor-pointer">
+                        <span>{% trans 'Тел. номер' %}</span>
+                        <div class="flex flex-col gap-1">
+                            <span>{% trans 'Пн - Сб 9.00 - 18.00' %}</span>
+                            <span class="text-white">{% trans 'Позвоните нам 24/7' %}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="group flex gap-2 text-start">
+                    <span class="material-icons text-[#252525] group-hover:text-white transition group-hover:cursor-pointer text-5xl -rotate-45">send</span>
+                    <div class="flex flex-col gap-2 group-hover:cursor-pointer">
+                        <span>{% trans 'Напишите нам' %}</span>
+                        <div class="flex flex-col gap-1">
+                            <a href="mailto:office@hitium.uz" class="underline">office@hitium.uz</a>
+                            <a href="mailto:info@hitium.uz" class="text-white underline">info@hitium.uz</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
