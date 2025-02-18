@@ -1,28 +1,26 @@
 {% load i18n %}
 {% load static %}
-
-<div
-	class="w-full flex items-center justify-between py-3 border-b border-white border-opacity-25"
->
-	<div
-		class="flex items-center gap-2 text-white text-[0.8rem]"
-	>
-		<span class="material-icons -rotate-45">send</span>
-		Telegram:
-		<a href="https://t.me/hitium" class="opacity-50 hover:text-[#ed4721] transition"> {% trans 'Написать в телеграм' %} </a>
+<div style="z-index: 10" class="flex flex-col items-end xl:flex-row gap-1 py-1 px-5 w-full lg:items-center lg:flex-row lg:justify-between lg:py-3 border-b border-white border-opacity-25">
+    <div class="flex items-center gap-2 text-white text-[0.8rem]">
+		<span class="material-icons text-sm -rotate-45 order-2 lg:order-1">send</span>
+		<div class="flex flex-row gap-1 order-1 lg:order-2">
+            <span class="hidden lg:flex">Telegram:</span>
+		    <a href="https://t.me/hitium" class="opacity-50 hover:text-[#ed4721] transition"> {% trans 'Написать в телеграм' %} </a>
+        </div>
 	</div>
 	<div class="flex items-center gap-2 text-white text-[0.8rem]">
-		<span class="material-icons">phone</span>
-		{% trans 'Позвонить' %} 24/7:
-		<a href="tel:+998974458838" class="opacity-50 hover:text-[#ed4721] transition"> +998 97 445 88 38 </a>
+		<span class="material-icons text-sm order-2 lg:order-1">phone</span>
+		<div class="flex flex-row gap-1 order-1 lg:order-2">
+            <p class="hidden lg:flex">{% trans 'Позвонить' %} 24/7:</p>
+		    <a href="tel:+998974458838" class="opacity-50 hover:text-[#ed4721] transition"> +998 97 445 88 38 </a>
+        </div>
 	</div>
 </div>
-
-<nav class="flex items-center justify-between text-white">
-    <a href="/">
-        <img class="h-[90px]" src="{% static 'images/nav-logo.png' %}" alt="Hitium.uz">
+<nav class="flex items-center justify-between text-white px-2">
+    <a href="/" class="px-2 lg:px-0">
+        <img class="h-[50px] lg:h-[90px]" src="{% static 'images/nav-logo.png' %}" alt="Hitium.uz">
     </a>
-    <ul class="flex gap-[26px] text-[0.8125rem] uppercase">
+    <ul class="hidden lg:flex gap-[26px] text-[0.8125rem] uppercase">
         <li>
             <a class="active:scale-90 h-[40px] flex items-center py-[1.25rem] px-6 hover:opacity-90 transition {% if home_page %} border-b-4 border-b-[#ed4721] {% endif %}" href="/">{% trans 'Главная' %}</a>
         </li>
@@ -42,13 +40,19 @@
         <li class="relative group">
             <a class="active:scale-90 h-[40px] flex items-center py-[1.25rem] px-6 hover:opacity-90 transition gap-2" href="javascript:void(0)">
                 <span class="text-2xl">
-                    {{ current_language_flag }}
+                    {% if request.LANGUAGE_CODE == 'uz' %}
+                        <img src="{% static 'images/uzb.webp' %}" alt="Uzbek" class="w-5">
+                    {% elif request.LANGUAGE_CODE == 'en' %}
+                        <img src="{% static 'images/usa.png' %}" alt="English" class="w-5">
+                    {% else %}
+                        <img src="{% static 'images/rus.jpg' %}" alt="Russan" class="w-5">
+                    {% endif %}
                 </span>
                 <span>{{ full_language_name }}</span>
             </a>
             
             <!-- Dropdown Menu (hidden by default, shown on hover) -->
-            <ul class="absolute left-1/2 -translate-x-1/2 hidden bg-white rounded-lg text-black py-1 px-2 rounded-md shadow-lg group-hover:block">
+            <ul class="w-[110px] absolute left-1/2 -translate-x-1/2 hidden bg-white rounded-lg text-black py-1 px-2 rounded-md shadow-lg group-hover:block">
                 <!-- Example languages, you can dynamically load them -->
                  {% for code, name in LANGUAGES %}
                     <li class="w-full">
@@ -66,16 +70,7 @@
                             {% else %}
                                 <input type="hidden" name="next" value="{{ request.path }}">
                             {% endif %}
-                            <button type="{% if name == full_language_name %}button{% else %}submit{% endif %}" class="active:scale-90 flex items-center gap-1 w-full my-1 block py-1 px-2 rounded hover:bg-[#ed4721] hover:text-white {% get_current_language as LANGUAGE_CODE %} {% if LANGUAGE_CODE == code %} text-white bg-[#ed4721] {% endif %} transition">
-                                <span class="text-2xl">
-                                    {% if code == 'uz' %}
-                                        {{ language_flags.uz }}
-                                    {% elif code == 'en' %}
-                                        {{ language_flags.en }}
-                                    {% else %}
-                                        {{ language_flags.ru }}
-                                    {% endif %}
-                                </span>
+                            <button type="{% if name == full_language_name %}button{% else %}submit{% endif %}" class="active:scale-90 flex items-center gap-1 w-full my-1 block py-1 px-2 rounded hover:bg-[#ed4721] hover:text-white {% if request.LANGUAGE_CODE == code %} text-white bg-[#ed4721] {% endif %} transition">
                                 <span>{{ name }}</span>
                             </button>    
                         </form>
@@ -85,25 +80,7 @@
         </li>
         
         <li>
-            <a class="active:scale-90 h-[40px] flex items-center py-[1.25rem] px-6 hover:opacity-90 transition bg-[#ed4721]" href="#footer">{% trans 'Контакты' %}</a>
+            <a class="active:scale-90 h-[40px] flex items-center py-[1.25rem] px-6 hover:opacity-90 transition bg-[#ed4721]" href="{% url 'contacts' %}">{% trans 'Контакты' %}</a>
         </li>
     </ul>
 </nav>
-
-
-<!-- <script>
-    window.addEventListener('scroll', function() {
-    const navbar = document.querySelector('nav');
-    const header = document.querySelector('header');
-
-    const scrollPoint = 5; // The point at which the navbar becomes absolute
-
-    if (window.scrollY > scrollPoint) {
-        navbar.classList.add('sticky', 'top-0', 'z-50'); // Add the absolute class when scrolled past the point
-        header.classList.add('z-40'); // Add the absolute class when scrolled past the point
-    } else {
-        navbar.classList.remove('sticky', 'top-0', 'z-50'); // Remove the class if the user scrolls back up
-        header.classList.remove('z-40'); // Remove the class if the user scrolls back up
-    }
-    });
-</script> -->

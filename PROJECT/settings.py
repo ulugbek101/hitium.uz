@@ -105,7 +105,7 @@ def gettext(lang): return lang
 LANGUAGE_CODE = "ru"
 LANGUAGES = (
     ("ru", _("Русский")),
-    ("uz", _("O'zbek")),
+    ("uz", _("O'zbek tili")),
     ("en", _("English")),
 )
 

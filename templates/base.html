@@ -1,6 +1,5 @@
-{% load i18n %}
-{% load static %}
 <!DOCTYPE html>
+{% load i18n static %}
 <html lang="{% get_current_language as LANGUAGE_CODE %}{{ LANGUAGE_CODE }}">
 	<head>
 		<!-- Meta Tags for SEO -->
@@ -61,10 +60,79 @@
 		<script src="https://kit.fontawesome.com/2bd40b5115.js" crossorigin="anonymous"></script>
 	</head>
 	<body>
-        {% block content %} {% endblock content %} 
+
+
+		<span style="z-index: 11" id="menuBtn" data-nosnippet class="lg:hidden material-icons font-bold text-white absolute left-4 top-4 active:scale-90 active:text-[#ed4721] transition z-1">menu</span>
+		<div style="z-index: 12" id="menu" class="transition lg:hidden absolute top-0 left-[-100%] h-full w-full bg-black bg-opacity-50 z-10 backdrop-blur-md">
+			<div class="w-full flex flex-col gap-5 p-4">
+				<span id="closeMenu" class="material-icons ms-auto text-white">close</span>
+				<div class="flex flex-col justify-center items-center">
+					<a href="/">
+						<img src="{% static 'images/nav-logo.png' %}" alt="Hitium.uz" class="h-[70px] me-5">
+					</a>
+					<div class="mt-2 flex flex-col items-start gap-2">
+						<a href="/" class="font-bold text-lg text-white">{% trans 'Главная' %}</a>
+						<a href="{% url 'our_services' %}" class="font-bold text-lg text-white">{% trans 'Наши улуги' %}</a>
+						<div class="text-white font-bold flex flex-row items-center justify-between gap-5 w-full relative group">
+							<div class="relative">
+								<a class="active:scale-90 h-[40px] flex items-center hover:opacity-90 transition gap-2" href="javascript:void(0)">
+									<span class="text-2xl">
+										{% if request.LANGUAGE_CODE == 'uz' %}
+											<img src="{% static 'images/uzb.webp' %}" alt="Uzbek" class="w-5">
+										{% elif request.LANGUAGE_CODE == 'en' %}
+											<img src="{% static 'images/usa.png' %}" alt="English" class="w-5">
+										{% else %}
+											<img src="{% static 'images/rus.jpg' %}" alt="Russan" class="w-5">
+										{% endif %}
+									</span>
+									<span>{{ full_language_name }}</span>
+								</a>
+
+								<!-- Dropdown Menu (hidden by default, shown on hover) -->
+								<ul class="w-[110px] absolute left-1/2 -translate-x-1/2 hidden bg-white rounded-lg text-black py-1 px-2 rounded-md shadow-lg group-hover:block">
+									<!-- Example languages, you can dynamically load them -->
+									 {% for code, name in LANGUAGES %}
+										<li class="w-full">
+											<form action="{% url 'switch_language' %}" method="post" class="w-full">
+												{% csrf_token %}
+												<input type="hidden" name="language" value="{{ code }}">
+												{% if service %}
+													{% if code == 'uz' %}
+														<input type="hidden" name="next" value="/{{ code }}/{{ service.slug_uz }}/">
+													{% elif code == 'en' %}
+														<input type="hidden" name="next" value="/{{ code }}/{{ service.slug_en }}/">
+													{% else %}
+														<input type="hidden" name="next" value="/{{ code }}/{{ service.slug_ru }}/">
+													{% endif %}
+												{% else %}
+													<input type="hidden" name="next" value="{{ request.path }}">
+												{% endif %}
+												<button type="{% if name == full_language_name %}button{% else %}submit{% endif %}" class="active:scale-90 flex items-center gap-1 w-full my-1 block py-1 px-2 rounded hover:bg-[#ed4721] hover:text-white {% if request.LANGUAGE_CODE == code %} text-white bg-[#ed4721] {% endif %} transition">
+													<span>{{ name }}</span>
+												</button>
+											</form>
+										</li>
+									{% endfor %}
+								</ul>
+							</div>
+							<span class="material-icons group-hover:-rotate-180 transition">keyboard_arrow_down</span>
+						</div>
+					</div>
+					<a href="{% url 'contacts' %}" class="flex items-center gap-2 w-[200px] justify-center py-2 px-4 bg-[#ed4721] active:scale-90 font-bold text-white mt-5 rounded transition">
+						<span class="material-icons">construction</span>
+						{% trans 'Заказать услугу' %}
+					</a>
+					<a href="tel:tel:+998974458838" class="flex items-center gap-2 w-[200px] justify-center py-2 px-4 bg-[#ed4721] active:scale-90 font-bold text-white mt-5 rounded transition">
+						<span class="material-icons">phone</span>
+						{% trans 'Позвонить' %}
+					</a>
+				</div>
+			</div>
+		</div>
+
+        {% block content %} {% endblock content %}
         {% include 'components/_footer.html' %}
 
-		<!-- Animation: Intersection API -->
 		<script>
 			document.addEventListener("DOMContentLoaded", () => {
 				const observer = new IntersectionObserver((entries) => {
@@ -80,6 +148,22 @@
 				document.querySelectorAll("section").forEach(section => {
 					observer.observe(section);
 				});
+			});
+
+			const menuBtn = document.getElementById('menuBtn');
+			const menu = document.getElementById('menu');
+			const closeMenu = document.getElementById('closeMenu');
+
+			closeMenu.addEventListener('click', () => {
+				menu.classList.remove('left-0');
+				menu.classList.add('left-[-100%]');
+				document.body.style.overflow = ''; // Enable scrolling
+			})
+
+			menuBtn.addEventListener('click', () => {
+				menu.classList.remove('left-[-100%]');
+				menu.classList.add('left-0');
+				document.body.style.overflow = 'hidden'; // Disable scrolling
 			});
 		</script>
 	</body>

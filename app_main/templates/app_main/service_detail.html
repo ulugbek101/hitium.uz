@@ -2,92 +2,99 @@
 {% load static i18n %}
 
 {% block content %}
-<header class="relative h-[100vh] w-full" style="background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('{{ service.header_bg.url }}');">
+<header class="relative h-[70vh] w-full"
+        style="background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('{{ service.header_bg.url }}');">
     <!-- Extra black overlay with opacity 0.3 -->
     <div class="absolute inset-0 bg-black opacity-30"></div>
-    
-    <section class="h-3/4 fade-in opacity-0 translate-y-10 transition-all duration-500 w-[1240px] px- m-auto relative z-10">
-        {% include 'components/_nav.html' %} 
-        <div class="w-full h-full flex items-center justify-center">
-            <h1 class="text-[80px] text-white font-medium relative text-center px-4 z-1">
+
+    <section
+            class="h-3/4 fade-in opacity-0 translate-y-10 transition-all duration-500 w-full xl:w-[1240px] m-auto relative z-10">
+        {% include 'components/_nav.html' %}
+        <div class="w-full h-full flex items-center px-4">
+            <h1 class="text-4xl w-full xl:text-[80px] flex items-center flex-col gap-2 text-white font-medium relative text-center z-1 py-2">
                 <span class="absolute bg-black bg-opacity-50 inset-0 opacity-50 backdrop-blur-xl z-[-1] rounded"></span>
+                <div class="flex flex-row">
+                    <a href="/" class="text-sm hover:text-[#ed4721] transition">{% trans 'Главная' %}</a>  <span class="text-sm">&nbsp;&nbsp;/&nbsp;&nbsp;</span> <span class="text-sm text-[#ed4721]">{{ service.name }}</span>
+                </div>
                 {{ service.name }}
+                <br>
+                <br>
             </h1>
         </div>
     </section>
 </header>
 
 <main>
-    <section class="fade-in opacity-0 translate-y-10 transition-all duration-500 bg-[#efefef]" style="background-image: url('{{ service.description_bg.url }}'); background-position: center; background-size: cover;">
-        <div class="w-[1200px] m-auto py-16">
-            <div class="w-1/2 flex flex-col gap-10">
-                <div class="w-full">
+    <section class="relative fade-in opacity-0 translate-y-10 transition-all duration-500 bg-[#efefef]"
+             style="background-image: url('{{ service.description_bg.url }}'); background-position: right;">
+        <!-- Black overlay -->
+        <div class="absolute inset-0 bg-black opacity-80"></div>
+
+        <div class="relative w-full xl:w-[1200px] xl:m-auto py-4 xl:py-16 xl:flex xl:justify-center">
+            <div class="px-2w-full xl:w-1/2 xl:py-0 flex flex-col gap-10">
+                <div class="w-full px-2">
                     <div>
-                        <span>{% trans 'Наши услуги' %}</span>
-                        <h2 class="text-[#ed4721] text-5xl">{% trans 'Вентиляция бассейнов' %}</h2>
+                        <span class="text-white font-bold">{% trans 'Наши услуги' %}</span>
+                        <h2 class="text-[#ed4721] text-4xl xl:text-5xl">{% trans 'Вентиляция бассейнов' %}</h2>
                     </div>
-                    <p class="mt-5 text-justify text-[#252525]">
+                    <p class="mt-5 text-justify text-[#fff]">
                         {% trans 'Вентиляция бассейна – инженерная система, которая поддерживает оптимальные микроклиматические условия на объекте. Если такая система отсутствует, либо отрегулирована и настроена некорректно, то в бассейне не удастся достичь оптимальных параметров по влажности и температуре, будет чересчур душно. Одна из основных физических характеристик воды – испарение, а бассейн, с учетом большой площади поверхности, демонстрирует очень высокие показатели испарения.' %}
                     </p>
                 </div>
-                <div class="grid grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div class="text-center flex flex-col gap-4 group hover:cursor-pointer">
-                        <span class="material-icons text-[#252525] text-5xl group-hover:text-[#ed4721]">timer</span>
-                        <p class="uppercase font-bold group-hover:text-[#ed4721] text-[#252525]">{% trans 'Ценовая политика' %}</p>
-                        <p class="text-[#252525]">{% trans 'Стоимость рассчитывается на этапе подготовки коммерческого предложения.' %}</p>
+                        <span class="material-icons text-[#fff] text-5xl group-hover:text-[#ed4721]">timer</span>
+                        <p class="uppercase font-bold group-hover:text-[#ed4721] text-[#fff]">{% trans 'Ценовая политика' %}</p>
+                        <p class="text-[#fff]">{% trans 'Стоимость рассчитывается на этапе подготовки коммерческого предложения.' %}</p>
                     </div>
                     <div class="text-center flex flex-col gap-4 group hover:cursor-pointer">
-                        <span class="material-icons text-[#252525] text-5xl group-hover:text-[#ed4721]">paid</span>
-                        <p class="uppercase font-bold group-hover:text-[#ed4721] text-[#252525]">{% trans 'Огромный опыт' %}</p>
-                        <p class="text-[#252525]">{% trans 'За время существования нашей компании мы выполнили более 300 работ.' %}</p>
+                        <span class="material-icons text-[#fff] text-5xl group-hover:text-[#ed4721]">paid</span>
+                        <p class="uppercase font-bold group-hover:text-[#ed4721] text-[#fff]">{% trans 'Огромный опыт' %}</p>
+                        <p class="text-[#fff]">{% trans 'За время существования нашей компании мы выполнили более 300 работ.' %}</p>
                     </div>
                     <div class="text-center flex flex-col gap-4 group hover:cursor-pointer">
-                        <span class="material-icons text-[#252525] text-5xl group-hover:text-[#ed4721]">work</span>
-                        <p class="uppercase font-bold group-hover:text-[#ed4721] text-[#252525]">{% trans 'Выполняем в срок' %}</p>
-                        <p class="text-[#252525]">{% trans 'Все работы выполняются в обговоренные с клиентов время и ни на с секундочку позже!' %}</p>
+                        <span class="material-icons text-[#fff] text-5xl group-hover:text-[#ed4721]">work</span>
+                        <p class="uppercase font-bold group-hover:text-[#ed4721] text-[#fff]">{% trans 'Выполняем в срок' %}</p>
+                        <p class="text-[#fff]">{% trans 'Все работы выполняются в обговоренные с клиентов время и ни на с секундочку позже!' %}</p>
                     </div>
                     <div class="text-center flex flex-col gap-4 group hover:cursor-pointer">
-                        <span class="material-icons text-[#252525] text-5xl group-hover:text-[#ed4721]">thumb_up</span>
-                        <p class="uppercase font-bold group-hover:text-[#ed4721] text-[#252525]">{% trans 'Гарантия качества' %}</p>
-                        <p class="text-[#252525]">{% trans 'На все изготовленное нами оборудование дается 1 год гарантии.' %}</p>
+                        <span class="material-icons text-[#fff] text-5xl group-hover:text-[#ed4721]">thumb_up</span>
+                        <p class="uppercase font-bold group-hover:text-[#ed4721] text-[#fff]">{% trans 'Гарантия качества' %}</p>
+                        <p class="text-[#fff]">{% trans 'На все изготовленное нами оборудование дается 1 год гарантии.' %}</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
     <section class="fade-in opacity-0 translate-y-10 transition-all duration-500 bg-[#ed4721]">
-        <div class="w-1/2 m-auto py-16">
-            <a href="tel:+998974458838" class="text-white text-4xl flex text-center">
+        <div class="w-1/2 m-auto py-4 xl:py-16">
+            <a href="tel:+998974458838" class="text-white text-sm xl:text-4xl flex text-center">
                 {% trans 'Для подробностей по услуге пишитеили звоните по номеру +998 97 445 88 38' %}
             </a>
         </div>
     </section>
-
-    <section class="grid grid-cols-5 fade-in opacity-0 translate-y-10 transition-all duration-500">
+    <section class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 fade-in opacity-0 translate-y-10 transition-all duration-500">
         {% for service_image in service.images.all|slice:"15" %}
             <img src="{{ service_image.image.url }}" alt="{{ service.name }}">
         {% endfor %}
     </section>
-
     <section class="fade-in opacity-0 translate-y-10 transition-all duration-500 bg-[#efefef]">
-        <div class="w-[1200px] m-auto py-16 flex justify-between">
-            <div class="flex flex-col gap-2 text-center text-[#252525] group hover:cursor-pointer">
+        <div class="w-full flex flex-col items-center gap-10 m-auto py-16 xl:w-[1200px] xl:flex-row xl:justify-between">
+            <div class="flex flex-col items-center gap-2 text-center text-[#252525] group hover:cursor-pointer">
                 <span class="material-icons text-5xl group-hover:text-[#ed4721] transition">call</span>
                 <p class="uppercase text-[#252525] group-hover:text-[#ed4721] transition">{% trans 'Всегда на связи' %}</p>
             </div>
-            <div class="flex flex-col gap-2 text-center text-[#252525] group hover:cursor-pointer">
+            <div class="flex flex-col items-center gap-2 text-center text-[#252525] group hover:cursor-pointer">
                 <span class="material-icons text-5xl group-hover:text-[#ed4721] transition">badge</span>
                 <p class="uppercase text-[#252525] group-hover:text-[#ed4721] transition">{% trans 'Сертифицированные специалисты' %}</p>
             </div>
-            <div class="flex flex-col gap-2 text-center text-[#252525] group hover:cursor-pointer">
+            <div class="flex flex-col items-center gap-2 text-center text-[#252525] group hover:cursor-pointer">
                 <span class="material-icons text-5xl group-hover:text-[#ed4721] transition">engineering</span>
                 <p class="uppercase text-[#252525] group-hover:text-[#ed4721] transition">{% trans 'Гарантия & Тех. поддержка' %}</p>
             </div>
         </div>
     </section>
-
-    <section class="grid grid-cols-5 fade-in opacity-0 translate-y-10 transition-all duration-500">
+    <section class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 fade-in opacity-0 translate-y-10 transition-all duration-500">
         {% for service_image in service.images.all|slice:"15:" %}
             <img src="{{ service_image.image.url }}" alt="{{ service.name }}">
         {% endfor %}
