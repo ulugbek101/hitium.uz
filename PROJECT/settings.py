@@ -17,7 +17,7 @@ ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=['127.0.0.1', 'localhost'])
 
 INSTALLED_APPS = [
     'modeltranslation',
-    
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -62,25 +62,25 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'PROJECT.wsgi.application'
 
-if DEBUG:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
+# if DEBUG:
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': env.str('PGDATABASE'),
-            'HOST': env.str('PGHOST'),
-            'PORT': env.str('PGPORT'),
-            'USER': env.str('PGUSER'),
-            'PASSWORD': env.str('PGPASSWORD'),
-            'CONN_MAX_AGE': 600,
-        }
-    }
+}
+# else:
+#     DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.postgresql',
+#             'NAME': env.str('PGDATABASE'),
+#             'HOST': env.str('PGHOST'),
+#             'PORT': env.str('PGPORT'),
+#             'USER': env.str('PGUSER'),
+#             'PASSWORD': env.str('PGPASSWORD'),
+#             'CONN_MAX_AGE': 600,
+#         }
+#     }
 
 
 AUTH_PASSWORD_VALIDATORS = [
