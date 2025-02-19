@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-18 16:35+0500\n"
+"POT-Creation-Date: 2025-02-19 11:07+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -51,57 +51,63 @@ msgstr "Contact us"
 msgid ""
 "Если у вас есть какие то вопросы или хотите заказать у нас услугу, то просто "
 "заполните форму и мы с вами обязательно свяжемся"
-msgstr ""
+msgstr "If you have any questions or want to order a service, just fill out this form and we will contact to you very soon"
 
-#: app_main/templates/app_main/contacts.html:37
-msgid "Fullname"
-msgstr ""
+#: app_main/templates/app_main/contacts.html:38
+msgid "Полное имя"
+msgstr "Full name"
 
-#: app_main/templates/app_main/contacts.html:41
-msgid "Address"
-msgstr ""
+#: app_main/templates/app_main/contacts.html:42
+#: templates/components/_footer.html:23
+msgid "Адрес"
+msgstr "Address"
 
-#: app_main/templates/app_main/contacts.html:47
+#: app_main/templates/app_main/contacts.html:48
 #: app_main/templates/app_main/contacts.html:77
-msgid "Phone number"
-msgstr ""
+msgid "Номер телефона"
+msgstr "Write via Telegram"
 
-#: app_main/templates/app_main/contacts.html:51
-msgid "Type of service"
-msgstr ""
+#: app_main/templates/app_main/contacts.html:52
+msgid "Тип сервиса"
+msgstr "Type of service"
 
-#: app_main/templates/app_main/contacts.html:53
-#: app_main/templates/app_main/contacts.html:54
-#: app_main/templates/app_main/contacts.html:55
-#: app_main/templates/app_main/contacts.html:56
-#: app_main/templates/app_main/contacts.html:57
-msgid "Please, choose an option"
-msgstr ""
+#: app_main/templates/app_main/contacts.html:61
+msgid "Сообщение"
+msgstr "Message"
 
-#: app_main/templates/app_main/contacts.html:62
-msgid "Message"
-msgstr ""
+#: app_main/templates/app_main/contacts.html:64
+msgid "Отправить"
+msgstr "Send"
 
 #: app_main/templates/app_main/contacts.html:69
-msgid "About us"
-msgstr ""
+msgid "О нас"
+msgstr "About us"
 
 #: app_main/templates/app_main/contacts.html:71
 msgid ""
-"<strong>HITIUM</strong>  started its activity in 1999 as an installation "
-"group specializing in stainless steel welding and food industry equipment "
-"installation. Later, the group began to expand its scope of activity to oil "
-"and gas, chemical, pharmaceutical and other enterprises."
+"<strong>HITIUM</strong>  начал свою деятельность в 1999 году как монтажная "
+"группа, специализирующаяся на сварке нержавеющей стали и установке "
+"оборудования для пищевой промышленности. Позже группа начала расширять сферу "
+"своей деятельности на предприятия нефтегазовой, химической, фармацевтической "
+"и других отраслей."
 msgstr ""
+"<strong>HITIUM</strong> started its activity in 1999 as an installation group specializing in stainless steel welding and food industry equipment installation. Later, the group began to expand its scope of activity to oil and gas, chemical, pharmaceutical and other enterprises."
 
 #: app_main/templates/app_main/contacts.html:74
 msgid ""
-"<strong>Now HITIUM</strong> is also engaged in the manufacture of industrial "
-"equipment, installation of bottling lines, manufacture and installation of "
-"ventilation and industrial air conditioning systems, water supply and "
-"sewerage, refrigeration, turnkey installation of all types of boiler "
-"equipment, insulation of containers and pipelines."
+"                    Наша фирма занимается изготовлением промышленного "
+"оборудования, монтажом линий розлива, изготовлением и монтажом систем "
+"вентиляции и промышленного кондиционирования воздуха, водоснабжения и "
+"канализации, холодоснабжения, монтажом под ключ всех видов котельного "
+"оборудования, изоляцией емкостей и трубопроводов.\n"
+"                "
+
 msgstr ""
+"                    Our company specializes in manufacturing industrial "
+"equipment, installing bottling lines, designing and installing ventilation "
+"and industrial air conditioning systems, water supply and sewerage systems, "
+"refrigeration systems, turnkey boiler equipment installation, and insulation "
+"of tanks and pipelines.\n"
 
 #: app_main/templates/app_main/index.html:9
 msgid "Монтаж промышленного оборудования"
@@ -297,7 +303,8 @@ msgstr "Special offer"
 msgid ""
 "На все изготовленное нами оборудование дается <br><span class=\"text-"
 "[#ed4721] font-bold\">1 год гарантии</span>"
-msgstr "All equipment manufactured by us comes with a<br><span class=\"text-"
+msgstr ""
+"All equipment manufactured by us comes with a<br><span class=\"text-"
 "[#ed4721] font-bold\">1-year warranty.</span>"
 
 #: app_main/templates/app_main/our_services.html:42
@@ -443,10 +450,6 @@ msgstr "Working hours"
 msgid "Вс ЗАКРЫТО"
 msgstr "Sun CLOSED"
 
-#: templates/components/_footer.html:23
-msgid "Адрес"
-msgstr "Address"
-
 #: templates/components/_footer.html:25
 msgid "Мы скоро откроемся"
 msgstr "We will open soon"
@@ -502,3 +505,12 @@ msgstr "Write via Telegram"
 
 #~ msgid "Наши услиги"
 #~ msgstr "Our services"
+
+msgid ""
+"<strong>Теперь HITIUM</strong> также занимается производством промышленного оборудования, установкой линий розлива, изготовлением и монтажом вентиляционных и промышленных кондиционерных систем, водоснабжением и канализацией, холодильным оборудованием, монтажом «под ключ» всех видов котельного оборудования, изоляцией емкостей и трубопроводов."
+
+msgstr ""
+"<strong>Now HITIUM</strong> is also engaged in the manufacture of industrial equipment, installation of bottling lines, manufacture and installation of ventilation and industrial air conditioning systems, water supply and sewerage, refrigeration, turnkey installation of all types of boiler equipment, insulation of containers and pipelines."
+
+msgid "Город Ташкент, Яшнабадский район, ул. Оханграбо, 1 дом"
+msgstr "Tashkent city, Yashnabad region, Oxangrabo street, 1 house"

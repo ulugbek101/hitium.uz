@@ -1,5 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.utils.translation import get_language_info, get_language
+from django.core.mail import send_mail
+from django.conf import settings
+from django.http import HttpResponse
+from django.template.loader import render_to_string
 
 from .models import Service
 
@@ -37,7 +41,7 @@ def service_detail(request, slug):
         "uz": "🇺🇿",
         "en": "🇺🇸",
     }
-    
+
     context = {
         "services": services,
         "service": service,
@@ -73,3 +77,35 @@ def contacts(request):
 
     }
     return render(request, "app_main/contacts.html", context)
+
+
+def send_email(request):
+    if request.method != "POST":
+        return redirect("contacts")
+
+    full_name = request.POST.get('full_name')
+    address = request.POST.get('address')
+    phone_number = request.POST.get('phone_number')
+    service_id = request.POST.get('service_id')
+    message = request.POST.get('message')
+
+    service_name = Service.objects.get(id=service_id).name_ru
+
+
+    html_message = render_to_string('email_template.html', {
+        'full_name': full_name,
+        'address': address,
+        'phone_number': phone_number,
+        'service_name': service_name,
+        'message': message,
+    })
+
+    send_mail(
+        subject="НОВЫЙ ЗАКАЗ | Hitium.uz",
+        message="",
+        recipient_list=["ulugbek.programmer02@gmail.com"],
+        fail_silently=False,
+        from_email=settings.DEFAULT_FROM_EMAIL,
+        html_message=html_message,
+    )
+    return redirect("contacts")

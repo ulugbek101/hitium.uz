@@ -2,13 +2,13 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-12 16:16+0500\n"
+"POT-Creation-Date: 2025-02-19 11:02+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,17 +19,89 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
+
 #: PROJECT/settings.py:107
 msgid "Русский"
 msgstr ""
 
 #: PROJECT/settings.py:108
-msgid "O'zbek"
+#, fuzzy
+#| msgid "O'zbek"
+msgid "O'zbek tili"
 msgstr "Узбекский"
 
 #: PROJECT/settings.py:109
 msgid "English"
 msgstr "Английский"
+
+#: app_main/templates/app_main/contacts.html:15
+#: app_main/templates/app_main/our_services.html:15
+#: app_main/templates/app_main/service_detail.html:17 templates/base.html:74
+#: templates/components/_nav.html:25
+msgid "Главная"
+msgstr ""
+
+#: app_main/templates/app_main/contacts.html:16
+#: templates/components/_nav.html:83
+msgid "Контакты"
+msgstr ""
+
+#: app_main/templates/app_main/contacts.html:27
+#: templates/components/_footer.html:42
+msgid "Напишите нам"
+msgstr ""
+
+#: app_main/templates/app_main/contacts.html:30
+msgid ""
+"Если у вас есть какие то вопросы или хотите заказать у нас услугу, то просто "
+"заполните форму и мы с вами обязательно свяжемся"
+msgstr ""
+
+#: app_main/templates/app_main/contacts.html:38
+msgid "Fullname"
+msgstr ""
+
+#: app_main/templates/app_main/contacts.html:42
+msgid "Address"
+msgstr ""
+
+#: app_main/templates/app_main/contacts.html:48
+#: app_main/templates/app_main/contacts.html:77
+msgid "Phone number"
+msgstr ""
+
+#: app_main/templates/app_main/contacts.html:52
+msgid "Type of service"
+msgstr ""
+
+#: app_main/templates/app_main/contacts.html:61
+msgid "Message"
+msgstr ""
+
+#: app_main/templates/app_main/contacts.html:64
+msgid "Отправить"
+msgstr ""
+
+#: app_main/templates/app_main/contacts.html:69
+msgid "About us"
+msgstr ""
+
+#: app_main/templates/app_main/contacts.html:71
+msgid ""
+"<strong>HITIUM</strong>  started its activity in 1999 as an installation "
+"group specializing in stainless steel welding and food industry equipment "
+"installation. Later, the group began to expand its scope of activity to oil "
+"and gas, chemical, pharmaceutical and other enterprises."
+msgstr ""
+
+#: app_main/templates/app_main/contacts.html:74
+msgid ""
+"<strong>Now HITIUM</strong> is also engaged in the manufacture of industrial "
+"equipment, installation of bottling lines, manufacture and installation of "
+"ventilation and industrial air conditioning systems, water supply and "
+"sewerage, refrigeration, turnkey installation of all types of boiler "
+"equipment, insulation of containers and pipelines."
+msgstr ""
 
 #: app_main/templates/app_main/index.html:9
 msgid "Монтаж промышленного оборудования"
@@ -46,13 +118,14 @@ msgid ""
 "                "
 msgstr ""
 
-#: app_main/templates/app_main/index.html:17
+#: app_main/templates/app_main/index.html:17 templates/base.html:123
 msgid "Заказать услугу"
 msgstr ""
 
 #: app_main/templates/app_main/index.html:18
 #: app_main/templates/app_main/index.html:56
 #: app_main/templates/app_main/index.html:57
+#: app_main/templates/app_main/our_services.html:16
 msgid "Наши работы"
 msgstr ""
 
@@ -84,7 +157,9 @@ msgid ""
 "производства."
 msgstr ""
 
-#: app_main/templates/app_main/index.html:49 templates/components/_nav.html:16
+#: app_main/templates/app_main/index.html:49
+#: app_main/templates/app_main/our_services.html:43 templates/base.html:127
+#: templates/components/_nav.html:14
 msgid "Позвонить"
 msgstr ""
 
@@ -143,14 +218,14 @@ msgid ""
 "                        "
 msgstr ""
 
-#: app_main/templates/app_main/index.html:137
+#: app_main/templates/app_main/index.html:138
 msgid ""
-"У Нас более <span class=\"text-3xl text-[#ed4721]\">25 лет опыта</span> в "
-"сварочных работах нержавеющей стали и монтажа оборудования предприятий "
-"пищевой промышленности"
+"У Нас более <span class=\"text-sm xl:text-3xl text-[#ed4721]\">25 лет опыта</"
+"span> в сварочных работах нержавеющей стали и монтажа оборудования "
+"предприятий пищевой промышленности"
 msgstr ""
 
-#: app_main/templates/app_main/index.html:139
+#: app_main/templates/app_main/index.html:142
 msgid ""
 "Независимо от того, строите ли вы новый офис или обновляете вентиляцию, вы "
 "можете рассчитывать на наши профессиональные и доступные услуги. Мы работаем "
@@ -158,38 +233,52 @@ msgid ""
 "систем."
 msgstr ""
 
-#: app_main/templates/app_main/index.html:142
+#: app_main/templates/app_main/index.html:145
 msgid "Тимур Хисамов"
 msgstr ""
 
-#: app_main/templates/app_main/index.html:143
+#: app_main/templates/app_main/index.html:146
 msgid "Директор HITIUM"
 msgstr ""
 
-#: app_main/templates/app_main/index.html:155
+#: app_main/templates/app_main/index.html:158
 msgid "Наши клиенты"
 msgstr ""
 
-#: app_main/templates/app_main/index.html:157
+#: app_main/templates/app_main/index.html:160
 msgid ""
 "\n"
 "                    Мы постоянно расширяем нашу систему, чтобы "
-"соответствовать \n"
+"соответствовать\n"
 "                    потребностям местных клиентов и нормативным "
-"требованиям. \n"
+"требованиям.\n"
 "                "
 msgstr ""
 
-#: app_main/templates/app_main/service_detail.html:26
-#: templates/components/_nav.html:31
+#: app_main/templates/app_main/our_services.html:40
+msgid "Специальное предложение"
+msgstr ""
+
+#: app_main/templates/app_main/our_services.html:41
+msgid ""
+"На все изготовленное нами оборудование дается <br><span class=\"text-"
+"[#ed4721] font-bold\">1 год гарантии</span>"
+msgstr ""
+
+#: app_main/templates/app_main/our_services.html:42
+msgid "Инвестируйте свой капитал для развития экономики Узбекистана"
+msgstr ""
+
+#: app_main/templates/app_main/service_detail.html:37
+#: templates/components/_nav.html:29
 msgid "Наши услуги"
 msgstr ""
 
-#: app_main/templates/app_main/service_detail.html:27
+#: app_main/templates/app_main/service_detail.html:38
 msgid "Вентиляция бассейнов"
 msgstr ""
 
-#: app_main/templates/app_main/service_detail.html:30
+#: app_main/templates/app_main/service_detail.html:41
 msgid ""
 "Вентиляция бассейна – инженерная система, которая поддерживает оптимальные "
 "микроклиматические условия на объекте. Если такая система отсутствует, либо "
@@ -200,87 +289,91 @@ msgid ""
 "испарения."
 msgstr ""
 
-#: app_main/templates/app_main/service_detail.html:36
+#: app_main/templates/app_main/service_detail.html:47
 msgid "Ценовая политика"
 msgstr ""
 
-#: app_main/templates/app_main/service_detail.html:37
+#: app_main/templates/app_main/service_detail.html:48
 msgid "Стоимость рассчитывается на этапе подготовки коммерческого предложения."
 msgstr ""
 
-#: app_main/templates/app_main/service_detail.html:41
+#: app_main/templates/app_main/service_detail.html:52
 msgid "Огромный опыт"
 msgstr ""
 
-#: app_main/templates/app_main/service_detail.html:42
+#: app_main/templates/app_main/service_detail.html:53
 msgid "За время существования нашей компании мы выполнили более 300 работ."
 msgstr ""
 
-#: app_main/templates/app_main/service_detail.html:46
+#: app_main/templates/app_main/service_detail.html:57
 msgid "Выполняем в срок"
 msgstr ""
 
-#: app_main/templates/app_main/service_detail.html:47
+#: app_main/templates/app_main/service_detail.html:58
 msgid ""
 "Все работы выполняются в обговоренные с клиентов время и ни на с секундочку "
 "позже!"
 msgstr ""
 
-#: app_main/templates/app_main/service_detail.html:51
+#: app_main/templates/app_main/service_detail.html:62
 msgid "Гарантия качества"
 msgstr ""
 
-#: app_main/templates/app_main/service_detail.html:52
+#: app_main/templates/app_main/service_detail.html:63
 msgid "На все изготовленное нами оборудование дается 1 год гарантии."
 msgstr ""
 
-#: app_main/templates/app_main/service_detail.html:62
+#: app_main/templates/app_main/service_detail.html:72
 msgid ""
 "Для подробностей по услуге пишитеили звоните по номеру +998 97 445 88 38"
 msgstr ""
 
-#: app_main/templates/app_main/service_detail.html:77
+#: app_main/templates/app_main/service_detail.html:85
 msgid "Всегда на связи"
 msgstr ""
 
-#: app_main/templates/app_main/service_detail.html:81
+#: app_main/templates/app_main/service_detail.html:89
 msgid "Сертифицированные специалисты"
 msgstr ""
 
-#: app_main/templates/app_main/service_detail.html:85
+#: app_main/templates/app_main/service_detail.html:93
 msgid "Гарантия & Тех. поддержка"
 msgstr ""
 
-#: templates/base.html:10
+#: templates/base.html:9
 msgid "Установка и монтаж промышленного оборудования в Узбекистане"
 msgstr ""
 
-#: templates/base.html:17
+#: templates/base.html:16
 msgid ""
 "Профессиональная установка и монтаж промышленного оборудования в "
 "Узбекистане. Высокое качество и надежность."
 msgstr ""
 
-#: templates/base.html:21
+#: templates/base.html:20
 msgid ""
 "Установка оборудования, монтаж промышленного оборудования, Узбекистан, "
 "Ташкент, Самарканд, Бухара, Навои, Фергана, Андижан, Наманган, "
 "промышленность, качество, надежность, Hitium.uz"
 msgstr ""
 
-#: templates/base.html:28 templates/base.html:40
+#: templates/base.html:27 templates/base.html:39
 msgid "Монтаж промышленного оборудования в Узбекистане"
 msgstr ""
 
-#: templates/base.html:32
+#: templates/base.html:31
 msgid ""
 "Профессиональный монтаж промышленного оборудования с гарантией качества в "
 "Узбекистане."
 msgstr ""
 
-#: templates/base.html:41
+#: templates/base.html:40
 msgid ""
 "Профессиональный монтаж промышленного оборудования с гарантией качества."
+msgstr ""
+
+#: templates/base.html:75
+msgid "Наши улуги"
 msgstr ""
 
 #: templates/components/_footer.html:6
@@ -315,18 +408,6 @@ msgstr ""
 msgid "Позвоните нам 24/7"
 msgstr ""
 
-#: templates/components/_footer.html:42
-msgid "Напишите нам"
-msgstr ""
-
-#: templates/components/_nav.html:12
+#: templates/components/_nav.html:8
 msgid "Написать в телеграм"
-msgstr ""
-
-#: templates/components/_nav.html:27
-msgid "Главная"
-msgstr ""
-
-#: templates/components/_nav.html:88
-msgid "Контакты"
 msgstr ""
