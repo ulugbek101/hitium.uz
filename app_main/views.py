@@ -103,7 +103,7 @@ def send_email(request):
     send_mail(
         subject="НОВЫЙ ЗАКАЗ | Hitium.uz",
         message="",
-        recipient_list=["ulugbek.programmer02@gmail.com"],
+        recipient_list=["ulugbek.programmer02@gmail.com", "hitiumservice@gmail.com"],
         fail_silently=False,
         from_email=settings.DEFAULT_FROM_EMAIL,
         html_message=html_message,
