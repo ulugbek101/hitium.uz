@@ -2,11 +2,11 @@ from django.db import models
 
 
 class Service(models.Model):
-    name = models.CharField(max_length=200)
-    slug = models.SlugField(max_length=250)
-    description = models.TextField()
-    header_bg = models.ImageField(null=True)
-    description_bg = models.ImageField(null=True)
+    name = models.CharField(max_length=200, verbose_name='Название')
+    slug = models.SlugField(max_length=250, verbose_name='слаг')
+    description = models.TextField(verbose_name='Описание')
+    header_bg = models.ImageField(null=True, verbose_name='Задний фон для шапки')
+    description_bg = models.ImageField(null=True, verbose_name='Задний фон для описания')
 
     def __str__(self):
         return self.name_ru
@@ -18,7 +18,12 @@ class Service(models.Model):
 
 class ServiceImage(models.Model):
     service = models.ForeignKey(to=Service, on_delete=models.CASCADE, related_name="images")
-    image = models.ImageField(upload_to='services/')
+    image = models.ImageField(upload_to='services/', verbose_name='Изображение выполненных работ')
 
     def __str__(self):
         return f'{self.service.name} - {self.image.name}'
+
+
+    class Meta:
+        verbose_name = 'Изображение выполненных работ'
+        verbose_name_plural = 'Изображения'
