@@ -26,7 +26,7 @@
 
 <main>
     <section class="relative fade-in opacity-0 translate-y-10 transition-all duration-500 bg-[#efefef]"
-             style="background-image: url('{{ service.description_bg.url }}'); background-position: right;">
+             style="background-image: url('{{ service.description_bg.url }}'); background-position: center; background-size: cover;">
         <!-- Black overlay -->
         <div class="absolute inset-0 bg-black opacity-80"></div>
 
@@ -73,9 +73,9 @@
             </a>
         </div>
     </section>
-    <section class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 fade-in opacity-0 translate-y-10 transition-all duration-500">
+    <section class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5">
         {% for service_image in service.images.all|slice:"15" %}
-            <img src="{{ service_image.image.url }}" alt="{{ service.name }}">
+            <img src="{{ service_image.image.url }}" alt="{{ service.name }}" class="w-[500px] h-[500px]">
         {% endfor %}
     </section>
     <section class="fade-in opacity-0 translate-y-10 transition-all duration-500 bg-[#efefef]">

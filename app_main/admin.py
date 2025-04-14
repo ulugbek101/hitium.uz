@@ -16,4 +16,9 @@ class ServiceAdmin(admin.ModelAdmin):
 # Register Service model with the custom admin class
 admin.site.register(Service, ServiceAdmin)
 
+admin.site.site_header = "Административный панель Hitium.uz"
+admin.site.site_title = "Добро пожаловать в админ панель Hitium.uz"
+admin.site.index_title = "Доюро пожаловать в админ панель !"
+	
+
 # No need to register ImageInline explicitly

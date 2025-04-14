@@ -11,6 +11,10 @@ class Service(models.Model):
     def __str__(self):
         return self.name_ru
 
+    class Meta:
+        verbose_name = "Сервис"
+        verbose_name_plural = "Сервисы"
+
 
 class ServiceImage(models.Model):
     service = models.ForeignKey(to=Service, on_delete=models.CASCADE, related_name="images")
