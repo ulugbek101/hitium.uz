@@ -26,7 +26,8 @@ def home_page(request):
         "current_language_flag": language_flags.get(code),
         "services": services,
     }
-    return render(request, "app_main/index.html", context)
+    # return render(request, "app_main/index.html", context)
+    return render(request, "app_main/index2.html", context)
 
 
 def service_detail(request, slug):

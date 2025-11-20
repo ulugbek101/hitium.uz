@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+{% load i18n %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>{% trans 'HITIUM — Инженерные системы и монтаж' %}</title>
+
+    <!-- Fonts -->
+    <link href="https://satoshi.typeface.app/f/17872/3808272/1666417288/3808272.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: "Manrope", sans-serif;
+        }
+
+        .font-display {
+            font-family: "Satoshi", sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-[#0e0f10] text-[#f5f5f5] antialiased leading-relaxed">
+
+<header class="flex justify-between items-center px-9 py-5 bg-white/5 border-b border-white/10">
+    <a href="#" class="flex items-center gap-3 text-[#ff5a00]" aria-label="HITIUM home">
+        <img src="https://hitium.uz/static/images/nav-logo.png" class="h-12 rounded-md object-contain"/>
+    </a>
+
+    <nav class="space-x-5 hidden sm:block">
+        <a href="#about" class="text-[#a5a5a5] font-semibold hover:text-[#ff5a00] text-sm">О компании</a>
+        <a href="#services" class="text-[#a5a5a5] font-semibold hover:text-[#ff5a00] text-sm">Услуги</a>
+        <a href="#projects" class="text-[#a5a5a5] font-semibold hover:text-[#ff5a00] text-sm">Проекты</a>
+        <a href="#clients" class="text-[#a5a5a5] font-semibold hover:text-[#ff5a00] text-sm">Наши клиенты</a>
+        <a href="#gallery" class="text-[#a5a5a5] font-semibold hover:text-[#ff5a00] text-sm">Галерея</a>
+        <a href="#contacts" class="text-[#a5a5a5] font-semibold hover:text-[#ff5a00] text-sm">Контакты</a>
+    </nav>
+</header>
+
+<section class="text-center py-24 px-5 bg-gradient-to-b from-[#ff5a00]/10 to-transparent border-b border-white/5"
+         id="home">
+    <h1 class="font-display text-4xl font-bold text-white tracking-tight">HITIUM — инженерные системы и монтаж</h1>
+    <p class="text-white mt-3 max-w-2xl mx-auto">Мы создаём надёжные инженерные решения, которые делают здания
+        комфортными, безопасными и энергоэффективными.</p>
+
+    <div class="flex justify-center gap-4 flex-wrap mt-6">
+        <a href="tel:+998901234567"
+           class="px-6 py-3 rounded-lg bg-[#ff5a00] font-bold shadow-lg shadow-[#ff5a00]/20 hover:bg-[#d94e00] transition">Позвонить</a>
+        <a href="https://t.me/hitium"
+           class="px-6 py-3 rounded-lg bg-[#ff5a00] font-bold shadow-lg shadow-[#ff5a00]/20 hover:bg-[#d94e00] transition">Написать
+            в Telegram</a>
+    </div>
+</section>
+
+<section id="about" class="max-w-5xl mx-auto px-5 py-16">
+    <h2 class="font-display text-2xl text-[#ff5a00] font-semibold">О компании</h2>
+    <p class="text-[#a5a5a5] mt-2">HITIUM — эксперт в области проектирования, монтажа и обслуживания инженерных систем.
+        Мы объединяем технологии, опыт и инновации, чтобы создавать решения, отвечающие самым высоким стандартам
+        качества.</p>
+</section>
+
+<section id="mission" class="max-w-5xl mx-auto px-5 py-6">
+    <div class="text-center mx-auto border-2 border-[#ff5a00] rounded-xl p-6 max-w-xl bg-black text-white">
+        <img src="https://hitium.uz/static/images/nav-logo.png" class="h-12 rounded-md object-contain mx-auto"/>
+        <h2 class="font-display font-bold text-white text-xl mt-3">Наша миссия:</h2>
+        <p class="mt-2 text-white">Улучшать конкурентоспособность клиентов, превращая современные технологии в реальные
+            результаты и преимущества.</p>
+        <div class="text-right italic mt-3 text-white">Тимур Хисамов</div>
+    </div>
+</section>
+
+<section id="services" class="max-w-6xl mx-auto px-5 py-16">
+    <h2 class="font-display text-2xl text-[#ff5a00] font-semibold">Наши услуги</h2>
+
+    <div class="grid gap-6 mt-7 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <div class="bg-white/5 rounded-xl p-4 text-center hover:bg-white/10 transition">
+            <img src="https://hitium.uz/media/1_4jTimzg.JPG" class="w-full rounded-lg mb-3"/>
+            <h3 class="font-display text-lg">Монтаж оборудования</h3>
+        </div>
+
+        <div class="bg-white/5 rounded-xl p-4 text-center hover:bg-white/10 transition">
+            <img src="https://hitium.uz/media/8.JPG" class="w-full rounded-lg mb-3"/>
+            <h3 class="font-display text-lg">Монтаж котельных</h3>
+        </div>
+
+        <div class="bg-white/5 rounded-xl p-4 text-center hover:bg-white/10 transition">
+            <img src="https://hitium.uz/media/header_bg.jpg" class="w-full rounded-lg mb-3"/>
+            <h3 class="font-display text-lg">Изготовление оборудования</h3>
+        </div>
+
+        <div class="bg-white/5 rounded-xl p-4 text-center hover:bg-white/10 transition">
+            <img src="https://hitium.uz/media/10.JPG" class="w-full rounded-lg mb-3"/>
+            <h3 class="font-display text-lg">Изоляция трубопроводов и емкостей</h3>
+        </div>
+    </div>
+</section>
+
+<section id="projects" class="max-w-5xl mx-auto px-5 py-14">
+    <h2 class="font-display text-2xl text-[#ff5a00] font-semibold">Проекты</h2>
+    <p class="text-[#a5a5a5] mt-2">Реализованные объекты HITIUM демонстрируют наш профессионализм и внимание к
+        деталям.</p>
+</section>
+
+<section id="clients" class="max-w-5xl mx-auto px-5 py-14">
+    <h2 class="font-display text-2xl text-[#ff5a00] font-semibold">Наши клиенты</h2>
+    <p class="text-[#a5a5a5] mt-2">Отзывы клиентов подтверждают качество нашей работы и высокий уровень сервиса.</p>
+</section>
+
+<section id="gallery" class="max-w-5xl mx-auto px-5 py-14">
+    <h2 class="font-display text-2xl text-[#ff5a00] font-semibold">Галерея</h2>
+    <p class="text-[#a5a5a5] mt-2">Фотографии наших объектов, оборудования и рабочих процессов.</p>
+</section>
+
+<section id="contacts" class="max-w-5xl mx-auto px-5 py-16">
+    <h2 class="font-display text-2xl text-[#ff5a00] font-semibold">Контакты</h2>
+    <p class="text-[#a5a5a5] mt-2">Свяжитесь с нами — мы ответим на все вопросы.</p>
+
+    <form class="max-w-md mx-auto flex flex-col gap-3 mt-6">
+        <input type="text" placeholder="Ваше имя" class="bg-white/10 px-4 py-3 rounded-lg"/>
+        <input type="tel" placeholder="Номер телефона" class="bg-white/10 px-4 py-3 rounded-lg"/>
+        <textarea placeholder="Ваше сообщение" class="bg-white/10 px-4 py-3 rounded-lg"></textarea>
+        <button class="bg-[#ff5a00] py-3 rounded-lg font-bold text-white hover:bg-[#d94e00]">Отправить</button>
+    </form>
+
+    <div class="text-center mt-6 flex justify-center gap-4">
+        <a href="tel:+998901234567" class="px-6 py-3 rounded-lg bg-[#ff5a00] font-bold hover:bg-[#d94e00]">Позвонить</a>
+        <a href="https://t.me/hitium"
+           class="px-6 py-3 rounded-lg bg-[#ff5a00] font-bold hover:bg-[#d94e00]">Telegram</a>
+    </div>
+</section>
+
+<footer class="text-center py-7 bg-white/5 text-[#a5a5a5] mt-12">
+    © 2025 HITIUM. Все права защищены.
+</footer>
+
+</body>
+</html>
