@@ -12,16 +12,16 @@ DEBUG = env.bool("DEBUG", default=False)
 
 ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=['127.0.0.1', 'localhost'])
 
+UNFOLD = {
+    "SITE_TITLE": "Административный панель Hitium.uz",
+    "SITE_HEADER": "Добро пожаловать в админ панель Hitium.uz",
+}
 
 # Application definition
-
 INSTALLED_APPS = [
     'modeltranslation',
 
-    "unfold",  # before django.contrib.admin
-    "unfold.contrib.filters",  # optional, if special filters are needed
-    "unfold.contrib.forms",  # optional, if special form elements are needed
-    "unfold.contrib.inlines",  # optional, if special inlines are needed
+    'unfold',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -137,7 +137,6 @@ CACHES = {
 # SECURE_HSTS_PRELOAD = True
 
 
-LANGUAGE_CODE = 'ru'
 TIME_ZONE = 'Asia/Tashkent'
 USE_I18N = True
 USE_TZ = True

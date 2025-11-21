@@ -102,3 +102,7 @@ class Review(BaseModel):
 
     def __str__(self):
         return f"{self.fullname} - {self.get_rating_display()} - {self.created}"
+
+    class Meta:
+        verbose_name = "Отзыв"
+        verbose_name_plural = "Отзывы"
