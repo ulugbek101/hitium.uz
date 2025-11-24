@@ -1,26 +1,103 @@
 from django.contrib import admin
-# Ensure ServiceImage is correctly imported
-from .models import Service, ServiceImage
+from django.contrib.auth.forms import UserChangeForm, UserCreationForm
+from django.contrib.auth.models import Group, User
+from django.contrib.auth.admin import UserAdmin
+from django import forms
+
+from unfold.admin import ModelAdmin
+
+from .models import Service, ServiceImage, Project, ProjectImage, Client, GalleryImage, Review
+
+admin.site.unregister(Group)
+admin.site.unregister(User)
 
 
-class ImageInline(admin.TabularInline):
-    model = ServiceImage  # Make sure ServiceImage is the correct model here
-    extra = 1  # Number of empty forms to display
+UNFOLD_INPUT_CLASSES = (
+    "border border-base-200 bg-white font-medium min-w-20 placeholder-base-400 rounded-default shadow-xs "
+    "text-font-default-light text-sm focus:outline-2 focus:-outline-offset-2 focus:outline-primary-600 "
+    "group-[.errors]:border-red-600 focus:group-[.errors]:outline-red-600 dark:bg-base-900 dark:border-base-700 "
+    "dark:text-font-default-dark dark:group-[.errors]:border-red-500 dark:focus:group-[.errors]:outline-red-500 "
+    "dark:scheme-dark group-[.primary]:border-transparent disabled:!bg-base-50 dark:disabled:!bg-base-800 px-3 "
+    "py-2 w-full max-w-2xl "
+)
 
 
-class ServiceAdmin(admin.ModelAdmin):
-    list_display = ['name']
-    inlines = [ImageInline]
+# User change form
+class CustomUserChangeForm(UserChangeForm):
+    class Meta(UserChangeForm.Meta):
+        model = User
 
 
-# Register Service model with the custom admin class
-admin.site.register(Service, ServiceAdmin)
+# User creation form
+class CustomUserCreationForm(UserCreationForm):
+    class Meta(UserCreationForm.Meta):
+        model = User
+        fields = ("username", "password1", "password2")
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.fields.values():
+            field.widget.attrs.update({"class": UNFOLD_INPUT_CLASSES})
+
+
+@admin.register(User)
+class CustomUserAdmin(UserAdmin, ModelAdmin):
+    form = CustomUserChangeForm
+    add_form = CustomUserCreationForm
+
+
+class ServiceImageInline(admin.TabularInline):
+    model = ServiceImage
+    extra = 1
+
+
+@admin.register(Service)
+class ServiceAdmin(ModelAdmin):
+    list_display = ("name",)
+    inlines = [ServiceImageInline]
+    prepopulated_fields = {
+        'name': ['name_ru'],
+        'slug': ['name_ru'],
+        'slug_uz': ['name_uz'],
+        'slug_ru': ['name_ru'],
+        'slug_en': ['name_en'],
+        'description': ['description_ru'],
+    }
+
+
+class ProjectImageInline(admin.TabularInline):
+    model = ProjectImage
+    extra = 1
+
+
+@admin.register(Project)
+class ProjectAdmin(ModelAdmin):
+    inlines = [ProjectImageInline]
+    prepopulated_fields = {
+        'name': ['name_ru'],
+        'slug': ['name_ru'],
+        'slug_uz': ['name_uz'],
+        'slug_ru': ['name_ru'],
+        'slug_en': ['name_en'],
+        'description': ['description_ru'],
+    }
+
+
+@admin.register(Client)
+class ClientAdmin(ModelAdmin):
+    ...
+
+
+@admin.register(GalleryImage)
+class GalleryImageAdmin(ModelAdmin):
+    ...
+
+
+@admin.register(Review)
+class ReviewAdmin(ModelAdmin):
+    ...
+
 
 admin.site.site_header = "Административный панель Hitium.uz"
 admin.site.site_title = "Добро пожаловать в админ панель Hitium.uz"
-admin.site.index_title = "Доюро пожаловать в админ панель !"
-
-
-admin.site.register(ServiceImage)
-
-# No need to register ImageInline explicitly
+admin.site.index_title = "Добро пожаловать в админ панель !"

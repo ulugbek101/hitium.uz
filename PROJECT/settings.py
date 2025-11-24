@@ -15,12 +15,16 @@ ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=['127.0.0.1', 'localhost'])
 DATA_UPLOAD_MAX_MEMORY_SIZE = 52428800  # form form data
 FILE_UPLOAD_MAX_MEMORY_SIZE = 52428800  # for file data (like images)
 
+UNFOLD = {
+    "SITE_TITLE": "Административный панель Hitium.uz",
+    "SITE_HEADER": "Добро пожаловать в админ панель Hitium.uz",
+}
 
 # Application definition
-
 INSTALLED_APPS = [
     'modeltranslation',
 
+    'unfold',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -136,7 +140,6 @@ CACHES = {
 # SECURE_HSTS_PRELOAD = True
 
 
-LANGUAGE_CODE = 'ru'
 TIME_ZONE = 'Asia/Tashkent'
 USE_I18N = True
 USE_TZ = True
@@ -158,5 +161,6 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587  # Use 465 for SSL
 EMAIL_USE_TLS = True  # If using port 587
 EMAIL_USE_SSL = False  # If using port 465, set this to True and TLS to False
-EMAIL_HOST_USER = "thedevu101@gmail.com"
-EMAIL_HOST_PASSWORD = "vygxswsicnbwenou"
+EMAIL_HOST_USER = "ulugbek.programmer02@gmail.com"
+EMAIL_HOST_PASSWORD = "pgsurwodseowhpow"
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER

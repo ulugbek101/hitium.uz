@@ -1,0 +1,31 @@
+<section id="contacts" class="max-w-5xl mx-auto px-5 py-16">
+        <h2 class="font-display text-4xl text-[#ff5a00] font-semibold text-center">Контакты</h2>
+        <div class="h-[1px] w-full xl:w-64 bg-[#a5a5a5] m-auto my-5"></div>
+        <p class="text-[#a5a5a5] mt-2 text-center">Свяжитесь с нами — мы ответим на все вопросы.</p>
+
+        <form class="max-w-md mx-auto flex flex-col gap-3 mt-6" method="post" action="{% url 'send_email' %}">
+            {% csrf_token %}
+            <input name="full_name" type="text" placeholder="Ваше имя" class="bg-white/10 px-4 py-3 rounded-lg focus:outline-none focus:ring-1 ring-white" required/>
+            <div class="flex flex-row items-center gap-1">
+                <input name="phone_number" type="tel" placeholder="Номер телефона" class="w-full bg-white/10 px-4 py-3 rounded-lg focus:outline-none focus:ring-1 ring-white" required/>
+                <input name="address" type="text" placeholder="Ваш адрес" class="w-full bg-white/10 px-4 py-3 rounded-lg focus:outline-none focus:ring-1 ring-white" required/>
+            </div>
+            <select name="service_id" class="bg-white/10 px-4 py-3 rounded-lg focus:outline-none focus:ring-1 ring-white" required>
+                {% for service in services %}
+                    <option value="{{ service.id }}">{{ service.name }}</option>
+                {% endfor %}
+            </select>
+            <textarea name="message" placeholder="Ваше сообщение" class="bg-white/10 px-4 py-3 rounded-lg focus:outline-none focus:ring-1 ring-white resize-none" rows="5" required></textarea>
+            <button class="bg-[#ff5a00] py-3 rounded-lg font-bold text-white hover:bg-[#d94e00] active:scale-95 transition">Отправить</button>
+        </form>
+
+        <div class="text-center mt-6 flex justify-center gap-4">
+            <a href="tel:+998901234567" class="px-6 py-3 rounded-lg bg-[#ff5a00] font-bold hover:bg-[#d94e00] active:scale-95 transition">Позвонить</a>
+            <a href="https://t.me/hitium"
+            class="px-6 py-3 rounded-lg bg-[#ff5a00] font-bold hover:bg-[#d94e00] active:scale-95 transition">Telegram</a>
+        </div>
+    </section>
+
+<footer class="text-center py-7 bg-white/5 text-[#a5a5a5] mt-12">
+    © {{ current_year }} HITIUM. Все права защищены.
+</footer>

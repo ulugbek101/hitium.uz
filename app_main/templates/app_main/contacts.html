@@ -36,21 +36,21 @@
                 <div class="flex flex-col xl:justify-between xl:flex-row xl:gap-5">
                     <div class="flex flex-col gap-1 xl:w-full">
                         <label for="" class="text-[rgba(0, 0, 0, 0.1)] text-sm">{% trans 'Полное имя' %}</label>
-                        <input name="full_name" type="text" class="border border-[rgba(0, 0, 0, 0.2)] p-[0.8rem] outline-none" placeholder="Timur Hisamov">
+                        <input name="full_name" type="text" class="border border-[rgba(0, 0, 0, 0.2)] p-[0.8rem] outline-none" placeholder="Timur Hisamov" required>
                     </div>
                     <div class="flex flex-col gap-1 xl:w-full">
                         <label for="" class="text-[rgba(0, 0, 0, 0.1)] text-sm">{% trans 'Адрес' %}</label>
-                        <input name="address" type="text" class="border border-[rgba(0, 0, 0, 0.2)] p-[0.8rem] outline-none" placeholder="Tashkent, Bektemir, Muxtor Auezov, 67">
+                        <input name="address" type="text" class="border border-[rgba(0, 0, 0, 0.2)] p-[0.8rem] outline-none" placeholder="Tashkent, Bektemir, Muxtor Auezov, 67" required>
                     </div>
                 </div>
                 <div class="flex flex-col xl:justify-between xl:flex-row xl:gap-5">
                     <div class="flex flex-col gap-1 xl:w-full">
                         <label for="" class="text-[rgba(0, 0, 0, 0.1)] text-sm">{% trans 'Номер телефона' %}</label>
-                        <input name="phone_number" type="text" class="border border-[rgba(0, 0, 0, 0.2)] p-[0.8rem] outline-none" placeholder="+998 97 445 88 38">
+                        <input name="phone_number" type="text" class="border border-[rgba(0, 0, 0, 0.2)] p-[0.8rem] outline-none" placeholder="+998 97 445 88 38" required>
                     </div>
                     <div class="flex flex-col gap-1 xl:w-full">
                         <label for="" class="text-[rgba(0, 0, 0, 0.1)] text-sm">{% trans 'Тип сервиса' %}</label>
-                        <select name="service_id" type="text" class="border border-[rgba(0, 0, 0, 0.2)] p-[0.8rem] outline-none">
+                        <select name="service_id" type="text" class="border border-[rgba(0, 0, 0, 0.2)] p-[0.8rem] outline-none" required>
                             {% for service in services %}
                                 <option value="{{ service.id }}">{{ service.name }}</option>
                             {% endfor %}
@@ -59,7 +59,7 @@
                 </div>
                 <div class="flex flex-col gap-1">
                     <label for="" class="text-[rgba(0, 0, 0, 0.1)] text-sm">{% trans 'Сообщение' %}</label>
-                    <textarea name="message" type="text" class="resize-none border border-[rgba(0, 0, 0, 0.2)] p-[0.8rem] outline-none w-full" rows="5"></textarea>
+                    <textarea name="message" type="text" class="resize-none border border-[rgba(0, 0, 0, 0.2)] p-[0.8rem] outline-none w-full" rows="5" required></textarea>
                 </div>
                 <button type="submit" class="w-full text-white bg-[#ed4721] py-2 rounded">{% trans 'Отправить' %}</button>
             </form>
