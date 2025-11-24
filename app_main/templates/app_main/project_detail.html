@@ -1,0 +1,22 @@
+{% extends 'base2.html' %}
+
+{% block content %}
+    <div class="my-10 mx-auto">
+        <h2 class="text-white text-4xl text-center">{{ project.name }}</h2>
+    </div>
+
+    {% if project.project_images.exists %}
+        <div class="container mx-auto flex flex-row justify-center flex-wrap items-center gap-2">
+            {% for project_image in project.project_images.all %}
+                <div class="w-96 h-96 overflow-hidden rounded-md">
+                    <img src="{{ project_image.image.url }}"alt="{{ project.name }}" class="w-full h-full object-cover">
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <div class="container mx-auto mt-10 mb-5 text-center">
+        {{ project.description|linebreaksbr }}
+    </div>
+
+{% endblock content %}

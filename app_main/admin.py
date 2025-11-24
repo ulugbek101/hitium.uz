@@ -55,6 +55,14 @@ class ServiceImageInline(admin.TabularInline):
 class ServiceAdmin(ModelAdmin):
     list_display = ("name",)
     inlines = [ServiceImageInline]
+    prepopulated_fields = {
+        'name': ['name_ru'],
+        'slug': ['name_ru'],
+        'slug_uz': ['name_uz'],
+        'slug_ru': ['name_ru'],
+        'slug_en': ['name_en'],
+        'description': ['description_ru'],
+    }
 
 
 class ProjectImageInline(admin.TabularInline):
@@ -65,6 +73,14 @@ class ProjectImageInline(admin.TabularInline):
 @admin.register(Project)
 class ProjectAdmin(ModelAdmin):
     inlines = [ProjectImageInline]
+    prepopulated_fields = {
+        'name': ['name_ru'],
+        'slug': ['name_ru'],
+        'slug_uz': ['name_uz'],
+        'slug_ru': ['name_ru'],
+        'slug_en': ['name_en'],
+        'description': ['description_ru'],
+    }
 
 
 @admin.register(Client)

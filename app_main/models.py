@@ -10,11 +10,11 @@ class BaseModel(models.Model):
 
 
 class Service(BaseModel):
-    name = models.CharField(max_length=200, verbose_name='Название')
-    slug = models.SlugField(max_length=250, verbose_name='Слаг')
-    description = models.TextField(verbose_name='Описание')
-    header_bg = models.ImageField(null=True, verbose_name='Задний фон для шапки')
-    description_bg = models.ImageField(null=True, verbose_name='Задний фон для описания')
+    name = models.CharField(max_length=200, verbose_name="Название")
+    slug = models.SlugField(max_length=250, verbose_name="Слаг")
+    description = models.TextField(verbose_name="Описание")
+    header_bg = models.ImageField(null=True, verbose_name="Задний фон для шапки")
+    description_bg = models.ImageField(null=True, verbose_name="Задний фон для описания")
 
     def __str__(self):
         return self.name_ru
@@ -38,6 +38,7 @@ class ServiceImage(BaseModel):
 
 class Project(BaseModel):
     name = models.CharField(max_length=255, verbose_name="Название проекта")
+    slug = models.SlugField(max_length=250, verbose_name="Слаг")
     description = models.TextField(verbose_name="Описание (что было сделано)")
     finished_date = models.DateField(verbose_name="Когда это было сделано")
 
