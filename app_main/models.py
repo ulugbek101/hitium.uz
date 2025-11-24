@@ -25,5 +25,5 @@ class ServiceImage(models.Model):
 
 
     class Meta:
-        verbose_name = 'Изображение выполненных работ'
-        verbose_name_plural = 'Изображения'
+        verbose_name = 'Пример выполненной работы'
+        verbose_name_plural = 'Примеры выполненых работ'

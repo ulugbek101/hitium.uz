@@ -10,10 +10,10 @@
     <section
             class="h-3/4 fade-in opacity-0 translate-y-10 transition-all duration-500 w-full xl:w-[1240px] m-auto relative z-10">
         {% include 'components/_nav.html' %}
-        <div class="w-full h-full flex items-center px-4">
-            <h1 class="text-4xl w-full xl:text-[80px] flex items-center flex-col gap-2 text-white font-medium relative text-center z-1 py-2">
+        <div class="w-full h-full flex items-center xl:px-4">
+            <h1 class="text-2xl md:text-4xl w-full xl:text-6xl flex items-center flex-col gap-2 text-white font-medium relative text-center z-1 py-2">
                 <span class="absolute bg-black bg-opacity-50 inset-0 opacity-50 backdrop-blur-xl z-[-1] rounded"></span>
-                <div class="flex flex-row">
+                <div class="flex flex-col md:flex-row">
                     <a href="/" class="text-sm hover:text-[#ed4721] transition">{% trans 'Главная' %}</a>  <span class="text-sm">&nbsp;&nbsp;/&nbsp;&nbsp;</span> <span class="text-sm text-[#ed4721]">{{ service.name }}</span>
                 </div>
                 {{ service.name }}
@@ -33,13 +33,11 @@
         <div class="relative w-full xl:w-[1200px] xl:m-auto py-4 xl:py-16 xl:flex xl:justify-center">
             <div class="px-2w-full xl:w-1/2 xl:py-0 flex flex-col gap-10">
                 <div class="w-full px-2">
-                    <div>
+                    <div class="flex flex-col gap-2 items-center">
                         <span class="text-white font-bold">{% trans 'Наши услуги' %}</span>
-                        <h2 class="text-[#ed4721] text-4xl xl:text-5xl">{% trans 'Вентиляция бассейнов' %}</h2>
+			<h2 class="text-[#ed4721] text-xl md:text-4xl xl:text-5xl">{{ service.name }}</h2>
                     </div>
-                    <p class="mt-5 text-justify text-[#fff]">
-                        {% trans 'Вентиляция бассейна – инженерная система, которая поддерживает оптимальные микроклиматические условия на объекте. Если такая система отсутствует, либо отрегулирована и настроена некорректно, то в бассейне не удастся достичь оптимальных параметров по влажности и температуре, будет чересчур душно. Одна из основных физических характеристик воды – испарение, а бассейн, с учетом большой площади поверхности, демонстрирует очень высокие показатели испарения.' %}
-                    </p>
+		    <p class="mt-5 text-justify text-[#fff]">{{ service.description }}</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div class="text-center flex flex-col gap-4 group hover:cursor-pointer">
@@ -75,7 +73,7 @@
     </section>
     <section class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5">
         {% for service_image in service.images.all|slice:"15" %}
-            <img src="{{ service_image.image.url }}" alt="{{ service.name }}" class="w-[500px] h-[500px]">
+            <img src="{{ service_image.image.url }}" alt="{{ service.name }}" class="w-full h-[350px] lg:h-[400px] lg:w-full">
         {% endfor %}
     </section>
     <section class="fade-in opacity-0 translate-y-10 transition-all duration-500 bg-[#efefef]">

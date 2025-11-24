@@ -12,6 +12,9 @@ DEBUG = env.bool("DEBUG", default=False)
 
 ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=['127.0.0.1', 'localhost'])
 
+DATA_UPLOAD_MAX_MEMORY_SIZE = 52428800  # form form data
+FILE_UPLOAD_MAX_MEMORY_SIZE = 52428800  # for file data (like images)
+
 
 # Application definition
 

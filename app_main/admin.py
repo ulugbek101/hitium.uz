@@ -19,6 +19,8 @@ admin.site.register(Service, ServiceAdmin)
 admin.site.site_header = "Административный панель Hitium.uz"
 admin.site.site_title = "Добро пожаловать в админ панель Hitium.uz"
 admin.site.index_title = "Доюро пожаловать в админ панель !"
-	
+
+
+admin.site.register(ServiceImage)
 
 # No need to register ImageInline explicitly
