@@ -53,7 +53,7 @@ class Project(BaseModel):
 class ProjectImage(BaseModel):
     project = models.ForeignKey(to=Project, on_delete=models.CASCADE, verbose_name="Проект", related_name="project_images")
     image = models.ImageField(upload_to="project-photos/", verbose_name="Фото")
-    description = models.CharField(max_length=100, verbose_name="Описание", null=True, blank=True)
+    description = models.TextField(verbose_name="Описание", null=True, blank=True)
 
     def __str__(self):
         return self.project.name
@@ -65,6 +65,7 @@ class ProjectImage(BaseModel):
 
 class Client(BaseModel):
     name = models.CharField(max_length=255, verbose_name="Название организации")
+    link = models.URLField(verbose_name="Ссылка на сайт организации", null=True, blank=True, help_text="Введите адрес сайта организации (Не обязательно)")
     image = models.ImageField(upload_to="client-photos/", verbose_name="Фото")
 
     def __str__(self):
@@ -77,7 +78,7 @@ class Client(BaseModel):
 
 class GalleryImage(models.Model):
     image = models.ImageField(upload_to="gallery-photos/", verbose_name="Фото")
-    description = models.CharField(max_length=100, verbose_name="Описание", null=True, blank=True)
+    description = models.TextField(verbose_name="Описание", null=True, blank=True)
 
     def __str__(self):
         return self.image.name

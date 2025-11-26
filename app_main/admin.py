@@ -2,9 +2,8 @@ from django.contrib import admin
 from django.contrib.auth.forms import UserChangeForm, UserCreationForm
 from django.contrib.auth.models import Group, User
 from django.contrib.auth.admin import UserAdmin
-from django import forms
 
-from unfold.admin import ModelAdmin
+from unfold.admin import ModelAdmin, TabularInline
 
 from .models import Service, ServiceImage, Project, ProjectImage, Client, GalleryImage, Review
 
@@ -46,7 +45,7 @@ class CustomUserAdmin(UserAdmin, ModelAdmin):
     add_form = CustomUserCreationForm
 
 
-class ServiceImageInline(admin.TabularInline):
+class ServiceImageInline(TabularInline):
     model = ServiceImage
     extra = 1
 
@@ -65,9 +64,12 @@ class ServiceAdmin(ModelAdmin):
     }
 
 
-class ProjectImageInline(admin.TabularInline):
+class ProjectImageInline(TabularInline):
     model = ProjectImage
     extra = 1
+    prepopulated_fields = {
+        'description': ['description_ru']
+    }
 
 
 @admin.register(Project)
@@ -90,7 +92,9 @@ class ClientAdmin(ModelAdmin):
 
 @admin.register(GalleryImage)
 class GalleryImageAdmin(ModelAdmin):
-    ...
+    prepopulated_fields = {
+        'description': ['description_ru']
+    }
 
 
 @admin.register(Review)

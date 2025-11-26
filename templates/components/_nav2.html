@@ -1,14 +1,15 @@
+{% load i18n %}
 <header class="flex justify-between items-center px-9 py-5 bg-white/5 border-b border-white/10">
     <a href="#" class="flex items-center gap-3 text-[#ff5a00]" aria-label="HITIUM home">
         <img src="https://hitium.uz/static/images/nav-logo.png" class="h-12 rounded-md object-contain"/>
     </a>
 
     <nav class="space-x-5 hidden sm:block">
-        <a href="{% url 'home_page' %}#about" class="text-[#a5a5a5] font-semibold hover:text-[#ff5a00] text-sm">О компании</a>
-        <a href="{% url 'home_page' %}#services" class="text-[#a5a5a5] font-semibold hover:text-[#ff5a00] text-sm">Услуги</a>
-        <a href="{% url 'home_page' %}#projects" class="text-[#a5a5a5] font-semibold hover:text-[#ff5a00] text-sm">Проекты</a>
-        <a href="{% url 'home_page' %}#clients" class="text-[#a5a5a5] font-semibold hover:text-[#ff5a00] text-sm">Наши клиенты</a>
-        <a href="{% url 'home_page' %}#gallery" class="text-[#a5a5a5] font-semibold hover:text-[#ff5a00] text-sm">Галерея</a>
-        <a href="{% url 'home_page' %}#contacts" class="text-[#a5a5a5] font-semibold hover:text-[#ff5a00] text-sm">Контакты</a>
+        <a href="{% url 'home_page' %}#about" class="text-[#a5a5a5] font-semibold hover:text-[#ff5a00] text-sm">{% trans 'О компании' %}</a>
+        <a href="{% url 'home_page' %}#services" class="text-[#a5a5a5] font-semibold hover:text-[#ff5a00] text-sm">{% trans 'Услуги' %}</a>
+        <a href="{% url 'home_page' %}#projects" class="text-[#a5a5a5] font-semibold hover:text-[#ff5a00] text-sm">{% trans 'Проекты' %}</a>
+        <a href="{% url 'home_page' %}#clients" class="text-[#a5a5a5] font-semibold hover:text-[#ff5a00] text-sm">{% trans 'Наши клиенты' %}</a>
+        <a href="{% url 'home_page' %}#gallery" class="text-[#a5a5a5] font-semibold hover:text-[#ff5a00] text-sm">{% trans 'Галерея' %}</a>
+        <a href="{% url 'home_page' %}#contacts" class="text-[#a5a5a5] font-semibold hover:text-[#ff5a00] text-sm">{% trans 'Контакты' %}</a>
     </nav>
 </header>

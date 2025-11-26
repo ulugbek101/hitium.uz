@@ -3,11 +3,8 @@ import requests
 
 from django.shortcuts import render, redirect
 from django.utils.translation import get_language_info, get_language
-from django.core.mail import send_mail
-from django.conf import settings
-from django.template.loader import render_to_string
 
-from .models import Service, Project
+from .models import Service, Project, Client, GalleryImage
 
 
 def home_page(request):
@@ -22,6 +19,8 @@ def home_page(request):
 
     services = Service.objects.all()
     projects = Project.objects.prefetch_related("project_images")
+    clients = Client.objects.all()
+    gallery_images = GalleryImage.objects.all()
 
     context = {
         "home_page": True,
@@ -30,6 +29,8 @@ def home_page(request):
         "current_language_flag": language_flags.get(code),
         "services": services,
         "projects": projects,
+        "clients": clients,
+        "gallery_images": gallery_images,
         "current_year": datetime.date.today().year,
     }
     # return render(request, "app_main/index.html", context)
