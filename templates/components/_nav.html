@@ -61,11 +61,11 @@
                             <input type="hidden" name="language" value="{{ code }}">
                             {% if service %}
                                 {% if code == 'uz' %}
-                                    <input type="hidden" name="next" value="/{{ code }}/{{ service.slug_uz }}/">
+                                    <input type="hidden" name="next" value="/{{ code }}/services/{{ service.slug_uz }}/">
                                 {% elif code == 'en' %}
-                                    <input type="hidden" name="next" value="/{{ code }}/{{ service.slug_en }}/">
+                                    <input type="hidden" name="next" value="/{{ code }}/services/{{ service.slug_en }}/">
                                 {% else %}
-                                    <input type="hidden" name="next" value="/{{ code }}/{{ service.slug_ru }}/">
+                                    <input type="hidden" name="next" value="/{{ code }}/services/{{ service.slug_ru }}/">
                                 {% endif %}
                             {% else %}
                                 <input type="hidden" name="next" value="{{ request.path }}">
