@@ -4,18 +4,19 @@ import requests
 from django.shortcuts import render, redirect
 from django.db.models import Q
 
-from .models import Service, Project, Client, GalleryImage
+from .models import Service, Project, Client, GalleryImage, Review
 
 
 def home_page(request):
     services = Service.objects.all()
     projects = Project.objects.prefetch_related("project_images")
     clients = Client.objects.all()
+    reviews = Review.objects.filter(is_active=True)
     gallery_images = GalleryImage.objects.all()
 
     context = {
         "home_page": True,
-
+        "reviews": reviews,
         "services": services,
         "projects": projects,
         "clients": clients,

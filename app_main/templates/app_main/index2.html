@@ -45,6 +45,97 @@
         </div>
     </section>
 
+    <section id="services" class="max-w-6xl mx-auto px-5 py-16">
+        <h2 class="font-display text-4xl text-[#ff5a00] font-semibold text-center">{% trans 'Отзывы' %}</h2>
+
+        <div class="h-px w-full xl:w-64 bg-[#a5a5a5] m-auto my-5"></div>
+
+        <div class="reviews-wrapper overflow-hidden relative">
+            <div class="reviews-track flex gap-6">
+                {% for review in reviews %}
+                    <div class="flex flex-row items-start gap-2 bg-white/5 rounded-xl p-4 text-center hover:text-[#ff5a00] hover:bg-white/10 transition lg:w-[450px]">
+                        <img title="{{  review.fullname }}" src="https://res.cloudinary.com/dhtrn05k4/image/upload/v1/shams-media/profile-pictures/user-default.png" class="h-20 w-20 rounded-full"/>
+                        <div class="flex flex-col items-end gap-2 text-[#a5a5a5] my-2">
+                            <div class="flex flex-row items-center justify-between w-full">
+                                <h3 class="font-semibold text-xl text-center">{{ review.fullname }}</h3>
+                                <span class="text-xs text-[#a5a5a5]">{{ review.created|date:"d.m.Y" }}</span>
+                            </div>
+                            <p class="text-start">{{ review.text|truncatechars:100 }}</p>
+                            <div class="flex flex-col items-start gap-2 mt-5">
+                                {% if review.rating == 1 %}
+                                    <span>⭐️</span>
+                                {% elif review.rating == 2 %}
+                                    <span>⭐️⭐️</span>
+                                {% elif review.rating == 3 %}
+                                    <span>⭐️⭐️⭐️</span>
+                                {% elif review.rating == 4 %}
+                                    <span>⭐️⭐️⭐️⭐️</span>
+                                {% elif review.rating == 5 %}
+                                    <span>⭐️⭐️⭐️⭐️⭐️</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                {% for review in reviews %}
+                    <div class="flex flex-row items-start gap-2 bg-white/5 rounded-xl p-4 text-center hover:text-[#ff5a00] hover:bg-white/10 transition lg:w-[450px]">
+                        <img title="{{  review.fullname }}" src="https://res.cloudinary.com/dhtrn05k4/image/upload/v1/shams-media/profile-pictures/user-default.png" class="h-20 w-20 rounded-full"/>
+                        <div class="flex flex-col items-end gap-2 text-[#a5a5a5] my-2">
+                            <div class="flex flex-row items-center justify-between w-full">
+                                <h3 class="font-semibold text-xl text-center">{{ review.fullname }}</h3>
+                                <span class="text-xs text-[#a5a5a5]">{{ review.created|date:"d.m.Y" }}</span>
+                            </div>
+                            <p class="text-start">{{ review.text|truncatechars:100 }}</p>
+                            <div class="flex flex-col items-start gap-2 mt-5">
+                                {% if review.rating == 1 %}
+                                    <span>⭐️</span>
+                                {% elif review.rating == 2 %}
+                                    <span>⭐️⭐️</span>
+                                {% elif review.rating == 3 %}
+                                    <span>⭐️⭐️⭐️</span>
+                                {% elif review.rating == 4 %}
+                                    <span>⭐️⭐️⭐️⭐️</span>
+                                {% elif review.rating == 5 %}
+                                    <span>⭐️⭐️⭐️⭐️⭐️</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <style>
+            .reviews-wrapper {
+                width: 100%;
+                overflow: hidden;
+                position: relative;
+            }
+
+            .reviews-track {
+                display: flex;
+                gap: 20px;
+                animation: scroll-left 40s linear infinite;
+            }
+
+            .reviews-wrapper:hover .reviews-track {
+                animation-play-state: paused;
+            }
+
+            @keyframes scroll-left {
+                0% {
+                    transform: translateX(0);
+                }
+                100% {
+                    transform: translateX(-50%);
+                }
+            }
+        </style>
+
+    </section>
+
+
+
     <section id="projects" class="max-w-6xl mx-auto px-5 py-14">
         <h2 class="font-display text-4xl text-[#ff5a00] font-semibold text-center">{% trans 'Проекты' %}</h2>
         <div class="h-px w-full xl:w-64 bg-[#a5a5a5] m-auto my-5"></div>
