@@ -57,7 +57,12 @@
                         <img title="{{  review.fullname }}" src="https://res.cloudinary.com/dhtrn05k4/image/upload/v1/shams-media/profile-pictures/user-default.png" class="h-20 w-20 rounded-full"/>
                         <div class="flex flex-col items-end gap-2 text-[#a5a5a5] my-2">
                             <div class="flex flex-row items-center justify-between w-full">
-                                <h3 class="font-semibold text-xl text-center">{{ review.fullname }}</h3>
+                                <div class="flex flex-col items-start gap-1">
+                                    <h3 class="font-semibold text-xl text-center">{{ review.fullname }}</h3>
+                                    {% if review.contacts %}
+                                        <span class="text-sm">{{ review.contacts }}</span>
+                                    {% endif %}
+                                </div>
                                 <span class="text-xs text-[#a5a5a5]">{{ review.created|date:"d.m.Y" }}</span>
                             </div>
                             <p class="text-start">{{ review.text|truncatechars:100 }}</p>
@@ -82,7 +87,12 @@
                         <img title="{{  review.fullname }}" src="https://res.cloudinary.com/dhtrn05k4/image/upload/v1/shams-media/profile-pictures/user-default.png" class="h-20 w-20 rounded-full"/>
                         <div class="flex flex-col items-end gap-2 text-[#a5a5a5] my-2">
                             <div class="flex flex-row items-center justify-between w-full">
-                                <h3 class="font-semibold text-xl text-center">{{ review.fullname }}</h3>
+                                <div class="flex flex-col items-start gap-1">
+                                    <h3 class="font-semibold text-xl text-center">{{ review.fullname }}</h3>
+                                    {% if review.contacts %}
+                                        <span class="text-sm">{{ review.contacts }}</span>
+                                    {% endif %}
+                                </div>
                                 <span class="text-xs text-[#a5a5a5]">{{ review.created|date:"d.m.Y" }}</span>
                             </div>
                             <p class="text-start">{{ review.text|truncatechars:100 }}</p>

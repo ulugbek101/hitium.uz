@@ -100,7 +100,7 @@ class Review(BaseModel):
     fullname = models.CharField(max_length=100, verbose_name="ФИО")
     text = models.TextField(verbose_name="Отзыв")
     rating = models.IntegerField(default=5, choices=RATING_CHOICES)
-    contacts = models.CharField(max_length=100, verbose_name="Контакты", null=True, blank=True)
+    contacts = models.CharField(max_length=100, verbose_name="Контакты", help_text="Telegram username, Номер телефона, E-mail, ...", null=True, blank=True)
     is_active = models.BooleanField(default=True, verbose_name="Показывать отзыв ?")
 
     def __str__(self):
