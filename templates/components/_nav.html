@@ -30,7 +30,7 @@
             <ul class="absolute z-50 w-[220px] left-1/2 -translate-x-1/2 hidden bg-white rounded-lg text-black py-1 px-2 rounded-md shadow-lg group-hover:block">
                 {% for service_object in services %}
                     <li class="w-full">
-                        <a href="{% url 'service_detail' slug=service_object.slug %}" class="block w-full text-center text-xs py-4 px-2 transition hover:text-[#ed4721] {% if service_object.name == service.name %} font-bold text-[#ed4721] {% else %} font-medium {% endif %}">{{ service_object.name }}</a>
+                        <a href="{% url 'service_detail' slug=service_object.slug id=service_object.id %}" class="block w-full text-center text-xs py-4 px-2 transition hover:text-[#ed4721] {% if service_object.name == service.name %} font-bold text-[#ed4721] {% else %} font-medium {% endif %}">{{ service_object.name }}</a>
                     </li>
                 {% endfor %}
             </ul>

@@ -37,7 +37,7 @@
 
         <div class="grid gap-6 mt-7 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {% for service in services %}
-                <a href="{% url 'service_detail' slug=service.slug %}" class="bg-white/5 rounded-xl p-4 text-center hover:text-[#ff5a00] hover:bg-white/10 transition">
+                <a href="{% url 'service_detail' slug=service.slug id=service.id %}" class="bg-white/5 rounded-xl p-4 text-center hover:text-[#ff5a00] hover:bg-white/10 transition">
                     <img src="/media/{{ service.header_bg }}" class="h-[200px] w-full rounded-lg mb-3"/>
                     <h3 class="font-display text-lg py-2.5">{{ service.name }}</h3>
                 </a>
@@ -51,7 +51,7 @@
         {% if projects.exists %}        
             <div class="grid grid-cols-12">
                 {% for project in projects %}
-                    <a href="{% url 'project_detail' slug=project.slug %}" class="text-[#a5a5a5] hover:text-[#ff5a00] bg-white/5 rounded-xl p-4 text-center hover:bg-white/10 transition col-span-3">
+                    <a href="{% url 'project_detail' slug=project.slug id=project.id %}" class="text-[#a5a5a5] hover:text-[#ff5a00] bg-white/5 rounded-xl p-4 text-center hover:bg-white/10 transition col-span-3">
                         <img src="{% if project.project_images.first %}{{ project.project_images.first.image.url }}{% else %}https://atlantawatershed.org/wp-content/uploads/2017/06/default-placeholder-570x321.png{% endif %}" class="max-h-48 w-full rounded-lg mb-3">
                         <h3 class="font-display text-lg">{{ project.name }}</h3>
                     </a>
