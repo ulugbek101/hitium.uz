@@ -51,68 +51,72 @@
         <div class="h-px w-full xl:w-64 bg-[#a5a5a5] m-auto my-5"></div>
 
         <div class="reviews-wrapper overflow-hidden relative">
-            <div class="reviews-track flex gap-6">
-                {% for review in reviews %}
-                    <div class="flex flex-row items-start gap-2 bg-white/5 rounded-xl p-4 text-center hover:text-[#ff5a00] hover:bg-white/10 transition lg:w-[450px]">
-                        <img title="{{  review.fullname }}" src="https://res.cloudinary.com/dhtrn05k4/image/upload/v1/shams-media/profile-pictures/user-default.png" class="h-20 w-20 rounded-full"/>
-                        <div class="flex flex-col items-end gap-2 text-[#a5a5a5] my-2">
-                            <div class="flex flex-row items-center justify-between w-full">
-                                <div class="flex flex-col items-start gap-1">
-                                    <h3 class="font-semibold text-xl text-center">{{ review.fullname }}</h3>
-                                    {% if review.contacts %}
-                                        <span class="text-sm">{{ review.contacts }}</span>
+            {% if reviews.exists %}
+                <div class="reviews-track flex gap-6">
+                    {% for review in reviews %}
+                        <div class="flex flex-row items-start gap-2 bg-white/5 rounded-xl p-4 text-center hover:text-[#ff5a00] hover:bg-white/10 transition lg:w-[450px]">
+                            <img title="{{  review.fullname }}" src="https://res.cloudinary.com/dhtrn05k4/image/upload/v1/shams-media/profile-pictures/user-default.png" class="h-20 w-20 rounded-full"/>
+                            <div class="flex flex-col items-end gap-2 text-[#a5a5a5] my-2">
+                                <div class="flex flex-row items-center justify-between w-full">
+                                    <div class="flex flex-col items-start gap-1">
+                                        <h3 class="font-semibold text-xl text-center">{{ review.fullname }}</h3>
+                                        {% if review.contacts %}
+                                            <span class="text-sm">{{ review.contacts }}</span>
+                                        {% endif %}
+                                    </div>
+                                    <span class="text-xs text-[#a5a5a5]">{{ review.created|date:"d.m.Y" }}</span>
+                                </div>
+                                <p class="text-start">{{ review.text|truncatechars:100 }}</p>
+                                <div class="flex flex-col items-start gap-2 mt-5">
+                                    {% if review.rating == 1 %}
+                                        <span>⭐️</span>
+                                    {% elif review.rating == 2 %}
+                                        <span>⭐️⭐️</span>
+                                    {% elif review.rating == 3 %}
+                                        <span>⭐️⭐️⭐️</span>
+                                    {% elif review.rating == 4 %}
+                                        <span>⭐️⭐️⭐️⭐️</span>
+                                    {% elif review.rating == 5 %}
+                                        <span>⭐️⭐️⭐️⭐️⭐️</span>
                                     {% endif %}
                                 </div>
-                                <span class="text-xs text-[#a5a5a5]">{{ review.created|date:"d.m.Y" }}</span>
-                            </div>
-                            <p class="text-start">{{ review.text|truncatechars:100 }}</p>
-                            <div class="flex flex-col items-start gap-2 mt-5">
-                                {% if review.rating == 1 %}
-                                    <span>⭐️</span>
-                                {% elif review.rating == 2 %}
-                                    <span>⭐️⭐️</span>
-                                {% elif review.rating == 3 %}
-                                    <span>⭐️⭐️⭐️</span>
-                                {% elif review.rating == 4 %}
-                                    <span>⭐️⭐️⭐️⭐️</span>
-                                {% elif review.rating == 5 %}
-                                    <span>⭐️⭐️⭐️⭐️⭐️</span>
-                                {% endif %}
                             </div>
                         </div>
-                    </div>
-                {% endfor %}
-                {% for review in reviews %}
-                    <div class="flex flex-row items-start gap-2 bg-white/5 rounded-xl p-4 text-center hover:text-[#ff5a00] hover:bg-white/10 transition lg:w-[450px]">
-                        <img title="{{  review.fullname }}" src="https://res.cloudinary.com/dhtrn05k4/image/upload/v1/shams-media/profile-pictures/user-default.png" class="h-20 w-20 rounded-full"/>
-                        <div class="flex flex-col items-end gap-2 text-[#a5a5a5] my-2">
-                            <div class="flex flex-row items-center justify-between w-full">
-                                <div class="flex flex-col items-start gap-1">
-                                    <h3 class="font-semibold text-xl text-center">{{ review.fullname }}</h3>
-                                    {% if review.contacts %}
-                                        <span class="text-sm">{{ review.contacts }}</span>
+                    {% endfor %}
+                    {% for review in reviews %}
+                        <div class="flex flex-row items-start gap-2 bg-white/5 rounded-xl p-4 text-center hover:text-[#ff5a00] hover:bg-white/10 transition lg:w-[450px]">
+                            <img title="{{  review.fullname }}" src="https://res.cloudinary.com/dhtrn05k4/image/upload/v1/shams-media/profile-pictures/user-default.png" class="h-20 w-20 rounded-full"/>
+                            <div class="flex flex-col items-end gap-2 text-[#a5a5a5] my-2">
+                                <div class="flex flex-row items-center justify-between w-full">
+                                    <div class="flex flex-col items-start gap-1">
+                                        <h3 class="font-semibold text-xl text-center">{{ review.fullname }}</h3>
+                                        {% if review.contacts %}
+                                            <span class="text-sm">{{ review.contacts }}</span>
+                                        {% endif %}
+                                    </div>
+                                    <span class="text-xs text-[#a5a5a5]">{{ review.created|date:"d.m.Y" }}</span>
+                                </div>
+                                <p class="text-start">{{ review.text|truncatechars:100 }}</p>
+                                <div class="flex flex-col items-start gap-2 mt-5">
+                                    {% if review.rating == 1 %}
+                                        <span>⭐️</span>
+                                    {% elif review.rating == 2 %}
+                                        <span>⭐️⭐️</span>
+                                    {% elif review.rating == 3 %}
+                                        <span>⭐️⭐️⭐️</span>
+                                    {% elif review.rating == 4 %}
+                                        <span>⭐️⭐️⭐️⭐️</span>
+                                    {% elif review.rating == 5 %}
+                                        <span>⭐️⭐️⭐️⭐️⭐️</span>
                                     {% endif %}
                                 </div>
-                                <span class="text-xs text-[#a5a5a5]">{{ review.created|date:"d.m.Y" }}</span>
-                            </div>
-                            <p class="text-start">{{ review.text|truncatechars:100 }}</p>
-                            <div class="flex flex-col items-start gap-2 mt-5">
-                                {% if review.rating == 1 %}
-                                    <span>⭐️</span>
-                                {% elif review.rating == 2 %}
-                                    <span>⭐️⭐️</span>
-                                {% elif review.rating == 3 %}
-                                    <span>⭐️⭐️⭐️</span>
-                                {% elif review.rating == 4 %}
-                                    <span>⭐️⭐️⭐️⭐️</span>
-                                {% elif review.rating == 5 %}
-                                    <span>⭐️⭐️⭐️⭐️⭐️</span>
-                                {% endif %}
                             </div>
                         </div>
-                    </div>
-                {% endfor %}
-            </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p class="text-[#a5a5a5] mt-2 text-center">{% trans 'Отзывов пока нет' %}</p>
+            {% endif %}
         </div>
 
         <style>
