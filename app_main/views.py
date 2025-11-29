@@ -83,7 +83,7 @@ def send_email(request):
     message = request.POST.get('message')
 
     TELEGRAM_BOT_TOKEN = "7960992571:AAGjpwEJFvM2fY2iNAnRlLYDRSsONLJ-thQ"
-    CHAT_IDS = [710661311, 110387856, ]  # your user's Telegram ID
+    CHAT_IDS = [710661311, 110387856, 412135367]  # your user's Telegram ID
     service_obj = Service.objects.get(id=service_id)
 
     text = f"""<b>НОВЫЙ ЗАКАЗ | Hitium.uz</b>
