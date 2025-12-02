@@ -89,22 +89,12 @@ class GalleryImage(models.Model):
 
 
 class Review(BaseModel):
-    RATING_CHOICES = [
-        [1, "⭐️"],
-        [2, "⭐️⭐️"],
-        [3, "⭐️⭐️⭐️"],
-        [4, "⭐️⭐️⭐️⭐️"],
-        [5, "⭐️⭐️⭐️⭐️⭐️"],
-    ]
-
-    fullname = models.CharField(max_length=100, verbose_name="ФИО")
-    text = models.TextField(verbose_name="Отзыв")
-    rating = models.IntegerField(default=5, choices=RATING_CHOICES)
-    contacts = models.CharField(max_length=100, verbose_name="Контакты", help_text="Telegram username, Номер телефона, E-mail, ...", null=True, blank=True)
-    is_active = models.BooleanField(default=True, verbose_name="Показывать отзыв ?")
+    fullname = models.CharField(max_length=100, verbose_name="Название организации")
+    video = models.FileField(verbose_name="Фидео", help_text="Фидео отзыв клиента (не больше 20 MB)", upload_to="videos/", null=True)
+    is_active = models.BooleanField(default=True, verbose_name="Показывать отзыв ?", help_text="Если отключить, то отзыв не будет показываться. Вместо удаления можно просто отключить видимость")
 
     def __str__(self):
-        return f"{self.fullname} - {self.get_rating_display()} - {self.created}"
+        return f"{self.fullname} - {self.created.strftime('%d.%m.%Y %H:%M')}"
 
     class Meta:
         verbose_name = "Отзыв"
