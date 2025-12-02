@@ -92,7 +92,7 @@ def send_email(request):
 Номер телефона: <b><code>{phone_number}</code></b>
 Сообщение: <i>{message}</i>
 
-Адрес:      <b>{address}</b>
+Адрес: <b>{address}</b>
 Тип услуги: <b>{service_obj.name_ru}</b>
 """
 
