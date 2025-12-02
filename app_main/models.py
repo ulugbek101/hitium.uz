@@ -90,7 +90,7 @@ class GalleryImage(models.Model):
 
 class Review(BaseModel):
     fullname = models.CharField(max_length=100, verbose_name="Название организации")
-    video = models.FileField(verbose_name="Фидео", help_text="Фидео отзыв клиента (не больше 20 MB)", upload_to="videos/", null=True)
+    video = models.FileField(verbose_name="Фидео", help_text="Видео отзыв клиента (не больше 20 MB)", upload_to="videos/", null=True)
     is_active = models.BooleanField(default=True, verbose_name="Показывать отзыв ?", help_text="Если отключить, то отзыв не будет показываться. Вместо удаления можно просто отключить видимость")
 
     def __str__(self):
