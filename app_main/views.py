@@ -89,10 +89,10 @@ def send_email(request):
     text = f"""<b>НОВЫЙ ЗАКАЗ | Hitium.uz</b>
 
 ФИО: <b>{full_name.title()}</b>
-Номер телефона: <code>{phone_number}</code>
+Номер телефона: <b><code>{phone_number}</code></b>
 Сообщение: <i>{message}</i>
 
-Адрес: <code>{address}</code>
+Адрес:      <b>{address}</b>
 Тип услуги: <b>{service_obj.name_ru}</b>
 """
 
