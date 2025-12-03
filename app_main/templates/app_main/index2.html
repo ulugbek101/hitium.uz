@@ -97,7 +97,7 @@
             .reviews-track {
                 display: flex;
                 gap: 20px;
-                animation: scroll-left 40s linear infinite;
+                animation: scroll-left 20s linear infinite;
             }
 
             .reviews-wrapper:hover .reviews-track {
@@ -141,9 +141,9 @@
         {% if clients.exists %}
             <div class="grid grid-cols-12">
                 {% for client in clients %}
-                    <div class="flex flex-col items-center gap-1 col-span-3">
+                    <div class="flex flex-col items-center gap-1 col-span-3 flex flex-col justify-between">
                         <div class="rounded-xl p-4 text-center text-[#a5a5a5] hover:text-[#ff5a00] hover:cursor-pointer transition">
-                            <img src="{{ client.image.url }}" class="max-h-48 h-full w-full rounded-lg mb-3"/>
+                            <img src="{{ client.image.url }}" class="max-h-[100px] h-full w-full rounded-lg mb-3"/>
                             <h3 class="font-display text-lg">{{ client.name }}</h3>
                         </div>
                         {% if client.link %}
