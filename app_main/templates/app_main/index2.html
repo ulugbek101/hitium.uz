@@ -2,38 +2,39 @@
 {% load i18n static %}
 
 {% block content %}
-    <section style="background-image: url('{% static 'images/home-page-header-bg.jpg' %}'); background-repeat: no-repeat; background-size: cover; background-position: bottom;" class="text-center py-24 px-5 bg-linear-to-b from-[#ff5a00]/10 to-transparent border-b border-white/5"
+    <section style="background-image: url('{% static 'images/home-page-header-bg.jpg' %}'); background-repeat: no-repeat; background-size: cover; background-position: bottom;" class="text-center py-12 lg:py-24 px-1 lg:px-5 bg-linear-to-b from-[#ff5a00]/10 to-transparent border-b border-white/5"
             id="home">
-        <h1 class="font-display text-4xl font-bold text-white tracking-tight">{% trans 'HITIUM — инженерные системы и монтаж' %}</h1>
-        <p class="text-white mt-3 max-w-2xl mx-auto">{% trans 'Мы создаём надёжные инженерные решения, которые делают здания комфортными, безопасными и энергоэффективными.' %}</p>
+        <h1 class="font-display text-2xl lg:text-4xl font-bold text-white tracking-tight">{% trans 'HITIUM — инженерные системы и монтаж' %}</h1>
+        <p class="text-white mt-3 max-w-2xl mx-auto text-sm lg:text-base">{% trans 'Мы создаём надёжные инженерные решения, которые делают здания комфортными, безопасными и энергоэффективными.' %}</p>
 
-        <div class="flex justify-center gap-4 flex-wrap mt-6">
+        <div class="flex flex-row items-center justify-center gap-4 flex-wrap mt-6">
             <a href="tel:+998901234567"
-            class="px-6 py-3 rounded-lg bg-[#ff5a00] font-bold shadow-lg shadow-[#ff5a00]/20 hover:bg-[#d94e00] transition">{% trans 'Позвонить' %}</a>
+            class="text-md lg:text-base px-3 lg:px-6 py-1 lg:py-3 rounded lg:rounded-lg bg-[#ff5a00] font-semibold lg:font-bold shadow-lg shadow-[#ff5a00]/20 hover:bg-[#d94e00] transition">{% trans 'Позвонить' %}</a>
             <a href="https://t.me/hitium"
-            class="px-6 py-3 rounded-lg bg-[#ff5a00] font-bold shadow-lg shadow-[#ff5a00]/20 hover:bg-[#d94e00] transition">{% trans 'Написать в Telegram' %}</a>
+            class="text-md lg:text-base px-3 lg:px-6 py-1 lg:py-3 rounded lg:rounded-lg bg-[#ff5a00] font-semibold lg:font-bold shadow-lg shadow-[#ff5a00]/20 hover:bg-[#d94e00] transition">{% trans 'Написать в Telegram' %}</a>
         </div>
     </section>
 
-    <section id="about" class="max-w-5xl mx-auto px-5 py-16">
-        <h2 class="font-display text-4xl text-[#ff5a00] font-semibold text-center">{% trans 'О компании' %}</h2>
-        <div class="h-[1px] w-full xl:w-64 bg-[#a5a5a5] m-auto my-5"></div>
-        <p class="text-[#a5a5a5] mt-2 text-center">{% trans 'HITIUM — эксперт в области проектирования, монтажа и обслуживания инженерных систем. Мы объединяем технологии, опыт и инновации, чтобы создавать решения, отвечающие самым высоким стандартам качества.' %}</p>
+    <section id="about" class="max-w-5xl mx-auto px-1 lg:px-5 py-8 lg:py-16">
+        <h2 class="font-display text-2xl lg:text-4xl text-[#ff5a00] font-semibold text-center">{% trans 'О компании' %}</h2>
+        <div class="h-[1px] w-full xl:w-64 bg-[#a5a5a5] m-auto my-2 lg:my-5"></div>
+        <p class="text-[#a5a5a5] mt-2 text-sm lg:text-base text-justify lg:text-center">{% trans 'HITIUM — эксперт в области проектирования, монтажа и обслуживания инженерных систем. Мы объединяем технологии, опыт и инновации, чтобы создавать решения, отвечающие самым высоким стандартам качества.' %}</p>
     </section>
 
-    <section id="mission" class="max-w-5xl mx-auto px-5 py-6">
-        <div class="text-center mx-auto border-2 border-[#ff5a00] rounded-xl p-6 max-w-xl bg-black text-white">
-            <img src="https://hitium.uz/static/images/nav-logo.png" class="h-12 rounded-md object-contain mx-auto"/>
-            <h2 class="font-display font-bold text-white text-xl mt-3">{% trans 'Наша миссия' %}</h2>
-            <p class="mt-2 text-white">{% trans 'Улучшать конкурентоспособность клиентов, превращая современные технологии в реальные результаты и преимущества.' %}</p>
+    <section id="mission" class="max-w-5xl mx-auto px-1 lg:px-5 py-2 lg:py-6">
+        <div class="text-center mx-auto border-2 border-[#ff5a00] rounded lg:rounded-xl p-6 max-w-xl bg-black text-white">
+            <div class="flex flex-col gap-0 lg:gap-2">
+                <img src="https://hitium.uz/static/images/nav-logo.png" class="h-12 rounded-md object-contain mx-auto"/>
+                <h2 class="font-display font-bold text-white text-xl mt-3">{% trans 'Наша миссия' %}</h2>
+            </div>
+            <p class="mt-2 text-white text-sm lg:text-base text-justify lg:text-center">{% trans 'Улучшать конкурентоспособность клиентов, превращая современные технологии в реальные результаты и преимущества.' %}</p>
             <div class="text-right italic mt-3 text-white">{% trans 'Тимур Хисамов' %}</div>
         </div>
     </section>
 
-    <section id="services" class="max-w-6xl mx-auto px-5 py-16">
-        <h2 class="font-display text-4xl text-[#ff5a00] font-semibold text-center">{% trans 'Наши услуги' %}</h2>
-
-        <div class="h-px w-full xl:w-64 bg-[#a5a5a5] m-auto my-5"></div>
+    <section id="about" class="max-w-5xl mx-auto px-1 lg:px-5 py-8 lg:py-16">
+        <h2 class="font-display text-2xl lg:text-4xl text-[#ff5a00] font-semibold text-center">{% trans 'Наши услуги' %}</h2>
+        <div class="h-[1px] w-full xl:w-64 bg-[#a5a5a5] m-auto my-2 lg:my-5"></div>
 
         <div class="grid gap-6 mt-7 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {% for service in services %}
@@ -45,10 +46,9 @@
         </div>
     </section>
 
-    <section id="services" class="max-w-6xl mx-auto px-5 py-16">
-        <h2 class="font-display text-4xl text-[#ff5a00] font-semibold text-center">{% trans 'Отзывы' %}</h2>
-
-        <div class="h-px w-full xl:w-64 bg-[#a5a5a5] m-auto my-5"></div>
+    <section id="about" class="max-w-5xl mx-auto px-1 lg:px-5 py-8 lg:py-16">
+        <h2 class="font-display text-2xl lg:text-4xl text-[#ff5a00] font-semibold text-center">{% trans 'Отзывы' %}</h2>
+        <div class="h-[1px] w-full xl:w-64 bg-[#a5a5a5] m-auto my-2 lg:my-5"></div>
 
         <div class="reviews-wrapper">
             <div class="reviews-track">
@@ -118,9 +118,9 @@
 
 
 
-    <section id="projects" class="max-w-6xl mx-auto px-5 py-14">
-        <h2 class="font-display text-4xl text-[#ff5a00] font-semibold text-center">{% trans 'Проекты' %}</h2>
-        <div class="h-px w-full xl:w-64 bg-[#a5a5a5] m-auto my-5"></div>
+    <section id="about" class="max-w-5xl mx-auto px-1 lg:px-5 py-8 lg:py-16">
+        <h2 class="font-display text-2xl lg:text-4xl text-[#ff5a00] font-semibold text-center">{% trans 'Проекты' %}</h2>
+        <div class="h-[1px] w-full xl:w-64 bg-[#a5a5a5] m-auto my-2 lg:my-5"></div>
         {% if projects.exists %}
             <div class="grid grid-cols-12">
                 {% for project in projects %}
@@ -135,9 +135,9 @@
         {% endif %}
     </section>
 
-    <section id="clients" class="max-w-6xl mx-auto px-5 py-14">
-        <h2 class="font-display text-4xl text-[#ff5a00] font-semibold text-center">{% trans 'Наши клиенты' %}</h2>
-        <div class="h-px w-full xl:w-64 bg-[#a5a5a5] m-auto my-5"></div>
+    <section id="about" class="max-w-5xl mx-auto px-1 lg:px-5 py-8 lg:py-16">
+        <h2 class="font-display text-2xl lg:text-4xl text-[#ff5a00] font-semibold text-center">{% trans 'Наши клиенты' %}</h2>
+        <div class="h-[1px] w-full xl:w-64 bg-[#a5a5a5] m-auto my-2 lg:my-5"></div>
         {% if clients.exists %}
             <div class="grid grid-cols-12 gap-y-4">
                 {% for client in clients %}
@@ -160,9 +160,9 @@
         {% endif %}
     </section>
 
-    <section id="gallery" class="max-w-6xl mx-auto px-5 py-14">
-        <h2 class="font-display text-4xl text-[#ff5a00] font-semibold text-center">{% trans 'Галерея' %}</h2>
-        <div class="h-px w-full xl:w-64 bg-[#a5a5a5] m-auto my-5"></div>
+    <section id="about" class="max-w-5xl mx-auto px-1 lg:px-5 py-8 lg:py-16">
+        <h2 class="font-display text-2xl lg:text-4xl text-[#ff5a00] font-semibold text-center">{% trans 'Галерея' %}</h2>
+        <div class="h-[1px] w-full xl:w-64 bg-[#a5a5a5] m-auto my-2 lg:my-5"></div>
         {% if gallery_images.exists %}
             <div class="grid grid-cols-12 gap-2">
                 {% for gallery_image in gallery_images %}
