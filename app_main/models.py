@@ -15,6 +15,7 @@ class Service(BaseModel):
     description = models.TextField(verbose_name="Описание")
     header_bg = models.ImageField(null=True, verbose_name="Задний фон для шапки")
     description_bg = models.ImageField(null=True, verbose_name="Задний фон для описания")
+    order = models.IntegerField(default=1, verbose_name="Порядок", help_text="Порядок показа услуги в списке услуг")
 
     def __str__(self):
         return self.name_ru
