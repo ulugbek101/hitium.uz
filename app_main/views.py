@@ -8,7 +8,7 @@ from .models import Service, Project, Client, GalleryImage, Review
 
 
 def home_page(request):
-    services = Service.objects.all()
+    services = Service.objects.order_by('order')
     projects = Project.objects.prefetch_related("project_images")
     clients = Client.objects.all()
     reviews = Review.objects.filter(is_active=True)
