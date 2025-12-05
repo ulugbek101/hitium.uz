@@ -23,6 +23,7 @@ class Service(BaseModel):
     class Meta:
         verbose_name = "Сервис"
         verbose_name_plural = "Сервисы"
+        ordering = ['order']
 
 
 class ServiceImage(BaseModel):
