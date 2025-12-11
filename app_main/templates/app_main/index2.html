@@ -97,7 +97,7 @@
             .reviews-track {
                 display: flex;
                 gap: 20px;
-                animation: scroll-left 20s linear infinite;
+                animation: scroll-left 10s linear infinite;
             }
 
             .reviews-wrapper:hover .reviews-track {
@@ -122,9 +122,9 @@
         <h2 class="font-display text-2xl lg:text-4xl text-[#ff5a00] font-semibold text-center">{% trans 'Проекты' %}</h2>
         <div class="h-[1px] w-full xl:w-64 bg-[#a5a5a5] m-auto my-2 lg:my-5"></div>
         {% if projects.exists %}
-            <div class="grid grid-cols-12">
+            <div class="grid grid-cols-12 px-4 lg:px-0 gap-4 lg:gap-0">
                 {% for project in projects %}
-                    <a href="{% url 'project_detail' slug=project.slug id=project.id %}" class="text-[#a5a5a5] hover:text-[#ff5a00] bg-white/5 rounded lg:rounded-xl p-1 lg:p-4 text-center hover:bg-white/10 transition col-span-12 lg:col-span-3">
+                    <a href="{% url 'project_detail' slug=project.slug id=project.id %}" class="text-[#a5a5a5] hover:text-[#ff5a00] bg-white/5 rounded lg:rounded-xl p-3 lg:p-4 text-center hover:bg-white/10 transition col-span-12 lg:col-span-3">
                         <img src="{% if project.project_images.first %}{{ project.project_images.first.image.url }}{% else %}https://atlantawatershed.org/wp-content/uploads/2017/06/default-placeholder-570x321.png{% endif %}" class="max-h-[250px] w-full rounded lg:rounded-lg mb-1 lg:mb-3">
                         <h3 class="font-display text-lg">{{ project.name }}</h3>
                     </a>
@@ -141,7 +141,7 @@
         {% if clients.exists %}
             <div class="grid grid-cols-12 gap-y-4">
                 {% for client in clients %}
-                    <div class="flex flex-col items-center gap-1 col-span-3 flex flex-col justify-between">
+                    <div class="flex flex-col items-center gap-1 col-span-6 lg:col-span-3 flex flex-col justify-between">
                         <div class="rounded-xl p-4 text-center text-[#a5a5a5] hover:text-[#ff5a00] hover:cursor-pointer transition">
                             <img src="{{ client.image.url }}" class="max-h-[100px] h-full w-full rounded-lg mb-3"/>
                             <h3 class="font-display text-lg">{{ client.name }}</h3>
@@ -157,23 +157,6 @@
             </div>
         {% else %}
             <p class="text-[#a5a5a5] mt-2 text-center">{% trans 'Клиенты пока не добавлены' %}</p>
-        {% endif %}
-    </section>
-
-    <section id="about" class="max-w-5xl mx-auto px-1 lg:px-5 py-8 lg:py-16">
-        <h2 class="font-display text-2xl lg:text-4xl text-[#ff5a00] font-semibold text-center">{% trans 'Галерея' %}</h2>
-        <div class="h-[1px] w-full xl:w-64 bg-[#a5a5a5] m-auto my-2 lg:my-5"></div>
-        {% if gallery_images.exists %}
-            <div class="grid grid-cols-12 gap-2">
-                {% for gallery_image in gallery_images %}
-                    <div class="col-span-3 rounded-xl text-center transition">
-                        <img data-description="{{ gallery_image.description }}" src="{{ gallery_image.image.url }}" class="max-h-48 h-full w-full rounded-lg cursor-pointer preview-img"/>
-                        <h3 class="font-display text-lg text-[#a5a5a5] text-lg">{{ client.name }}</h3>
-                    </div>
-                {% endfor %}
-            </div>
-        {% else %}
-            <p class="text-[#a5a5a5] mt-2 text-center">{% trans 'Изображения пока не добавлены' %}</p>
         {% endif %}
     </section>
 

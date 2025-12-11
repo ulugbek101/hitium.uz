@@ -2,22 +2,20 @@
 
 {% block content %}
     <div class="my-10 mx-auto">
-        <div class="flex flex-row items-center gap-2 container m-auto">
-            <a href="/" class="text-[#a5a5a5] text-sm underline">Главная страница</a>
-            <span class="text-[#a5a5a5] text-sm">/</span>
-            <span class="text-[#ff5a00] text-sm">Проекты</span>
-            <span class="text-[#a5a5a5] text-sm">/</span>
-            <span class="text-[#ff5a00] text-sm">{{ project.name }}</span>
+        <div class="flex flex-row items-center justify-center lg:justify-start gap-2 container m-auto mb-5 lg:mb-0">
+            <a href="/" class="text-[#ff5a00] text-xs lg:text-sm underline">Главная страница</a>
+            <span class="text-[#a5a5a5] text-xs lg:text-sm">/</span>
+            <span class="text-[#a5a5a5] text-xs lg:text-sm">{{ project.name|truncatechars:"20" }}</span>
         </div>
-        <h2 class="text-white text-4xl text-center">{{ project.name }}</h2>
+        <h2 class="text-white text-2xl lg:text-4xl text-center break-words">{{ project.name }}</h2>
     </div>
 
     {% if project.project_images.exists %}
-        <div class="container mx-auto grid grid-cols-12 gap-2">
+        <div class="container mx-auto grid grid-cols-12 gap-2 px-4 lg:px-0 gap-4 lg:gap-0">
             {% for project_image in project.project_images.all %}
-                <div class="col-span-3 flex flex-col gap-1">
+                <div class="col-span-12 lg:col-span-3 flex flex-col gap-1">
                     <img src="{{ project_image.image.url }}"alt="{{ project.name }}" class="rounded-md w-full h-full object-cover">
-                    <p class="text-[#a5a5a5] text-justify text-sm px-2">{{ project_image.description|default_if_none:"" }}</p>
+                    <p class="break-words text-[#a5a5a5] text-justify text-sm px-2">{{ project_image.description|default_if_none:"" }}</p>
                 </div>
             {% endfor %}
         </div>
