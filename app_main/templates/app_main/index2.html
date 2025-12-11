@@ -139,7 +139,7 @@
         <h2 class="font-display text-2xl lg:text-4xl text-[#ff5a00] font-semibold text-center">{% trans 'Наши клиенты' %}</h2>
         <div class="h-[1px] w-full xl:w-64 bg-[#a5a5a5] m-auto my-2 lg:my-5"></div>
         {% if clients.exists %}
-            <div class="grid grid-cols-12 gap-y-4">
+            <div class="grid grid-cols-12 gap-y-4 gap-x-4">
                 {% for client in clients %}
                     <div class="flex flex-col items-center gap-1 col-span-6 lg:col-span-3 flex flex-col justify-between">
                         <div class="rounded-xl p-0 lg:p-4 text-center text-[#a5a5a5] hover:text-[#ff5a00] hover:cursor-pointer transition">

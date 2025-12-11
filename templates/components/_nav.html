@@ -1,16 +1,16 @@
 {% load i18n %}
 {% load static %}
-<div style="z-index: 10" class="flex flex-col items-end xl:flex-row gap-1 py-1 px-5 w-full lg:items-center lg:flex-row lg:justify-between lg:py-3 border-b border-white border-opacity-25">
+<div style="z-index: 10" class="bg-black lg:bg-transparent bg-opacity-50 lg:bg-opacity-100 flex flex-col items-start xl:flex-row gap-1 py-1 px-5 w-full lg:items-center lg:flex-row lg:justify-between lg:py-3 border-b border-white border-opacity-25">
     <div class="flex items-center gap-2 text-white text-[0.8rem]">
-		<span class="material-icons text-sm -rotate-45 order-2 lg:order-1">send</span>
-		<div class="flex flex-row gap-1 order-1 lg:order-2">
+		<span class="material-icons text-sm -rotate-45">send</span>
+		<div class="flex flex-row gap-1">
             <span class="hidden lg:flex">Telegram:</span>
 		    <a href="https://t.me/hitium" class="opacity-50 hover:text-[#ed4721] transition"> {% trans 'Написать в телеграм' %} </a>
         </div>
 	</div>
 	<div class="flex items-center gap-2 text-white text-[0.8rem]">
-		<span class="material-icons text-sm order-2 lg:order-1">phone</span>
-		<div class="flex flex-row gap-1 order-1 lg:order-2">
+		<span class="material-icons text-sm">phone</span>
+		<div class="flex flex-row gap-1">
             <p class="hidden lg:flex">{% trans 'Позвонить' %} 24/7:</p>
 		    <a href="tel:+998974458838" class="opacity-50 hover:text-[#ed4721] transition"> +998 97 445 88 38 </a>
         </div>
