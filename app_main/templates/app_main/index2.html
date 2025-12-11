@@ -142,7 +142,7 @@
             <div class="grid grid-cols-12 gap-y-4">
                 {% for client in clients %}
                     <div class="flex flex-col items-center gap-1 col-span-6 lg:col-span-3 flex flex-col justify-between">
-                        <div class="rounded-xl p-4 text-center text-[#a5a5a5] hover:text-[#ff5a00] hover:cursor-pointer transition">
+                        <div class="rounded-xl p-0 lg:p-4 text-center text-[#a5a5a5] hover:text-[#ff5a00] hover:cursor-pointer transition">
                             <img src="{{ client.image.url }}" class="max-h-[100px] h-full w-full rounded-lg mb-3"/>
                             <h3 class="font-display text-lg">{{ client.name }}</h3>
                         </div>
