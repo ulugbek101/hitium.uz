@@ -35,9 +35,9 @@
                                         <input type="hidden" name="language" value="{{ code }}">
                                         {% if service %}
                                             {% if code == 'uz' %}
-                                                <input type="hidden" name="next" value="/{{ code }}/{{ service.slug_uz }}/{{ service.id }}/">
+                                                <input type="hidden" name="next" value="/{{ code }}/{{ service.slug_ru }}/{{ service.id }}/">
                                             {% elif code == 'en' %}
-                                                <input type="hidden" name="next" value="/{{ code }}/{{ service.slug_en }}/{{ service.id }}/">
+                                                <input type="hidden" name="next" value="/{{ code }}/{{ service.slug_ru }}/{{ service.id }}/">
                                             {% else %}
                                                 <input type="hidden" name="next" value="/{{ code }}/{{ service.slug_ru }}/{{ service.id }}/">
                                             {% endif %}
