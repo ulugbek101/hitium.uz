@@ -120,9 +120,9 @@
 
     <section id="about" class="max-w-5xl mx-auto px-1 lg:px-5 py-8 lg:py-16">
         <h2 class="font-display text-2xl lg:text-4xl text-[#ff5a00] font-semibold text-center">{% trans 'Проекты' %}</h2>
-        <div class="h-[1px] w-full xl:w-64 bg-[#a5a5a5] m-auto my-2 lg:my-5"></div>
+        <div class="h-px w-full xl:w-64 bg-[#a5a5a5] m-auto my-2 lg:my-5"></div>
         {% if projects.exists %}
-            <div class="grid grid-cols-12 px-4 lg:px-0 gap-4 lg:gap-0">
+            <div class="grid grid-cols-12 px-4 lg:px-0 gap-4 lg:gap-2">
                 {% for project in projects %}
                     <a href="{% url 'project_detail' slug=project.slug id=project.id %}" class="flex flex-col justify-between text-[#a5a5a5] hover:text-[#ff5a00] bg-white/5 rounded lg:rounded-xl p-3 lg:p-4 text-center hover:bg-white/10 transition col-span-12 lg:col-span-3">
                         <img src="{% if project.project_images.first %}{{ project.project_images.first.image.url }}{% else %}https://atlantawatershed.org/wp-content/uploads/2017/06/default-placeholder-570x321.png{% endif %}" class="max-h-[250px] h-full w-full rounded lg:rounded-lg mb-1 lg:mb-3">
