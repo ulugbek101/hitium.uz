@@ -110,7 +110,7 @@ AUTH_PASSWORD_VALIDATORS = [
 def gettext(lang): return lang
 
 
-LANGUAGE_CODE = "ru"
+LANGUAGE_CODE = "ru-RU"
 LANGUAGES = (
     ("ru", _("Русский")),
     ("uz", _("O'zbek tili")),
@@ -159,9 +159,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587  # Use 465 for SSL
-EMAIL_USE_TLS = True  # If using port 587
-EMAIL_USE_SSL = False  # If using port 465, set this to True and TLS to False
-EMAIL_HOST_USER = "ulugbek.programmer02@gmail.com"
-EMAIL_HOST_PASSWORD = "pgsurwodseowhpow"
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False

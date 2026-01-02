@@ -1,49 +1,32 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
-msgid ""
-msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-19 11:20+0500\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-
-#: PROJECT/settings.py:107
+#: PROJECT/settings.py:115
 msgid "Русский"
-msgstr "Rus"
+msgstr "Rus tili"
 
-#: PROJECT/settings.py:108
+#: PROJECT/settings.py:116
 msgid "O'zbek tili"
 msgstr "O'zbek tili"
 
-#: PROJECT/settings.py:109
+#: PROJECT/settings.py:117
 msgid "English"
-msgstr "Ingliz"
+msgstr "Ingliz tili"
 
 #: app_main/templates/app_main/contacts.html:15
 #: app_main/templates/app_main/our_services.html:15
-#: app_main/templates/app_main/service_detail.html:17 templates/base.html:74
+#: app_main/templates/app_main/service_detail.html:17
+#: templates/components/_mobile_menu.html:11
 #: templates/components/_nav.html:25
 msgid "Главная"
 msgstr "Bosh sahifa"
 
 #: app_main/templates/app_main/contacts.html:16
+#: templates/components/_footer2.html:3
 #: templates/components/_nav.html:83
+#: templates/components/_nav2.html:13
 msgid "Контакты"
 msgstr "Kontaktlar"
 
 #: app_main/templates/app_main/contacts.html:27
-#: templates/components/_footer.html:42
+#: templates/components/_footer.html:43
 msgid "Напишите нам"
 msgstr "Biz bilan bog'laning"
 
@@ -61,12 +44,13 @@ msgid "Полное имя"
 msgstr "To'liq ismingiz"
 
 #: app_main/templates/app_main/contacts.html:42
-#: templates/components/_footer.html:23
+#: templates/components/_footer.html:24
 msgid "Адрес"
 msgstr "Manzil"
 
 #: app_main/templates/app_main/contacts.html:48
 #: app_main/templates/app_main/contacts.html:77
+#: templates/components/_footer2.html:11
 msgid "Номер телефона"
 msgstr "Telefon raqam"
 
@@ -79,6 +63,7 @@ msgid "Сообщение"
 msgstr "Batafsil murojaat"
 
 #: app_main/templates/app_main/contacts.html:64
+#: templates/components/_footer2.html:20
 msgid "Отправить"
 msgstr "Yuborish"
 
@@ -93,23 +78,26 @@ msgid ""
 "оборудования для пищевой промышленности. Позже группа начала расширять сферу "
 "своей деятельности на предприятия нефтегазовой, химической, фармацевтической "
 "и других отраслей."
-msgstr "<strong>HITIUM</strong> 1999-yilda zanglamaydigan po‘latni payvandlash va oziq-ovqat sanoati uskunalarini o‘rnatishga ixtisoslashgan montaj guruhi sifatida faoliyatini boshlagan. Keyinchalik, guruh o‘z faoliyat doirasini neft va gaz, kimyo, farmatsevtika va boshqa sohalarga kengaytira boshladi."
+msgstr ""
+"<strong>HITIUM</strong> 1999-yilda zanglamaydigan po‘latni payvandlash va "
+"oziq-ovqat sanoati uskunalarini o‘rnatishga ixtisoslashgan montaj guruhi "
+"sifatida faoliyatini boshlagan. Keyinchalik, guruh o‘z faoliyat doirasini "
+"neft va gaz, kimyo, farmatsevtika va boshqa sohalarga kengaytira boshladi."
 
 #: app_main/templates/app_main/contacts.html:74
 msgid ""
-"                    Наша фирма занимается изготовлением промышленного "
-"оборудования, монтажом линий розлива, изготовлением и монтажом систем "
-"вентиляции и промышленного кондиционирования воздуха, водоснабжения и "
-"канализации, холодоснабжения, монтажом под ключ всех видов котельного "
-"оборудования, изоляцией емкостей и трубопроводов.\n"
-
+"<strong>Теперь HITIUM</strong> также занимается производством промышленного "
+"оборудования, установкой линий розлива, изготовлением и монтажом "
+"вентиляционных и промышленных кондиционерных систем, водоснабжением и "
+"канализацией, холодильным оборудованием, монтажом «под ключ» всех видов "
+"котельного оборудования, изоляцией емкостей и трубопроводов."
 msgstr ""
-"                    Bizning kompaniyamiz sanoat uskunalarini ishlab "
-"chiqarish, quyish liniyalarini o‘rnatish, ventilyatsiya va sanoat "
-"konditsioner tizimlarini, suv ta’minoti va kanalizatsiya tizimlarini ishlab "
-"chiqish va o‘rnatish, sovutish tizimlarini o‘rnatish, barcha turdagi "
-"qozonxona uskunalarini to‘liq montaj qilish, idishlar va quvurlarni "
-"izolyatsiya qilish bilan shug‘ullanadi.\n"
+"<strong>Endilikda HITIUM</strong> sanoat uskunalarini ishlab chiqarish, "
+"butillash liniyalarini o‘rnatish, ventilyatsiya va sanoat konditsionerlari "
+"tizimlarini ishlab chiqarish va o‘rnatish, suv ta’minoti va kanalizatsiya, "
+"sovutish tizimlari, barcha turdagi qozon uskunalarini to‘liq tayyor holda "
+"o‘rnatish, shuningdek, konteyner va quvurlarni izolyatsiya qilish bilan ham "
+"shug‘ullanadi."
 
 #: app_main/templates/app_main/index.html:9
 msgid "Монтаж промышленного оборудования"
@@ -134,7 +122,8 @@ msgstr ""
 "izolyatsiya qilish bilan shug‘ullanadi.\n"
 "                "
 
-#: app_main/templates/app_main/index.html:17 templates/base.html:123
+#: app_main/templates/app_main/index.html:17
+#: templates/components/_mobile_menu.html:60
 msgid "Заказать услугу"
 msgstr "Buyurtma berish"
 
@@ -178,18 +167,21 @@ msgstr ""
 "va ishlab chiqarishni yo‘lga qo‘yishgacha."
 
 #: app_main/templates/app_main/index.html:49
-#: app_main/templates/app_main/our_services.html:43 templates/base.html:127
+#: app_main/templates/app_main/index2.html:12
+#: app_main/templates/app_main/our_services.html:43
+#: templates/components/_footer2.html:24
+#: templates/components/_mobile_menu.html:64
 #: templates/components/_nav.html:14
 msgid "Позвонить"
 msgstr "Qo‘ng‘iroq qilish"
 
-#: app_main/templates/app_main/index.html:74
 #: app_main/templates/app_main/index.html:77
-#: app_main/templates/app_main/index.html:81
+#: app_main/templates/app_main/index.html:80
+#: app_main/templates/app_main/index.html:84
 msgid "Разработка"
 msgstr "Loyihalash"
 
-#: app_main/templates/app_main/index.html:83
+#: app_main/templates/app_main/index.html:86
 msgid ""
 "\n"
 "                            Хороший проектировщик систем вентиляции и "
@@ -206,13 +198,13 @@ msgstr ""
 "belgilay olmasalar ham, ichki havo sifatini baholash uchun ma’lumotlarni "
 "to‘playdi."
 
-#: app_main/templates/app_main/index.html:94
-#: app_main/templates/app_main/index.html:98
-#: app_main/templates/app_main/index.html:106
+#: app_main/templates/app_main/index.html:97
+#: app_main/templates/app_main/index.html:101
+#: app_main/templates/app_main/index.html:109
 msgid "Тех. поддержка ?"
 msgstr "Texnik yordam ?"
 
-#: app_main/templates/app_main/index.html:100
+#: app_main/templates/app_main/index.html:103
 msgid ""
 "\n"
 "                            Наши специалисты по обслуживанию систем "
@@ -227,13 +219,13 @@ msgstr ""
 "Sizga xizmat ko'rsatishni ishga tushirishdan tortib to texnik xizmat "
 "ko'rsatishgacha bo'lgan to'liq xizmatlarni taklif etamiz."
 
-#: app_main/templates/app_main/index.html:110
 #: app_main/templates/app_main/index.html:113
-#: app_main/templates/app_main/index.html:117
+#: app_main/templates/app_main/index.html:116
+#: app_main/templates/app_main/index.html:120
 msgid "Почему мы ?"
 msgstr "Nega biz ?"
 
-#: app_main/templates/app_main/index.html:119
+#: app_main/templates/app_main/index.html:122
 msgid ""
 "- Опытные специалисты, для которых нет не решаемых задач в сфере монтажных "
 "работ.\n"
@@ -258,7 +250,7 @@ msgstr ""
 "qilish uchun tashkil etilgan, biz mijozlarni qadrlaymiz va obro‘mizni himoya "
 "qilamiz."
 
-#: app_main/templates/app_main/index.html:138
+#: app_main/templates/app_main/index.html:141
 msgid ""
 "У Нас более <span class=\"text-sm xl:text-3xl text-[#ed4721]\">25 лет опыта</"
 "span> в сварочных работах нержавеющей стали и монтажа оборудования "
@@ -268,7 +260,7 @@ msgstr ""
 "uskunalarini montaj qilish bo‘yicha <span class='text-3xl text-[#ed4721]'>25 "
 "yildan ortiq tajriba</span> mavjud."
 
-#: app_main/templates/app_main/index.html:142
+#: app_main/templates/app_main/index.html:145
 msgid ""
 "Независимо от того, строите ли вы новый офис или обновляете вентиляцию, вы "
 "можете рассчитывать на наши профессиональные и доступные услуги. Мы работаем "
@@ -280,19 +272,22 @@ msgstr ""
 "mumkin. Biz siz bilan birgalikda ventilyatsiya tizimlaringizni ta’mirlash "
 "yoki o‘rnatishni ta’minlash uchun ishlaymiz."
 
-#: app_main/templates/app_main/index.html:145
+#: app_main/templates/app_main/index.html:148
+#: app_main/templates/app_main/index2.html:31
 msgid "Тимур Хисамов"
 msgstr "Timur Hisamov"
 
-#: app_main/templates/app_main/index.html:146
+#: app_main/templates/app_main/index.html:149
 msgid "Директор HITIUM"
 msgstr "HITIUM direktori"
 
-#: app_main/templates/app_main/index.html:158
+#: app_main/templates/app_main/index.html:161
+#: app_main/templates/app_main/index2.html:139
+#: templates/components/_nav2.html:11
 msgid "Наши клиенты"
 msgstr "Bizning ishlarimiz"
 
-#: app_main/templates/app_main/index.html:160
+#: app_main/templates/app_main/index.html:163
 msgid ""
 "\n"
 "                    Мы постоянно расширяем нашу систему, чтобы "
@@ -302,8 +297,78 @@ msgid ""
 "                "
 msgstr ""
 "\n"
-"Mijozlar talabi normaivlarga amal qilish maqsadida, biz har doim ishlash "
+"Mijozlar talabi normativlarga amal qilish maqsadida, biz har doim ishlash "
 "texnikamiz va tizimlarimizni yangilab boramiz"
+#: app_main/templates/app_main/index2.html:7
+msgid "HITIUM — инженерные системы и монтаж"
+msgstr "HITIUM — muhandislik tizimlari va montaj"
+
+#: app_main/templates/app_main/index2.html:8
+msgid ""
+"Мы создаём надёжные инженерные решения, которые делают здания комфортными, "
+"безопасными и энергоэффективными."
+msgstr ""
+"Biz binolarni qulay, xavfsiz va energiya tejamkor qiladigan ishonchli "
+"muhandislik yechimlarini yaratamiz."
+
+#: app_main/templates/app_main/index2.html:14
+msgid "Написать в Telegram"
+msgstr "Telegram orqali yozish"
+
+#: app_main/templates/app_main/index2.html:19
+#: templates/components/_nav2.html:8
+msgid "О компании"
+msgstr "Kompaniya haqida"
+
+#: app_main/templates/app_main/index2.html:21
+msgid ""
+"HITIUM — эксперт в области проектирования, монтажа и обслуживания инженерных "
+"систем. Мы объединяем технологии, опыт и инновации, чтобы создавать решения, "
+"отвечающие самым высоким стандартам качества."
+msgstr ""
+"HITIUM — muhandislik tizimlarini loyihalash, montaj qilish va texnik xizmat "
+"ko‘rsatish sohasidagi ekspert. Biz eng yuqori sifat standartlariga javob "
+"beradigan yechimlarni yaratish uchun texnologiya, tajriba va innovatsiyalarni "
+"birlashtiramiz."
+
+#: app_main/templates/app_main/index2.html:28
+msgid "Наша миссия"
+msgstr "Bizning missiyamiz"
+
+#: app_main/templates/app_main/index2.html:30
+msgid ""
+"Улучшать конкурентоспособность клиентов, превращая современные технологии в "
+"реальные результаты и преимущества."
+msgstr ""
+"Mijozlarimiz raqobatbardoshligini oshirish, zamonaviy texnologiyalarni real "
+"natijalar va ustunliklarga aylantirish."
+
+#: app_main/templates/app_main/index2.html:36
+#: app_main/templates/app_main/service_detail.html:37
+#: templates/components/_nav.html:29
+msgid "Наши услуги"
+msgstr "Bizning xizmatlarimiz"
+
+#: app_main/templates/app_main/index2.html:50
+msgid "Отзывы"
+msgstr "Fikrlar"
+
+#: app_main/templates/app_main/index2.html:122
+#: templates/components/_nav2.html:10
+msgid "Проекты"
+msgstr "Loyihalar"
+
+#: app_main/templates/app_main/index2.html:134
+msgid "Проекты пока не добавлены"
+msgstr "Loyihalar hali qo‘shilmagan"
+
+#: app_main/templates/app_main/index2.html:151
+msgid "Сайт организации"
+msgstr "Tashkilot sayti"
+
+#: app_main/templates/app_main/index2.html:159
+msgid "Клиенты пока не добавлены"
+msgstr "Mijozlar hali qo‘shilmagan"
 
 #: app_main/templates/app_main/our_services.html:40
 msgid "Специальное предложение"
@@ -313,8 +378,9 @@ msgstr "Maxsus taklif"
 msgid ""
 "На все изготовленное нами оборудование дается <br><span class=\"text-"
 "[#ed4721] font-bold\">1 год гарантии</span>"
-msgstr "Biz ishlab chiqargan barcha uskunalarga <br><span class=\"text-"
-"[#ed4721] font-bold\">1 yil</span> kafolat beriladi."
+msgstr ""
+"Biz ishlab chiqargan barcha uskunalarga <br><span class=\"text-[#ed4721] "
+"font-bold\">1 yil kafolat</span> beriladi."
 
 #: app_main/templates/app_main/our_services.html:42
 msgid "Инвестируйте свой капитал для развития экономики Узбекистана"
@@ -322,98 +388,90 @@ msgstr ""
 "Kapitalingizni O‘zbekiston iqtisodiyotini rivojlantirishga investitsiya "
 "qiling"
 
-#: app_main/templates/app_main/service_detail.html:37
-#: templates/components/_nav.html:29
-msgid "Наши услуги"
-msgstr "Bizning xizmatlarimiz"
-
-#: app_main/templates/app_main/service_detail.html:38
-msgid "Вентиляция бассейнов"
-msgstr "Basseyn ventilyatsiyasi"
-
-#: app_main/templates/app_main/service_detail.html:41
-msgid ""
-"Вентиляция бассейна – инженерная система, которая поддерживает оптимальные "
-"микроклиматические условия на объекте. Если такая система отсутствует, либо "
-"отрегулирована и настроена некорректно, то в бассейне не удастся достичь "
-"оптимальных параметров по влажности и температуре, будет чересчур душно. "
-"Одна из основных физических характеристик воды – испарение, а бассейн, с "
-"учетом большой площади поверхности, демонстрирует очень высокие показатели "
-"испарения."
-msgstr ""
-"Basseyn ventilyatsiyasi – obyektda optimal mikroiqlim sharoitlarini saqlab "
-"turuvchi muhandislik tizimidir. Agar bunday tizim mavjud bo‘lmasa yoki "
-"noto‘g‘ri sozlangan bo‘lsa, basseynda namlik va haroratning optimal "
-"darajasiga erishish qiyin bo‘ladi va juda dim bo‘lib qoladi. Suvning asosiy "
-"fizik xususiyatlaridan biri – bug‘lanish bo‘lib, basseyn katta sirt "
-"maydoniga ega bo‘lgani uchun bug‘lanish darajasi juda yuqori bo‘ladi."
-
-#: app_main/templates/app_main/service_detail.html:47
+#: app_main/templates/app_main/service_detail.html:45
 msgid "Ценовая политика"
 msgstr "Narx siyosati"
 
-#: app_main/templates/app_main/service_detail.html:48
+#: app_main/templates/app_main/service_detail.html:46
 msgid "Стоимость рассчитывается на этапе подготовки коммерческого предложения."
-msgstr "Narx tijorat taklifini tayyorlash bosqichida hisoblanadi."
+msgstr ""
+"Narx tijorat taklifini tayyorlash bosqichida hisoblab chiqiladi."
 
-#: app_main/templates/app_main/service_detail.html:52
+#: app_main/templates/app_main/service_detail.html:50
 msgid "Огромный опыт"
 msgstr "Katta tajriba"
 
-#: app_main/templates/app_main/service_detail.html:53
+#: app_main/templates/app_main/service_detail.html:51
 msgid "За время существования нашей компании мы выполнили более 300 работ."
 msgstr ""
-"Kompaniyamiz faoliyat yuritgan davr mobaynida 300 dan ortiq ishni bajardik."
+"Kompaniyamiz faoliyati davomida 300 dan ortiq ishlarni amalga oshirdik."
 
-#: app_main/templates/app_main/service_detail.html:57
+#: app_main/templates/app_main/service_detail.html:55
 msgid "Выполняем в срок"
-msgstr "O‘z vaqtida bajaramiz"
+msgstr "Belgilangan muddatda bajariladi"
 
-#: app_main/templates/app_main/service_detail.html:58
+#: app_main/templates/app_main/service_detail.html:56
 msgid ""
 "Все работы выполняются в обговоренные с клиентов время и ни на с секундочку "
 "позже!"
 msgstr ""
-"Barcha ishlar mijozlar bilan kelishilgan vaqtda bajariladi, va biron bir "
-"soniya kechikmasdan!"
+"Barcha ishlar mijozlar bilan kelishilgan vaqtda va bir soniya ham "
+"kechiktirilmasdan bajariladi!"
 
-#: app_main/templates/app_main/service_detail.html:62
+#: app_main/templates/app_main/service_detail.html:60
 msgid "Гарантия качества"
 msgstr "Sifat kafolati"
 
-#: app_main/templates/app_main/service_detail.html:63
+#: app_main/templates/app_main/service_detail.html:61
 msgid "На все изготовленное нами оборудование дается 1 год гарантии."
-msgstr "Biz ishlab chiqargan barcha uskunalarga 1 yil kafolat beriladi."
+msgstr ""
+"Biz ishlab chiqargan barcha uskunalarga 1 yil kafolat beriladi."
 
-#: app_main/templates/app_main/service_detail.html:72
+#: app_main/templates/app_main/service_detail.html:70
 msgid ""
 "Для подробностей по услуге пишитеили звоните по номеру +998 97 445 88 38"
 msgstr ""
-"Xizmat tafsilotlari uchun yozing yoki +998 97 445 88 38 raqamiga qo‘ng‘iroq "
-"qiling"
+"Xizmat bo‘yicha batafsil ma’lumot olish uchun yozing yoki +998 97 445 88 38 "
+"raqamiga qo‘ng‘iroq qiling."
 
-#: app_main/templates/app_main/service_detail.html:85
+#: app_main/templates/app_main/service_detail.html:83
 msgid "Всегда на связи"
 msgstr "Har doim aloqadamiz"
 
-#: app_main/templates/app_main/service_detail.html:89
+#: app_main/templates/app_main/service_detail.html:87
 msgid "Сертифицированные специалисты"
-msgstr "Sertifikatlangan mutaxassislar."
+msgstr "Sertifikatlangan mutaxassislar"
 
-#: app_main/templates/app_main/service_detail.html:93
+#: app_main/templates/app_main/service_detail.html:91
 msgid "Гарантия & Тех. поддержка"
-msgstr "Texnik yordam ?"
+msgstr "Kafolat va texnik yordam"
 
+#: app_main/urls.py:8
+msgid "our-services"
+msgstr "xizmatlarimiz"
+
+#: app_main/urls.py:9
+msgid "contacts"
+msgstr "kontaktlar"
+
+#: templates/admin/auth/user/change_password.html:8
+#: templates/admin/auth/user/change_password.html:34
+msgid "Change password"
+msgstr "Parolni o‘zgartirish"
+
+#: templates/admin/auth/user/change_password.html:29
+msgid "Назад"
+msgstr "Orqaga"
 #: templates/base.html:9
 msgid "Установка и монтаж промышленного оборудования в Узбекистане"
-msgstr "Sanoat uskunalarini o‘rnatish"
+msgstr "O‘zbekistonda sanoat uskunalarini o‘rnatish va montaj qilish"
 
 #: templates/base.html:16
 msgid ""
 "Профессиональная установка и монтаж промышленного оборудования в "
 "Узбекистане. Высокое качество и надежность."
 msgstr ""
-"O'zbekistonda sanoat uskunalarini professional o'rnatish va montaj qilish. "
+"O‘zbekistonda sanoat uskunalarini professional o‘rnatish va montaj qilish. "
 "Yuqori sifat va ishonchlilik."
 
 #: templates/base.html:20
@@ -422,98 +480,92 @@ msgid ""
 "Ташкент, Самарканд, Бухара, Навои, Фергана, Андижан, Наманган, "
 "промышленность, качество, надежность, Hitium.uz"
 msgstr ""
-"Uskunalarni o'rnatish, sanoat uskunalarini montaj qilish, O'zbekiston, "
-"Toshkent, Samarqand, Buxoro, Navoi, Farg'ona, Andijon, Namangan, sanoat, "
-"sifat, ishonchlilik, Hitium.uz"
+"Uskunalarni o‘rnatish, sanoat uskunalarini montaj qilish, O‘zbekiston, "
+"Toshkent, Samarqand, Buxoro, Navoiy, Farg‘ona, Andijon, Namangan, "
+"sanoat, sifat, ishonchlilik, Hitium.uz"
 
-#: templates/base.html:27 templates/base.html:39
+#: templates/base.html:27
+#: templates/base.html:39
 msgid "Монтаж промышленного оборудования в Узбекистане"
-msgstr "Sanoat uskunalarini o‘rnatish"
+msgstr "O‘zbekistonda sanoat uskunalarini montaj qilish"
 
 #: templates/base.html:31
 msgid ""
 "Профессиональный монтаж промышленного оборудования с гарантией качества в "
 "Узбекистане."
 msgstr ""
-"O'zbekistonda sanoat uskunalarini sifat kafolati bilan professional montaj "
+"O‘zbekistonda sanoat uskunalarini sifat kafolati bilan professional montaj "
 "qilish."
 
 #: templates/base.html:40
 msgid ""
 "Профессиональный монтаж промышленного оборудования с гарантией качества."
-msgstr "Sanoat uskunalarini o‘rnatish"
+msgstr "Sifat kafolati bilan sanoat uskunalarini professional montaj qilish"
 
-#: templates/base.html:75
-msgid "Наши улуги"
-msgstr "Bizning xizmatlarimiz"
+#: templates/base2.html:8
+msgid "HITIUM — Инженерные системы и монтаж"
+msgstr "HITIUM — Muhandislik tizimlari va montaj"
 
-#: templates/components/_footer.html:6
+#: templates/components/_footer.html:7
 msgid "Давайте работать вместе"
 msgstr "Keling, birga ishlaymiz"
 
-#: templates/components/_footer.html:13
+#: templates/components/_footer.html:14
 msgid "Режим работы"
-msgstr "Ish vaqti"
+msgstr "Ish tartibi"
 
-#: templates/components/_footer.html:16
+#: templates/components/_footer.html:17
 msgid "Вс ЗАКРЫТО"
-msgstr "Yak YOPIQ"
+msgstr "Yakshanba YOPIQ"
 
-#: templates/components/_footer.html:25
-msgid "Мы скоро откроемся"
-msgstr "Biz tez orada ochilamiz"
+#: templates/components/_footer.html:26
+msgid "Город Ташкент, Яшнабадский район, ул. Оханграбо, 1 дом"
+msgstr "Toshkent shahri, Yashnobod tumani, Oxangrabo ko‘chasi, 1-uy"
 
-#: templates/components/_footer.html:32
+#: templates/components/_footer.html:33
 msgid "Тел. номер"
-msgstr "Tel. raqam"
-
-#: templates/components/_footer.html:34
-msgid "Пн - Сб 9.00 - 18.00"
-msgstr "Dus - Sha 9.00 - 18.00"
+msgstr "Telefon raqami"
 
 #: templates/components/_footer.html:35
+msgid "Пн - Сб 9.00 - 18.00"
+msgstr "Dushanba - Shanba 9:00 - 18:00"
+
+#: templates/components/_footer.html:36
 msgid "Позвоните нам 24/7"
-msgstr "Qo‘ng‘iroq qilish"
+msgstr "Bizga 24/7 qo‘ng‘iroq qiling"
+
+#: templates/components/_footer2.html:5
+msgid "Свяжитесь с нами — мы ответим на все вопросы."
+msgstr "Biz bilan bog‘laning — barcha savollaringizga javob beramiz."
+
+#: templates/components/_footer2.html:9
+msgid "Ваше имя"
+msgstr "Ismingiz"
+
+#: templates/components/_footer2.html:12
+msgid "Ваш адрес"
+msgstr "Manzilingiz"
+
+#: templates/components/_footer2.html:19
+msgid "Ваше сообщение"
+msgstr "Xabaringiz"
+
+#: templates/components/_footer2.html:42
+msgid "Все права защищены."
+msgstr "Barcha huquqlar himoyalangan."
+
+#: templates/components/_mobile_menu.html:12
+msgid "Наши улуги"
+msgstr "Bizning xizmatlarimiz"
 
 #: templates/components/_nav.html:8
 msgid "Написать в телеграм"
-msgstr "Biz bilan bog'laning"
+msgstr "Telegram orqali yozish"
 
-#~ msgid "Fullname"
-#~ msgstr "To'liq ismingiz"
+#: templates/components/_nav2.html:9
+msgid "Услуги"
+msgstr "Xizmatlar"
 
-#~ msgid "Address"
-#~ msgstr "Manzilingiz"
-
-#~ msgid "Phone number"
-#~ msgstr "Telefon raqamingiz"
-
-#~ msgid "Type of service"
-#~ msgstr "Xizmat turi"
-
-#~ msgid "Please, choose an option"
-#~ msgstr "Iltimos, xizmat turini tanlang"
-
-#~ msgid "Message"
-#~ msgstr "Xabar"
-
-#~ msgid "About us"
-#~ msgstr "Biz haqimizda"
-
-#~ msgid ""
-#~ "<strong>HITIUM</strong>  started its activity in 1999 as an installation "
-#~ "group specializing in stainless steel welding and food industry equipment "
-#~ "installation. Later, the group began to expand its scope of activity to "
-#~ "oil and gas, chemical, pharmaceutical and other enterprises."
-#~ msgstr ""
-#~ "<strong>HITIUM</strong> 1999-yilda zanglamas po‘latni payvandlash va oziq-"
-#~ "ovqat sanoati uskunalarini o‘rnatishga ixtisoslashgan montaj guruhi "
-#~ "sifatida faoliyatini boshladi. Keyinchalik, guruh o‘z faoliyat doirasini "
-#~ "neft va gaz, kimyo, farmatsevtika hamda boshqa sohalarga kengaytira "
-#~ "boshladi."
-
-msgid "<strong>Теперь HITIUM</strong> также занимается производством промышленного оборудования, установкой линий розлива, изготовлением и монтажом вентиляционных и промышленных кондиционерных систем, водоснабжением и канализацией, холодильным оборудованием, монтажом «под ключ» всех видов котельного оборудования, изоляцией емкостей и трубопроводов."
-msgstr "<strong>Endilikda HITIUM</strong> sanoat uskunalarini ishlab chiqarish, butillash liniyalarini o‘rnatish, ventilyatsiya va sanoat konditsionerlari tizimlarini ishlab chiqarish va o‘rnatish, suv ta’minoti va kanalizatsiya, sovutish tizimlari, barcha turdagi qozon uskunalarini to‘liq tayyor holda o‘rnatish, shuningdek, konteyner va quvurlarni izolyatsiya qilish bilan ham shug‘ullanadi."
-
-msgid "Город Ташкент, Яшнабадский район, ул. Оханграбо, 1 дом"
-msgstr "Toshkent shahri, Yashnabod tumani, Oxangrabo ko'chasi, 1 uy"
+#: templates/components/_nav2.html:12
+msgid "Галерея"
+msgstr "Galereya"
