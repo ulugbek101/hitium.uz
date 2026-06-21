@@ -300,7 +300,7 @@ msgstr "HITIUM direktori"
 #: app_main/templates/app_main/index2.html:139
 #: templates/components/_nav2.html:11
 msgid "Наши клиенты"
-msgstr "Bizning ishlarimiz"
+msgstr "Bizning mijozlarimiz"
 
 #: app_main/templates/app_main/index.html:163
 msgid ""
@@ -314,6 +314,7 @@ msgstr ""
 "\n"
 "Mijozlar talabi normativlarga amal qilish maqsadida, biz har doim ishlash "
 "texnikamiz va tizimlarimizni yangilab boramiz"
+
 #: app_main/templates/app_main/index2.html:7
 msgid "HITIUM — инженерные системы и монтаж"
 msgstr "HITIUM — muhandislik tizimlari va montaj"
@@ -584,3 +585,103 @@ msgstr "Xizmatlar"
 #: templates/components/_nav2.html:12
 msgid "Галерея"
 msgstr "Galereya"
+
+#: templates/base2.html:10
+msgid "Профессиональный монтаж и обслуживание инженерных систем в Узбекистане. Вентиляция, водоснабжение, котельное оборудование, холодильные системы."
+msgstr "O'zbekistonda muhandislik tizimlarini professional o'rnatish va texnik xizmat ko'rsatish. Ventilyatsiya, suv ta'minoti, qozonxona uskunalari, sovutish tizimlari."
+
+#: templates/base2.html:11
+msgid "инженерные системы Ташкент, монтаж оборудования Узбекистан, вентиляция, водоснабжение, котельное оборудование, промышленный монтаж, Hitium"
+msgstr "muhandislik tizimlari Toshkent, uskunalar montaji O'zbekiston, ventilyatsiya, suv ta'minoti, qozonxona uskunalari, sanoat montaji, Hitium"
+
+#: templates/base2.html:17
+msgid "Профессиональный монтаж и обслуживание инженерных систем в Узбекистане."
+msgstr "O'zbekistonda muhandislik tizimlarini professional o'rnatish va texnik xizmat ko'rsatish."
+
+#: app_main/templates/app_main/service_detail.html:4
+msgid "Инженерные системы Узбекистан"
+msgstr "Muhandislik tizimlari O'zbekiston"
+
+#: app_main/templates/app_main/service_detail.html:6
+msgid "инженерные системы, монтаж, Узбекистан, Ташкент, Hitium"
+msgstr "muhandislik tizimlari, montaj, O'zbekiston, Toshkent, Hitium"
+
+#: app_main/templates/app_main/service_detail.html:72
+msgid "Описание услуги"
+msgstr "Xizmat tavsifi"
+
+#: app_main/templates/app_main/service_detail.html:105
+msgid "Все работы выполняются в обговорённые с клиентом сроки."
+msgstr "Barcha ishlar mijoz bilan kelishilgan muddatda bajariladi."
+
+#: app_main/templates/app_main/service_detail.html:141
+msgid "Заинтересованы в услуге?"
+msgstr "Xizmatga qiziqasizmi?"
+
+#: app_main/templates/app_main/service_detail.html:142
+msgid "Свяжитесь с нами — мы подготовим коммерческое предложение"
+msgstr "Biz bilan bog'laning — biz sizga tijorat taklifi tayyorlaymiz"
+
+#: app_main/templates/app_main/our_services.html:10
+msgid "Полный список инженерных услуг компании HITIUM в Узбекистане: вентиляция, водоснабжение, котельное оборудование, холодильные системы, монтаж промышленного оборудования."
+msgstr "O'zbekistondagi HITIUM kompaniyasining muhandislik xizmatlari to'liq ro'yxati: ventilyatsiya, suv ta'minoti, qozonxona uskunalari, sovutish tizimlari, sanoat uskunalarini montaj qilish."
+
+#: app_main/templates/app_main/our_services.html:25
+msgid "Услуги пока не добавлены"
+msgstr "Xizmatlar hali qo'shilmagan"
+
+#: app_main/templates/app_main/contacts.html:5
+msgid "Свяжитесь с HITIUM. Заказ монтажа инженерных систем в Узбекистане. Телефон: +998 97 445 88 38. Ташкент, Яшнабадский район."
+msgstr "HITIUM bilan bog'laning. O'zbekistonda muhandislik tizimlarini montaj buyurtma qilish. Telefon: +998 97 445 88 38. Toshkent, Yashnobod tumani."
+
+#: app_main/templates/app_main/contacts.html:7
+msgid "Свяжитесь с HITIUM — профессиональный монтаж инженерных систем в Узбекистане."
+msgstr "HITIUM bilan bog'laning — O'zbekistonda muhandislik tizimlarini professional montaj qilish."
+
+#: templates/components/_footer2.html:50
+msgid "Наш адрес на карте"
+msgstr "Xaritadagi manzilimiz"
+
+#: templates/components/_footer2.html:57
+msgid "Сайт разработан"
+msgstr "Saytni ishlab chiqqan"
+
+#: app_main/templates/app_main/project_detail.html:4
+msgid "Выполненные работы"
+msgstr "Bajarilgan ishlar"
+
+#: app_main/templates/app_main/project_detail.html:6
+msgid "выполненные работы"
+msgstr "bajarilgan ishlar"
+
+#: app_main/templates/app_main/project_detail.html:6
+msgid "монтаж инженерных систем"
+msgstr "muhandislik tizimlarini montaj qilish"
+
+#: app_main/templates/app_main/project_detail.html:6
+msgid "Узбекистан"
+msgstr "O'zbekiston"
+
+#: app_main/templates/app_main/project_detail.html:70
+msgid "О проекте"
+msgstr "Loyiha haqida"
+
+#: app_main/templates/app_main/project_detail.html:88
+msgid "Завершён"
+msgstr "Yakunlangan"
+
+#: app_main/templates/app_main/project_detail.html:103
+msgid "Дата завершения"
+msgstr "Yakunlanish sanasi"
+
+#: app_main/templates/app_main/project_detail.html:110
+msgid "Фотографий"
+msgstr "Fotosuratlar"
+
+#: app_main/templates/app_main/project_detail.html:120
+msgid "Исполнитель"
+msgstr "Ijrochi"
+
+#: app_main/templates/app_main/project_detail.html:130
+msgid "Фотографии проекта"
+msgstr "Loyiha fotosuratlari"

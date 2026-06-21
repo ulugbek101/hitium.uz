@@ -176,10 +176,12 @@ msgid ""
 "не могут определить требования самостоятельно.\n"
 "                        "
 msgstr ""
+"\n"
 "A skilled ventilation and heating system designer studies the needs of a "
 "building’s end users (employees or residents), identifies specific features, "
 "and gathers data to assess indoor air quality — even when users cannot "
-"clearly define their requirements themselves."
+"clearly define their requirements themselves.\n"
+" "
 
 
 msgid "Тех. поддержка ?"
@@ -194,9 +196,11 @@ msgid ""
 "услуг от ввода в эксплуатацию до технического обслуживания.\n"
 "                        "
 msgstr ""
+"\n"
 "Our air conditioning maintenance specialists ensure reliable equipment "
 "operation even under the most demanding conditions. We offer a full range "
-"of services — from commissioning to ongoing technical maintenance."
+"of services — from commissioning to ongoing technical maintenance.\n"
+" "
 
 
 msgid "Почему мы ?"
@@ -223,7 +227,7 @@ msgstr ""
 "- Attention to detail ensures precision, speed, and high-quality results, "
 "minimizing equipment downtime through thorough site analysis before work "
 "begins.\n"
-"- Competitive pricing благодаря extensive experience and optimized business "
+"- Competitive pricing thanks to extensive experience and optimized business "
 "processes.\n"
 "In short, our company was created to handle complex challenges — we value "
 "our clients and protect our reputation."
@@ -270,8 +274,11 @@ msgid ""
 "требованиям.\n"
 "                "
 msgstr ""
+"\n"
 "We continuously expand and improve our systems to meet the needs of local "
-"clients and comply with regulatory requirements."
+"clients and comply with regulatory requirements.\n"
+" "
+
 msgid "HITIUM — инженерные системы и монтаж"
 msgstr "HITIUM — Engineering systems and installation"
 
@@ -454,3 +461,79 @@ msgstr "Services"
 
 msgid "Галерея"
 msgstr "Gallery"
+
+
+msgid "Профессиональный монтаж и обслуживание инженерных систем в Узбекистане. Вентиляция, водоснабжение, котельное оборудование, холодильные системы."
+msgstr "Professional installation and maintenance of engineering systems in Uzbekistan. Ventilation, water supply, boiler equipment, refrigeration systems."
+
+msgid "инженерные системы Ташкент, монтаж оборудования Узбекистан, вентиляция, водоснабжение, котельное оборудование, промышленный монтаж, Hitium"
+msgstr "engineering systems Tashkent, equipment installation Uzbekistan, ventilation, water supply, boiler equipment, industrial installation, Hitium"
+
+msgid "Профессиональный монтаж и обслуживание инженерных систем в Узбекистане."
+msgstr "Professional installation and maintenance of engineering systems in Uzbekistan."
+
+msgid "Инженерные системы Узбекистан"
+msgstr "Engineering systems Uzbekistan"
+
+msgid "инженерные системы, монтаж, Узбекистан, Ташкент, Hitium"
+msgstr "engineering systems, installation, Uzbekistan, Tashkent, Hitium"
+
+msgid "Описание услуги"
+msgstr "Service description"
+
+msgid "Все работы выполняются в обговорённые с клиентом сроки."
+msgstr "All work is completed within the timeframe agreed with the client."
+
+msgid "Заинтересованы в услуге?"
+msgstr "Interested in this service?"
+
+msgid "Свяжитесь с нами — мы подготовим коммерческое предложение"
+msgstr "Contact us — we will prepare a commercial proposal for you"
+
+msgid "Полный список инженерных услуг компании HITIUM в Узбекистане: вентиляция, водоснабжение, котельное оборудование, холодильные системы, монтаж промышленного оборудования."
+msgstr "Full list of HITIUM engineering services in Uzbekistan: ventilation, water supply, boiler equipment, refrigeration systems, industrial equipment installation."
+
+msgid "Услуги пока не добавлены"
+msgstr "No services have been added yet"
+
+msgid "Свяжитесь с HITIUM. Заказ монтажа инженерных систем в Узбекистане. Телефон: +998 97 445 88 38. Ташкент, Яшнабадский район."
+msgstr "Contact HITIUM. Order engineering system installation in Uzbekistan. Phone: +998 97 445 88 38. Tashkent, Yashnabad district."
+
+msgid "Свяжитесь с HITIUM — профессиональный монтаж инженерных систем в Узбекистане."
+msgstr "Contact HITIUM — professional installation of engineering systems in Uzbekistan."
+
+msgid "Наш адрес на карте"
+msgstr "Our address on the map"
+
+msgid "Сайт разработан"
+msgstr "Website developed by"
+
+msgid "Выполненные работы"
+msgstr "Completed projects"
+
+msgid "выполненные работы"
+msgstr "completed projects"
+
+msgid "монтаж инженерных систем"
+msgstr "engineering system installation"
+
+msgid "Узбекистан"
+msgstr "Uzbekistan"
+
+msgid "О проекте"
+msgstr "About the project"
+
+msgid "Завершён"
+msgstr "Completed"
+
+msgid "Дата завершения"
+msgstr "Completion date"
+
+msgid "Фотографий"
+msgstr "Photos"
+
+msgid "Исполнитель"
+msgstr "Contractor"
+
+msgid "Фотографии проекта"
+msgstr "Project photos"
