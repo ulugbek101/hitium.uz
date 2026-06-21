@@ -1,28 +1,233 @@
 {% extends 'base2.html' %}
+{% load i18n %}
+
+{% block title %}{{ project.name }} | HITIUM — {% trans 'Выполненные работы' %}{% endblock %}
+{% block meta_description %}{{ project.description|truncatechars:155 }}{% endblock %}
+{% block meta_keywords %}{{ project.name }}, {% trans 'выполненные работы' %}, {% trans 'монтаж инженерных систем' %}, HITIUM, {% trans 'Узбекистан' %}{% if project.finished_date %}, {{ project.finished_date|date:"Y" }}{% endif %}{% endblock %}
+
+{% block og_title %}{{ project.name }} | HITIUM{% endblock %}
+{% block og_description %}{{ project.description|truncatechars:155 }}{% endblock %}
+{% if project.project_images.first %}
+{% block og_image %}https://hitium.uz{{ project.project_images.first.image.url }}{% endblock %}
+{% endif %}
+
+{% block twitter_title %}{{ project.name }} | HITIUM{% endblock %}
+{% block twitter_description %}{{ project.description|truncatechars:155 }}{% endblock %}
+{% if project.project_images.first %}
+{% block twitter_image %}https://hitium.uz{{ project.project_images.first.image.url }}{% endblock %}
+{% endif %}
+
+{% block canonical %}<link rel="canonical" href="https://hitium.uz/ru/projects/{{ project.slug_ru }}/{{ project.id }}/"/>{% endblock %}
+
+{% block hreflang %}
+<link rel="alternate" hreflang="ru" href="https://hitium.uz/ru/projects/{{ project.slug_ru }}/{{ project.id }}/"/>
+<link rel="alternate" hreflang="uz" href="https://hitium.uz/uz/projects/{{ project.slug_uz }}/{{ project.id }}/"/>
+<link rel="alternate" hreflang="en" href="https://hitium.uz/en/projects/{{ project.slug_en }}/{{ project.id }}/"/>
+<link rel="alternate" hreflang="x-default" href="https://hitium.uz/ru/projects/{{ project.slug_ru }}/{{ project.id }}/"/>
+{% endblock %}
+
+{% block structured_data %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "Article",
+            "headline": "{{ project.name|escapejs }}",
+            "description": "{{ project.description|truncatechars:200|escapejs }}",
+            "datePublished": "{{ project.finished_date|date:'Y-m-d' }}",
+            "dateModified": "{{ project.updated|date:'Y-m-d' }}",
+            "url": "https://hitium.uz{{ request.path }}",
+            "publisher": {
+                "@type": "LocalBusiness",
+                "name": "HITIUM",
+                "url": "https://hitium.uz",
+                "telephone": "+998974458838",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Ташкент",
+                    "addressRegion": "Яшнабадский район",
+                    "addressCountry": "UZ"
+                }
+            }{% if project.project_images.first %},
+            "image": {
+                "@type": "ImageObject",
+                "url": "https://hitium.uz{{ project.project_images.first.image.url }}"
+            }{% endif %}
+        },
+        {
+            "@type": "LocalBusiness",
+            "name": "HITIUM",
+            "url": "https://hitium.uz",
+            "telephone": "+998974458838",
+            "sameAs": ["https://t.me/hitium", "https://www.instagram.com/hitiumuz/"]
+        }
+    ]
+}
+</script>
+{% endblock %}
 
 {% block content %}
-    <div class="my-10 mx-auto">
-        <div class="flex flex-row items-center justify-center lg:justify-start gap-2 container m-auto mb-5 lg:mb-0">
-            <a href="/" class="text-[#ff5a00] text-xs lg:text-sm underline">Главная страница</a>
-            <span class="text-[#a5a5a5] text-xs lg:text-sm">/</span>
-            <span class="text-[#a5a5a5] text-xs lg:text-sm">{{ project.name|truncatechars:"20" }}</span>
-        </div>
-        <h2 class="text-white text-2xl lg:text-4xl text-center break-words">{{ project.name }}</h2>
-    </div>
 
-    {% if project.project_images.exists %}
-        <div class="container mx-auto grid grid-cols-12 gap-2 px-4 lg:px-0 gap-4 lg:gap-0">
-            {% for project_image in project.project_images.all %}
-                <div class="col-span-12 lg:col-span-3 flex flex-col gap-1">
-                    <img src="{{ project_image.image.url }}"alt="{{ project.name }}" class="rounded-md w-full h-full object-cover">
-                    <p class="break-words text-[#a5a5a5] text-justify text-sm px-2">{{ project_image.description|default_if_none:"" }}</p>
-                </div>
-            {% endfor %}
-        </div>
+<!-- Breadcrumb -->
+<nav class="max-w-5xl mx-auto px-4 lg:px-5 pt-4 pb-1 flex items-center gap-2 text-xs" aria-label="Breadcrumb">
+    <a href="{% url 'home_page' %}" class="text-[#ff5a00] hover:underline font-accent">{% trans 'Главная' %}</a>
+    <span class="text-white/30">/</span>
+    <span class="text-[#a5a5a5] font-accent">{{ project.name|truncatechars:40 }}</span>
+</nav>
+
+<!-- Hero Banner -->
+<section class="relative h-[38vh] min-h-[220px] max-h-[380px] overflow-hidden">
+    {% with first_img=project.project_images.first %}
+    {% if first_img %}
+    <div class="absolute inset-0 bg-cover bg-center scale-105"
+         style="background-image: url('{{ first_img.image.url }}');"></div>
+    <div class="absolute inset-0 bg-linear-to-b from-black/65 via-black/50 to-[#0e0f10]"></div>
+    {% else %}
+    <div class="absolute inset-0 bg-linear-to-br from-[#ff5a00]/15 to-[#0e0f10]"></div>
     {% endif %}
-
-    <div class="container mx-auto mt-10 mb-5 text-center text-[#a5a5a5]">
-        {{ project.description|linebreaksbr }}
+    {% endwith %}
+    <div class="relative h-full flex flex-col items-center justify-center text-center px-4 gap-3">
+        <span class="font-accent text-[#ff5a00] text-xs uppercase tracking-widest">HITIUM — {% trans 'Проекты' %}</span>
+        <h1 class="font-display text-2xl sm:text-3xl lg:text-5xl font-bold text-white drop-shadow-lg max-w-3xl leading-tight">{{ project.name }}</h1>
+        {% if project.finished_date %}
+        <span class="font-accent text-xs text-white/60 bg-white/10 px-3 py-1 rounded-full border border-white/10">
+            {% trans 'Завершён' %}: {{ project.finished_date|date:"F Y" }}
+        </span>
+        {% endif %}
     </div>
+</section>
+
+<!-- Description + Meta side by side -->
+<section class="max-w-5xl mx-auto px-4 lg:px-5 py-10 lg:py-16">
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 items-start">
+
+        <!-- Left: Description -->
+        <div class="lg:col-span-3">
+            <span class="font-accent text-[10px] lg:text-xs tracking-widest uppercase text-[#ff5a00]">{% trans 'О проекте' %}</span>
+            <h2 class="font-display text-xl lg:text-2xl font-bold text-white mt-2 mb-4">{{ project.name }}</h2>
+            <div class="text-[#a5a5a5] text-sm lg:text-base leading-relaxed lg:leading-loose text-justify">
+                {{ project.description|linebreaksbr }}
+            </div>
+
+            <div class="flex flex-wrap gap-3 mt-8">
+                <a href="tel:+998974458838"
+                   class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#ff5a00] font-semibold text-white text-sm hover:bg-[#d94e00] active:scale-95 transition shadow-lg shadow-[#ff5a00]/20">
+                    <span class="material-symbols-outlined" style="font-size:18px;">call</span>
+                    +998 97 445 88 38
+                </a>
+                <a href="https://t.me/hitium"
+                   class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-white/10 font-semibold text-white text-sm hover:bg-white/20 active:scale-95 transition">
+                    <span class="material-icons text-sm">send</span>
+                    Telegram
+                </a>
+            </div>
+        </div>
+
+        <!-- Right: Project meta 2×2 -->
+        <div class="lg:col-span-2 grid grid-cols-2 gap-3">
+            {% if project.finished_date %}
+            <div class="bg-white/5 rounded-xl p-4 text-center hover:bg-white/8 transition col-span-2">
+                <span class="material-symbols-outlined text-[#ff5a00]" style="font-size:32px;">calendar_month</span>
+                <p class="font-accent font-semibold text-white mt-2 text-xs lg:text-sm">{% trans 'Дата завершения' %}</p>
+                <p class="text-[#ff5a00] font-display font-bold text-base mt-1">{{ project.finished_date|date:"F Y" }}</p>
+            </div>
+            {% endif %}
+            <div class="bg-white/5 rounded-xl p-4 text-center hover:bg-white/8 transition group">
+                <span class="material-symbols-outlined text-[#ff5a00] group-hover:scale-110 transition-transform inline-block" style="font-size:32px;">photo_library</span>
+                <p class="font-accent font-semibold text-white mt-2 text-xs lg:text-sm">{% trans 'Фотографий' %}</p>
+                <p class="text-[#ff5a00] font-display font-bold text-xl mt-1">{{ project.project_images.count }}</p>
+            </div>
+            <div class="bg-white/5 rounded-xl p-4 text-center hover:bg-white/8 transition group">
+                <span class="material-symbols-outlined text-[#ff5a00] group-hover:scale-110 transition-transform inline-block" style="font-size:32px;">verified</span>
+                <p class="font-accent font-semibold text-white mt-2 text-xs lg:text-sm">{% trans 'Гарантия качества' %}</p>
+                <p class="text-[#a5a5a5] text-[10px] mt-1 leading-snug">{% trans 'На все изготовленное нами оборудование дается 1 год гарантии.' %}</p>
+            </div>
+            <div class="bg-white/5 rounded-xl p-4 text-center hover:bg-white/8 transition group col-span-2">
+                <span class="material-symbols-outlined text-[#ff5a00] group-hover:scale-110 transition-transform inline-block" style="font-size:32px;">handshake</span>
+                <p class="font-accent font-semibold text-white mt-2 text-xs lg:text-sm">{% trans 'Исполнитель' %}</p>
+                <p class="text-[#a5a5a5] text-[10px] mt-1">HITIUM — {% trans 'Инженерные системы Узбекистан' %}</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- Image gallery -->
+{% if project.project_images.exists %}
+<div class="max-w-5xl mx-auto px-4 lg:px-5">
+    <div class="h-px bg-white/10"></div>
+</div>
+
+<section class="max-w-5xl mx-auto px-4 lg:px-5 py-8 lg:py-12">
+    <span class="font-accent text-[10px] lg:text-xs tracking-widest uppercase text-[#ff5a00]">{% trans 'Фотографии проекта' %}</span>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-4 mt-4">
+        {% for img in project.project_images.all %}
+        <div class="group cursor-pointer preview-project-img"
+             data-src="{{ img.image.url }}"
+             data-caption="{{ img.description|default:'' }}">
+            <div class="relative overflow-hidden rounded-xl">
+                <img src="{{ img.image.url }}"
+                     alt="{{ project.name }}"
+                     class="w-full h-52 lg:h-60 object-cover group-hover:scale-105 transition-transform duration-500"
+                     loading="lazy"/>
+                <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center">
+                    <span class="material-symbols-outlined text-white opacity-0 group-hover:opacity-100 transition-opacity bg-[#ff5a00]/80 rounded-full p-2" style="font-size:22px;">zoom_in</span>
+                </div>
+            </div>
+            {% if img.description %}
+            <p class="text-[#a5a5a5] text-xs mt-1.5 px-1 leading-snug font-accent">{{ img.description }}</p>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+
+<!-- Image lightbox modal -->
+<div id="projectImgModal"
+     class="fixed inset-0 bg-black/92 backdrop-blur-sm hidden flex-col items-center justify-center p-4 z-50">
+    <button id="closeProjModal"
+            class="absolute top-4 right-4 text-white/70 hover:text-[#ff5a00] transition material-symbols-outlined"
+            style="font-size:30px;">close</button>
+    <div class="max-w-4xl w-full flex flex-col items-center gap-4">
+        <img id="projModalImg" src="" alt=""
+             class="max-h-[78vh] max-w-full rounded-xl object-contain shadow-2xl"/>
+        <p id="projModalCaption" class="text-[#a5a5a5] text-sm font-accent text-center max-w-xl leading-relaxed"></p>
+    </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const modal   = document.getElementById("projectImgModal");
+    const modalImg = document.getElementById("projModalImg");
+    const modalCap = document.getElementById("projModalCaption");
+    const closeBtn = document.getElementById("closeProjModal");
+
+    function open(src, caption) {
+        modalImg.src = src;
+        modalCap.textContent = caption;
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+        document.body.style.overflow = "hidden";
+    }
+
+    function close() {
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+        document.body.style.overflow = "";
+        modalImg.src = "";
+    }
+
+    document.querySelectorAll(".preview-project-img").forEach(el => {
+        el.addEventListener("click", () => open(el.dataset.src, el.dataset.caption));
+    });
+
+    closeBtn.addEventListener("click", close);
+    modal.addEventListener("click", e => { if (e.target === modal) close(); });
+    document.addEventListener("keydown", e => { if (e.key === "Escape") close(); });
+});
+</script>
 
 {% endblock content %}

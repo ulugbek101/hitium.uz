@@ -1,81 +1,61 @@
-{% extends 'base.html' %}
-{% load static i18n %}
+{% extends 'base2.html' %}
+{% load i18n %}
+
+{% block title %}{% trans 'Контакты' %} | HITIUM{% endblock %}
+{% block meta_description %}{% trans 'Свяжитесь с HITIUM. Заказ монтажа инженерных систем в Узбекистане. Телефон: +998 97 445 88 38. Ташкент, Яшнабадский район.' %}{% endblock %}
+{% block og_title %}{% trans 'Контакты' %} | HITIUM{% endblock %}
+{% block og_description %}{% trans 'Свяжитесь с HITIUM — профессиональный монтаж инженерных систем в Узбекистане.' %}{% endblock %}
+
+{% block hreflang %}
+{% language 'ru' %}<link rel="alternate" hreflang="ru" href="https://hitium.uz{% url 'contacts' %}"/>{% endlanguage %}
+{% language 'uz' %}<link rel="alternate" hreflang="uz" href="https://hitium.uz{% url 'contacts' %}"/>{% endlanguage %}
+{% language 'en' %}<link rel="alternate" hreflang="en" href="https://hitium.uz{% url 'contacts' %}"/>{% endlanguage %}
+{% language 'ru' %}<link rel="alternate" hreflang="x-default" href="https://hitium.uz{% url 'contacts' %}"/>{% endlanguage %}
+{% endblock %}
 
 {% block content %}
-<header class="relative h-[100vh] w-full"
-        style="background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('{% static 'images/our-services-header-bg.jpg' %}');">
-    <!-- Extra black overlay with opacity 0.3 -->
-    <div class="absolute inset-0 bg-black opacity-30"></div>
+<section class="max-w-5xl mx-auto px-2 lg:px-5 py-8 lg:py-16">
+    <h1 class="font-display text-2xl lg:text-4xl text-[#ff5a00] font-semibold text-center">{% trans 'Контакты' %}</h1>
+    <div class="h-[1px] w-full xl:w-64 bg-[#a5a5a5] m-auto my-2 lg:my-5"></div>
+    <p class="text-[#a5a5a5] mt-2 text-center">{% trans 'Свяжитесь с нами — мы ответим на все вопросы.' %}</p>
 
-    <section class="h-3/4 fade-in opacity-0 translate-y-10 transition-all duration-500 w-full xl:w-[1240px] m-auto relative z-10">
-        {% include 'components/_nav.html' %}
-        <div class="w-full h-full flex items-center px-4">
-            <h1 class="text-4xl w-full xl:text-[80px] flex items-center flex-col gap-2 text-white font-medium relative text-center z-1 py-2">
-                <span class="absolute bg-black bg-opacity-50 inset-0 opacity-50 backdrop-blur-xl z-[-1] rounded"></span>
-                <a href="/" class="text-sm hover:text-[#ed4721] transition">{% trans 'Главная' %}</a>
-                {% trans 'Контакты' %}
-                <br>
-                <br>
-            </h1>
+    <form class="max-w-md mx-auto flex flex-col gap-2 lg:gap-3 mt-6" method="post" action="{% url 'send_email' %}">
+        {% csrf_token %}
+        <input name="full_name" type="text" placeholder="{% trans 'Ваше имя' %}" class="placeholder:text-sm lg:placeholder:text-base bg-white/10 px-3 lg:px-4 py-2 lg:py-3 rounded lg:rounded-lg focus:outline-none focus:ring-1 ring-white" required/>
+        <div class="flex flex-row items-center gap-1">
+            <input name="phone_number" type="tel" placeholder="{% trans 'Номер телефона' %}" class="placeholder:text-sm lg:placeholder:text-base px-3 lg:px-4 py-2 lg:py-3 rounded lg:rounded-lg w-full bg-white/10 focus:outline-none focus:ring-1 ring-white" required/>
+            <input name="address" type="text" placeholder="{% trans 'Ваш адрес' %}" class="placeholder:text-sm lg:placeholder:text-base px-3 lg:px-4 py-2 lg:py-3 rounded lg:rounded-lg w-full bg-white/10 focus:outline-none focus:ring-1 ring-white" required/>
         </div>
-    </section>
-</header>
-<main class="">
-    <section class="flex flex-col gap-10 bg-white py-16 px-4 w-full xl:py-4 xl:w-[1200px] xl:m-auto xl:px-0">
-        <div class="w-full xl:w-1/2 m-auto">
-            <h2 class="text-4xl text-[#252525] text-center">
-                {% trans 'Напишите нам' %}
-            </h2>
-            <p class="text-xl mt-4 text-justify text-[#252525]">
-                {% trans 'Если у вас есть какие то вопросы или хотите заказать у нас услугу, то просто заполните форму и мы с вами обязательно свяжемся' %}
-            </p>
-        </div>
-        <div class="w-full xl:w-1/2 m-auto">
-            <form action="{% url 'send_email' %}" class="flex flex-col gap-5" id="orderForm" method="post">
-                {% csrf_token %}
-                <div class="flex flex-col xl:justify-between xl:flex-row xl:gap-5">
-                    <div class="flex flex-col gap-1 xl:w-full">
-                        <label for="" class="text-[rgba(0, 0, 0, 0.1)] text-sm">{% trans 'Полное имя' %}</label>
-                        <input name="full_name" type="text" class="border border-[rgba(0, 0, 0, 0.2)] p-[0.8rem] outline-none" placeholder="Timur Hisamov" required>
-                    </div>
-                    <div class="flex flex-col gap-1 xl:w-full">
-                        <label for="" class="text-[rgba(0, 0, 0, 0.1)] text-sm">{% trans 'Адрес' %}</label>
-                        <input name="address" type="text" class="border border-[rgba(0, 0, 0, 0.2)] p-[0.8rem] outline-none" placeholder="Tashkent, Bektemir, Muxtor Auezov, 67" required>
-                    </div>
-                </div>
-                <div class="flex flex-col xl:justify-between xl:flex-row xl:gap-5">
-                    <div class="flex flex-col gap-1 xl:w-full">
-                        <label for="" class="text-[rgba(0, 0, 0, 0.1)] text-sm">{% trans 'Номер телефона' %}</label>
-                        <input name="phone_number" type="text" class="border border-[rgba(0, 0, 0, 0.2)] p-[0.8rem] outline-none" placeholder="+998 97 445 88 38" required>
-                    </div>
-                    <div class="flex flex-col gap-1 xl:w-full">
-                        <label for="" class="text-[rgba(0, 0, 0, 0.1)] text-sm">{% trans 'Тип сервиса' %}</label>
-                        <select name="service_id" type="text" class="border border-[rgba(0, 0, 0, 0.2)] p-[0.8rem] outline-none" required>
-                            {% for service in services %}
-                                <option value="{{ service.id }}">{{ service.name }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                </div>
-                <div class="flex flex-col gap-1">
-                    <label for="" class="text-[rgba(0, 0, 0, 0.1)] text-sm">{% trans 'Сообщение' %}</label>
-                    <textarea name="message" type="text" class="resize-none border border-[rgba(0, 0, 0, 0.2)] p-[0.8rem] outline-none w-full" rows="5" required></textarea>
-                </div>
-                <button type="submit" class="w-full text-white bg-[#ed4721] py-2 rounded">{% trans 'Отправить' %}</button>
-            </form>
-        </div>
-    </section>
-    <section class="flex flex-col gap-10 bg-white py-16 px-4 w-full xl:py-4 xl:w-[1200px] xl:px-0 xl:m-auto">
-        <h2 class="text-[#252525] text-4xl text-center">{% trans 'О нас' %}</h2>
-        <p>
-            {% trans '<strong>HITIUM</strong>  начал свою деятельность в 1999 году как монтажная группа, специализирующаяся на сварке нержавеющей стали и установке оборудования для пищевой промышленности. Позже группа начала расширять сферу своей деятельности на предприятия нефтегазовой, химической, фармацевтической и других отраслей.' %}
-            <br>
-            <br>
-            {% trans '<strong>Теперь HITIUM</strong> также занимается производством промышленного оборудования, установкой линий розлива, изготовлением и монтажом вентиляционных и промышленных кондиционерных систем, водоснабжением и канализацией, холодильным оборудованием, монтажом «под ключ» всех видов котельного оборудования, изоляцией емкостей и трубопроводов.' %}
-            <br>
-            <br>
-            {% trans 'Номер телефона' %}: +998 (97) 445 88 38
-        </p>
-    </section>
-</main>
+        <select name="service_id" class="placeholder:text-sm lg:placeholder:text-base px-3 lg:px-4 py-2 lg:py-3 rounded lg:rounded-lg bg-white/10 focus:outline-none focus:ring-1 ring-white" required>
+            {% for service in services %}
+                <option class="text-black" value="{{ service.id }}">{{ service.name }}</option>
+            {% endfor %}
+        </select>
+        <textarea name="message" placeholder="{% trans 'Ваше сообщение' %}" class="placeholder:text-sm lg:placeholder:text-base px-3 lg:px-4 py-2 lg:py-3 rounded lg:rounded-lg bg-white/10 focus:outline-none focus:ring-1 ring-white resize-none" rows="5"></textarea>
+        <button class="bg-[#ff5a00] py-2 lg:py-3 rounded lg:rounded-lg font-semibold lg:font-bold text-white hover:bg-[#d94e00] active:scale-95 transition">{% trans 'Отправить' %}</button>
+    </form>
+
+    <div class="flex flex-row items-center justify-center gap-x-10 max-w-md mt-10 lg:mt-16 m-auto">
+        <a href="https://t.me/hitium" class="flex flex-col items-center gap-2 group">
+            <span class="material-icons text-white transition group-hover:cursor-pointer text-3xl lg:text-6xl group-hover:text-blue-600">telegram</span>
+            <p class="text-[#a5a5a5] text-lg lg:text-xl transition group-hover:text-blue-600">Telegram</p>
+        </a>
+        <a href="https://www.instagram.com/hitiumuz/" class="flex flex-col items-center gap-2 group">
+            <span class="material-icons text-white transition group-hover:cursor-pointer text-3xl lg:text-6xl group-hover:text-red-600">photo_camera</span>
+            <p class="text-[#a5a5a5] text-lg lg:text-xl group-hover:text-red-600 transition">Instagram</p>
+        </a>
+    </div>
+</section>
 {% endblock content %}
+
+{% block page_footer %}
+<footer class="py-4 lg:py-5 bg-white/5 text-[#a5a5a5] mt-6 lg:mt-12">
+    <div class="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-sm font-accent">
+        <a href="https://t.me/thedevu101" target="_blank" rel="noopener noreferrer"
+           class="hover:text-[#ff5a00] transition text-center sm:text-left">
+            {% trans 'Сайт разработан' %} <span class="text-white font-semibold">Ulug'bek Umaraliyev</span>
+        </a>
+        <span class="text-center sm:text-right">© {% now "Y" %} HITIUM. {% trans 'Все права защищены.' %}</span>
+    </div>
+</footer>
+{% endblock %}

@@ -1,101 +1,158 @@
-{% extends 'base.html' %}
-{% load static i18n %}
+{% extends 'base2.html' %}
+{% load i18n static %}
+
+{% block title %}{{ service.name }} | HITIUM — {% trans 'Инженерные системы Узбекистан' %}{% endblock %}
+{% block meta_description %}{{ service.description|truncatechars:155 }}{% endblock %}
+{% block meta_keywords %}{{ service.name }}, {% trans 'инженерные системы, монтаж, Узбекистан, Ташкент, Hitium' %}{% endblock %}
+
+{% block og_title %}{{ service.name }} | HITIUM{% endblock %}
+{% block og_description %}{{ service.description|truncatechars:155 }}{% endblock %}
+{% block og_image %}{% if service.header_bg %}https://hitium.uz{{ service.header_bg.url }}{% else %}https://hitium.uz{% static 'images/og-image.jpg' %}{% endif %}{% endblock %}
+{% block twitter_title %}{{ service.name }} | HITIUM{% endblock %}
+{% block twitter_description %}{{ service.description|truncatechars:155 }}{% endblock %}
+{% block twitter_image %}{% if service.header_bg %}https://hitium.uz{{ service.header_bg.url }}{% else %}https://hitium.uz{% static 'images/og-image.jpg' %}{% endif %}{% endblock %}
+
+{% block hreflang %}
+<link rel="alternate" hreflang="ru" href="https://hitium.uz/ru/services/{{ service.slug_ru }}/{{ service.id }}/"/>
+<link rel="alternate" hreflang="uz" href="https://hitium.uz/uz/services/{{ service.slug_uz }}/{{ service.id }}/"/>
+<link rel="alternate" hreflang="en" href="https://hitium.uz/en/services/{{ service.slug_en }}/{{ service.id }}/"/>
+<link rel="alternate" hreflang="x-default" href="https://hitium.uz/ru/services/{{ service.slug_ru }}/{{ service.id }}/"/>
+{% endblock %}
+
+{% block structured_data %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "{{ service.name|escapejs }}",
+    "description": "{{ service.description|truncatechars:200|escapejs }}",
+    "provider": {
+        "@type": "LocalBusiness",
+        "name": "HITIUM",
+        "url": "https://hitium.uz",
+        "telephone": "+998974458838",
+        "email": "hitium@mail.ru"
+    },
+    "areaServed": { "@type": "Country", "name": "Uzbekistan" }{% if service.header_bg %},
+    "image": "https://hitium.uz{{ service.header_bg.url }}"{% endif %}
+}
+</script>
+{% endblock %}
 
 {% block content %}
-<header class="relative h-[70vh] w-full"
-        style="background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('{{ service.header_bg.url }}');">
-    <!-- Extra black overlay with opacity 0.3 -->
-    <div class="absolute inset-0 bg-black opacity-30"></div>
 
-    <section
-            class="h-3/4 fade-in opacity-0 translate-y-10 transition-all duration-500 w-full xl:w-[1240px] m-auto relative z-10">
-        {% include 'components/_nav.html' %}
-        <div class="w-full h-full flex items-center xl:px-4">
-            <h1 class="text-2xl md:text-4xl w-full xl:text-6xl flex items-center flex-col gap-2 text-white font-medium relative text-center z-1 py-2">
-                <span class="absolute bg-black bg-opacity-50 inset-0 opacity-50 backdrop-blur-xl z-[-1] rounded"></span>
-                <div class="flex flex-col md:flex-row">
-                    <a href="/" class="text-sm hover:text-[#ed4721] transition">{% trans 'Главная' %}</a>  <span class="text-sm">&nbsp;&nbsp;/&nbsp;&nbsp;</span> <span class="text-sm text-[#ed4721]">{{ service.name }}</span>
-                </div>
-                {{ service.name }}
-                <br>
-                <br>
-            </h1>
-        </div>
-    </section>
-</header>
+<!-- Breadcrumb -->
+<nav class="max-w-5xl mx-auto px-4 lg:px-5 pt-4 pb-1 flex items-center gap-2 text-xs" aria-label="Breadcrumb">
+    <a href="{% url 'home_page' %}" class="text-[#ff5a00] hover:underline font-accent">{% trans 'Главная' %}</a>
+    <span class="text-white/30">/</span>
+    <span class="text-[#a5a5a5] font-accent">{{ service.name }}</span>
+</nav>
 
-<main>
-    <section class="relative fade-in opacity-0 translate-y-10 transition-all duration-500 bg-[#efefef]"
-             style="background-image: url('{{ service.description_bg.url }}'); background-position: center; background-size: cover;">
-        <!-- Black overlay -->
-        <div class="absolute inset-0 bg-black opacity-80"></div>
+<!-- Hero Banner -->
+<section class="relative h-[38vh] min-h-[220px] max-h-[380px] overflow-hidden">
+    {% if service.header_bg %}
+    <div class="absolute inset-0 bg-cover bg-center scale-105"
+         style="background-image: url('{{ service.header_bg.url }}');"></div>
+    <div class="absolute inset-0 bg-linear-to-b from-black/70 via-black/50 to-[#0e0f10]"></div>
+    {% else %}
+    <div class="absolute inset-0 bg-linear-to-br from-[#ff5a00]/20 to-[#0e0f10]"></div>
+    {% endif %}
+    <div class="relative h-full flex flex-col items-center justify-center text-center px-4">
+        <span class="font-accent text-[#ff5a00] text-xs uppercase tracking-widest mb-3">HITIUM</span>
+        <h1 class="font-display text-2xl sm:text-3xl lg:text-5xl font-bold text-white drop-shadow-lg max-w-3xl">{{ service.name }}</h1>
+    </div>
+</section>
 
-        <div class="relative w-full xl:w-[1200px] xl:m-auto py-4 xl:py-16 xl:flex xl:justify-center">
-            <div class="px-2w-full xl:w-1/2 xl:py-0 flex flex-col gap-10">
-                <div class="w-full px-2">
-                    <div class="flex flex-col gap-2 items-center">
-                        <span class="text-white font-bold">{% trans 'Наши услуги' %}</span>
-			<h2 class="text-[#ed4721] text-xl md:text-4xl xl:text-5xl">{{ service.name }}</h2>
-                    </div>
-		    <p class="mt-5 text-justify text-[#fff]">{{ service.description }}</p>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="text-center flex flex-col gap-4 group hover:cursor-pointer">
-                        <span class="material-icons text-[#fff] text-5xl group-hover:text-[#ed4721]">timer</span>
-                        <p class="uppercase font-bold group-hover:text-[#ed4721] text-[#fff]">{% trans 'Ценовая политика' %}</p>
-                        <p class="text-[#fff]">{% trans 'Стоимость рассчитывается на этапе подготовки коммерческого предложения.' %}</p>
-                    </div>
-                    <div class="text-center flex flex-col gap-4 group hover:cursor-pointer">
-                        <span class="material-icons text-[#fff] text-5xl group-hover:text-[#ed4721]">paid</span>
-                        <p class="uppercase font-bold group-hover:text-[#ed4721] text-[#fff]">{% trans 'Огромный опыт' %}</p>
-                        <p class="text-[#fff]">{% trans 'За время существования нашей компании мы выполнили более 300 работ.' %}</p>
-                    </div>
-                    <div class="text-center flex flex-col gap-4 group hover:cursor-pointer">
-                        <span class="material-icons text-[#fff] text-5xl group-hover:text-[#ed4721]">work</span>
-                        <p class="uppercase font-bold group-hover:text-[#ed4721] text-[#fff]">{% trans 'Выполняем в срок' %}</p>
-                        <p class="text-[#fff]">{% trans 'Все работы выполняются в обговоренные с клиентов время и ни на с секундочку позже!' %}</p>
-                    </div>
-                    <div class="text-center flex flex-col gap-4 group hover:cursor-pointer">
-                        <span class="material-icons text-[#fff] text-5xl group-hover:text-[#ed4721]">thumb_up</span>
-                        <p class="uppercase font-bold group-hover:text-[#ed4721] text-[#fff]">{% trans 'Гарантия качества' %}</p>
-                        <p class="text-[#fff]">{% trans 'На все изготовленное нами оборудование дается 1 год гарантии.' %}</p>
-                    </div>
-                </div>
+<!-- Description + Features side by side -->
+<section class="max-w-5xl mx-auto px-4 lg:px-5 py-10 lg:py-16">
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 items-start">
+
+        <!-- Left: Full description -->
+        <div class="lg:col-span-3">
+            <span class="font-accent text-[10px] lg:text-xs tracking-widest uppercase text-[#ff5a00]">{% trans 'Описание услуги' %}</span>
+            <h2 class="font-display text-xl lg:text-2xl font-bold text-white mt-2 mb-4">{{ service.name }}</h2>
+            <p class="text-[#a5a5a5] text-sm lg:text-base leading-relaxed lg:leading-loose text-justify">{{ service.description }}</p>
+
+            <div class="flex flex-wrap gap-3 mt-8">
+                <a href="tel:+998974458838"
+                   class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#ff5a00] font-semibold text-white text-sm hover:bg-[#d94e00] active:scale-95 transition shadow-lg shadow-[#ff5a00]/20">
+                    <span class="material-symbols-outlined" style="font-size:18px;">call</span>
+                    +998 97 445 88 38
+                </a>
+                <a href="https://t.me/hitium"
+                   class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-white/10 font-semibold text-white text-sm hover:bg-white/20 active:scale-95 transition">
+                    <span class="material-icons text-sm">send</span>
+                    Telegram
+                </a>
             </div>
         </div>
-    </section>
-    <section class="fade-in opacity-0 translate-y-10 transition-all duration-500 bg-[#ed4721]">
-        <div class="w-1/2 m-auto py-4 xl:py-16">
-            <a href="tel:+998974458838" class="text-white text-sm xl:text-4xl flex text-center">
-                {% trans 'Для подробностей по услуге пишитеили звоните по номеру +998 97 445 88 38' %}
+
+        <!-- Right: Feature cards 2×2 -->
+        <div class="lg:col-span-2 grid grid-cols-2 gap-3">
+            <div class="bg-white/5 rounded-xl p-4 text-center hover:bg-white/8 transition group">
+                <span class="material-symbols-outlined text-[#ff5a00] group-hover:scale-110 transition-transform inline-block" style="font-size:32px;">request_quote</span>
+                <p class="font-accent font-semibold text-white mt-2 text-xs lg:text-sm leading-tight">{% trans 'Ценовая политика' %}</p>
+                <p class="text-[#a5a5a5] text-[10px] mt-1 leading-snug hidden lg:block">{% trans 'Стоимость рассчитывается на этапе подготовки коммерческого предложения.' %}</p>
+            </div>
+            <div class="bg-white/5 rounded-xl p-4 text-center hover:bg-white/8 transition group">
+                <span class="material-symbols-outlined text-[#ff5a00] group-hover:scale-110 transition-transform inline-block" style="font-size:32px;">emoji_events</span>
+                <p class="font-accent font-semibold text-white mt-2 text-xs lg:text-sm leading-tight">{% trans 'Огромный опыт' %}</p>
+                <p class="text-[#a5a5a5] text-[10px] mt-1 leading-snug hidden lg:block">{% trans 'За время существования нашей компании мы выполнили более 300 работ.' %}</p>
+            </div>
+            <div class="bg-white/5 rounded-xl p-4 text-center hover:bg-white/8 transition group">
+                <span class="material-symbols-outlined text-[#ff5a00] group-hover:scale-110 transition-transform inline-block" style="font-size:32px;">alarm_on</span>
+                <p class="font-accent font-semibold text-white mt-2 text-xs lg:text-sm leading-tight">{% trans 'Выполняем в срок' %}</p>
+                <p class="text-[#a5a5a5] text-[10px] mt-1 leading-snug hidden lg:block">{% trans 'Все работы выполняются в обговорённые с клиентом сроки.' %}</p>
+            </div>
+            <div class="bg-white/5 rounded-xl p-4 text-center hover:bg-white/8 transition group">
+                <span class="material-symbols-outlined text-[#ff5a00] group-hover:scale-110 transition-transform inline-block" style="font-size:32px;">verified</span>
+                <p class="font-accent font-semibold text-white mt-2 text-xs lg:text-sm leading-tight">{% trans 'Гарантия качества' %}</p>
+                <p class="text-[#a5a5a5] text-[10px] mt-1 leading-snug hidden lg:block">{% trans 'На все изготовленное нами оборудование дается 1 год гарантии.' %}</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- Thin divider -->
+{% if service.service_images.exists %}
+<div class="max-w-5xl mx-auto px-4 lg:px-5">
+    <div class="h-px bg-white/10"></div>
+</div>
+
+<!-- Image gallery — below all content -->
+<section class="max-w-5xl mx-auto px-4 lg:px-5 py-8 lg:py-12">
+    <span class="font-accent text-[10px] lg:text-xs tracking-widest uppercase text-[#ff5a00]">{% trans 'Наши работы' %}</span>
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 lg:gap-3 mt-4">
+        {% for img in service.service_images.all %}
+            <img src="{{ img.image.url }}"
+                 alt="{{ service.name }}"
+                 class="w-full h-40 lg:h-[210px] object-cover rounded-xl hover:opacity-90 transition cursor-pointer"
+                 loading="lazy"/>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+
+<!-- CTA -->
+<section class="max-w-5xl mx-auto px-4 lg:px-5 pb-10 lg:pb-16">
+    <div class="rounded-2xl border border-[#ff5a00]/25 bg-[#ff5a00]/8 p-6 lg:p-10 text-center">
+        <span class="material-symbols-outlined text-[#ff5a00]" style="font-size:40px;">handshake</span>
+        <h2 class="font-display text-xl lg:text-2xl font-bold text-white mt-3">{% trans 'Заинтересованы в услуге?' %}</h2>
+        <p class="text-[#a5a5a5] mt-2 text-sm lg:text-base">{% trans 'Свяжитесь с нами — мы подготовим коммерческое предложение' %}</p>
+        <div class="flex flex-row items-center justify-center gap-3 mt-6 flex-wrap">
+            <a href="tel:+998974458838"
+               class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#ff5a00] font-bold text-white hover:bg-[#d94e00] active:scale-95 transition shadow-lg shadow-[#ff5a00]/25">
+                <span class="material-symbols-outlined" style="font-size:18px;">call</span>
+                +998 97 445 88 38
+            </a>
+            <a href="https://t.me/hitium"
+               class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-white/10 font-bold text-white hover:bg-white/20 active:scale-95 transition">
+                <span class="material-icons text-sm">send</span>
+                Telegram
             </a>
         </div>
-    </section>
-    <section class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5">
-        {% for service_image in service.images.all|slice:"15" %}
-            <img src="{{ service_image.image.url }}" alt="{{ service.name }}" class="w-full h-[350px] lg:h-[400px] lg:w-full">
-        {% endfor %}
-    </section>
-    <section class="fade-in opacity-0 translate-y-10 transition-all duration-500 bg-[#efefef]">
-        <div class="w-full flex flex-col items-center gap-10 m-auto py-16 xl:w-[1200px] xl:flex-row xl:justify-between">
-            <div class="flex flex-col items-center gap-2 text-center text-[#252525] group hover:cursor-pointer">
-                <span class="material-icons text-5xl group-hover:text-[#ed4721] transition">call</span>
-                <p class="uppercase text-[#252525] group-hover:text-[#ed4721] transition">{% trans 'Всегда на связи' %}</p>
-            </div>
-            <div class="flex flex-col items-center gap-2 text-center text-[#252525] group hover:cursor-pointer">
-                <span class="material-icons text-5xl group-hover:text-[#ed4721] transition">badge</span>
-                <p class="uppercase text-[#252525] group-hover:text-[#ed4721] transition">{% trans 'Сертифицированные специалисты' %}</p>
-            </div>
-            <div class="flex flex-col items-center gap-2 text-center text-[#252525] group hover:cursor-pointer">
-                <span class="material-icons text-5xl group-hover:text-[#ed4721] transition">engineering</span>
-                <p class="uppercase text-[#252525] group-hover:text-[#ed4721] transition">{% trans 'Гарантия & Тех. поддержка' %}</p>
-            </div>
-        </div>
-    </section>
-    <section class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 fade-in opacity-0 translate-y-10 transition-all duration-500">
-        {% for service_image in service.images.all|slice:"15:" %}
-            <img src="{{ service_image.image.url }}" alt="{{ service.name }}">
-        {% endfor %}
-    </section>
-</main>
+    </div>
+</section>
+
 {% endblock content %}

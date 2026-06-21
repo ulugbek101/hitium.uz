@@ -4,128 +4,124 @@
 {% block content %}
     <section style="background-image: url('{% static 'images/home-page-header-bg.jpg' %}'); background-repeat: no-repeat; background-size: cover; background-position: bottom;" class="text-center py-12 lg:py-24 px-1 lg:px-5 bg-linear-to-b from-[#ff5a00]/10 to-transparent border-b border-white/5"
             id="home">
-        <h1 class="font-display text-2xl lg:text-4xl font-bold text-white tracking-tight">{% trans 'HITIUM — инженерные системы и монтаж' %}</h1>
-        <p class="text-white mt-3 max-w-2xl mx-auto text-sm lg:text-base">{% trans 'Мы создаём надёжные инженерные решения, которые делают здания комфортными, безопасными и энергоэффективными.' %}</p>
+        <span class="font-accent text-[#ff5a00] text-xs uppercase tracking-widest">HITIUM</span>
+        <h1 class="font-display text-2xl lg:text-4xl font-bold text-white tracking-tight mt-2">{% trans 'HITIUM — инженерные системы и монтаж' %}</h1>
+        <p class="text-white/70 mt-3 max-w-2xl mx-auto text-sm lg:text-base font-light">{% trans 'Мы создаём надёжные инженерные решения, которые делают здания комфортными, безопасными и энергоэффективными.' %}</p>
 
         <div class="flex flex-row items-center justify-center gap-4 flex-wrap mt-6">
-            <a href="tel:+998901234567"
-            class="text-md lg:text-base px-3 lg:px-6 py-1 lg:py-3 rounded lg:rounded-lg bg-[#ff5a00] font-semibold lg:font-bold shadow-lg shadow-[#ff5a00]/20 hover:bg-[#d94e00] transition">{% trans 'Позвонить' %}</a>
+            <a href="tel:+998974458838"
+               class="inline-flex items-center gap-2 text-sm lg:text-base px-4 lg:px-6 py-2 lg:py-3 rounded lg:rounded-lg bg-[#ff5a00] font-semibold lg:font-bold shadow-lg shadow-[#ff5a00]/20 hover:bg-[#d94e00] active:scale-95 transition">
+                <span class="material-symbols-outlined" style="font-size:18px;">call</span>{% trans 'Позвонить' %}
+            </a>
             <a href="https://t.me/hitium"
-            class="text-md lg:text-base px-3 lg:px-6 py-1 lg:py-3 rounded lg:rounded-lg bg-[#ff5a00] font-semibold lg:font-bold shadow-lg shadow-[#ff5a00]/20 hover:bg-[#d94e00] transition">{% trans 'Написать в Telegram' %}</a>
+               class="inline-flex items-center gap-2 text-sm lg:text-base px-4 lg:px-6 py-2 lg:py-3 rounded lg:rounded-lg bg-[#ff5a00] font-semibold lg:font-bold shadow-lg shadow-[#ff5a00]/20 hover:bg-[#d94e00] active:scale-95 transition">
+                <span class="material-icons text-sm">send</span>{% trans 'Написать в Telegram' %}
+            </a>
         </div>
     </section>
 
     <section id="about" class="max-w-5xl mx-auto px-1 lg:px-5 py-8 lg:py-16">
-        <h2 class="font-display text-2xl lg:text-4xl text-[#ff5a00] font-semibold text-center">{% trans 'О компании' %}</h2>
-        <div class="h-[1px] w-full xl:w-64 bg-[#a5a5a5] m-auto my-2 lg:my-5"></div>
-        <p class="text-[#a5a5a5] mt-2 text-sm lg:text-base text-justify lg:text-center">{% trans 'HITIUM — эксперт в области проектирования, монтажа и обслуживания инженерных систем. Мы объединяем технологии, опыт и инновации, чтобы создавать решения, отвечающие самым высоким стандартам качества.' %}</p>
+        <span class="font-accent text-[10px] lg:text-xs tracking-widest uppercase text-[#ff5a00] block text-center">{% trans 'О компании' %}</span>
+        <h2 class="font-display text-2xl lg:text-4xl text-white font-semibold text-center mt-1">{% trans 'О компании' %}</h2>
+        <div class="h-px w-full xl:w-64 bg-[#ff5a00]/30 m-auto my-3 lg:my-5"></div>
+        <p class="text-[#a5a5a5] mt-2 text-sm lg:text-base text-justify lg:text-center font-light leading-relaxed">{% trans 'HITIUM — эксперт в области проектирования, монтажа и обслуживания инженерных систем. Мы объединяем технологии, опыт и инновации, чтобы создавать решения, отвечающие самым высоким стандартам качества.' %}</p>
     </section>
 
     <section id="mission" class="max-w-5xl mx-auto px-1 lg:px-5 py-2 lg:py-6">
         <div class="text-center mx-auto border-2 border-[#ff5a00] rounded lg:rounded-xl p-6 max-w-xl bg-black text-white">
             <div class="flex flex-col gap-0 lg:gap-2">
-                <img src="https://hitium.uz/static/images/nav-logo.png" class="h-12 rounded-md object-contain mx-auto"/>
+                <img src="{% static 'images/nav-logo.png' %}" alt="HITIUM" class="h-12 rounded-md object-contain mx-auto"/>
                 <h2 class="font-display font-bold text-white text-xl mt-3">{% trans 'Наша миссия' %}</h2>
             </div>
-            <p class="mt-2 text-white text-sm lg:text-base text-justify lg:text-center">{% trans 'Улучшать конкурентоспособность клиентов, превращая современные технологии в реальные результаты и преимущества.' %}</p>
-            <div class="text-right italic mt-3 text-white">{% trans 'Тимур Хисамов' %}</div>
+            <p class="mt-2 text-white/80 text-sm lg:text-base text-justify lg:text-center font-light">{% trans 'Улучшать конкурентоспособность клиентов, превращая современные технологии в реальные результаты и преимущества.' %}</p>
+            <div class="text-right italic mt-3 text-[#ff5a00] font-accent text-sm">— {% trans 'Тимур Хисамов' %}</div>
         </div>
     </section>
 
-    <section id="about" class="max-w-5xl mx-auto px-1 lg:px-5 py-8 lg:py-16">
-        <h2 class="font-display text-2xl lg:text-4xl text-[#ff5a00] font-semibold text-center">{% trans 'Наши услуги' %}</h2>
-        <div class="h-[1px] w-full xl:w-64 bg-[#a5a5a5] m-auto my-2 lg:my-5"></div>
+    <section id="services" class="max-w-5xl mx-auto px-1 lg:px-5 py-8 lg:py-16">
+        <span class="font-accent text-[10px] lg:text-xs tracking-widest uppercase text-[#ff5a00] block text-center">HITIUM</span>
+        <h2 class="font-display text-2xl lg:text-4xl text-white font-semibold text-center mt-1">{% trans 'Наши услуги' %}</h2>
+        <div class="h-px w-full xl:w-64 bg-[#ff5a00]/30 m-auto my-3 lg:my-5"></div>
 
         <div class="grid gap-6 mt-7 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {% for service in services %}
-                <a href="{% url 'service_detail' slug=service.slug id=service.id %}" class="bg-white/5 rounded-xl p-4 text-center hover:text-[#ff5a00] hover:bg-white/10 transition">
-                    <img src="/media/{{ service.header_bg }}" class="h-[200px] w-full rounded-lg mb-3"/>
-                    <h3 class="font-display text-lg py-2.5">{{ service.name }}</h3>
+                <a href="{% url 'service_detail' slug=service.slug id=service.id %}" class="bg-white/5 rounded-xl p-4 text-center hover:text-[#ff5a00] hover:bg-white/10 transition group">
+                    {% if service.header_bg %}
+                        <img src="{{ service.header_bg.url }}" alt="{{ service.name }}" class="h-[200px] w-full rounded-lg mb-3 object-cover group-hover:opacity-90 transition" loading="lazy"/>
+                    {% endif %}
+                    <h3 class="font-display text-base lg:text-lg py-2">{{ service.name }}</h3>
                 </a>
             {% endfor %}
         </div>
     </section>
 
-    <section id="about" class="max-w-5xl mx-auto px-1 lg:px-5 py-8 lg:py-16">
-        <h2 class="font-display text-2xl lg:text-4xl text-[#ff5a00] font-semibold text-center">{% trans 'Отзывы' %}</h2>
-        <div class="h-[1px] w-full xl:w-64 bg-[#a5a5a5] m-auto my-2 lg:my-5"></div>
+    <section id="reviews" class="max-w-5xl mx-auto px-1 lg:px-5 py-8 lg:py-16">
+        <span class="font-accent text-[10px] lg:text-xs tracking-widest uppercase text-[#ff5a00] block text-center">{% trans 'Отзывы' %}</span>
+        <h2 class="font-display text-2xl lg:text-4xl text-white font-semibold text-center mt-1">{% trans 'Отзывы' %}</h2>
+        <div class="h-px w-full xl:w-64 bg-[#ff5a00]/30 m-auto my-3 lg:my-5"></div>
 
-        <div class="reviews-wrapper">
-            <div class="reviews-track">
+        <div class="reviews-wrapper mt-4">
+            <div class="reviews-track" id="reviewsTrack">
                 {% for review in reviews %}
-                    <div class="bg-white/5 rounded-xl p-2 hover:bg-white/10 transition min-w-[250px]">
-                        <div class="flex flex-col justify-center items-center h-full gap-4">
-                            <div class="w-full relative video-wrapper hover:cursor-pointer">
-                                <video src="{{ review.video.url }}" class="w-full rounded-xl review-video"></video>
-                                <span class="player-btn material-icons
-                                    transition rounded-full px-4 py-3 bg-[#d94e00] text-white select-none
-                                    text-2xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
-                                    flex items-center justify-center hover:scale-105">
-                                    play_arrow
-                                </span>
+                    {% if review.video %}
+                    <div class="review-card bg-white/5 rounded-xl p-2 hover:bg-white/10 transition min-w-[250px] cursor-pointer"
+                         data-src="{{ review.video.url }}"
+                         data-title="{{ review.fullname }}">
+                        <div class="relative rounded-xl overflow-hidden">
+                            <video src="{{ review.video.url }}" class="w-full rounded-xl" preload="metadata" muted playsinline></video>
+                            <div class="absolute inset-0 flex items-center justify-center bg-black/20 hover:bg-black/10 transition">
+                                <span class="material-symbols-outlined text-white bg-[#ff5a00] rounded-full p-3 hover:scale-110 transition-transform" style="font-size:28px;">play_arrow</span>
                             </div>
-                            <h2 class="mt-auto text-[#a5a5a5] text-center font-semibold text-lg transition">{{ review.fullname }}</h2>
                         </div>
+                        <h3 class="mt-2 text-[#a5a5a5] text-center font-semibold text-base font-accent">{{ review.fullname }}</h3>
                     </div>
+                    {% endif %}
                 {% endfor %}
                 {% for review in reviews %}
-                    <div class="bg-white/5 rounded-xl p-2 hover:bg-white/10 transition min-w-[250px]">
-                        <div class="flex flex-col justify-center items-center h-full gap-4">
-                            <div class="w-full relative video-wrapper hover:cursor-pointer">
-                                <video src="{{ review.video.url }}" class="w-full rounded-xl review-video"></video>
-                                <span class="player-btn material-icons
-                                    transition rounded-full px-4 py-3 bg-[#d94e00] text-white select-none
-                                    text-2xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
-                                    flex items-center justify-center hover:scale-105">
-                                    play_arrow
-                                </span>
+                    {% if review.video %}
+                    <div class="review-card-dup bg-white/5 rounded-xl p-2 hover:bg-white/10 transition min-w-[250px] cursor-pointer"
+                         aria-hidden="true"
+                         data-src="{{ review.video.url }}"
+                         data-title="{{ review.fullname }}">
+                        <div class="relative rounded-xl overflow-hidden">
+                            <video src="{{ review.video.url }}" class="w-full rounded-xl" preload="none" muted playsinline></video>
+                            <div class="absolute inset-0 flex items-center justify-center bg-black/20">
+                                <span class="material-symbols-outlined text-white bg-[#ff5a00] rounded-full p-3" style="font-size:28px;">play_arrow</span>
                             </div>
-                            <h2 class="mt-auto text-[#a5a5a5] text-center font-semibold text-lg transition">{{ review.fullname }}</h2>
                         </div>
+                        <h3 class="mt-2 text-[#a5a5a5] text-center font-semibold text-base font-accent">{{ review.fullname }}</h3>
                     </div>
+                    {% endif %}
                 {% endfor %}
             </div>
         </div>
 
         <style>
-            .reviews-wrapper {
-                width: 100%;
-                overflow: hidden;
-                position: relative;
-            }
-
-            .reviews-track {
-                display: flex;
-                gap: 20px;
-                animation: scroll-left 10s linear infinite;
-            }
-
-            .reviews-wrapper:hover .reviews-track {
-                animation-play-state: paused;
-            }
-
+            .reviews-wrapper { width: 100%; overflow: hidden; position: relative; }
+            .reviews-track { display: flex; gap: 20px; animation: scroll-left 20s linear infinite; }
+            .reviews-wrapper:hover .reviews-track { animation-play-state: paused; }
             @keyframes scroll-left {
-                0% {
-                    transform: translateX(0);
-                }
-                100% {
-                    transform: translateX(-50%);
-                }
+                0% { transform: translateX(0); }
+                100% { transform: translateX(-50%); }
             }
         </style>
-
     </section>
 
-
-
-    <section id="about" class="max-w-5xl mx-auto px-1 lg:px-5 py-8 lg:py-16">
-        <h2 class="font-display text-2xl lg:text-4xl text-[#ff5a00] font-semibold text-center">{% trans 'Проекты' %}</h2>
-        <div class="h-px w-full xl:w-64 bg-[#a5a5a5] m-auto my-2 lg:my-5"></div>
+    <section id="projects" class="max-w-5xl mx-auto px-1 lg:px-5 py-8 lg:py-16">
+        <span class="font-accent text-[10px] lg:text-xs tracking-widest uppercase text-[#ff5a00] block text-center">{% trans 'Проекты' %}</span>
+        <h2 class="font-display text-2xl lg:text-4xl text-white font-semibold text-center mt-1">{% trans 'Проекты' %}</h2>
+        <div class="h-px w-full xl:w-64 bg-[#ff5a00]/30 m-auto my-3 lg:my-5"></div>
         {% if projects.exists %}
             <div class="grid grid-cols-12 px-4 lg:px-0 gap-4 lg:gap-2">
                 {% for project in projects %}
-                    <a href="{% url 'project_detail' slug=project.slug id=project.id %}" class="flex flex-col justify-between text-[#a5a5a5] hover:text-[#ff5a00] bg-white/5 rounded lg:rounded-xl p-3 lg:p-4 text-center hover:bg-white/10 transition col-span-12 lg:col-span-3">
-                        <img src="{% if project.project_images.first %}{{ project.project_images.first.image.url }}{% else %}https://atlantawatershed.org/wp-content/uploads/2017/06/default-placeholder-570x321.png{% endif %}" class="max-h-[250px] h-full w-full rounded lg:rounded-lg mb-1 lg:mb-3">
+                    <a href="{% url 'project_detail' slug=project.slug id=project.id %}" class="flex flex-col justify-between text-[#a5a5a5] hover:text-[#ff5a00] bg-white/5 rounded lg:rounded-xl p-3 lg:p-4 text-center hover:bg-white/10 transition col-span-12 lg:col-span-3 group">
+                        {% if project.project_images.first %}
+                            <img src="{{ project.project_images.first.image.url }}" alt="{{ project.name }}" class="max-h-[250px] h-full w-full rounded lg:rounded-lg mb-1 lg:mb-3 object-cover group-hover:opacity-90 transition" loading="lazy"/>
+                        {% else %}
+                            <div class="h-[200px] w-full rounded lg:rounded-lg mb-1 lg:mb-3 bg-white/5 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-white/20" style="font-size:48px;">image</span>
+                            </div>
+                        {% endif %}
                         <h3 class="font-display text-lg">{{ project.name }}</h3>
                     </a>
                 {% endfor %}
@@ -135,21 +131,25 @@
         {% endif %}
     </section>
 
-    <section id="about" class="max-w-5xl mx-auto px-1 lg:px-5 py-8 lg:py-16">
-        <h2 class="font-display text-2xl lg:text-4xl text-[#ff5a00] font-semibold text-center">{% trans 'Наши клиенты' %}</h2>
-        <div class="h-[1px] w-full xl:w-64 bg-[#a5a5a5] m-auto my-2 lg:my-5"></div>
+    <section id="clients" class="max-w-5xl mx-auto px-1 lg:px-5 py-8 lg:py-16">
+        <span class="font-accent text-[10px] lg:text-xs tracking-widest uppercase text-[#ff5a00] block text-center">{% trans 'Наши клиенты' %}</span>
+        <h2 class="font-display text-2xl lg:text-4xl text-white font-semibold text-center mt-1">{% trans 'Наши клиенты' %}</h2>
+        <div class="h-px w-full xl:w-64 bg-[#ff5a00]/30 m-auto my-3 lg:my-5"></div>
         {% if clients.exists %}
-            <div class="grid grid-cols-12 gap-y-4 gap-x-4">
+            <div class="grid grid-cols-12 gap-y-6 gap-x-4">
                 {% for client in clients %}
-                    <div class="flex flex-col items-center gap-1 col-span-6 lg:col-span-3 flex flex-col justify-between">
-                        <div class="rounded-xl p-0 lg:p-4 text-center text-[#a5a5a5] hover:text-[#ff5a00] hover:cursor-pointer transition">
-                            <img src="{{ client.image.url }}" class="max-h-[100px] h-full w-full rounded-lg mb-3"/>
-                            <h3 class="font-display text-lg">{{ client.name }}</h3>
+                    <div class="flex flex-col items-center gap-2 col-span-6 lg:col-span-3">
+                        <div class="w-full flex flex-col items-center rounded-xl p-3 lg:p-4 text-center text-[#a5a5a5] hover:text-[#ff5a00] transition">
+                            <img src="{{ client.image.url }}" alt="{{ client.name }}"
+                                 class="h-auto max-h-20 w-auto max-w-full mx-auto block mb-3"
+                                 loading="lazy"/>
+                            <h3 class="font-accent text-sm font-medium">{{ client.name }}</h3>
                         </div>
                         {% if client.link %}
-                            <a href="{{ client.link }}" class="flex flex-row items-center gap-1 text-sm text-[#a5a5a5] hover:text-blue-500 transition">
+                            <a href="{{ client.link }}" target="_blank" rel="noopener noreferrer"
+                               class="flex flex-row items-center gap-1 text-xs text-[#a5a5a5] hover:text-blue-400 transition">
                                 {% trans 'Сайт организации' %}
-                                <span class="material-icons !text-sm">arrow_outward</span>
+                                <span class="material-symbols-outlined" style="font-size:14px;">arrow_outward</span>
                             </a>
                         {% endif %}
                     </div>
@@ -160,127 +160,195 @@
         {% endif %}
     </section>
 
-    <!-- Modal remains unchanged except no trans needed -->
+    <!-- Image modal (for gallery usage) -->
     <div id="imageModal"
-     class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4 z-50">
+         class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4 z-50">
         <button id="closeModal"
-                class="absolute top-4 right-4 text-white text-3xl material-icons hover:scale-110 transition">
-            close
-        </button>
-
+                class="absolute top-4 right-4 text-white material-symbols-outlined hover:text-[#ff5a00] hover:scale-110 transition"
+                style="font-size:32px;">close</button>
         <div class="flex flex-col gap-4 max-w-4xl w-full">
-            <img id="modalImage"
-                class="max-h-[80vh] min-h-[40vh] max-w-full rounded-xl shadow-2xl object-contain mx-auto"/>
+            <img id="modalImage" class="max-h-[80vh] min-h-[40vh] max-w-full rounded-xl shadow-2xl object-contain mx-auto" alt=""/>
+            <span id="modalImageDescription" class="text-[#a5a5a5] text-lg leading-relaxed text-justify max-h-[40vh] overflow-y-auto"></span>
+        </div>
+    </div>
 
-            <span id="modalImageDescription"
-                class="text-[#a5a5a5] text-lg leading-relaxed text-justify max-h-[40vh] overflow-y-auto"></span>
+    <!-- ===== Video modal with custom player ===== -->
+    <div id="videoModal"
+         class="fixed inset-0 bg-black/95 backdrop-blur-md hidden flex-col items-center justify-center p-4 z-60">
+        <div class="relative w-full max-w-2xl">
+
+            <!-- Close -->
+            <button id="vmClose"
+                    class="absolute -top-10 right-0 text-white/70 hover:text-[#ff5a00] transition material-symbols-outlined"
+                    style="font-size:30px;">close</button>
+
+            <!-- Video -->
+            <video id="vmVideo" class="w-full rounded-2xl bg-black max-h-[65vh]" playsinline></video>
+
+            <!-- Controls -->
+            <div class="mt-3 px-1 flex flex-col gap-2">
+                <!-- Progress bar -->
+                <div id="vmProgress" class="h-1.5 bg-white/20 rounded-full cursor-pointer relative group/pb">
+                    <div id="vmFill" class="h-full bg-[#ff5a00] rounded-full pointer-events-none" style="width:0%"></div>
+                    <div id="vmThumb"
+                         class="absolute top-1/2 -translate-y-1/2 w-3.5 h-3.5 bg-[#ff5a00] rounded-full shadow-lg opacity-0 group-hover/pb:opacity-100 transition pointer-events-none -translate-x-1/2"
+                         style="left:0%"></div>
+                </div>
+
+                <!-- Buttons row -->
+                <div class="flex items-center justify-between gap-3">
+                    <div class="flex items-center gap-3">
+                        <button id="vmPlay"
+                                class="text-white hover:text-[#ff5a00] transition material-symbols-outlined"
+                                style="font-size:30px;">play_arrow</button>
+                        <div class="flex items-center gap-1.5">
+                            <button id="vmMute"
+                                    class="text-white/70 hover:text-[#ff5a00] transition material-symbols-outlined"
+                                    style="font-size:20px;">volume_up</button>
+                            <input id="vmVolume" type="range" min="0" max="1" step="0.05" value="1"
+                                   class="w-14 accent-[#ff5a00] cursor-pointer h-1"/>
+                        </div>
+                        <span id="vmTime" class="text-[#a5a5a5] text-xs font-accent tabular-nums">0:00 / 0:00</span>
+                    </div>
+                    <button id="vmFullscreen"
+                            class="text-white/70 hover:text-[#ff5a00] transition material-symbols-outlined"
+                            style="font-size:20px;">fullscreen</button>
+                </div>
+            </div>
+
+            <!-- Reviewer name -->
+            <p id="vmTitle" class="text-center text-[#a5a5a5] mt-4 font-accent font-semibold text-base"></p>
         </div>
     </div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const modal = document.getElementById("imageModal");
-            const modalImage = document.getElementById("modalImage");
-            const modalImageDescription = document.getElementById("modalImageDescription");
-            const closeModal = document.getElementById("closeModal");
-            const wrappers = document.querySelectorAll(".video-wrapper");
-            const videos = document.querySelectorAll(".review-video");
+    document.addEventListener("DOMContentLoaded", () => {
+        // ── Image modal ───────────────────────────────────────────────
+        const imgModal = document.getElementById("imageModal");
+        const modalImage = document.getElementById("modalImage");
+        const modalImageDescription = document.getElementById("modalImageDescription");
+        const closeImgModal = document.getElementById("closeModal");
 
-            function pauseAllExcept(current) {
-                videos.forEach(v => {
-                    if (v !== current) {
-                        v.pause();
-                        const btn = v.parentElement.querySelector(".player-btn");
-                        btn.textContent = "play_arrow";
-                        btn.style.opacity = 1; // always show play icon when paused
-                    }
-                });
-            }
-
-            wrappers.forEach(wrapper => {
-                const video = wrapper.querySelector(".review-video");
-                const btn = wrapper.querySelector(".player-btn");
-
-                // Always show play icon when paused
-                video.addEventListener("pause", () => {
-                    btn.textContent = "play_arrow";
-                    btn.style.opacity = 1;
-                });
-
-                // Hide icon while playing (but show on hover)
-                video.addEventListener("play", () => {
-                    btn.textContent = "pause";
-                    btn.style.opacity = 0; // hidden by default
-                });
-
-                // Show pause icon when hovered during play
-                wrapper.addEventListener("mouseenter", () => {
-                    if (!video.paused) btn.style.opacity = 1;
-                });
-
-                // Hide pause icon when leaving (only if playing)
-                wrapper.addEventListener("mouseleave", () => {
-                    if (!video.paused) btn.style.opacity = 0;
-                });
-
-                // Clicking the button
-                btn.addEventListener("click", (e) => {
-                    e.stopPropagation();
-
-                    if (video.paused) {
-                        pauseAllExcept(video);
-                        video.play();
-                    } else {
-                        video.pause();
-                    }
-                });
-
-                // Clicking the video itself
-                video.addEventListener("click", () => {
-                    if (video.paused) {
-                        pauseAllExcept(video);
-                        video.play();
-                    } else {
-                        video.pause();
-                    }
-                });
-
-                // On ended → show play button
-                video.addEventListener("ended", () => {
-                    btn.textContent = "play_arrow";
-                    btn.style.opacity = 1;
-                });
-            });
-
-            // Open modal
-            document.querySelectorAll(".preview-img").forEach(img => {
-                img.addEventListener("click", () => {
-                    modalImage.src = img.src;
-                    modalImageDescription.textContent = img.dataset.description;
-
-                    modal.classList.remove("hidden");
-                    modal.classList.add("flex");
-
-                    // LOCK screen scroll
-                    document.body.style.overflow = "hidden";
-                });
-            });
-
-            function close() {
-                modal.classList.add("hidden");
-                modal.classList.remove("flex");
-                modalImage.src = "";
-
-                // RESTORE scroll
-                document.body.style.overflow = "";
-            }
-
-            closeModal.addEventListener("click", close);
-
-            // Close by clicking outside content
-            modal.addEventListener("click", (e) => {
-                if (e.target === modal) close();
+        document.querySelectorAll(".preview-img").forEach(img => {
+            img.addEventListener("click", () => {
+                modalImage.src = img.src;
+                modalImageDescription.textContent = img.dataset.description || "";
+                imgModal.classList.remove("hidden");
+                imgModal.classList.add("flex");
+                document.body.style.overflow = "hidden";
             });
         });
+
+        function closeImageModal() {
+            imgModal.classList.add("hidden");
+            imgModal.classList.remove("flex");
+            modalImage.src = "";
+            document.body.style.overflow = "";
+        }
+
+        closeImgModal.addEventListener("click", closeImageModal);
+        imgModal.addEventListener("click", e => { if (e.target === imgModal) closeImageModal(); });
+
+        // ── Video modal ───────────────────────────────────────────────
+        const vmModal   = document.getElementById("videoModal");
+        const vmVideo   = document.getElementById("vmVideo");
+        const vmPlay    = document.getElementById("vmPlay");
+        const vmMute    = document.getElementById("vmMute");
+        const vmVolume  = document.getElementById("vmVolume");
+        const vmTime    = document.getElementById("vmTime");
+        const vmFill    = document.getElementById("vmFill");
+        const vmThumb   = document.getElementById("vmThumb");
+        const vmProgress = document.getElementById("vmProgress");
+        const vmClose   = document.getElementById("vmClose");
+        const vmFull    = document.getElementById("vmFullscreen");
+        const vmTitle   = document.getElementById("vmTitle");
+        const reviewsTrack = document.getElementById("reviewsTrack");
+
+        function fmtTime(s) {
+            if (!isFinite(s)) return "0:00";
+            const m = Math.floor(s / 60);
+            const sec = Math.floor(s % 60);
+            return `${m}:${sec.toString().padStart(2, "0")}`;
+        }
+
+        function openVideoModal(src, title) {
+            vmVideo.src = src;
+            vmTitle.textContent = title;
+            vmModal.classList.remove("hidden");
+            vmModal.classList.add("flex");
+            document.body.style.overflow = "hidden";
+            if (reviewsTrack) reviewsTrack.style.animationPlayState = "paused";
+            vmVideo.play().catch(() => {});
+        }
+
+        function closeVideoModal() {
+            vmVideo.pause();
+            vmVideo.removeAttribute("src");
+            vmVideo.load();
+            vmPlay.textContent = "play_arrow";
+            vmFill.style.width = "0%";
+            vmThumb.style.left = "0%";
+            vmTime.textContent = "0:00 / 0:00";
+            vmModal.classList.add("hidden");
+            vmModal.classList.remove("flex");
+            document.body.style.overflow = "";
+            if (reviewsTrack) reviewsTrack.style.animationPlayState = "running";
+        }
+
+        vmClose.addEventListener("click", closeVideoModal);
+        vmModal.addEventListener("click", e => { if (e.target === vmModal) closeVideoModal(); });
+        document.addEventListener("keydown", e => { if (e.key === "Escape") { closeVideoModal(); closeImageModal(); } });
+
+        vmPlay.addEventListener("click", () => {
+            vmVideo.paused ? vmVideo.play() : vmVideo.pause();
+        });
+
+        vmVideo.addEventListener("play",  () => { vmPlay.textContent = "pause"; });
+        vmVideo.addEventListener("pause", () => { vmPlay.textContent = "play_arrow"; });
+        vmVideo.addEventListener("ended", () => { vmPlay.textContent = "replay"; });
+
+        vmVideo.addEventListener("timeupdate", () => {
+            if (!vmVideo.duration) return;
+            const pct = (vmVideo.currentTime / vmVideo.duration) * 100;
+            vmFill.style.width = pct + "%";
+            vmThumb.style.left = pct + "%";
+            vmTime.textContent = fmtTime(vmVideo.currentTime) + " / " + fmtTime(vmVideo.duration);
+        });
+
+        vmProgress.addEventListener("click", e => {
+            const rect = vmProgress.getBoundingClientRect();
+            if (vmVideo.duration) vmVideo.currentTime = ((e.clientX - rect.left) / rect.width) * vmVideo.duration;
+        });
+
+        vmMute.addEventListener("click", () => {
+            vmVideo.muted = !vmVideo.muted;
+            vmMute.textContent = vmVideo.muted ? "volume_off" : "volume_up";
+        });
+
+        vmVolume.addEventListener("input", () => {
+            vmVideo.volume = vmVolume.value;
+            vmMute.textContent = +vmVolume.value === 0 ? "volume_off" : "volume_up";
+        });
+
+        vmFull.addEventListener("click", () => {
+            document.fullscreenElement ? document.exitFullscreen() : vmVideo.requestFullscreen();
+        });
+        document.addEventListener("fullscreenchange", () => {
+            vmFull.textContent = document.fullscreenElement ? "fullscreen_exit" : "fullscreen";
+        });
+
+        // Attach click to real review cards only (not aria-hidden duplicates)
+        document.querySelectorAll(".review-card").forEach(card => {
+            card.addEventListener("click", () => {
+                openVideoModal(card.dataset.src, card.dataset.title);
+            });
+        });
+        // Duplicates also open modal (aria-hidden is for screen readers, sighted users can still click)
+        document.querySelectorAll(".review-card-dup").forEach(card => {
+            card.addEventListener("click", () => {
+                openVideoModal(card.dataset.src, card.dataset.title);
+            });
+        });
+    });
     </script>
 {% endblock content %}

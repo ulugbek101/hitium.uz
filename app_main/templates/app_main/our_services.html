@@ -1,61 +1,33 @@
-{% extends 'base.html' %}
-{% load static i18n %}
+{% extends 'base2.html' %}
+{% load i18n static %}
+
+{% block title %}{% trans 'Наши услуги' %} | HITIUM{% endblock %}
+{% block meta_description %}{% trans 'Полный список инженерных услуг компании HITIUM в Узбекистане: вентиляция, водоснабжение, котельное оборудование, холодильные системы, монтаж промышленного оборудования.' %}{% endblock %}
+{% block og_title %}{% trans 'Наши услуги' %} | HITIUM{% endblock %}
+{% block og_description %}{% trans 'Полный список инженерных услуг компании HITIUM в Узбекистане.' %}{% endblock %}
+
+{% block hreflang %}
+{% language 'ru' %}<link rel="alternate" hreflang="ru" href="https://hitium.uz{% url 'our_services' %}"/>{% endlanguage %}
+{% language 'uz' %}<link rel="alternate" hreflang="uz" href="https://hitium.uz{% url 'our_services' %}"/>{% endlanguage %}
+{% language 'en' %}<link rel="alternate" hreflang="en" href="https://hitium.uz{% url 'our_services' %}"/>{% endlanguage %}
+{% language 'ru' %}<link rel="alternate" hreflang="x-default" href="https://hitium.uz{% url 'our_services' %}"/>{% endlanguage %}
+{% endblock %}
 
 {% block content %}
-<header class="relative h-[70vh] w-full"
-        style="background-position: center; background-size: cover; background-repeat: no-repeat; background-image: url('{% static 'images/our-services-page-header-bg.jpg' %}');">
-    <!-- Extra black overlay with opacity 0.3 -->
-    <div class="absolute inset-0 bg-black opacity-30"></div>
-
-    <section class="h-3/4 fade-in opacity-0 translate-y-10 transition-all duration-500 w-full xl:w-[1240px] m-auto relative z-10">
-        {% include 'components/_nav.html' %}
-        <div class="w-full h-full flex items-center px-4">
-            <h1 class="text-4xl w-full xl:text-[80px] flex items-center flex-col gap-2 text-white font-medium relative text-center z-1 py-2">
-                <span class="absolute bg-black bg-opacity-50 inset-0 opacity-50 backdrop-blur-xl z-[-1] rounded"></span>
-                <a href="/" class="text-sm hover:text-[#ed4721] transition">{% trans 'Главная' %}</a>
-                {% trans 'Наши работы' %}
-                <br>
-                <br>
-            </h1>
-        </div>
-    </section>
-</header>
-<main>
-    <section class="flex flex-col gap-10 w-full py-4 px-4 xl:px-0 xl:py-16 xl:w-[1200px] m-auto">
-        {% for service in services|slice:"0:4" %}
-            <div class="flex flex-col gap-2 w-full xl:flex-row xl:justify-between rounded-lg shadow-lg shadow-[rgba(0,0,0,0.2)] overflow-hidden">
-                <img src="{{ service.header_bg.url }}" alt="{{ service.name }}" class="w-full xl:w-1/2">
-                <div class="w-full flex flex-col gap-5 p-4 xl:w-1/2 xl:justify-center">
-                    <h2 class="text-2xl text-[#252525]">{{ service.name }}</h2>
-                    <p class="text-[#252525] text-justify">
-                        {{ service.description }}
-                    </p>
-                </div>
-            </div>
+<section class="max-w-5xl mx-auto px-2 lg:px-5 py-8 lg:py-16">
+    <h1 class="font-display text-2xl lg:text-4xl text-[#ff5a00] font-semibold text-center">{% trans 'Наши услуги' %}</h1>
+    <div class="h-[1px] w-full xl:w-64 bg-[#a5a5a5] m-auto my-2 lg:my-5"></div>
+    <div class="grid gap-6 mt-7 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        {% for service in services %}
+            <a href="{% url 'service_detail' slug=service.slug id=service.id %}" class="bg-white/5 rounded-xl p-4 text-center hover:text-[#ff5a00] hover:bg-white/10 transition">
+                {% if service.header_bg %}
+                    <img src="{{ service.header_bg.url }}" alt="{{ service.name }}" class="h-[200px] w-full rounded-lg mb-3 object-cover" loading="lazy"/>
+                {% endif %}
+                <h2 class="font-display text-lg py-2.5">{{ service.name }}</h2>
+            </a>
+        {% empty %}
+            <p class="col-span-full text-[#a5a5a5] text-center">{% trans 'Услуги пока не добавлены' %}</p>
         {% endfor %}
-    </section>
-    <section class="flex flex-col py-4 px-4 xl:px-0 xl:py-48" style="background: url('{% static 'images/our-services-page-desc-bg.jpg' %}'); background-position: center; background-size: cover">
-        <div class="w-full xl:w-[1200px] m-auto">
-            <div class="w-full xl:w-3/4 flex flex-col items-start gap-5">
-                <span class="text-white text-sm xl:text-2xl font-bold">{% trans 'Специальное предложение' %}</span>
-                <h2 class="text:4xl xl:text-6xl text-white">{% trans 'На все изготовленное нами оборудование дается <br><span class="text-[#ed4721] font-bold">1 год гарантии</span>' %}</h2>
-                <p class="text-white text-sm xl:text-2xl">{% trans 'Инвестируйте свой капитал для развития экономики Узбекистана' %}</p>
-                <a class="flex items-center justify-center py-4 px-6 rounded bg-[#ed4721] text-white text-sm xl:text-xl active:scale-90 transition hover:bg-opacity-70 font-bold" href="tel:+998974458838">{% trans 'Позвонить' %}</a>
-            </div>
-        </div>
-    </section>
-    <section class="flex flex-col gap-10 w-full py-4 px-4 xl:px-0 xl:py-16 xl:w-[1200px] m-auto">
-        {% for service in services|slice:"4:" %}
-            <div class="flex flex-col gap-2 w-full xl:flex-row xl:justify-between rounded shadow shadow-[rgba(0,0,0,0.2)]">
-                <img src="{{ service.header_bg.url }}" alt="{{ service.name }}" class="w-full xl:w-1/2">
-                <div class="w-full flex flex-col gap-5 p-4 xl:w-1/2 xl:justify-center">
-                    <h2 class="text-2xl text-[#252525]">{{ service.name }}</h2>
-                    <p class="text-[#252525] text-justify">
-                        {{ service.description }}
-                    </p>
-                </div>
-            </div>
-        {% endfor %}
-    </section>
-</main>
+    </div>
+</section>
 {% endblock content %}
