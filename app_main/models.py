@@ -1,4 +1,5 @@
 from django.db import models
+from .validators import validate_video_size
 
 
 class BaseModel(models.Model):
@@ -13,12 +14,12 @@ class Service(BaseModel):
     name = models.CharField(max_length=200, verbose_name="Название")
     slug = models.SlugField(max_length=250, verbose_name="Слаг")
     description = models.TextField(verbose_name="Описание")
-    header_bg = models.ImageField(null=True, verbose_name="Задний фон для шапки")
-    description_bg = models.ImageField(null=True, verbose_name="Задний фон для описания")
+    header_bg = models.ImageField(null=True, blank=True, verbose_name="Задний фон для шапки")
+    description_bg = models.ImageField(null=True, blank=True, verbose_name="Задний фон для описания")
     order = models.IntegerField(default=1, verbose_name="Порядок", help_text="Порядок показа услуги в списке услуг")
 
     def __str__(self):
-        return self.name_ru
+        return self.name
 
     class Meta:
         verbose_name = "Сервис"
@@ -78,7 +79,7 @@ class Client(BaseModel):
         verbose_name_plural = "Клиенты"
 
 
-class GalleryImage(models.Model):
+class GalleryImage(BaseModel):
     image = models.ImageField(upload_to="gallery-photos/", verbose_name="Фото")
     description = models.TextField(verbose_name="Описание", null=True, blank=True)
 
@@ -92,8 +93,18 @@ class GalleryImage(models.Model):
 
 class Review(BaseModel):
     fullname = models.CharField(max_length=100, verbose_name="Название организации")
-    video = models.FileField(verbose_name="Видео", help_text="Видео отзыв клиента (не больше 20 MB)", upload_to="videos/", null=True)
-    is_active = models.BooleanField(default=True, verbose_name="Показывать отзыв ?", help_text="Если отключить, то отзыв не будет показываться. Вместо удаления можно просто отключить видимость")
+    video = models.FileField(
+        verbose_name="Видео",
+        help_text="Видео отзыв клиента (не больше 20 MB)",
+        upload_to="videos/",
+        null=True,
+        validators=[validate_video_size],
+    )
+    is_active = models.BooleanField(
+        default=True,
+        verbose_name="Показывать отзыв ?",
+        help_text="Если отключить, то отзыв не будет показываться. Вместо удаления можно просто отключить видимость",
+    )
 
     def __str__(self):
         return f"{self.fullname} - {self.created.strftime('%d.%m.%Y %H:%M')}"

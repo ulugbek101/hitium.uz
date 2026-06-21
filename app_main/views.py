@@ -1,8 +1,9 @@
-import datetime
 import requests
 
-from django.shortcuts import render, redirect
+from django.conf import settings
+from django.shortcuts import render, redirect, get_object_or_404
 from django.db.models import Q
+from django.utils.html import escape
 
 from .models import Service, Project, Client, GalleryImage, Review
 
@@ -11,7 +12,7 @@ def home_page(request):
     services = Service.objects.order_by('order')
     projects = Project.objects.prefetch_related("project_images")
     clients = Client.objects.all()
-    reviews = Review.objects.filter(is_active=True)
+    reviews = Review.objects.filter(is_active=True).order_by('id')
     gallery_images = GalleryImage.objects.all()
 
     context = {
@@ -21,15 +22,13 @@ def home_page(request):
         "projects": projects,
         "clients": clients,
         "gallery_images": gallery_images,
-        "current_year": datetime.date.today().year,
     }
-    # return render(request, "app_main/index.html", context)
     return render(request, "app_main/index2.html", context)
 
 
 def service_detail(request, slug, id):
-    services = Service.objects.all()
-    service = services.get(Q(slug=slug) | Q(id=id))
+    services = Service.objects.order_by('order')
+    service = get_object_or_404(Service, Q(slug=slug) | Q(id=id))
 
     context = {
         "services": services,
@@ -40,11 +39,11 @@ def service_detail(request, slug, id):
 
 
 def project_detail(request, slug, id):
-    project = Project.objects.prefetch_related("project_images").get(
-        Q(slug=slug) |
-        Q(id=id)
+    project = get_object_or_404(
+        Project.objects.prefetch_related("project_images"),
+        Q(slug=slug) | Q(id=id)
     )
-    services = Service.objects.all()
+    services = Service.objects.order_by('order')
 
     context = {
         "project": project,
@@ -54,7 +53,7 @@ def project_detail(request, slug, id):
 
 
 def our_services(request):
-    services = Service.objects.all()
+    services = Service.objects.order_by('order')
 
     context = {
         "services": services,
@@ -63,11 +62,10 @@ def our_services(request):
 
 
 def contacts(request):
-    services = Service.objects.all()
+    services = Service.objects.order_by('order')
 
     context = {
         "services": services,
-
     }
     return render(request, "app_main/contacts.html", context)
 
@@ -76,37 +74,41 @@ def send_email(request):
     if request.method != "POST":
         return redirect("contacts")
 
-    full_name = request.POST.get('full_name')
-    phone_number = request.POST.get('phone_number')
-    address = request.POST.get('address')
-    service_id = request.POST.get('service_id')
-    message = request.POST.get('message')
+    full_name = request.POST.get('full_name', '').strip()
+    phone_number = request.POST.get('phone_number', '').strip()
+    address = request.POST.get('address', '').strip()
+    service_id = request.POST.get('service_id', '').strip()
+    message = request.POST.get('message', '').strip()
 
-    TELEGRAM_BOT_TOKEN = "7960992571:AAGjpwEJFvM2fY2iNAnRlLYDRSsONLJ-thQ"
-    CHAT_IDS = [710661311, 110387856, 412135367, 412135367]  # users' Telegram IDs 
-    service_obj = Service.objects.get(id=service_id)
+    if not full_name or not phone_number or not service_id:
+        return redirect("contacts")
 
-    text = f"""<b>НОВЫЙ ЗАКАЗ | Hitium.uz</b>
+    try:
+        service_obj = Service.objects.get(id=int(service_id))
+    except (Service.DoesNotExist, ValueError, TypeError):
+        return redirect("contacts")
 
-ФИО: <b>{full_name.title()}</b>
-Номер телефона: <b><code>{phone_number}</code></b>
-Сообщение: <i>{message}</i>
+    token = settings.TELEGRAM_BOT_TOKEN
+    chat_ids = [710661311, 110387856, 412135367]
 
-Адрес: <b>{address}</b>
-Тип услуги: <b>{service_obj.name_ru}</b>
-"""
+    text = (
+        f"<b>НОВЫЙ ЗАКАЗ | Hitium.uz</b>\n\n"
+        f"ФИО: <b>{escape(full_name.title())}</b>\n"
+        f"Номер телефона: <b><code>{escape(phone_number)}</code></b>\n"
+        f"Сообщение: <i>{escape(message)}</i>\n\n"
+        f"Адрес: <b>{escape(address)}</b>\n"
+        f"Тип услуги: <b>{escape(service_obj.name_ru or service_obj.name)}</b>"
+    )
 
-    url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
-
-    for CHAT_ID in CHAT_IDS:
+    api_url = f"https://api.telegram.org/bot{token}/sendMessage"
+    for chat_id in chat_ids:
         try:
-            payload = {
-                "chat_id": CHAT_ID,
-                "text": text,
-                "parse_mode": "HTML"
-            }
-            requests.post(url, json=payload)
-        except:
+            requests.post(
+                api_url,
+                json={"chat_id": chat_id, "text": text, "parse_mode": "HTML"},
+                timeout=5,
+            )
+        except requests.RequestException:
             pass
 
     return redirect("contacts")
