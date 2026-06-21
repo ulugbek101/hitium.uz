@@ -1,43 +1,75 @@
 {% load i18n %}
-    <section id="about" class="max-w-5xl mx-auto px-1 lg:px-5 py-8 lg:py-16">
-        <h2 class="font-display text-2xl lg:text-4xl text-[#ff5a00] font-semibold text-center">{% trans 'Контакты' %}</h2>
-        <div class="h-[1px] w-full xl:w-64 bg-[#a5a5a5] m-auto my-2 lg:my-5"></div>
+<section id="contacts" class="max-w-5xl mx-auto px-4 lg:px-5 py-8 lg:py-16">
+    <h2 class="font-display text-2xl lg:text-4xl text-[#ff5a00] font-semibold text-center">{% trans 'Контакты' %}</h2>
+    <div class="h-px w-full xl:w-64 bg-[#a5a5a5] m-auto my-2 lg:my-5"></div>
     <p class="text-[#a5a5a5] mt-2 text-center">{% trans 'Свяжитесь с нами — мы ответим на все вопросы.' %}</p>
 
-    <form class="max-w-md mx-auto flex flex-col gap-2 lg:gap-3 mt-6" method="post" action="{% url 'send_email' %}">
-        {% csrf_token %}
-        <input name="full_name" type="text" placeholder="{% trans 'Ваше имя' %}" class="placeholder:text-sm lg:placeholder:text-base bg-white/10 px-3 lg:px-4 py-2 lg:py-3 rounded lg:rounded-lg focus:outline-none focus:ring-1 ring-white" required/>
-        <div class="flex flex-row items-center gap-1">
-            <input name="phone_number" type="tel" placeholder="{% trans 'Номер телефона' %}" class="placeholder:text-sm lg:placeholder:text-base px-3 lg:px-4 py-2 lg:py-3 rounded lg:rounded-lg w-full bg-white/10 focus:outline-none focus:ring-1 ring-white" required/>
-            <input name="address" type="text" placeholder="{% trans 'Ваш адрес' %}" class="placeholder:text-sm lg:placeholder:text-base px-3 lg:px-4 py-2 lg:py-3 rounded lg:rounded-lg w-full bg-white/10 focus:outline-none focus:ring-1 ring-white" required/>
+    <!-- Form + Map side by side -->
+    <div class="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-center">
+
+        <!-- LEFT: Form -->
+        <div class="flex flex-col gap-2 lg:gap-3">
+            <form method="post" action="{% url 'send_email' %}" class="flex flex-col gap-2 lg:gap-3">
+                {% csrf_token %}
+                <input name="full_name" type="text" placeholder="{% trans 'Ваше имя' %}"
+                       class="placeholder:text-sm bg-white/10 px-4 py-2.5 rounded-lg focus:outline-none focus:ring-1 ring-white/50" required/>
+                <div class="flex gap-2">
+                    <input name="phone_number" type="tel" placeholder="{% trans 'Номер телефона' %}"
+                           class="placeholder:text-sm px-4 py-2.5 rounded-lg w-full bg-white/10 focus:outline-none focus:ring-1 ring-white/50" required/>
+                    <input name="address" type="text" placeholder="{% trans 'Ваш адрес' %}"
+                           class="placeholder:text-sm px-4 py-2.5 rounded-lg w-full bg-white/10 focus:outline-none focus:ring-1 ring-white/50" required/>
+                </div>
+                <select name="service_id"
+                        class="px-4 py-2.5 rounded-lg bg-white/10 focus:outline-none focus:ring-1 ring-white/50 text-sm" required>
+                    {% for service in services %}
+                        <option class="text-black" value="{{ service.id }}">{{ service.name }}</option>
+                    {% endfor %}
+                </select>
+                <textarea name="message" placeholder="{% trans 'Ваше сообщение' %}"
+                          class="placeholder:text-sm px-4 py-2.5 rounded-lg bg-white/10 focus:outline-none focus:ring-1 ring-white/50 resize-none" rows="4"></textarea>
+                <button class="bg-[#ff5a00] py-2.5 rounded-lg font-bold text-white hover:bg-[#d94e00] active:scale-95 transition">
+                    {% trans 'Отправить' %}
+                </button>
+            </form>
+
+            <div class="flex gap-2 mt-1">
+                <a href="tel:+998974458838"
+                   class="flex-1 text-center py-2.5 rounded-lg bg-white/10 text-sm font-semibold hover:bg-white/20 active:scale-95 transition inline-flex items-center justify-center gap-1.5">
+                    <span class="material-symbols-outlined" style="font-size:16px;">call</span>{% trans 'Позвонить' %}
+                </a>
+                <a href="https://t.me/hitium"
+                   class="flex-1 text-center py-2.5 rounded-lg bg-white/10 text-sm font-semibold hover:bg-white/20 active:scale-95 transition inline-flex items-center justify-center gap-1.5">
+                    <span class="material-icons text-sm">send</span>Telegram
+                </a>
+                <a href="https://www.instagram.com/hitiumuz/"
+                   class="flex-1 text-center py-2.5 rounded-lg bg-white/10 text-sm font-semibold hover:bg-white/20 active:scale-95 transition inline-flex items-center justify-center gap-1.5">
+                    <span class="material-icons text-sm">photo_camera</span>Instagram
+                </a>
+            </div>
         </div>
-        <select name="service_id" class="placeholder:text-sm lg:placeholder:text-base px-3 lg:px-4 py-2 lg:py-3 rounded lg:rounded-lg bg-white/10 focus:outline-none focus:ring-1 ring-white" required>
-            {% for service in services %}
-                <option class="text-black" value="{{ service.id }}">{{ service.name }}</option>
-            {% endfor %}
-        </select>
-        <textarea name="message" placeholder="{% trans 'Ваше сообщение' %}" class="placeholder:text-sm lg:placeholder:text-base px-3 lg:px-4 py-2 lg:py-3 rounded lg:rounded-lg bg-white/10 focus:outline-none focus:ring-1 ring-white resize-none" rows="5" required></textarea>
-        <button class="bg-[#ff5a00] py-2 lg:py-3 rounded lg:rounded-lg font-semibold lg:font-bold text-white hover:bg-[#d94e00] active:scale-95 transition">{% trans 'Отправить' %}</button>
-    </form>
 
-    <div class="text-center mt-3 lg:mt-6 flex flex-row justify-between lg:justify-center gap-1 lg:gap-4">
-        <a href="tel:+998901234567" class="w-full lg:max-w-max px-3 lg:px-6 py-2 lg:py-3 rounded lg:rounded-lg bg-[#ff5a00] font-semibold lg:font-bold hover:bg-[#d94e00] active:scale-95 transition">{% trans 'Позвонить' %}</a>
-        <a href="https://t.me/hitium"
-            class="w-full lg:max-w-max px-3 lg:px-6 py-2 lg:py-3 rounded lg:rounded-lg bg-[#ff5a00] font-semibold lg:font-bold hover:bg-[#d94e00] active:scale-95 transition">Telegram</a>
-    </div>
+        <!-- RIGHT: Map -->
+        <div class="rounded-xl overflow-hidden border border-white/10 shadow-xl self-stretch min-h-80 lg:min-h-0">
+            <iframe
+                src="https://www.openstreetmap.org/export/embed.html?bbox=69.3225%2C41.2416%2C69.3365%2C41.2556&layer=mapnik&marker=41.248617%2C69.329485"
+                width="100%"
+                height="100%"
+                style="border:0; display:block; min-height:320px;"
+                allowfullscreen=""
+                loading="lazy"
+                title="HITIUM — {% trans 'Наш адрес на карте' %}">
+            </iframe>
+        </div>
 
-    <div class="flex flex-row items-center justify-center gap-x-10 max-w-md mt-10 lg:mt-20 m-auto">
-        <a href="https://t.me/hitium" class="flex flex-col items-center gap-2 group">
-            <span class="material-icons text-white transition group-hover:cursor-pointer text-3xl lg:text-6xl group-hover:text-blue-600">telegram</span>
-            <p class="text-[#a5a5a5] text-lg lg:text-xl transition group-hover:text-blue-600">Telegram</p>
-        </a>
-        <a href="https://www.instagram.com/hitiumuz/" class="flex flex-col items-center gap-2 group">
-            <span class="material-icons text-white transition group-hover:cursor-pointer text-3xl lg:text-6xl group-hover:text-red-600">photo_camera</span>
-            <p class="text-[#a5a5a5] text-lg lg:text-xl group-hover:text-red-600 transition">Instagram</p>
-        </a>
     </div>
 </section>
 
-<footer class="text-center py-7 bg-white/5 text-[#a5a5a5] mt-6 lg:mt-12">
-    © {{ current_year }} HITIUM. {% trans 'Все права защищены.' %}
+<footer class="py-4 lg:py-5 bg-white/5 text-[#a5a5a5] mt-6 lg:mt-12">
+    <div class="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-sm font-accent">
+        <a href="https://t.me/thedevu101" target="_blank" rel="noopener noreferrer"
+           class="hover:text-[#ff5a00] transition text-center sm:text-left">
+            {% trans 'Сайт разработан' %} <span class="text-white font-semibold">Ulug'bek Umaraliyev</span>
+        </a>
+        <span class="text-center sm:text-right">© {% now "Y" %} HITIUM. {% trans 'Все права защищены.' %}</span>
+    </div>
 </footer>
