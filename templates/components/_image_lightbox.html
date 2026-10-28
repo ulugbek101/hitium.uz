@@ -1,0 +1,43 @@
+<!-- Image lightbox. Opens from any element with class "js-lightbox" and data-src / data-caption. -->
+<div id="lightboxModal"
+     class="fixed inset-0 bg-black/90 backdrop-blur-sm hidden flex-col items-center justify-center p-4 z-50">
+    <button id="lightboxClose"
+            class="absolute top-4 right-4 text-white/70 hover:text-[#ff5a00] transition material-symbols-outlined"
+            style="font-size:30px;">close</button>
+    <div class="max-w-4xl w-full flex flex-col items-center gap-4">
+        <img id="lightboxImg" src="" alt=""
+             class="max-h-[78vh] max-w-full rounded-xl object-contain shadow-2xl"/>
+        <p id="lightboxCaption" class="text-[#a5a5a5] text-sm font-accent text-center max-w-xl leading-relaxed"></p>
+    </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const modal    = document.getElementById("lightboxModal");
+    const modalImg = document.getElementById("lightboxImg");
+    const modalCap = document.getElementById("lightboxCaption");
+    const closeBtn = document.getElementById("lightboxClose");
+
+    function open(src, caption) {
+        modalImg.src = src;
+        modalCap.textContent = caption || "";
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+        document.body.style.overflow = "hidden";
+    }
+
+    function close() {
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+        document.body.style.overflow = "";
+        modalImg.src = "";
+    }
+
+    document.querySelectorAll(".js-lightbox").forEach(el => {
+        el.addEventListener("click", () => open(el.dataset.src, el.dataset.caption));
+    });
+    closeBtn.addEventListener("click", close);
+    modal.addEventListener("click", e => { if (e.target === modal) close(); });
+    document.addEventListener("keydown", e => { if (e.key === "Escape") close(); });
+});
+</script>
