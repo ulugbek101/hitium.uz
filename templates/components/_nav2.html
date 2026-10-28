@@ -1,17 +1,19 @@
 {% load i18n static %}
-<header class="flex justify-between items-center px-2 lg:px-10 py-2 lg:py-5 bg-white/5 border-b border-white/10">
+<header class="sticky top-0 z-10 flex justify-between items-center px-2 lg:px-10 py-2 lg:py-5 bg-[#1a1b1c]/90 backdrop-blur-md border-b border-white/10">
     <a href="{% url 'home_page' %}" class="flex items-center gap-3 text-[#ff5a00]" aria-label="HITIUM home">
         <img src="{% static 'images/nav-logo.png' %}" alt="HITIUM" class="h-12 rounded-md object-contain"/>
     </a>
 
-    <nav class="hidden sm:flex flex-row items-center gap-x-5">
+    <nav class="hidden lg:flex flex-row items-center gap-x-5">
         <a href="{% url 'home_page' %}#about" class="text-[#a5a5a5] font-semibold hover:text-[#ff5a00] text-sm">{% trans 'О компании' %}</a>
         <a href="{% url 'home_page' %}#services" class="text-[#a5a5a5] font-semibold hover:text-[#ff5a00] text-sm">{% trans 'Услуги' %}</a>
         <a href="{% url 'home_page' %}#projects" class="text-[#a5a5a5] font-semibold hover:text-[#ff5a00] text-sm">{% trans 'Проекты' %}</a>
         <a href="{% url 'home_page' %}#clients" class="text-[#a5a5a5] font-semibold hover:text-[#ff5a00] text-sm">{% trans 'Наши клиенты' %}</a>
+        <a href="{% url 'news' %}" class="text-[#a5a5a5] font-semibold hover:text-[#ff5a00] text-sm">{% trans 'Новости' %}</a>
         <a href="{% url 'home_page' %}#contacts" class="text-[#a5a5a5] font-semibold hover:text-[#ff5a00] text-sm">{% trans 'Контакты' %}</a>
-        <div class="relative group">
-            <a class="active:scale-90 h-10 flex items-center py-5 px-6 hover:opacity-90 transition gap-2" href="javascript:void(0)">
+        <div class="relative" id="langDropdown">
+            <button type="button" id="langToggle" aria-haspopup="true" aria-expanded="false" aria-controls="langMenu"
+                    class="active:scale-90 h-10 flex items-center py-5 px-6 hover:opacity-90 transition gap-2">
                 <span class="text-2xl">
                     {% if request.LANGUAGE_CODE == 'uz' %}
                         <img src="{% static 'images/uzb.webp' %}" alt="Uzbek" class="w-5"/>
@@ -22,16 +24,24 @@
                     {% endif %}
                 </span>
                 <span>{{ full_language_name }}</span>
-            </a>
+                <span id="langChevron" class="material-symbols-outlined transition-transform" style="font-size:20px;">expand_more</span>
+            </button>
 
-            <ul class="w-[110px] absolute left-1/2 -translate-x-1/2 hidden bg-white rounded-lg text-black py-1 px-2 shadow-lg group-hover:block">
+            <ul id="langMenu" class="w-[150px] absolute left-1/2 -translate-x-1/2 mt-1 hidden bg-white rounded-lg text-black py-1 px-2 shadow-lg">
                 {% for code, name in LANGUAGES %}
                     <li class="w-full">
                         <form action="{% url 'switch_language' %}" method="post" class="w-full">
                             {% csrf_token %}
                             <input type="hidden" name="language" value="{{ code }}">
                             <input type="hidden" name="next" value="{{ request.path }}">
-                            <button type="{% if name == full_language_name %}button{% else %}submit{% endif %}" class="active:scale-90 flex items-center gap-1 w-full my-1 py-1 px-2 rounded hover:bg-[#ed4721] hover:text-white {% if request.LANGUAGE_CODE == code %}text-white bg-[#ed4721]{% endif %} transition">
+                            <button type="{% if name == full_language_name %}button{% else %}submit{% endif %}" class="active:scale-90 flex items-center gap-2 w-full my-1 py-1 px-2 rounded hover:bg-[#ed4721] hover:text-white {% if request.LANGUAGE_CODE == code %}text-white bg-[#ed4721]{% endif %} transition">
+                                {% if code == 'uz' %}
+                                    <img src="{% static 'images/uzb.webp' %}" alt="" class="w-5" loading="lazy" decoding="async"/>
+                                {% elif code == 'en' %}
+                                    <img src="{% static 'images/usa.png' %}" alt="" class="w-5" loading="lazy" decoding="async"/>
+                                {% else %}
+                                    <img src="{% static 'images/rus.jpg' %}" alt="" class="w-5" loading="lazy" decoding="async"/>
+                                {% endif %}
                                 <span>{{ name }}</span>
                             </button>
                         </form>
@@ -41,3 +51,22 @@
         </div>
     </nav>
 </header>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const dropdown = document.getElementById("langDropdown");
+    const toggle = document.getElementById("langToggle");
+    const menu = document.getElementById("langMenu");
+    const chevron = document.getElementById("langChevron");
+
+    function setOpen(open) {
+        menu.classList.toggle("hidden", !open);
+        chevron.classList.toggle("rotate-180", open);
+        toggle.setAttribute("aria-expanded", open);
+    }
+
+    toggle.addEventListener("click", () => setOpen(menu.classList.contains("hidden")));
+    document.addEventListener("click", e => { if (!dropdown.contains(e.target)) setOpen(false); });
+    document.addEventListener("keydown", e => { if (e.key === "Escape") setOpen(false); });
+});
+</script>
