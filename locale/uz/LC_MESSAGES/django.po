@@ -685,3 +685,41 @@ msgstr "Ijrochi"
 #: app_main/templates/app_main/project_detail.html:130
 msgid "Фотографии проекта"
 msgstr "Loyiha fotosuratlari"
+
+#: templates/components/_nav2.html
+msgid "Новости"
+msgstr "Yangiliklar"
+
+#: app_main/templates/app_main/news.html
+msgid "Новости компании"
+msgstr "Kompaniya yangiliklari"
+
+msgid "Выставки, завершённые проекты и события из жизни компании."
+msgstr "Ko'rgazmalar, yakunlangan loyihalar va kompaniya hayotidagi voqealar."
+
+msgid "Читать полностью"
+msgstr "To'liq o'qish"
+
+msgid "Новостей пока нет"
+msgstr "Hozircha yangiliklar yo'q"
+
+#: app_main/templates/app_main/news_detail.html
+msgid "Фото и видео"
+msgstr "Foto va video"
+
+msgid "Все новости"
+msgstr "Barcha yangiliklar"
+
+msgid "Язык"
+msgstr "Til"
+
+#: templates/components/_mobile_menu.html
+msgid "Меню"
+msgstr "Menyu"
+
+msgid "Закрыть"
+msgstr "Yopish"
+
+#: templates/base2.html
+msgid "монтаж промышленного оборудования, установка промышленного оборудования, пусконаладочные работы, наладка оборудования, шеф-монтаж, монтаж технологических линий, монтаж линий розлива, монтаж оборудования для пищевой промышленности, изготовление резервуаров из нержавеющей стали, монтаж емкостей, изоляция емкостей, теплоизоляция трубопроводов, монтаж технологических трубопроводов, монтаж котельных, монтаж чиллеров, кондиционирование и холодоснабжение, вентиляция бассейнов, водопровод и канализация, такелажные работы, сварка нержавеющей стали, промышленный монтаж Ташкент, монтажная компания Узбекистан, монтаж оборудования Ташкент"
+msgstr "sanoat uskunalarini montaj qilish, sanoat uskunalarini o'rnatish, ishga tushirish-sozlash ishlari, uskunalarni sozlash, shef-montaj, texnologik liniyalarni montaj qilish, quyish liniyalarini montaj qilish, oziq-ovqat sanoati uskunalarini montaj qilish, zanglamaydigan po'latdan rezervuarlar tayyorlash, idishlarni montaj qilish, idishlarni izolyatsiya qilish, quvurlarni issiqlik izolyatsiyasi, texnologik quvurlarni montaj qilish, qozonxonalarni montaj qilish, chillerlarni o'rnatish, konditsionerlash va sovuq ta'minoti, basseyn shamollatish, suv ta'minoti va kanalizatsiya, takelaj ishlari, zanglamaydigan po'latni payvandlash, sanoat montaji Toshkent, montaj kompaniyasi O'zbekiston, Toshkentda uskunalar montaji"
