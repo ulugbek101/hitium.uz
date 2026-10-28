@@ -1,6 +1,5 @@
 from pathlib import Path
 from environs import Env
-from django.utils.translation import gettext_lazy as _
 
 
 env = Env()
@@ -115,9 +114,9 @@ def gettext(lang): return lang
 
 LANGUAGE_CODE = "ru-RU"
 LANGUAGES = (
-    ("ru", _("Русский")),
-    ("uz", _("O'zbek tili")),
-    ("en", _("English")),
+    ("ru", "Русский"),
+    ("uz", "O‘zbekcha"),
+    ("en", "English"),
 )
 
 LOCALE_PATHS = (
