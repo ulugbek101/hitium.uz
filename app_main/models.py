@@ -1,5 +1,5 @@
 from django.db import models
-from .validators import validate_video_size
+from .validators import NEWS_VIDEO_MAX_MB, VIDEO_EXTENSIONS, validate_news_media, validate_video_size
 
 
 class BaseModel(models.Model):
@@ -112,3 +112,53 @@ class Review(BaseModel):
     class Meta:
         verbose_name = "Отзыв"
         verbose_name_plural = "Отзывы"
+
+
+class News(BaseModel):
+    title = models.CharField(max_length=255, verbose_name="Заголовок")
+    slug = models.SlugField(max_length=250, verbose_name="Слаг")
+    description = models.TextField(verbose_name="Текст новости", help_text="Абзацы разделяйте пустой строкой")
+    published_date = models.DateField(verbose_name="Дата публикации")
+    priority = models.PositiveIntegerField(
+        null=True,
+        blank=True,
+        verbose_name="Приоритет",
+        help_text="Чем меньше число, тем выше новость в списке (1 — большая карточка вверху). "
+                  "Без приоритета новости сортируются по дате публикации",
+    )
+
+    @property
+    def cover(self):
+        """First photo of the news, used as the hero background."""
+        return next((media for media in self.media.all() if not media.is_video), None)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = "Новость"
+        verbose_name_plural = "Новости"
+        ordering = [models.F('priority').asc(nulls_last=True), '-published_date', '-created']
+
+
+class NewsMedia(BaseModel):
+    news = models.ForeignKey(to=News, on_delete=models.CASCADE, verbose_name="Новость", related_name="media")
+    file = models.FileField(
+        upload_to="news/",
+        verbose_name="Фото или видео",
+        help_text=f"Фото: JPG, PNG, WebP. Видео: MP4, WebM, MOV — не больше {NEWS_VIDEO_MAX_MB} MB",
+        validators=[validate_news_media],
+    )
+    description = models.TextField(verbose_name="Описание", null=True, blank=True)
+
+    @property
+    def is_video(self):
+        return self.file.name.lower().endswith(VIDEO_EXTENSIONS)
+
+    def __str__(self):
+        return self.file.name
+
+    class Meta:
+        verbose_name = "Медиафайл новости"
+        verbose_name_plural = "Фото и видео"
+        ordering = ['id']

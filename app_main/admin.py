@@ -5,7 +5,7 @@ from django.contrib.auth.admin import UserAdmin
 
 from unfold.admin import ModelAdmin, TabularInline
 
-from .models import Service, ServiceImage, Project, ProjectImage, Client, GalleryImage, Review
+from .models import Service, ServiceImage, Project, ProjectImage, Client, GalleryImage, Review, News, NewsMedia
 
 admin.site.unregister(Group)
 admin.site.unregister(User)
@@ -100,6 +100,29 @@ class GalleryImageAdmin(ModelAdmin):
 @admin.register(Review)
 class ReviewAdmin(ModelAdmin):
     ...
+
+
+class NewsMediaInline(TabularInline):
+    model = NewsMedia
+    extra = 1
+    prepopulated_fields = {
+        'description': ['description_ru']
+    }
+
+
+@admin.register(News)
+class NewsAdmin(ModelAdmin):
+    list_display = ("title", "published_date", "priority")
+    list_editable = ("priority",)
+    inlines = [NewsMediaInline]
+    prepopulated_fields = {
+        'title': ['title_ru'],
+        'slug': ['title_ru'],
+        'slug_uz': ['title_uz'],
+        'slug_ru': ['title_ru'],
+        'slug_en': ['title_en'],
+        'description': ['description_ru'],
+    }
 
 
 admin.site.site_header = "Административный панель Hitium.uz"

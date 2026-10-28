@@ -21,7 +21,7 @@
         {% for service in services %}
             <a href="{% url 'service_detail' slug=service.slug id=service.id %}" class="bg-white/5 rounded-xl p-4 text-center hover:text-[#ff5a00] hover:bg-white/10 transition">
                 {% if service.header_bg %}
-                    <img src="{{ service.header_bg.url }}" alt="{{ service.name }}" class="h-[200px] w-full rounded-lg mb-3 object-cover" loading="lazy"/>
+                    <img src="{{ service.header_bg.url }}" alt="{{ service.name }}" class="h-[200px] w-full rounded-lg mb-3 object-cover" loading="lazy" decoding="async"/>
                 {% endif %}
                 <h2 class="font-display text-lg py-2.5">{{ service.name }}</h2>
             </a>

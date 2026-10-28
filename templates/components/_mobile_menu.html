@@ -1,84 +1,150 @@
 {% load static i18n %}
-<span style="z-index: 11" id="menuBtn" data-nosnippet class="lg:hidden material-icons font-bold text-white absolute right-4 top-5 active:scale-90 active:text-[#ed4721] transition z-1">menu</span>
-<div style="z-index: 12" id="menu" class="transition lg:hidden absolute top-0 left-[-100%] h-full w-full bg-black bg-opacity-50 z-10 backdrop-blur-md">
-    <div class="w-full flex flex-col gap-5 p-4">
-        <span id="closeMenu" class="material-icons ms-auto text-white">close</span>
-        <div class="flex flex-col justify-center items-center">
-            <a href="{% url 'home_page' %}">
-                <img src="{% static 'images/nav-logo.png' %}" alt="Hitium.uz" class="h-[70px] me-5">
-            </a>
-            <div class="mt-2 flex flex-col items-start gap-2">
-                <a href="{% url 'home_page' %}" class="font-bold text-lg text-white">{% trans 'Главная' %}</a>
-                <a href="{% url 'our_services' %}" class="font-bold text-lg text-white">{% trans 'Наши услуги' %}</a>
-                <div class="text-white font-bold flex flex-row items-center justify-between gap-5 w-full relative group">
-                    <div class="relative">
-                        <a class="active:scale-90 h-[40px] flex items-center hover:opacity-90 transition gap-2" href="javascript:void(0)">
-                            <span class="text-2xl">
-                                {% if request.LANGUAGE_CODE == 'uz' %}
-                                    <img src="{% static 'images/uzb.webp' %}" alt="Uzbek" class="w-5">
-                                {% elif request.LANGUAGE_CODE == 'en' %}
-                                    <img src="{% static 'images/usa.png' %}" alt="English" class="w-5">
-                                {% else %}
-                                    <img src="{% static 'images/rus.jpg' %}" alt="Russian" class="w-5">
-                                {% endif %}
-                            </span>
-                            <span>{{ full_language_name }}</span>
-                        </a>
+{% with url_name=request.resolver_match.url_name %}
+<button type="button" id="menuBtn" data-nosnippet aria-label="{% trans 'Меню' %}" aria-controls="mobileMenu" aria-expanded="false"
+        style="z-index: 11"
+        class="lg:hidden fixed right-3 top-3 w-10 h-10 rounded-lg bg-white/10 border border-white/10 flex items-center justify-center text-white active:scale-90 transition">
+    <span class="material-icons">menu</span>
+</button>
 
-                        <ul class="w-[170px] absolute left-[80px] -translate-x-1/2 hidden bg-white rounded-lg text-black py-1 px-2 shadow-lg group-hover:block">
-                            {% for code, name in LANGUAGES %}
-                                <li class="w-full">
-                                    <form action="{% url 'switch_language' %}" method="post" class="w-full">
-                                        {% csrf_token %}
-                                        <input type="hidden" name="language" value="{{ code }}">
-                                        {% if service %}
-                                            {% if code == 'uz' %}
-                                                <input type="hidden" name="next" value="/{{ code }}/services/{{ service.slug_uz }}/{{ service.id }}/">
-                                            {% elif code == 'en' %}
-                                                <input type="hidden" name="next" value="/{{ code }}/services/{{ service.slug_en }}/{{ service.id }}/">
-                                            {% else %}
-                                                <input type="hidden" name="next" value="/{{ code }}/services/{{ service.slug_ru }}/{{ service.id }}/">
-                                            {% endif %}
-                                        {% else %}
-                                            <input type="hidden" name="next" value="{{ request.path }}">
-                                        {% endif %}
-                                        <button type="{% if name == full_language_name %}button{% else %}submit{% endif %}" class="active:scale-90 flex items-center gap-1 w-full my-1 block py-1 px-2 rounded hover:bg-[#ed4721] hover:text-white {% if request.LANGUAGE_CODE == code %}text-white bg-[#ed4721]{% endif %} transition">
-                                            <span>{{ name }}</span>
-                                        </button>
-                                    </form>
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                    <span class="material-icons group-hover:-rotate-180 transition">keyboard_arrow_down</span>
-                </div>
+<div id="mobileMenu" data-open="false" style="z-index: 12"
+     class="group lg:hidden fixed inset-0 pointer-events-none data-[open=true]:pointer-events-auto">
+    <!-- Backdrop -->
+    <div id="mobileMenuBackdrop"
+         class="absolute inset-0 bg-black/60 backdrop-blur-sm opacity-0 group-data-[open=true]:opacity-100 transition-opacity duration-300"></div>
+
+    <!-- Drawer -->
+    <aside id="mobileMenuPanel" role="dialog" aria-modal="true" aria-label="{% trans 'Меню' %}"
+           class="absolute top-0 right-0 h-full w-[85%] max-w-sm flex flex-col bg-[#0e0f10] border-l border-white/10 shadow-2xl translate-x-full group-data-[open=true]:translate-x-0 transition-transform duration-300 ease-out">
+        <div class="flex items-center justify-between px-4 h-16 border-b border-white/10">
+            <a href="{% url 'home_page' %}">
+                <img src="{% static 'images/nav-logo.png' %}" alt="Hitium.uz" class="h-10 rounded-md object-contain" loading="lazy" decoding="async"/>
+            </a>
+            <button type="button" id="closeMenu" aria-label="{% trans 'Закрыть' %}"
+                    class="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center text-white active:scale-90 transition">
+                <span class="material-icons">close</span>
+            </button>
+        </div>
+
+        <!-- Links: same order as the desktop navigation; they slide in one after another -->
+        <nav class="flex-1 overflow-y-auto px-3 py-4 flex flex-col gap-1">
+            <a href="{% url 'home_page' %}" style="transition-delay: 60ms"
+               class="flex items-center gap-3 px-3 py-3 rounded-xl font-semibold hover:bg-white/5 active:bg-white/10 transition duration-300 opacity-0 translate-x-6 group-data-[open=true]:opacity-100 group-data-[open=true]:translate-x-0 {% if url_name == 'home_page' %}bg-white/5 text-[#ff5a00]{% else %}text-white{% endif %}">
+                <span class="material-symbols-outlined text-[#ff5a00]" style="font-size:22px;">home</span>
+                <span class="flex-1">{% trans 'Главная' %}</span>
+                <span class="material-symbols-outlined text-white/30" style="font-size:20px;">chevron_right</span>
+            </a>
+            <a href="{% url 'home_page' %}#about" style="transition-delay: 100ms"
+               class="flex items-center gap-3 px-3 py-3 rounded-xl font-semibold text-white hover:bg-white/5 active:bg-white/10 transition duration-300 opacity-0 translate-x-6 group-data-[open=true]:opacity-100 group-data-[open=true]:translate-x-0">
+                <span class="material-symbols-outlined text-[#ff5a00]" style="font-size:22px;">info</span>
+                <span class="flex-1">{% trans 'О компании' %}</span>
+                <span class="material-symbols-outlined text-white/30" style="font-size:20px;">chevron_right</span>
+            </a>
+            <a href="{% url 'home_page' %}#services" style="transition-delay: 140ms"
+               class="flex items-center gap-3 px-3 py-3 rounded-xl font-semibold text-white hover:bg-white/5 active:bg-white/10 transition duration-300 opacity-0 translate-x-6 group-data-[open=true]:opacity-100 group-data-[open=true]:translate-x-0">
+                <span class="material-symbols-outlined text-[#ff5a00]" style="font-size:22px;">engineering</span>
+                <span class="flex-1">{% trans 'Услуги' %}</span>
+                <span class="material-symbols-outlined text-white/30" style="font-size:20px;">chevron_right</span>
+            </a>
+            <a href="{% url 'home_page' %}#projects" style="transition-delay: 180ms"
+               class="flex items-center gap-3 px-3 py-3 rounded-xl font-semibold text-white hover:bg-white/5 active:bg-white/10 transition duration-300 opacity-0 translate-x-6 group-data-[open=true]:opacity-100 group-data-[open=true]:translate-x-0">
+                <span class="material-symbols-outlined text-[#ff5a00]" style="font-size:22px;">apartment</span>
+                <span class="flex-1">{% trans 'Проекты' %}</span>
+                <span class="material-symbols-outlined text-white/30" style="font-size:20px;">chevron_right</span>
+            </a>
+            <a href="{% url 'home_page' %}#clients" style="transition-delay: 220ms"
+               class="flex items-center gap-3 px-3 py-3 rounded-xl font-semibold text-white hover:bg-white/5 active:bg-white/10 transition duration-300 opacity-0 translate-x-6 group-data-[open=true]:opacity-100 group-data-[open=true]:translate-x-0">
+                <span class="material-symbols-outlined text-[#ff5a00]" style="font-size:22px;">handshake</span>
+                <span class="flex-1">{% trans 'Наши клиенты' %}</span>
+                <span class="material-symbols-outlined text-white/30" style="font-size:20px;">chevron_right</span>
+            </a>
+            <a href="{% url 'news' %}" style="transition-delay: 260ms"
+               class="flex items-center gap-3 px-3 py-3 rounded-xl font-semibold hover:bg-white/5 active:bg-white/10 transition duration-300 opacity-0 translate-x-6 group-data-[open=true]:opacity-100 group-data-[open=true]:translate-x-0 {% if url_name == 'news' or url_name == 'news_detail' %}bg-white/5 text-[#ff5a00]{% else %}text-white{% endif %}">
+                <span class="material-symbols-outlined text-[#ff5a00]" style="font-size:22px;">newspaper</span>
+                <span class="flex-1">{% trans 'Новости' %}</span>
+                <span class="material-symbols-outlined text-white/30" style="font-size:20px;">chevron_right</span>
+            </a>
+            <a href="{% url 'home_page' %}#contacts" style="transition-delay: 300ms"
+               class="flex items-center gap-3 px-3 py-3 rounded-xl font-semibold text-white hover:bg-white/5 active:bg-white/10 transition duration-300 opacity-0 translate-x-6 group-data-[open=true]:opacity-100 group-data-[open=true]:translate-x-0">
+                <span class="material-symbols-outlined text-[#ff5a00]" style="font-size:22px;">call</span>
+                <span class="flex-1">{% trans 'Контакты' %}</span>
+                <span class="material-symbols-outlined text-white/30" style="font-size:20px;">chevron_right</span>
+            </a>
+        </nav>
+
+        <div class="px-4 py-5 border-t border-white/10 flex flex-col gap-3">
+            <!-- Language: one tap, no dropdown -->
+            <div class="grid grid-cols-3 gap-1 p-1 rounded-xl bg-white/5 border border-white/10">
+                {% for code, name in LANGUAGES %}
+                    <form action="{% url 'switch_language' %}" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="language" value="{{ code }}">
+                        {% if service %}
+                            {% if code == 'uz' %}
+                                <input type="hidden" name="next" value="/{{ code }}/services/{{ service.slug_uz }}/{{ service.id }}/">
+                            {% elif code == 'en' %}
+                                <input type="hidden" name="next" value="/{{ code }}/services/{{ service.slug_en }}/{{ service.id }}/">
+                            {% else %}
+                                <input type="hidden" name="next" value="/{{ code }}/services/{{ service.slug_ru }}/{{ service.id }}/">
+                            {% endif %}
+                        {% else %}
+                            <input type="hidden" name="next" value="{{ request.path }}">
+                        {% endif %}
+                        <button type="{% if request.LANGUAGE_CODE == code %}button{% else %}submit{% endif %}" title="{{ name }}"
+                                class="w-full flex items-center justify-center gap-1.5 py-2 rounded-lg text-xs font-semibold uppercase transition {% if request.LANGUAGE_CODE == code %}bg-[#ed4721] text-white{% else %}text-[#a5a5a5] active:bg-white/10{% endif %}">
+                            {% if code == 'uz' %}
+                                <img src="{% static 'images/uzb.webp' %}" alt="" class="w-4" loading="lazy" decoding="async"/>
+                            {% elif code == 'en' %}
+                                <img src="{% static 'images/usa.png' %}" alt="" class="w-4" loading="lazy" decoding="async"/>
+                            {% else %}
+                                <img src="{% static 'images/rus.jpg' %}" alt="" class="w-4" loading="lazy" decoding="async"/>
+                            {% endif %}
+                            {{ code }}
+                        </button>
+                    </form>
+                {% endfor %}
             </div>
-            <a href="{% url 'contacts' %}" class="flex items-center gap-2 w-[200px] justify-center py-2 px-4 bg-[#ed4721] active:scale-90 font-bold text-white mt-5 rounded transition">
+
+            <a href="{% url 'contacts' %}"
+               class="flex items-center justify-center gap-2 py-3 rounded-xl bg-[#ff5a00] hover:bg-[#d94e00] font-bold text-white active:scale-95 transition shadow-lg shadow-[#ff5a00]/20">
                 <span class="material-icons">construction</span>
                 {% trans 'Заказать услугу' %}
             </a>
-            <a href="tel:+998974458838" class="flex items-center gap-2 w-[200px] justify-center py-2 px-4 bg-[#ed4721] active:scale-90 font-bold text-white mt-5 rounded transition">
+            <a href="tel:+998974458838"
+               class="flex items-center justify-center gap-2 py-3 rounded-xl bg-white/10 hover:bg-white/20 font-bold text-white active:scale-95 transition">
                 <span class="material-icons">phone</span>
                 {% trans 'Позвонить' %}
             </a>
         </div>
-    </div>
+    </aside>
 </div>
+{% endwith %}
 
 <script>
-    const menuBtn = document.getElementById('menuBtn');
-    const menu = document.getElementById('menu');
-    const closeMenu = document.getElementById('closeMenu');
+document.addEventListener("DOMContentLoaded", () => {
+    const menu = document.getElementById("mobileMenu");
+    const menuBtn = document.getElementById("menuBtn");
+    const panel = document.getElementById("mobileMenuPanel");
 
-    closeMenu.addEventListener('click', () => {
-        menu.classList.remove('left-0');
-        menu.classList.add('left-[-100%]');
-        document.body.style.overflow = '';
-    })
+    function setOpen(open) {
+        menu.dataset.open = open;
+        menuBtn.setAttribute("aria-expanded", open);
+        document.body.style.overflow = open ? "hidden" : "";
+    }
 
-    menuBtn.addEventListener('click', () => {
-        menu.classList.remove('left-[-100%]');
-        menu.classList.add('left-0');
-        document.body.style.overflow = 'hidden';
+    menuBtn.addEventListener("click", () => setOpen(true));
+    document.getElementById("closeMenu").addEventListener("click", () => setOpen(false));
+    document.getElementById("mobileMenuBackdrop").addEventListener("click", () => setOpen(false));
+    menu.querySelectorAll("nav a").forEach(link => link.addEventListener("click", () => setOpen(false)));
+    document.addEventListener("keydown", e => {
+        if (e.key === "Escape" && menu.dataset.open === "true") setOpen(false);
     });
+
+    // Swipe right on the drawer to close it
+    let touchStartX = null;
+    panel.addEventListener("touchstart", e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+    panel.addEventListener("touchend", e => {
+        if (touchStartX !== null && e.changedTouches[0].clientX - touchStartX > 60) setOpen(false);
+        touchStartX = null;
+    });
+});
 </script>

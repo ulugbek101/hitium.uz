@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sitemaps',
 
     'app_main',
 ]
@@ -45,6 +46,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'app_main.middleware.NoIndexAdminMiddleware',
 ]
 
 ROOT_URLCONF = 'PROJECT.urls'

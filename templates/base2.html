@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 {% load i18n static %}
-<html lang="{{ LANGUAGE_CODE }}">
+<html lang="{{ LANGUAGE_CODE }}" class="scroll-pt-24 lg:scroll-pt-28">
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -8,7 +8,7 @@
     <title>{% block title %}{% trans 'HITIUM — Инженерные системы и монтаж' %}{% endblock %}</title>
 
     <meta name="description" content="{% block meta_description %}{% trans 'Профессиональный монтаж и обслуживание инженерных систем в Узбекистане. Вентиляция, водоснабжение, котельное оборудование, холодильные системы.' %}{% endblock %}"/>
-    <meta name="keywords" content="{% block meta_keywords %}{% trans 'инженерные системы Ташкент, монтаж оборудования Узбекистан, вентиляция, водоснабжение, котельное оборудование, промышленный монтаж, Hitium' %}{% endblock %}"/>
+    <meta name="keywords" content="{% block meta_keywords %}{% trans 'инженерные системы Ташкент, монтаж оборудования Узбекистан, вентиляция, водоснабжение, котельное оборудование, промышленный монтаж, Hitium' %}{% endblock %}, {% trans 'монтаж промышленного оборудования, установка промышленного оборудования, пусконаладочные работы, наладка оборудования, шеф-монтаж, монтаж технологических линий, монтаж линий розлива, монтаж оборудования для пищевой промышленности, изготовление резервуаров из нержавеющей стали, монтаж емкостей, изоляция емкостей, теплоизоляция трубопроводов, монтаж технологических трубопроводов, монтаж котельных, монтаж чиллеров, кондиционирование и холодоснабжение, вентиляция бассейнов, водопровод и канализация, такелажные работы, сварка нержавеющей стали, промышленный монтаж Ташкент, монтажная компания Узбекистан, монтаж оборудования Ташкент' %}"/>
     <meta name="author" content="Hitium.uz"/>
     <meta name="robots" content="index, follow"/>
 
@@ -17,8 +17,13 @@
     <meta property="og:description" content="{% block og_description %}{% trans 'Профессиональный монтаж и обслуживание инженерных систем в Узбекистане.' %}{% endblock %}"/>
     <meta property="og:image" content="{% block og_image %}https://hitium.uz{% static 'images/og-image.jpg' %}{% endblock %}"/>
     <meta property="og:url" content="{% block og_url %}https://hitium.uz{{ request.path }}{% endblock %}"/>
-    <meta property="og:type" content="website"/>
+    <meta property="og:type" content="{% block og_type %}website{% endblock %}"/>
+    <meta property="og:site_name" content="HITIUM"/>
+    <meta property="og:image:alt" content="{% block og_image_alt %}HITIUM{% endblock %}"/>
     <meta property="og:locale" content="{% if LANGUAGE_CODE == 'uz' %}uz_UZ{% elif LANGUAGE_CODE == 'en' %}en_US{% else %}ru_RU{% endif %}"/>
+    {% if LANGUAGE_CODE != 'ru' %}<meta property="og:locale:alternate" content="ru_RU"/>{% endif %}
+    {% if LANGUAGE_CODE != 'uz' %}<meta property="og:locale:alternate" content="uz_UZ"/>{% endif %}
+    {% if LANGUAGE_CODE != 'en' %}<meta property="og:locale:alternate" content="en_US"/>{% endif %}
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image"/>
@@ -54,7 +59,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
 
     <link rel="stylesheet" href="{% static 'css/index.css' %}"/>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{% static 'css/tailwind.css' %}"/>
 
     <style>
         body { font-family: "Manrope", sans-serif; }
@@ -73,6 +78,24 @@
 {% block content %}{% endblock content %}
 
 {% block page_footer %}{% include 'components/_footer2.html' %}{% endblock %}
+<script>
+// Video thumbnails load only after the page itself has loaded, and only when they get near the viewport
+window.addEventListener("load", () => {
+    const videos = document.querySelectorAll("video[data-src]");
+    const load = video => {
+        video.preload = "metadata";
+        video.src = video.dataset.src;
+        video.removeAttribute("data-src");
+    };
+    if (!("IntersectionObserver" in window)) return videos.forEach(load);
+    const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        load(entry.target);
+        observer.unobserve(entry.target);
+    }), { rootMargin: "200px" });
+    videos.forEach(video => observer.observe(video));
+});
+</script>
 
 <!-- LocalBusiness structured data (overrideable per page) -->
 {% block structured_data %}

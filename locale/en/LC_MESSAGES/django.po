@@ -537,3 +537,41 @@ msgstr "Contractor"
 
 msgid "Фотографии проекта"
 msgstr "Project photos"
+
+#: templates/components/_nav2.html
+msgid "Новости"
+msgstr "News"
+
+#: app_main/templates/app_main/news.html
+msgid "Новости компании"
+msgstr "Company news"
+
+msgid "Выставки, завершённые проекты и события из жизни компании."
+msgstr "Exhibitions, completed projects and company events."
+
+msgid "Читать полностью"
+msgstr "Read full story"
+
+msgid "Новостей пока нет"
+msgstr "No news yet"
+
+#: app_main/templates/app_main/news_detail.html
+msgid "Фото и видео"
+msgstr "Photos and videos"
+
+msgid "Все новости"
+msgstr "All news"
+
+msgid "Язык"
+msgstr "Language"
+
+#: templates/components/_mobile_menu.html
+msgid "Меню"
+msgstr "Menu"
+
+msgid "Закрыть"
+msgstr "Close"
+
+#: templates/base2.html
+msgid "монтаж промышленного оборудования, установка промышленного оборудования, пусконаладочные работы, наладка оборудования, шеф-монтаж, монтаж технологических линий, монтаж линий розлива, монтаж оборудования для пищевой промышленности, изготовление резервуаров из нержавеющей стали, монтаж емкостей, изоляция емкостей, теплоизоляция трубопроводов, монтаж технологических трубопроводов, монтаж котельных, монтаж чиллеров, кондиционирование и холодоснабжение, вентиляция бассейнов, водопровод и канализация, такелажные работы, сварка нержавеющей стали, промышленный монтаж Ташкент, монтажная компания Узбекистан, монтаж оборудования Ташкент"
+msgstr "industrial equipment installation, industrial equipment assembly, commissioning services, equipment setup and adjustment, supervised installation, production line installation, bottling line installation, food processing equipment installation, stainless steel tank fabrication, tank installation, tank insulation, pipe insulation, process piping installation, boiler room installation, chiller installation, HVAC and refrigeration, pool ventilation, plumbing and sewerage, rigging services, stainless steel welding, industrial installation Tashkent, installation company Uzbekistan, equipment installation Tashkent"

@@ -50,13 +50,13 @@
 
         <!-- RIGHT: Map -->
         <div class="rounded-xl overflow-hidden border border-white/10 shadow-xl self-stretch min-h-80 lg:min-h-0">
-            <iframe
+            <iframe loading="lazy"
                 src="https://www.openstreetmap.org/export/embed.html?bbox=69.3225%2C41.2416%2C69.3365%2C41.2556&layer=mapnik&marker=41.248617%2C69.329485"
                 width="100%"
                 height="100%"
                 style="border:0; display:block; min-height:320px;"
                 allowfullscreen=""
-                loading="lazy"
+                loading="lazy" decoding="async"
                 title="HITIUM — {% trans 'Наш адрес на карте' %}">
             </iframe>
         </div>

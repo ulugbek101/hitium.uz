@@ -1,0 +1,212 @@
+<!-- Video modal with custom player. Opens from any element with class "js-video" and data-src / data-title. -->
+<div id="videoModal"
+     class="fixed inset-0 bg-black/95 backdrop-blur-md hidden flex-col items-center justify-center p-4 z-[60]">
+    <div class="relative w-full max-w-2xl">
+
+        <!-- Close -->
+        <button id="vmClose"
+                class="absolute -top-10 right-0 text-white/70 hover:text-[#ff5a00] transition material-symbols-outlined"
+                style="font-size:30px;">close</button>
+
+        <!-- Video: a blurred copy of the current frame fills the empty sides (e.g. vertical videos) -->
+        <div class="relative h-[65vh] rounded-2xl overflow-hidden bg-black">
+            <canvas id="vmBackdrop" class="absolute inset-0 w-full h-full scale-125 blur-2xl opacity-70" aria-hidden="true"></canvas>
+            <video id="vmVideo" class="relative w-full h-full object-contain cursor-pointer" playsinline></video>
+            <!-- Loading indicator (shown while buffering, e.g. after seeking) -->
+            <div id="vmLoader" class="absolute inset-0 hidden items-center justify-center pointer-events-none">
+                <div class="w-12 h-12 rounded-full border-4 border-white/20 border-t-[#ff5a00] animate-spin"></div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="mt-3 px-1 flex flex-col gap-2">
+            <!-- Progress bar: click or drag to seek -->
+            <div id="vmProgress" class="py-2 cursor-pointer touch-none group/pb">
+                <div class="h-1.5 bg-white/20 rounded-full relative">
+                    <div id="vmFill" class="h-full bg-[#ff5a00] rounded-full pointer-events-none" style="width:0%"></div>
+                    <div id="vmThumb"
+                         class="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-3.5 h-3.5 bg-[#ff5a00] rounded-full shadow-lg group-hover/pb:scale-125 transition-transform pointer-events-none"
+                         style="left:0%"></div>
+                </div>
+            </div>
+
+            <!-- Buttons row -->
+            <div class="flex items-center justify-between gap-3">
+                <div class="flex items-center gap-3">
+                    <button id="vmPlay"
+                            class="text-white hover:text-[#ff5a00] transition material-symbols-outlined"
+                            style="font-size:30px;">play_arrow</button>
+                    <div class="flex items-center gap-1.5">
+                        <button id="vmMute"
+                                class="text-white/70 hover:text-[#ff5a00] transition material-symbols-outlined"
+                                style="font-size:20px;">volume_up</button>
+                        <input id="vmVolume" type="range" min="0" max="1" step="0.05" value="1"
+                               class="w-14 accent-[#ff5a00] cursor-pointer h-1"/>
+                    </div>
+                    <span id="vmTime" class="text-[#a5a5a5] text-xs font-accent tabular-nums">0:00 / 0:00</span>
+                </div>
+                <button id="vmFullscreen"
+                        class="text-white/70 hover:text-[#ff5a00] transition material-symbols-outlined"
+                        style="font-size:20px;">fullscreen</button>
+            </div>
+        </div>
+
+        <!-- Title -->
+        <p id="vmTitle" class="text-center text-[#a5a5a5] mt-4 font-accent font-semibold text-base"></p>
+    </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const vmModal    = document.getElementById("videoModal");
+    const vmVideo    = document.getElementById("vmVideo");
+    const vmLoader   = document.getElementById("vmLoader");
+    const vmPlay     = document.getElementById("vmPlay");
+    const vmMute     = document.getElementById("vmMute");
+    const vmVolume   = document.getElementById("vmVolume");
+    const vmTime     = document.getElementById("vmTime");
+    const vmFill     = document.getElementById("vmFill");
+    const vmThumb    = document.getElementById("vmThumb");
+    const vmProgress = document.getElementById("vmProgress");
+    const vmClose    = document.getElementById("vmClose");
+    const vmFull     = document.getElementById("vmFullscreen");
+    const vmTitle    = document.getElementById("vmTitle");
+
+    function fmtTime(s) {
+        if (!isFinite(s)) return "0:00";
+        const m = Math.floor(s / 60);
+        const sec = Math.floor(s % 60);
+        return `${m}:${sec.toString().padStart(2, "0")}`;
+    }
+
+    function setProgress(pct) {
+        vmFill.style.width = pct + "%";
+        vmThumb.style.left = pct + "%";
+    }
+
+    function showLoader(show) {
+        vmLoader.classList.toggle("hidden", !show);
+        vmLoader.classList.toggle("flex", show);
+    }
+
+    // Blurred backdrop: each frame is cover-scaled into a tiny canvas that CSS stretches and blurs
+    const vmBackdrop = document.getElementById("vmBackdrop");
+    const backdropCtx = vmBackdrop.getContext("2d");
+    let backdropFrame = null;
+
+    function sizeBackdrop() {
+        const box = vmBackdrop.getBoundingClientRect();
+        if (!box.width) return;
+        vmBackdrop.width = 40;
+        vmBackdrop.height = Math.max(1, Math.round(40 * box.height / box.width));
+    }
+
+    function drawBackdrop() {
+        const vw = vmVideo.videoWidth, vh = vmVideo.videoHeight;
+        if (!vw) return;
+        const scale = Math.max(vmBackdrop.width / vw, vmBackdrop.height / vh);
+        backdropCtx.drawImage(vmVideo, (vmBackdrop.width - vw * scale) / 2, (vmBackdrop.height - vh * scale) / 2, vw * scale, vh * scale);
+    }
+
+    function backdropLoop() {
+        drawBackdrop();
+        backdropFrame = vmVideo.paused || vmVideo.ended ? null : requestAnimationFrame(backdropLoop);
+    }
+
+    vmVideo.addEventListener("loadeddata", () => { sizeBackdrop(); drawBackdrop(); });
+    vmVideo.addEventListener("seeked", drawBackdrop);
+    vmVideo.addEventListener("play", () => { if (!backdropFrame) backdropLoop(); });
+    window.addEventListener("resize", () => { sizeBackdrop(); drawBackdrop(); });
+
+    function openVideoModal(src, title) {
+        vmVideo.src = src;
+        vmTitle.textContent = title;
+        vmModal.classList.remove("hidden");
+        vmModal.classList.add("flex");
+        document.body.style.overflow = "hidden";
+        showLoader(true);
+        vmVideo.play().catch(() => {});
+    }
+
+    function closeVideoModal() {
+        vmVideo.pause();
+        vmVideo.removeAttribute("src");
+        cancelAnimationFrame(backdropFrame);
+        backdropFrame = null;
+        backdropCtx.clearRect(0, 0, vmBackdrop.width, vmBackdrop.height);
+        vmVideo.load();
+        vmPlay.textContent = "play_arrow";
+        setProgress(0);
+        showLoader(false);
+        vmTime.textContent = "0:00 / 0:00";
+        vmModal.classList.add("hidden");
+        vmModal.classList.remove("flex");
+        document.body.style.overflow = "";
+    }
+
+    vmClose.addEventListener("click", closeVideoModal);
+    vmModal.addEventListener("click", e => { if (e.target === vmModal) closeVideoModal(); });
+    document.addEventListener("keydown", e => {
+        if (e.key === "Escape" && !vmModal.classList.contains("hidden")) closeVideoModal();
+    });
+
+    function togglePlay() {
+        vmVideo.paused ? vmVideo.play() : vmVideo.pause();
+    }
+    vmPlay.addEventListener("click", togglePlay);
+    vmVideo.addEventListener("click", togglePlay);
+
+    vmVideo.addEventListener("play",  () => { vmPlay.textContent = "pause"; });
+    vmVideo.addEventListener("pause", () => { vmPlay.textContent = "play_arrow"; });
+    vmVideo.addEventListener("ended", () => { vmPlay.textContent = "replay"; });
+
+    // Loading indicator: buffering after a seek or on a slow connection
+    vmVideo.addEventListener("waiting", () => showLoader(true));
+    vmVideo.addEventListener("seeking", () => showLoader(true));
+    ["playing", "seeked", "canplay", "pause"].forEach(evt => vmVideo.addEventListener(evt, () => showLoader(false)));
+
+    vmVideo.addEventListener("timeupdate", () => {
+        if (!vmVideo.duration) return;
+        setProgress((vmVideo.currentTime / vmVideo.duration) * 100);
+        vmTime.textContent = fmtTime(vmVideo.currentTime) + " / " + fmtTime(vmVideo.duration);
+    });
+
+    // Seek by clicking or dragging the progress bar
+    let dragging = false;
+    function seekTo(clientX) {
+        if (!vmVideo.duration) return;
+        const rect = vmProgress.getBoundingClientRect();
+        const ratio = Math.min(Math.max((clientX - rect.left) / rect.width, 0), 1);
+        setProgress(ratio * 100);
+        vmVideo.currentTime = ratio * vmVideo.duration;
+    }
+    vmProgress.addEventListener("pointerdown", e => {
+        dragging = true;
+        vmProgress.setPointerCapture(e.pointerId);
+        seekTo(e.clientX);
+    });
+    vmProgress.addEventListener("pointermove", e => { if (dragging) seekTo(e.clientX); });
+    ["pointerup", "pointercancel"].forEach(evt => vmProgress.addEventListener(evt, () => { dragging = false; }));
+
+    vmMute.addEventListener("click", () => {
+        vmVideo.muted = !vmVideo.muted;
+        vmMute.textContent = vmVideo.muted ? "volume_off" : "volume_up";
+    });
+
+    vmVolume.addEventListener("input", () => {
+        vmVideo.volume = vmVolume.value;
+        vmMute.textContent = +vmVolume.value === 0 ? "volume_off" : "volume_up";
+    });
+
+    vmFull.addEventListener("click", () => {
+        document.fullscreenElement ? document.exitFullscreen() : vmVideo.requestFullscreen();
+    });
+    document.addEventListener("fullscreenchange", () => {
+        vmFull.textContent = document.fullscreenElement ? "fullscreen_exit" : "fullscreen";
+    });
+
+    document.querySelectorAll(".js-video").forEach(el => {
+        el.addEventListener("click", () => openVideoModal(el.dataset.src, el.dataset.title || ""));
+    });
+});
+</script>

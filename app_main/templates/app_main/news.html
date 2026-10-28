@@ -1,0 +1,68 @@
+{% extends 'base2.html' %}
+{% load i18n static %}
+
+{% block title %}{% trans 'Новости' %} | HITIUM{% endblock %}
+{% block meta_description %}{% trans 'Выставки, завершённые проекты и события из жизни компании.' %}{% endblock %}
+{% block og_title %}{% trans 'Новости' %} | HITIUM{% endblock %}
+{% block og_description %}{% trans 'Выставки, завершённые проекты и события из жизни компании.' %}{% endblock %}
+
+{% block hreflang %}
+{% language 'ru' %}<link rel="alternate" hreflang="ru" href="https://hitium.uz{% url 'news' %}"/>{% endlanguage %}
+{% language 'uz' %}<link rel="alternate" hreflang="uz" href="https://hitium.uz{% url 'news' %}"/>{% endlanguage %}
+{% language 'en' %}<link rel="alternate" hreflang="en" href="https://hitium.uz{% url 'news' %}"/>{% endlanguage %}
+{% language 'ru' %}<link rel="alternate" hreflang="x-default" href="https://hitium.uz{% url 'news' %}"/>{% endlanguage %}
+{% endblock %}
+
+{% block content %}
+<!-- Breadcrumb -->
+<nav class="max-w-5xl mx-auto px-4 lg:px-5 pt-4 pb-1 flex items-center gap-2 text-xs" aria-label="Breadcrumb">
+    <a href="{% url 'home_page' %}" class="text-[#ff5a00] hover:underline font-accent">{% trans 'Главная' %}</a>
+    <span class="text-white/30">/</span>
+    <span class="text-[#a5a5a5] font-accent">{% trans 'Новости' %}</span>
+</nav>
+
+<section class="max-w-5xl mx-auto px-4 lg:px-5 py-8 lg:py-16">
+    <span class="font-accent text-[10px] lg:text-xs tracking-widest uppercase text-[#ff5a00] block text-center">HITIUM — {% trans 'Новости' %}</span>
+    <h1 class="font-display text-2xl lg:text-4xl text-white font-semibold text-center mt-1">{% trans 'Новости компании' %}</h1>
+    <div class="h-px w-full xl:w-64 bg-[#ff5a00]/30 m-auto my-3 lg:my-5"></div>
+    <p class="text-[#a5a5a5] text-sm lg:text-base text-center max-w-2xl mx-auto">{% trans 'Выставки, завершённые проекты и события из жизни компании.' %}</p>
+
+    {% if featured %}
+        <!-- Latest news -->
+        <a href="{% url 'news_detail' slug=featured.slug id=featured.id %}" class="grid grid-cols-1 lg:grid-cols-5 gap-4 lg:gap-8 items-center mt-8 lg:mt-12 bg-white/5 rounded lg:rounded-xl p-3 lg:p-4 hover:bg-white/10 transition group">
+            <div class="lg:col-span-3">
+                {% include 'app_main/_news_cover.html' with media=featured.media.all.0 alt=featured.title eager=True classes="aspect-[4/3] w-full rounded lg:rounded-lg group-hover:opacity-90 transition" %}
+            </div>
+            <div class="lg:col-span-2 flex flex-col items-start gap-3 lg:pr-4">
+                <span class="font-accent text-xs text-white/60 bg-white/10 px-3 py-1 rounded-full border border-white/10">{{ featured.published_date|date:"j E Y" }}</span>
+                <h2 class="font-display text-xl lg:text-2xl font-bold text-white group-hover:text-[#ff5a00] transition leading-tight">{{ featured.title }}</h2>
+                <p class="text-[#a5a5a5] text-sm lg:text-base leading-relaxed line-clamp-4">{{ featured.description|truncatechars:300 }}</p>
+                <span class="inline-flex items-center gap-2 mt-2 px-5 py-2.5 rounded-lg bg-[#ff5a00] font-semibold text-white text-sm group-hover:bg-[#d94e00] transition shadow-lg shadow-[#ff5a00]/20">
+                    {% trans 'Читать полностью' %}
+                    <span class="material-symbols-outlined" style="font-size:18px;">arrow_forward</span>
+                </span>
+            </div>
+        </a>
+
+        <!-- News grid -->
+        <div class="grid grid-cols-12 gap-4 lg:gap-2 mt-4 lg:mt-2">
+            {% for item in news_list %}
+                <a href="{% url 'news_detail' slug=item.slug id=item.id %}" title="{{ item.title }}" class="flex flex-col text-[#a5a5a5] hover:text-[#ff5a00] bg-white/5 rounded lg:rounded-xl p-3 lg:p-4 hover:bg-white/10 transition col-span-12 sm:col-span-6 lg:col-span-4 group">
+                    {% include 'app_main/_news_cover.html' with media=item.media.all.0 alt=item.title classes="aspect-[4/3] w-full rounded lg:rounded-lg mb-3 group-hover:opacity-90 transition" %}
+                    <span class="font-accent text-[10px] lg:text-xs tracking-widest uppercase text-[#ff5a00]">{{ item.published_date|date:"j E Y" }}</span>
+                    <h3 class="font-display text-lg leading-7 line-clamp-2 min-h-[3.5rem] mt-1">{{ item.title }}</h3>
+                    <p class="text-[#a5a5a5] text-sm leading-relaxed line-clamp-3 mt-2">{{ item.description|truncatechars:200 }}</p>
+                    <span class="mt-auto pt-4">
+                        <span class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-[#ff5a00] font-semibold text-white text-xs group-hover:bg-[#d94e00] transition shadow-lg shadow-[#ff5a00]/20">
+                            {% trans 'Читать полностью' %}
+                            <span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>
+                        </span>
+                    </span>
+                </a>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="text-[#a5a5a5] mt-8 text-center">{% trans 'Новостей пока нет' %}</p>
+    {% endif %}
+</section>
+{% endblock content %}
