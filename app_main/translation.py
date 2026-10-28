@@ -1,5 +1,5 @@
 from modeltranslation.translator import register, TranslationOptions
-from .models import Service, Project, ProjectImage, GalleryImage
+from .models import Service, Project, ProjectImage, GalleryImage, News, NewsMedia
 
 
 @register(Service)
@@ -19,4 +19,14 @@ class ProjectImageTranslationOptions(TranslationOptions):
 
 @register(GalleryImage)
 class GalleryImageTranslationOptions(TranslationOptions):
+    fields = ('description',)
+
+
+@register(News)
+class NewsTranslationOptions(TranslationOptions):
+    fields = ('title', 'description', 'slug')
+
+
+@register(NewsMedia)
+class NewsMediaTranslationOptions(TranslationOptions):
     fields = ('description',)

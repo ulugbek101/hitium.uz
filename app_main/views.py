@@ -4,8 +4,10 @@ from django.conf import settings
 from django.shortcuts import render, redirect, get_object_or_404
 from django.db.models import Q
 from django.utils.html import escape
+from django.utils import translation
+from django.utils.formats import date_format
 
-from .models import Service, Project, Client, GalleryImage, Review
+from .models import Service, Project, Client, GalleryImage, Review, News
 
 
 def home_page(request):
@@ -59,6 +61,44 @@ def our_services(request):
         "services": services,
     }
     return render(request, "app_main/our_services.html", context)
+
+
+def news(request):
+    services = Service.objects.order_by('order')
+    news_list = list(News.objects.prefetch_related("media"))
+
+    context = {
+        "services": services,
+        "featured": news_list[0] if news_list else None,
+        "news_list": news_list[1:],
+    }
+    return render(request, "app_main/news.html", context)
+
+
+def news_detail(request, slug, id):
+    news_item = get_object_or_404(News.objects.prefetch_related("media"), id=id)
+    services = Service.objects.order_by('order')
+
+    # Every language version, so the in-page switcher can change the text without a reload
+    translations = {}
+    for code, name in settings.LANGUAGES:
+        with translation.override(code):
+            translations[code] = {
+                "title": getattr(news_item, f"title_{code}") or news_item.title_ru,
+                "description": getattr(news_item, f"description_{code}") or news_item.description_ru,
+                "date": date_format(news_item.published_date, "j E Y"),
+                "captions": [
+                    getattr(media, f"description_{code}") or media.description_ru or ""
+                    for media in news_item.media.all()
+                ],
+            }
+
+    context = {
+        "news": news_item,
+        "services": services,
+        "translations": translations,
+    }
+    return render(request, "app_main/news_detail.html", context)
 
 
 def contacts(request):

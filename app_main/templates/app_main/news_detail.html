@@ -1,0 +1,206 @@
+{% extends 'base2.html' %}
+{% load bento seo i18n static %}
+
+{% block title %}{{ news.title }} | HITIUM — {% trans 'Новости' %}{% endblock %}
+{% block meta_description %}{{ news.description|truncatechars:155 }}{% endblock %}
+{% block og_title %}{{ news.title }} | HITIUM{% endblock %}
+{% block og_description %}{{ news.description|truncatechars:155 }}{% endblock %}
+{% block meta_keywords %}{% seo_keywords news 'title' %}, {% trans 'Новости' %}, HITIUM, {% trans 'Узбекистан' %}{% endblock %}
+{% block og_type %}article{% endblock %}
+{% block og_image %}{% with cover=news.cover %}{% if cover %}https://hitium.uz{{ cover.file.url }}{% else %}https://hitium.uz{% static 'images/og-image.jpg' %}{% endif %}{% endwith %}{% endblock %}
+{% block og_image_alt %}{{ news.title }}{% endblock %}
+{% block og_url %}https://hitium.uz{% url 'news_detail' slug=news.slug id=news.id %}{% endblock %}
+{% block twitter_title %}{{ news.title }} | HITIUM{% endblock %}
+{% block twitter_description %}{{ news.description|truncatechars:155 }}{% endblock %}
+{% block twitter_image %}{% with cover=news.cover %}{% if cover %}https://hitium.uz{{ cover.file.url }}{% else %}https://hitium.uz{% static 'images/og-image.jpg' %}{% endif %}{% endwith %}{% endblock %}
+{% block canonical %}<link rel="canonical" href="https://hitium.uz{% url 'news_detail' slug=news.slug id=news.id %}"/>{% endblock %}
+
+{% block hreflang %}
+{% language 'ru' %}<link rel="alternate" hreflang="ru" href="https://hitium.uz{% url 'news_detail' slug=news.slug_ru id=news.id %}"/>{% endlanguage %}
+{% language 'uz' %}<link rel="alternate" hreflang="uz" href="https://hitium.uz{% url 'news_detail' slug=news.slug_uz|default:news.slug_ru id=news.id %}"/>{% endlanguage %}
+{% language 'en' %}<link rel="alternate" hreflang="en" href="https://hitium.uz{% url 'news_detail' slug=news.slug_en|default:news.slug_ru id=news.id %}"/>{% endlanguage %}
+{% language 'ru' %}<link rel="alternate" hreflang="x-default" href="https://hitium.uz{% url 'news_detail' slug=news.slug_ru id=news.id %}"/>{% endlanguage %}
+{% endblock %}
+
+{% block extra_head %}
+<meta property="article:published_time" content="{{ news.published_date|date:'Y-m-d' }}"/>
+<meta property="article:modified_time" content="{{ news.updated|date:'c' }}"/>
+<meta property="article:section" content="{% trans 'Новости' %}"/>
+{% endblock %}
+
+{% block structured_data %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    "headline": "{{ news.title|escapejs }}",
+    "description": "{{ news.description|truncatechars:200|escapejs }}",
+    "image": ["{% with cover=news.cover %}{% if cover %}https://hitium.uz{{ cover.file.url }}{% else %}https://hitium.uz{% static 'images/og-image.jpg' %}{% endif %}{% endwith %}"],
+    "datePublished": "{{ news.published_date|date:'Y-m-d' }}",
+    "dateModified": "{{ news.updated|date:'c' }}",
+    "inLanguage": "{{ LANGUAGE_CODE }}",
+    "keywords": "{% seo_keywords news 'title' as keywords %}{{ keywords|escapejs }}",
+    "mainEntityOfPage": "https://hitium.uz{% url 'news_detail' slug=news.slug id=news.id %}",
+    "publisher": {
+        "@type": "Organization",
+        "name": "HITIUM",
+        "url": "https://hitium.uz",
+        "logo": { "@type": "ImageObject", "url": "https://hitium.uz{% static 'images/nav-logo.png' %}" }
+    }
+}
+</script>
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "{% trans 'Главная' %}", "item": "https://hitium.uz{% url 'home_page' %}"},
+        {"@type": "ListItem", "position": 2, "name": "{% trans 'Новости' %}", "item": "https://hitium.uz{% url 'news' %}"},
+        {"@type": "ListItem", "position": 3, "name": "{{ news.title|escapejs }}", "item": "https://hitium.uz{% url 'news_detail' slug=news.slug id=news.id %}"}
+    ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<!-- Breadcrumb -->
+<nav class="max-w-5xl mx-auto px-4 lg:px-5 pt-4 pb-1 flex items-center gap-2 text-xs" aria-label="Breadcrumb">
+    <a href="{% url 'home_page' %}" class="text-[#ff5a00] hover:underline font-accent">{% trans 'Главная' %}</a>
+    <span class="text-white/30">/</span>
+    <a href="{% url 'news' %}" class="text-[#ff5a00] hover:underline font-accent">{% trans 'Новости' %}</a>
+    <span class="text-white/30">/</span>
+    <span class="text-[#a5a5a5] font-accent" data-news-title-short>{{ news.title|truncatechars:40 }}</span>
+</nav>
+
+<!-- Hero Banner -->
+<section class="relative flex flex-col min-h-[260px] lg:min-h-[380px] overflow-hidden">
+    {% with cover=news.cover %}
+    {% if cover %}
+    <div class="absolute inset-0 bg-cover bg-center scale-105"
+         style="background-image: url('{{ cover.file.url }}');"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-black/65 via-black/50 to-[#0e0f10]"></div>
+    {% else %}
+    <div class="absolute inset-0 bg-gradient-to-br from-[#ff5a00]/15 to-[#0e0f10]"></div>
+    {% endif %}
+    {% endwith %}
+    <div class="relative flex-1 flex flex-col items-center justify-end text-center px-4 pt-12 pb-8 lg:pb-12 gap-3">
+        <span class="font-accent text-[#ff5a00] text-xs uppercase tracking-widest [text-shadow:0_1px_8px_rgba(0,0,0,0.8)]">HITIUM — {% trans 'Новости' %}</span>
+        <h1 class="font-display text-2xl sm:text-3xl lg:text-5xl font-bold text-white [text-shadow:0_2px_16px_rgba(0,0,0,0.75)] max-w-3xl leading-tight" data-news-title>{{ news.title }}</h1>
+        <span class="font-accent font-bold text-xs text-white/85 bg-black/40 backdrop-blur-sm px-3 py-1 rounded-full border border-white/15" data-news-date>{{ news.published_date|date:"j E Y" }}</span>
+    </div>
+</section>
+
+<!-- Text -->
+<section class="max-w-3xl mx-auto px-4 lg:px-5 py-10 lg:py-16">
+    <div class="flex items-stretch sm:items-center justify-between gap-3 mb-6 lg:mb-8">
+        <a href="{% url 'news' %}" id="newsBack"
+           class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-white/10 font-semibold text-white text-sm hover:bg-white/20 active:scale-95 transition">
+            <span class="material-symbols-outlined" style="font-size:18px;">arrow_back</span>
+            {% trans 'Все новости' %}
+        </a>
+
+        <!-- News language switcher: swaps the text in place, no reload -->
+        <div id="newsLangSwitch" class="flex items-stretch gap-1 p-1 rounded-lg bg-white/5 border border-white/10 sm:self-stretch" role="group" aria-label="{% trans 'Язык' %}">
+            {% for code, name in LANGUAGES %}
+                <button type="button" data-news-lang="{{ code }}" title="{{ name }}"
+                        class="flex flex-1 sm:flex-none items-center justify-center px-1 sm:px-3 rounded-md text-xs font-semibold uppercase transition {% if code == LANGUAGE_CODE %}bg-[#ed4721] text-white{% else %}text-[#a5a5a5] hover:text-white hover:bg-white/10{% endif %}">{{ code }}</button>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div id="newsText" class="text-[#a5a5a5] text-sm lg:text-base leading-relaxed lg:leading-loose text-justify [&>p]:mb-4">
+        {{ news.description|linebreaks }}
+    </div>
+</section>
+
+<!-- Photos and videos -->
+{% with media_list=news.media.all %}
+{% if media_list %}
+<div class="max-w-5xl mx-auto px-4 lg:px-5">
+    <div class="h-px bg-white/10"></div>
+</div>
+<section class="max-w-5xl mx-auto px-4 lg:px-5 py-8 lg:py-12">
+    <span class="font-accent text-[10px] lg:text-xs tracking-widest uppercase text-[#ff5a00]">{% trans 'Фото и видео' %}</span>
+    <div class="{% bento_grid %} mt-4">
+        {% for media, span in media_list|bento %}
+            <div data-media-index="{{ forloop.counter0 }}"
+                 class="{{ span }} {% if media.is_video %}js-video bg-black{% else %}js-lightbox bg-white/5{% endif %} relative overflow-hidden rounded-xl group cursor-pointer"
+                 data-src="{{ media.file.url }}" data-title="{{ media.description|default:news.title }}" data-caption="{{ media.description|default:'' }}">
+                {% if media.is_video %}
+                    <video data-src="{{ media.file.url }}#t=0.1" class="absolute inset-0 w-full h-full object-cover" preload="none" muted playsinline></video>
+                    <span class="material-symbols-outlined absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white bg-[#ff5a00] rounded-full p-3 group-hover:scale-110 transition-transform" style="font-size:28px;">play_arrow</span>
+                {% else %}
+                    <img src="{{ media.file.url }}" alt="{{ news.title }}" class="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async"/>
+                    <span class="material-symbols-outlined absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white opacity-0 group-hover:opacity-100 transition-opacity bg-[#ff5a00]/80 rounded-full p-2" style="font-size:22px;">zoom_in</span>
+                {% endif %}
+                <p data-media-caption class="absolute inset-x-0 bottom-0 px-3 pb-3 pt-8 bg-gradient-to-t from-black/80 to-transparent text-white text-xs leading-snug font-accent line-clamp-2{% if not media.description %} hidden{% endif %}">{{ media.description|default:'' }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+{% endwith %}
+
+{% include 'components/_image_lightbox.html' %}
+{% include 'components/_video_modal.html' %}
+
+{{ translations|json_script:"newsTranslations" }}
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const data = JSON.parse(document.getElementById("newsTranslations").textContent);
+    const ACTIVE = ["bg-[#ed4721]", "text-white"];
+    const INACTIVE = ["text-[#a5a5a5]", "hover:text-white", "hover:bg-white/10"];
+
+    // Same output as Django's |linebreaks: blank line = new paragraph, single newline = <br>
+    function renderText(container, text) {
+        container.replaceChildren(...text.replace(/\r\n?/g, "\n").split(/\n{2,}/).map(paragraph => {
+            const p = document.createElement("p");
+            paragraph.split("\n").forEach((line, i) => {
+                if (i) p.append(document.createElement("br"));
+                p.append(line);
+            });
+            return p;
+        }));
+    }
+
+    function setLang(lang) {
+        const t = data[lang];
+        document.querySelectorAll("[data-news-title]").forEach(el => { el.textContent = t.title; });
+        document.querySelectorAll("[data-news-title-short]").forEach(el => {
+            el.textContent = t.title.length > 40 ? t.title.slice(0, 39) + "…" : t.title;
+        });
+        document.querySelectorAll("[data-news-date]").forEach(el => { el.textContent = t.date; });
+        renderText(document.getElementById("newsText"), t.description);
+
+        document.querySelectorAll("[data-media-index]").forEach(item => {
+            const caption = t.captions[item.dataset.mediaIndex];
+            const p = item.querySelector("[data-media-caption]");
+            p.textContent = caption;
+            p.classList.toggle("hidden", !caption);
+            item.dataset.caption = caption;
+            item.dataset.title = caption || t.title;
+        });
+
+        document.querySelectorAll("[data-news-lang]").forEach(btn => {
+            const active = btn.dataset.newsLang === lang;
+            ACTIVE.forEach(c => btn.classList.toggle(c, active));
+            INACTIVE.forEach(c => btn.classList.toggle(c, !active));
+        });
+    }
+
+    document.querySelectorAll("[data-news-lang]").forEach(btn => {
+        btn.addEventListener("click", () => setLang(btn.dataset.newsLang));
+    });
+
+    // On phones the switcher takes exactly the width of the "All news" button
+    const backBtn = document.getElementById("newsBack");
+    const langSwitch = document.getElementById("newsLangSwitch");
+    const phone = window.matchMedia("(max-width: 639px)");
+    const syncSwitchWidth = () => {
+        langSwitch.style.width = phone.matches ? backBtn.offsetWidth + "px" : "";
+    };
+    new ResizeObserver(syncSwitchWidth).observe(backBtn);
+    phone.addEventListener("change", syncSwitchWidth);
+});
+</script>
+{% endblock content %}

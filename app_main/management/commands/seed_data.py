@@ -1,7 +1,7 @@
 """
-Replace services and projects with a small set of mock data (DEBUG only).
+Replace services, projects, news and reviews with a small set of mock data (DEBUG only).
 Run with: python manage.py seed_data
-Every run deletes services/projects and recreates the same records, so it is safe to repeat.
+Every run deletes services/projects/news/reviews and recreates the same records, so it is safe to repeat.
 Images point to files already in media/, nothing is copied.
 """
 from datetime import date
@@ -11,7 +11,7 @@ from django.contrib.auth import get_user_model
 from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
 
-from app_main.models import Project, ProjectImage, Service, ServiceImage
+from app_main.models import News, NewsMedia, Project, ProjectImage, Review, Service, ServiceImage
 
 
 SERVICES = [
@@ -72,12 +72,81 @@ PROJECTS = [
     },
 ]
 
+NEWS = [
+    {
+        "title_ru": "ООО «HITIUM» на международной выставке Aquatherm Tashkent 2026",
+        "title_uz": "«HITIUM» MChJ «Aquatherm Tashkent 2026» xalqaro koʻrgazmasida",
+        "title_en": "HITIUM LLC at the Aquatherm Tashkent 2026 International Exhibition",
+        "slug_ru": "hitium-na-aquatherm-tashkent-2026",
+        "slug_uz": "hitium-aquatherm-tashkent-2026-korgazmasida",
+        "slug_en": "hitium-at-aquatherm-tashkent-2026",
+        "description_ru": (
+            "Компания ООО «HITIUM» приняла активное участие в крупнейшем отраслевом событии года — 14-й Международной выставке «Aquatherm Tashkent 2026», проходившей в Ташкенте.\n\n"
+            "В рамках экспозиции наша команда представила передовые решения и профессиональные услуги в сфере монтажа технологических линий для пищевой промышленности, оборудования для розлива, а также современных инженерных систем и сантехнического оборудования.\n\n"
+            "Выставка стала отличной площадкой для встречи с нашими постоянными партнерами и налаживания новых деловых контактов. Мы провели серию успешных переговоров с отечественными и зарубежными коллегами, обсудили перспективы развития отрасли и презентовали наши реализованные проекты.\n\n"
+            "Благодарим всех гостей, клиентов и партнеров, посетивших наш стенд! ООО «HITIUM» продолжает уверенно развиваться, внедряя высокие стандарты качества и надежные технологии в каждом проекте."
+        ),
+        "description_uz": (
+            "«HITIUM» MChJ Toshkent shahrida boʻlib oʻtgan yilning eng yirik sohaviy voqeasi — 14-Xalqaro «Aquatherm Tashkent 2026» koʻrgazmasida faol ishtirok etdi.\n\n"
+            "Koʻrgazma doirasida mutaxassislarimiz oziq-ovqat va ichimliklar sanoati uchun texnologik liniyalarni montaj qilish, quyish uskunalarini oʻrnatish hamda zamonaviy muhandislik va santexnika tizimlari boʻyicha ilgʻor yechimlar va xizmatlarni taqdim etdilar.\n\n"
+            "Ushbu tadbir amaldagi hamkorlarimiz bilan koʻrishish va yangi ishbilarmonlik aloqalarini oʻrnatish uchun ajoyib maydonga aylandi. Muloqotlar davomida mahalliy va xorijiy mutaxassislar bilan muvaffaqiyatli muzokaralar oʻtkazilib, soha rivojlanish istiqbollari va amalga oshirilgan loyihalarimiz muhokama qilindi.\n\n"
+            "Stendimizga tashrif buyurgan barcha mehmonlar, mijozlar va hamkorlarimizga oʻz minnatdorchiligimizni bildiramiz! «HITIUM» MChJ har bir loyihada yuqori sifat standartlari va ishonchli texnologiyalarni joriy etgan holda rivojlanishda davom etmoqda."
+        ),
+        "description_en": (
+            "HITIUM LLC took an active part in the region's premier industry event — the 14th International Exhibition \"Aquatherm Tashkent 2026\", held in Tashkent.\n\n"
+            "During the exhibition, our team showcased advanced solutions and engineering services specializing in the installation of food and beverage production lines, bottling equipment, as well as modern HVAC and industrial piping systems.\n\n"
+            "The event served as an outstanding platform for engaging with our long-standing partners and establishing valuable new business connections. We held a series of productive meetings with domestic and international industry professionals, discussed current market trends, and presented our key completed projects.\n\n"
+            "We express our gratitude to all guests, clients, and partners who visited our booth. HITIUM LLC remains committed to delivering top-tier engineering expertise and reliable industrial solutions."
+        ),
+        "published_date": date(2026, 10, 27),
+        "media": [
+            ("news/aquatherm-2026-team.jpg", ("Команда HITIUM на стенде выставки", "HITIUM jamoasi ko'rgazma stendida", "The HITIUM team at the exhibition booth")),
+            ("news/aquatherm-2026-partners.jpg", ("Встреча с партнёрами", "Hamkorlar bilan uchrashuv", "Meeting with partners")),
+            ("videos/7593331-hd_1080_1920_25fps.mp4", ("Видеообзор стенда", "Stendning videosharhi", "Booth video tour")),
+        ],
+    },
+    {
+        "title_ru": "HITIUM примет участие в Expo 2027",
+        "title_uz": "HITIUM Expo 2027 ko'rgazmasida ishtirok etadi",
+        "title_en": "HITIUM to exhibit at Expo 2027",
+        "slug_ru": "hitium-expo-2027",
+        "slug_uz": "hitium-expo-2027-korgazmasida",
+        "slug_en": "hitium-at-expo-2027",
+        "description_ru": "Весной 2027 года мы снова представим свои проекты и услуги на выставке в Ташкенте. Приглашаем партнёров и клиентов посетить наш стенд.",
+        "description_uz": "2027-yil bahorida Toshkentdagi ko'rgazmada loyihalarimiz va xizmatlarimizni yana taqdim etamiz. Hamkorlar va mijozlarni stendimizga taklif qilamiz.",
+        "description_en": "In spring 2027 we will once again present our projects and services at the exhibition in Tashkent. Partners and clients are welcome at our booth.",
+        "published_date": date(2026, 10, 15),
+        "media": [("project-photos/photo_2025-12-05_11-58-05.jpg", None)],
+    },
+    {
+        "title_ru": "Завершён монтаж чиллеров на кровле торгового центра",
+        "title_uz": "Savdo markazi tomida chillerlar montaji yakunlandi",
+        "title_en": "Rooftop chiller installation completed at a shopping mall",
+        "slug_ru": "montazh-chillerov-zavershen",
+        "slug_uz": "chillerlar-montaji-yakunlandi",
+        "slug_en": "rooftop-chillers-completed",
+        "description_ru": "Команда HITIUM подняла оборудование краном на кровлю, смонтировала трубопроводы холодоснабжения и запустила систему.",
+        "description_uz": "HITIUM jamoasi uskunani kran yordamida tomga ko'tardi, sovuq ta'minoti quvurlarini o'rnatdi va tizimni ishga tushirdi.",
+        "description_en": "The HITIUM team lifted the equipment onto the roof by crane, installed chilled-water piping and commissioned the system.",
+        "published_date": date(2026, 9, 30),
+        "media": [("videos/8482296-hd_1080_1920_25fps.mp4", None)],
+    },
+]
+
+REVIEWS = [
+    ("Тестовый отзыв 1", "videos/7593331-hd_1080_1920_25fps.mp4"),
+    ("Тестовый отзыв 2", "videos/8482296-hd_1080_1920_25fps.mp4"),
+    ("Тестовый отзыв 3", "videos/7821796-hd_1080_1920_30fps.mp4"),
+    ("Тестовый отзыв 4", "videos/IMG_5127.MOV"),
+    ("Тестовый отзыв 5", "videos/6473954-uhd_2160_3840_25fps.mp4"),
+]
+
 ADMIN_USERNAME = "admin"
 ADMIN_PASSWORD = "1"
 
 
 class Command(BaseCommand):
-    help = "Replace services and projects with mock data (runs only with DEBUG=True)."
+    help = "Replace services, projects, news and reviews with mock data (runs only with DEBUG=True)."
 
     def handle(self, *args, **options):
         if not settings.DEBUG:
@@ -86,6 +155,8 @@ class Command(BaseCommand):
         with transaction.atomic():
             Service.objects.all().delete()
             Project.objects.all().delete()
+            News.objects.all().delete()
+            Review.objects.all().delete()
 
             for order, data in enumerate(SERVICES, start=1):
                 fields = {k: v for k, v in data.items() if k != "images"}
@@ -97,10 +168,19 @@ class Command(BaseCommand):
                 project = Project.objects.create(**fields)
                 ProjectImage.objects.bulk_create(ProjectImage(project=project, image=path) for path in data["images"])
 
+            for data in NEWS:
+                fields = {k: v for k, v in data.items() if k != "media"}
+                news = News.objects.create(**fields)
+                for path, captions in data["media"]:
+                    ru, uz, en = captions or (None, None, None)
+                    NewsMedia.objects.create(news=news, file=path, description_ru=ru, description_uz=uz, description_en=en)
+
+            Review.objects.bulk_create(Review(fullname=name, video=path) for name, path in REVIEWS)
+
             User = get_user_model()
             if not User.objects.filter(username=ADMIN_USERNAME).exists():
                 User.objects.create_superuser(ADMIN_USERNAME, password=ADMIN_PASSWORD)
 
         self.stdout.write(self.style.SUCCESS(
-            f"✓ Seeded {len(SERVICES)} services, {len(PROJECTS)} projects; superuser {ADMIN_USERNAME} / {ADMIN_PASSWORD}"
+            f"✓ Seeded {len(SERVICES)} services, {len(PROJECTS)} projects, {len(NEWS)} news, {len(REVIEWS)} reviews; superuser {ADMIN_USERNAME} / {ADMIN_PASSWORD}"
         ))
