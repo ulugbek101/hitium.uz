@@ -71,25 +71,25 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'PROJECT.wsgi.application'
 
-# if DEBUG:
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if env.str('POSTGRES_HOST', default=''):
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': env.str('POSTGRES_DB'),
+            'HOST': env.str('POSTGRES_HOST'),
+            'PORT': env.str('POSTGRES_PORT', default='5432'),
+            'USER': env.str('POSTGRES_USER'),
+            'PASSWORD': env.str('POSTGRES_PASSWORD'),
+            'CONN_MAX_AGE': 600,
+        }
     }
-}
-# else:
-#     DATABASES = {
-#         'default': {
-#             'ENGINE': 'django.db.backends.postgresql',
-#             'NAME': env.str('PGDATABASE'),
-#             'HOST': env.str('PGHOST'),
-#             'PORT': env.str('PGPORT'),
-#             'USER': env.str('PGUSER'),
-#             'PASSWORD': env.str('PGPASSWORD'),
-#             'CONN_MAX_AGE': 600,
-#         }
-#     }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -127,7 +127,7 @@ CACHES = {
         'BACKEND': 'django.core.cache.backends.redis.RedisCache',
         'LOCATION': env.str('REDIS_URL', default='redis://127.0.0.1:6379/1'),
         'OPTIONS': {
-            'PASSWORD': env.str('REDIS_PASSWORD', default=None),
+            'password': env.str('REDIS_PASSWORD', default=None),
         }
     }
 }
