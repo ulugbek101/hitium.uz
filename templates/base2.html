@@ -73,6 +73,24 @@
 {% block content %}{% endblock content %}
 
 {% block page_footer %}{% include 'components/_footer2.html' %}{% endblock %}
+<script>
+// Video thumbnails load only after the page itself has loaded, and only when they get near the viewport
+window.addEventListener("load", () => {
+    const videos = document.querySelectorAll("video[data-src]");
+    const load = video => {
+        video.preload = "metadata";
+        video.src = video.dataset.src;
+        video.removeAttribute("data-src");
+    };
+    if (!("IntersectionObserver" in window)) return videos.forEach(load);
+    const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        load(entry.target);
+        observer.unobserve(entry.target);
+    }), { rootMargin: "200px" });
+    videos.forEach(video => observer.observe(video));
+});
+</script>
 
 <!-- LocalBusiness structured data (overrideable per page) -->
 {% block structured_data %}

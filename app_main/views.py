@@ -14,7 +14,7 @@ def home_page(request):
     services = Service.objects.order_by('order')
     projects = Project.objects.prefetch_related("project_images")
     clients = Client.objects.all()
-    reviews = Review.objects.filter(is_active=True).order_by('id')
+    reviews = Review.objects.filter(is_active=True).exclude(video__isnull=True).exclude(video='').order_by('id')
     gallery_images = GalleryImage.objects.all()
 
     context = {

@@ -1,5 +1,5 @@
 {% extends 'base2.html' %}
-{% load i18n %}
+{% load bento seo i18n static %}
 
 {% block title %}{{ project.name }} | HITIUM — {% trans 'Выполненные работы' %}{% endblock %}
 {% block meta_description %}{{ project.description|truncatechars:155 }}{% endblock %}
@@ -162,22 +162,15 @@
 <section class="max-w-5xl mx-auto px-4 lg:px-5 py-8 lg:py-12">
     <span class="font-accent text-[10px] lg:text-xs tracking-widest uppercase text-[#ff5a00]">{% trans 'Фотографии проекта' %}</span>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-4 mt-4">
-        {% for img in project.project_images.all %}
-        <div class="group cursor-pointer preview-project-img"
+    <div class="{% bento_grid %} mt-4">
+        {% for img, span in project.project_images.all|bento %}
+        <div class="{{ span }} js-lightbox relative overflow-hidden rounded-xl bg-white/5 group cursor-pointer"
              data-src="{{ img.image.url }}"
              data-caption="{{ img.description|default:'' }}">
-            <div class="relative overflow-hidden rounded-xl">
-                <img src="{{ img.image.url }}"
-                     alt="{{ project.name }}"
-                     class="w-full h-52 lg:h-60 object-cover group-hover:scale-105 transition-transform duration-500"
-                     loading="lazy"/>
-                <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center">
-                    <span class="material-symbols-outlined text-white opacity-0 group-hover:opacity-100 transition-opacity bg-[#ff5a00]/80 rounded-full p-2" style="font-size:22px;">zoom_in</span>
-                </div>
-            </div>
+            <img src="{{ img.image.url }}" alt="{{ project.name }}" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async"/>
+            <span class="material-symbols-outlined absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white opacity-0 group-hover:opacity-100 transition-opacity bg-[#ff5a00]/80 rounded-full p-2" style="font-size:22px;">zoom_in</span>
             {% if img.description %}
-            <p class="text-[#a5a5a5] text-xs mt-1.5 px-1 leading-snug font-accent">{{ img.description }}</p>
+            <p class="absolute inset-x-0 bottom-0 px-3 pb-3 pt-8 bg-gradient-to-t from-black/80 to-transparent text-white text-xs leading-snug font-accent line-clamp-2">{{ img.description }}</p>
             {% endif %}
         </div>
         {% endfor %}
@@ -185,49 +178,6 @@
 </section>
 {% endif %}
 
-<!-- Image lightbox modal -->
-<div id="projectImgModal"
-     class="fixed inset-0 bg-black/92 backdrop-blur-sm hidden flex-col items-center justify-center p-4 z-50">
-    <button id="closeProjModal"
-            class="absolute top-4 right-4 text-white/70 hover:text-[#ff5a00] transition material-symbols-outlined"
-            style="font-size:30px;">close</button>
-    <div class="max-w-4xl w-full flex flex-col items-center gap-4">
-        <img id="projModalImg" src="" alt=""
-             class="max-h-[78vh] max-w-full rounded-xl object-contain shadow-2xl"/>
-        <p id="projModalCaption" class="text-[#a5a5a5] text-sm font-accent text-center max-w-xl leading-relaxed"></p>
-    </div>
-</div>
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-    const modal   = document.getElementById("projectImgModal");
-    const modalImg = document.getElementById("projModalImg");
-    const modalCap = document.getElementById("projModalCaption");
-    const closeBtn = document.getElementById("closeProjModal");
-
-    function open(src, caption) {
-        modalImg.src = src;
-        modalCap.textContent = caption;
-        modal.classList.remove("hidden");
-        modal.classList.add("flex");
-        document.body.style.overflow = "hidden";
-    }
-
-    function close() {
-        modal.classList.add("hidden");
-        modal.classList.remove("flex");
-        document.body.style.overflow = "";
-        modalImg.src = "";
-    }
-
-    document.querySelectorAll(".preview-project-img").forEach(el => {
-        el.addEventListener("click", () => open(el.dataset.src, el.dataset.caption));
-    });
-
-    closeBtn.addEventListener("click", close);
-    modal.addEventListener("click", e => { if (e.target === modal) close(); });
-    document.addEventListener("keydown", e => { if (e.key === "Escape") close(); });
-});
-</script>
+{% include 'components/_image_lightbox.html' %}
 
 {% endblock content %}
