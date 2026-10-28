@@ -67,7 +67,7 @@ msgstr "Manzil"
 #: app_main/templates/app_main/contacts.html:77
 #: templates/components/_footer2.html:11
 msgid "Номер телефона"
-msgstr "Telefon raqam"
+msgstr "Telefon raqami"
 
 #: app_main/templates/app_main/contacts.html:52
 msgid "Тип сервиса"
@@ -140,7 +140,7 @@ msgstr ""
 #: app_main/templates/app_main/index.html:17
 #: templates/components/_mobile_menu.html:60
 msgid "Заказать услугу"
-msgstr "Buyurtma berish"
+msgstr "Xizmatga buyurtma berish"
 
 #: app_main/templates/app_main/index.html:18
 #: app_main/templates/app_main/index.html:56
@@ -367,7 +367,7 @@ msgstr "Bizning xizmatlarimiz"
 
 #: app_main/templates/app_main/index2.html:50
 msgid "Отзывы"
-msgstr "Fikrlar"
+msgstr "Mijozlar fikrlari"
 
 #: app_main/templates/app_main/index2.html:122
 #: templates/components/_nav2.html:10
@@ -415,7 +415,7 @@ msgstr ""
 
 #: app_main/templates/app_main/service_detail.html:50
 msgid "Огромный опыт"
-msgstr "Katta tajriba"
+msgstr "Boy tajriba"
 
 #: app_main/templates/app_main/service_detail.html:51
 msgid "За время существования нашей компании мы выполнили более 300 работ."
@@ -424,7 +424,7 @@ msgstr ""
 
 #: app_main/templates/app_main/service_detail.html:55
 msgid "Выполняем в срок"
-msgstr "Belgilangan muddatda bajariladi"
+msgstr "O‘z vaqtida bajaramiz"
 
 #: app_main/templates/app_main/service_detail.html:56
 msgid ""
@@ -588,7 +588,7 @@ msgstr "Galereya"
 
 #: templates/base2.html:10
 msgid "Профессиональный монтаж и обслуживание инженерных систем в Узбекистане. Вентиляция, водоснабжение, котельное оборудование, холодильные системы."
-msgstr "O'zbekistonda muhandislik tizimlarini professional o'rnatish va texnik xizmat ko'rsatish. Ventilyatsiya, suv ta'minoti, qozonxona uskunalari, sovutish tizimlari."
+msgstr "O‘zbekistonda muhandislik tizimlarini professional o‘rnatish va texnik xizmat ko‘rsatish. Ventilyatsiya, suv ta’minoti, qozonxona uskunalari, sovutish tizimlari."
 
 #: templates/base2.html:11
 msgid "инженерные системы Ташкент, монтаж оборудования Узбекистан, вентиляция, водоснабжение, котельное оборудование, промышленный монтаж, Hitium"
@@ -596,11 +596,11 @@ msgstr "muhandislik tizimlari Toshkent, uskunalar montaji O'zbekiston, ventilyat
 
 #: templates/base2.html:17
 msgid "Профессиональный монтаж и обслуживание инженерных систем в Узбекистане."
-msgstr "O'zbekistonda muhandislik tizimlarini professional o'rnatish va texnik xizmat ko'rsatish."
+msgstr "O‘zbekistonda muhandislik tizimlarini professional o‘rnatish va texnik xizmat ko‘rsatish."
 
 #: app_main/templates/app_main/service_detail.html:4
 msgid "Инженерные системы Узбекистан"
-msgstr "Muhandislik tizimlari O'zbekiston"
+msgstr "Muhandislik tizimlari O‘zbekiston"
 
 #: app_main/templates/app_main/service_detail.html:6
 msgid "инженерные системы, монтаж, Узбекистан, Ташкент, Hitium"
@@ -620,23 +620,23 @@ msgstr "Xizmatga qiziqasizmi?"
 
 #: app_main/templates/app_main/service_detail.html:142
 msgid "Свяжитесь с нами — мы подготовим коммерческое предложение"
-msgstr "Biz bilan bog'laning — biz sizga tijorat taklifi tayyorlaymiz"
+msgstr "Biz bilan bog‘laning — biz sizga tijorat taklifi tayyorlaymiz"
 
 #: app_main/templates/app_main/our_services.html:10
 msgid "Полный список инженерных услуг компании HITIUM в Узбекистане: вентиляция, водоснабжение, котельное оборудование, холодильные системы, монтаж промышленного оборудования."
-msgstr "O'zbekistondagi HITIUM kompaniyasining muhandislik xizmatlari to'liq ro'yxati: ventilyatsiya, suv ta'minoti, qozonxona uskunalari, sovutish tizimlari, sanoat uskunalarini montaj qilish."
+msgstr "O‘zbekistondagi HITIUM kompaniyasining muhandislik xizmatlari to‘liq ro‘yxati: ventilyatsiya, suv ta’minoti, qozonxona uskunalari, sovutish tizimlari, sanoat uskunalarini montaj qilish."
 
 #: app_main/templates/app_main/our_services.html:25
 msgid "Услуги пока не добавлены"
-msgstr "Xizmatlar hali qo'shilmagan"
+msgstr "Xizmatlar hali qo‘shilmagan"
 
 #: app_main/templates/app_main/contacts.html:5
 msgid "Свяжитесь с HITIUM. Заказ монтажа инженерных систем в Узбекистане. Телефон: +998 97 445 88 38. Ташкент, Яшнабадский район."
-msgstr "HITIUM bilan bog'laning. O'zbekistonda muhandislik tizimlarini montaj buyurtma qilish. Telefon: +998 97 445 88 38. Toshkent, Yashnobod tumani."
+msgstr "HITIUM bilan bog‘laning. O‘zbekistonda muhandislik tizimlarini montaj buyurtma qilish. Telefon: +998 97 445 88 38. Toshkent, Yashnobod tumani."
 
 #: app_main/templates/app_main/contacts.html:7
 msgid "Свяжитесь с HITIUM — профессиональный монтаж инженерных систем в Узбекистане."
-msgstr "HITIUM bilan bog'laning — O'zbekistonda muhandislik tizimlarini professional montaj qilish."
+msgstr "HITIUM bilan bog‘laning — O‘zbekistonda muhandislik tizimlarini professional montaj qilish."
 
 #: templates/components/_footer2.html:50
 msgid "Наш адрес на карте"
@@ -660,7 +660,7 @@ msgstr "muhandislik tizimlarini montaj qilish"
 
 #: app_main/templates/app_main/project_detail.html:6
 msgid "Узбекистан"
-msgstr "O'zbekiston"
+msgstr "O‘zbekiston"
 
 #: app_main/templates/app_main/project_detail.html:70
 msgid "О проекте"
@@ -695,13 +695,13 @@ msgid "Новости компании"
 msgstr "Kompaniya yangiliklari"
 
 msgid "Выставки, завершённые проекты и события из жизни компании."
-msgstr "Ko'rgazmalar, yakunlangan loyihalar va kompaniya hayotidagi voqealar."
+msgstr "Ko‘rgazmalar, yakunlangan loyihalar va kompaniya hayotidagi voqealar."
 
 msgid "Читать полностью"
-msgstr "To'liq o'qish"
+msgstr "To‘liq o‘qish"
 
 msgid "Новостей пока нет"
-msgstr "Hozircha yangiliklar yo'q"
+msgstr "Hozircha yangiliklar yo‘q"
 
 #: app_main/templates/app_main/news_detail.html
 msgid "Фото и видео"
@@ -723,3 +723,7 @@ msgstr "Yopish"
 #: templates/base2.html
 msgid "монтаж промышленного оборудования, установка промышленного оборудования, пусконаладочные работы, наладка оборудования, шеф-монтаж, монтаж технологических линий, монтаж линий розлива, монтаж оборудования для пищевой промышленности, изготовление резервуаров из нержавеющей стали, монтаж емкостей, изоляция емкостей, теплоизоляция трубопроводов, монтаж технологических трубопроводов, монтаж котельных, монтаж чиллеров, кондиционирование и холодоснабжение, вентиляция бассейнов, водопровод и канализация, такелажные работы, сварка нержавеющей стали, промышленный монтаж Ташкент, монтажная компания Узбекистан, монтаж оборудования Ташкент"
 msgstr "sanoat uskunalarini montaj qilish, sanoat uskunalarini o'rnatish, ishga tushirish-sozlash ishlari, uskunalarni sozlash, shef-montaj, texnologik liniyalarni montaj qilish, quyish liniyalarini montaj qilish, oziq-ovqat sanoati uskunalarini montaj qilish, zanglamaydigan po'latdan rezervuarlar tayyorlash, idishlarni montaj qilish, idishlarni izolyatsiya qilish, quvurlarni issiqlik izolyatsiyasi, texnologik quvurlarni montaj qilish, qozonxonalarni montaj qilish, chillerlarni o'rnatish, konditsionerlash va sovuq ta'minoti, basseyn shamollatish, suv ta'minoti va kanalizatsiya, takelaj ishlari, zanglamaydigan po'latni payvandlash, sanoat montaji Toshkent, montaj kompaniyasi O'zbekiston, Toshkentda uskunalar montaji"
+
+#: app_main/templates/app_main/our_services.html
+msgid "Полный список инженерных услуг компании HITIUM в Узбекистане."
+msgstr "O‘zbekistondagi HITIUM kompaniyasining muhandislik xizmatlari to‘liq ro‘yxati."
