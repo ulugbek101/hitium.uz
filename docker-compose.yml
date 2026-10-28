@@ -26,6 +26,15 @@ services:
       redis:
         condition: service_started
 
+  tailwind:
+    image: node:22-alpine
+    container_name: hitium-tailwind
+    working_dir: /app
+    command: sh -c "npm install --no-audit --no-fund && npm run watch:css"
+    volumes:
+      - .:/app
+      - /app/node_modules
+
   db:
     image: postgres:17-alpine
     container_name: hitium-db
