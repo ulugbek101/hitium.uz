@@ -1,0 +1,40 @@
+{% extends 'base2.html' %}
+{% load bento i18n static %}
+
+{% block title %}{% trans 'Проекты' %} | HITIUM{% endblock %}
+{% block meta_description %}{% trans 'Завершённые проекты HITIUM: монтаж инженерных систем и промышленного оборудования.' %}{% endblock %}
+{% block og_title %}{% trans 'Проекты' %} | HITIUM{% endblock %}
+{% block og_description %}{% trans 'Завершённые проекты HITIUM: монтаж инженерных систем и промышленного оборудования.' %}{% endblock %}
+
+{% block hreflang %}
+{% language 'ru' %}<link rel="alternate" hreflang="ru" href="https://hitium.uz{% url 'projects' %}"/>{% endlanguage %}
+{% language 'uz' %}<link rel="alternate" hreflang="uz" href="https://hitium.uz{% url 'projects' %}"/>{% endlanguage %}
+{% language 'en' %}<link rel="alternate" hreflang="en" href="https://hitium.uz{% url 'projects' %}"/>{% endlanguage %}
+{% language 'ru' %}<link rel="alternate" hreflang="x-default" href="https://hitium.uz{% url 'projects' %}"/>{% endlanguage %}
+{% endblock %}
+
+{% block content %}
+<!-- Breadcrumb -->
+<nav class="max-w-5xl mx-auto px-4 lg:px-5 pt-4 pb-1 flex items-center gap-2 text-xs" aria-label="Breadcrumb">
+    <a href="{% url 'home_page' %}" class="text-[#ff5a00] hover:underline font-accent">{% trans 'Главная' %}</a>
+    <span class="text-white/30">/</span>
+    <span class="text-[#a5a5a5] font-accent">{% trans 'Проекты' %}</span>
+</nav>
+
+<section class="max-w-5xl mx-auto px-4 lg:px-5 py-8 lg:py-16">
+    <span class="font-accent text-[10px] lg:text-xs tracking-widest uppercase text-[#ff5a00] block text-center">HITIUM — {% trans 'Проекты' %}</span>
+    <h1 class="font-display text-2xl lg:text-4xl text-white font-semibold text-center mt-1">{% trans 'Наши проекты' %}</h1>
+    <div class="h-px w-full xl:w-64 bg-[#ff5a00]/30 m-auto my-3 lg:my-5"></div>
+    <p class="text-[#a5a5a5] text-sm lg:text-base text-center max-w-2xl mx-auto">{% trans 'Завершённые проекты HITIUM: монтаж инженерных систем и промышленного оборудования.' %}</p>
+
+    {% if projects %}
+        <div class="{% bento_grid %} mt-8 lg:mt-12">
+            {% for project, span in projects|featured_bento %}
+                {% include 'app_main/_project_tile.html' with eager=True %}
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="text-[#a5a5a5] mt-8 text-center">{% trans 'Проекты пока не добавлены' %}</p>
+    {% endif %}
+</section>
+{% endblock content %}

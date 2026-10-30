@@ -1,0 +1,8 @@
+{% comment %}Button under a home page section that leads to the section's own page. Params: url_name, label.{% endcomment %}
+<div class="text-center mt-6 lg:mt-8">
+    <a href="{% url url_name %}"
+       class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#ff5a00] font-semibold text-white text-sm hover:bg-[#d94e00] active:scale-95 transition shadow-lg shadow-[#ff5a00]/20">
+        {{ label }}
+        <span class="material-symbols-outlined" style="font-size:18px;">arrow_forward</span>
+    </a>
+</div>

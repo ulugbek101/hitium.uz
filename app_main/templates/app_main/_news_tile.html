@@ -1,0 +1,24 @@
+{% comment %}News bento tile, the first one in the loop is featured. Params: item, span, eager (the first tile is above the fold).{% endcomment %}
+{% with cover=item.cover first_media=item.media.all.0 %}
+<a href="{% url 'news_detail' slug=item.slug id=item.id %}" title="{{ item.title }}"
+   class="{{ span }} relative overflow-hidden rounded-xl bg-white/5 group">
+    {% if cover %}
+        <img src="{{ cover.file.url }}" alt="{{ item.title }}" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" {% if eager and forloop.first %}fetchpriority="high"{% else %}loading="lazy" decoding="async"{% endif %}/>
+    {% elif first_media %}
+        {# News with videos only: the first frame is the cover #}
+        <video data-src="{{ first_media.file.url }}#t=0.1" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" preload="none" muted playsinline></video>
+    {% else %}
+        <div class="absolute inset-0 flex items-center justify-center">
+            <span class="material-symbols-outlined text-white/20" style="font-size:48px;">image</span>
+        </div>
+    {% endif %}
+    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
+    <div class="absolute inset-x-0 bottom-0 p-3 lg:p-4">
+        <span class="font-accent text-[10px] lg:text-xs tracking-widest uppercase text-[#ff5a00]">{{ item.published_date|date:"j E Y" }}</span>
+        <h3 class="font-display leading-snug text-white group-hover:text-[#ff5a00] transition line-clamp-2 {% if forloop.first %}text-lg lg:text-2xl font-bold{% else %}text-sm lg:text-lg{% endif %}">{{ item.title }}</h3>
+        {% if forloop.first %}
+            <p class="hidden sm:block text-white/70 text-sm leading-relaxed line-clamp-2 mt-1 max-w-2xl">{{ item.description|truncatechars:200 }}</p>
+        {% endif %}
+    </div>
+</a>
+{% endwith %}

@@ -1,0 +1,9 @@
+{% comment %}Service bento tile. Params: service, span, eager (the first tile is above the fold).{% endcomment %}
+<a href="{% url 'service_detail' slug=service.slug id=service.id %}" title="{{ service.name }}"
+   class="{{ span }} relative overflow-hidden rounded-xl bg-white/5 group">
+    {% if service.header_bg %}
+        <img src="{{ service.header_bg.url }}" alt="{{ service.name }}" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" {% if eager and forloop.first %}fetchpriority="high"{% else %}loading="lazy" decoding="async"{% endif %}/>
+    {% endif %}
+    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent"></div>
+    <h3 class="absolute inset-x-0 bottom-0 p-3 lg:p-4 font-display text-sm lg:text-lg leading-snug text-white group-hover:text-[#ff5a00] transition line-clamp-2">{{ service.name }}</h3>
+</a>
