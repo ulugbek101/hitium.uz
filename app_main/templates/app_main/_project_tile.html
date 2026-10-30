@@ -1,0 +1,15 @@
+{% comment %}Project bento tile. Params: project, span, eager (the first tile is above the fold).{% endcomment %}
+{% with cover=project.project_images.all.0 %}
+<a href="{% url 'project_detail' slug=project.slug id=project.id %}" title="{{ project.name }}"
+   class="{{ span }} relative overflow-hidden rounded-xl bg-white/5 group">
+    {% if cover %}
+        <img src="{{ cover.image.url }}" alt="{{ project.name }}" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" {% if eager and forloop.first %}fetchpriority="high"{% else %}loading="lazy" decoding="async"{% endif %}/>
+    {% else %}
+        <div class="absolute inset-0 flex items-center justify-center">
+            <span class="material-symbols-outlined text-white/20" style="font-size:48px;">image</span>
+        </div>
+    {% endif %}
+    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent"></div>
+    <h3 class="absolute inset-x-0 bottom-0 p-3 lg:p-4 font-display text-sm lg:text-lg leading-snug text-white group-hover:text-[#ff5a00] transition line-clamp-2">{{ project.name }}</h3>
+</a>
+{% endwith %}

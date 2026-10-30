@@ -27,7 +27,7 @@ class StaticPagesSitemap(I18nSitemap):
     changefreq = "weekly"
 
     def items(self):
-        return ["home_page", "our_services", "news", "contacts"]
+        return ["home_page", "our_services", "reviews", "projects", "news", "contacts"]
 
     def location(self, item):
         return reverse(item)

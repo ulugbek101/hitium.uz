@@ -1,7 +1,7 @@
 """
-Replace services, projects, news and reviews with a small set of mock data (DEBUG only).
+Replace services, projects, news, reviews and clients with a small set of mock data (DEBUG only).
 Run with: python manage.py seed_data
-Every run deletes services/projects/news/reviews and recreates the same records, so it is safe to repeat.
+Every run deletes services/projects/news/reviews/clients and recreates the same records, so it is safe to repeat.
 Images point to files already in media/, nothing is copied.
 """
 from datetime import date
@@ -11,7 +11,7 @@ from django.contrib.auth import get_user_model
 from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
 
-from app_main.models import News, NewsMedia, Project, ProjectImage, Review, Service, ServiceImage
+from app_main.models import Client, News, NewsMedia, Project, ProjectImage, Review, Service, ServiceImage
 
 
 SERVICES = [
@@ -41,6 +41,32 @@ SERVICES = [
         "header_bg": "header-bg_uQgv3hm.jpg",
         "images": ["services/2_m5PtMbm.JPG", "services/1_4z5E2j6.JPG"],
     },
+    {
+        "name_ru": "Монтаж промышленного оборудования",
+        "name_uz": "Sanoat uskunalarini montaj qilish",
+        "name_en": "Industrial Equipment Installation",
+        "slug_ru": "montazh-promyshlennogo-oborudovaniya",
+        "slug_uz": "sanoat-uskunalarini-montaj-qilish",
+        "slug_en": "industrial-equipment-installation",
+        "description_ru": "Монтаж и пусконаладка технологических линий, ёмкостей и трубопроводов для пищевых и производственных предприятий.",
+        "description_uz": "Oziq-ovqat va ishlab chiqarish korxonalari uchun texnologik liniyalar, sig‘imlar va quvurlarni montaj qilish hamda ishga tushirish.",
+        "description_en": "Installation and commissioning of process lines, tanks and piping for food and manufacturing plants.",
+        "header_bg": "01-montazg-prom-oborudovaniy.jpg",
+        "images": ["photo_2025-08-16_20-27-20.jpg", "project-photos/photo_2025-12-05_11-58-05.jpg"],
+    },
+    {
+        "name_ru": "Вентиляция бассейнов",
+        "name_uz": "Basseynlar ventilyatsiyasi",
+        "name_en": "Pool Ventilation",
+        "slug_ru": "ventilyaciya-basseynov",
+        "slug_uz": "basseynlar-ventilyatsiyasi",
+        "slug_en": "pool-ventilation",
+        "description_ru": "Системы вентиляции и осушения воздуха для бассейнов: без конденсата, сырости и запаха хлора.",
+        "description_uz": "Basseynlar uchun ventilyatsiya va havoni quritish tizimlari: kondensat, namlik va xlor hidisiz.",
+        "description_en": "Ventilation and dehumidification systems for swimming pools: no condensation, damp or chlorine smell.",
+        "header_bg": "16.jpg",
+        "images": ["desc-bg.jpg"],
+    },
 ]
 
 PROJECTS = [
@@ -69,6 +95,32 @@ PROJECTS = [
         "description_en": "Lifted the chillers onto the roof by crane, installed chilled-water piping and commissioned the system.",
         "finished_date": date(2024, 5, 15),
         "images": ["project-photos/Рисунок35.jpg", "project-photos/Рисунок28.jpg"],
+    },
+    {
+        "name_ru": "Монтаж линии розлива на заводе напитков",
+        "name_uz": "Ichimliklar zavodida quyish liniyasini montaj qilish",
+        "name_en": "Bottling line installation at a beverage plant",
+        "slug_ru": "liniya-rozliva-zavod-napitkov",
+        "slug_uz": "ichimliklar-zavodida-quyish-liniyasi",
+        "slug_en": "bottling-line-beverage-plant",
+        "description_ru": "Смонтировали линию розлива, обвязали оборудование трубопроводами из нержавеющей стали и провели пусконаладку.",
+        "description_uz": "Quyish liniyasi montaj qilindi, uskunalar zanglamaydigan po‘lat quvurlar bilan ulandi va ishga tushirish-sozlash ishlari bajarildi.",
+        "description_en": "Installed the bottling line, connected the equipment with stainless steel piping and commissioned it.",
+        "finished_date": date(2025, 12, 5),
+        "images": ["project-photos/photo_2025-12-05_11-58-07.jpg", "project-photos/photo_2025-12-05_11-58-08.jpg"],
+    },
+    {
+        "name_ru": "Установка резервуаров из нержавеющей стали",
+        "name_uz": "Zanglamaydigan po‘latdan yasalgan rezervuarlarni o‘rnatish",
+        "name_en": "Stainless steel tank installation",
+        "slug_ru": "rezervuary-iz-nerzhaveyushchej-stali",
+        "slug_uz": "zanglamaydigan-polat-rezervuarlar",
+        "slug_en": "stainless-steel-tanks",
+        "description_ru": "Установили и обвязали резервуары для хранения продукции, выполнили теплоизоляцию и опрессовку.",
+        "description_uz": "Mahsulot saqlash rezervuarlari o‘rnatildi va quvurlar bilan ulandi, issiqlik izolyatsiyasi va bosim sinovi bajarildi.",
+        "description_en": "Installed and piped product storage tanks, insulated them and ran pressure tests.",
+        "finished_date": date(2025, 3, 18),
+        "images": ["10.JPG", "123.jpg"],
     },
 ]
 
@@ -100,8 +152,8 @@ NEWS = [
         ),
         "published_date": date(2026, 10, 27),
         "media": [
-            ("news/aquatherm-2026-team.jpg", ("Команда HITIUM на стенде выставки", "HITIUM jamoasi ko'rgazma stendida", "The HITIUM team at the exhibition booth")),
-            ("news/aquatherm-2026-partners.jpg", ("Встреча с партнёрами", "Hamkorlar bilan uchrashuv", "Meeting with partners")),
+            ("photo_2025-12-05_11-58-07.jpg", ("Линия розлива — один из проектов, представленных на стенде", "Quyish liniyasi — stendda taqdim etilgan loyihalardan biri", "A bottling line, one of the projects presented at the booth")),
+            ("photo_2025-08-16_20-27-20.jpg", ("Оборудование из нержавеющей стали в нашем портфолио", "Portfoliomizdagi zanglamaydigan po‘latdan yasalgan uskunalar", "Stainless steel equipment from our portfolio")),
             ("videos/7593331-hd_1080_1920_25fps.mp4", ("Видеообзор стенда", "Stendning videosharhi", "Booth video tour")),
         ],
     },
@@ -131,6 +183,19 @@ NEWS = [
         "published_date": date(2026, 9, 30),
         "media": [("videos/8482296-hd_1080_1920_25fps.mp4", None)],
     },
+    {
+        "title_ru": "Такелаж крупногабаритного оборудования на промышленном объекте",
+        "title_uz": "Sanoat obyektida yirik o‘lchamli uskunalarni takelaj qilish",
+        "title_en": "Rigging heavy equipment at an industrial site",
+        "slug_ru": "takelazh-krupnogabaritnogo-oborudovaniya",
+        "slug_uz": "yirik-uskunalarni-takelaj-qilish",
+        "slug_en": "rigging-heavy-equipment",
+        "description_ru": "Бригада HITIUM подняла и установила крупногабаритное оборудование с помощью автокрана. Работы прошли точно по графику и без остановки производства.",
+        "description_uz": "HITIUM brigadasi avtokran yordamida yirik o‘lchamli uskunalarni ko‘tarib, o‘rnatdi. Ishlar jadval asosida va ishlab chiqarishni to‘xtatmasdan bajarildi.",
+        "description_en": "The HITIUM crew lifted heavy equipment into place with a mobile crane. The work kept to schedule and production never stopped.",
+        "published_date": date(2026, 8, 20),
+        "media": [("bg_6HfoVPd.jpg", None)],
+    },
 ]
 
 REVIEWS = [
@@ -141,12 +206,19 @@ REVIEWS = [
     ("Тестовый отзыв 5", "videos/6473954-uhd_2160_3840_25fps.mp4"),
 ]
 
+CLIENTS = [
+    ("Hydrolife", "client-photos/1673931457.jpg"),
+    ("Musaffo", "client-photos/4b4623190e62.jpg"),
+    ("Dinay", "client-photos/article-original.jpg"),
+    ("Sayhun", "client-photos/sayhun.png"),
+]
+
 ADMIN_USERNAME = "admin"
 ADMIN_PASSWORD = "1"
 
 
 class Command(BaseCommand):
-    help = "Replace services, projects, news and reviews with mock data (runs only with DEBUG=True)."
+    help = "Replace services, projects, news, reviews and clients with mock data (runs only with DEBUG=True)."
 
     def handle(self, *args, **options):
         if not settings.DEBUG:
@@ -157,6 +229,7 @@ class Command(BaseCommand):
             Project.objects.all().delete()
             News.objects.all().delete()
             Review.objects.all().delete()
+            Client.objects.all().delete()
 
             for order, data in enumerate(SERVICES, start=1):
                 fields = {k: v for k, v in data.items() if k != "images"}
@@ -176,11 +249,13 @@ class Command(BaseCommand):
                     NewsMedia.objects.create(news=news, file=path, description_ru=ru, description_uz=uz, description_en=en)
 
             Review.objects.bulk_create(Review(fullname=name, video=path) for name, path in REVIEWS)
+            Client.objects.bulk_create(Client(name=name, image=path) for name, path in CLIENTS)
 
             User = get_user_model()
             if not User.objects.filter(username=ADMIN_USERNAME).exists():
                 User.objects.create_superuser(ADMIN_USERNAME, password=ADMIN_PASSWORD)
 
         self.stdout.write(self.style.SUCCESS(
-            f"✓ Seeded {len(SERVICES)} services, {len(PROJECTS)} projects, {len(NEWS)} news, {len(REVIEWS)} reviews; superuser {ADMIN_USERNAME} / {ADMIN_PASSWORD}"
+            f"✓ Seeded {len(SERVICES)} services, {len(PROJECTS)} projects, {len(NEWS)} news, {len(REVIEWS)} reviews, "
+            f"{len(CLIENTS)} clients; superuser {ADMIN_USERNAME} / {ADMIN_PASSWORD}"
         ))

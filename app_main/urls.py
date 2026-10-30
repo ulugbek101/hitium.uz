@@ -6,6 +6,8 @@ from . import views
 urlpatterns = [
     path("", views.home_page, name='home_page'),
     path(f"{_('our-services')}/", views.our_services, name='our_services'),
+    path(f"{_('reviews')}/", views.reviews, name='reviews'),
+    path(f"{_('projects')}/", views.projects, name='projects'),
     path(f"{_('news')}/", views.news, name='news'),
     path(f"{_('contacts')}/", views.contacts, name='contacts'),
     path(f"send-email/", views.send_email, name='send_email'),

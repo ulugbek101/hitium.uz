@@ -9,21 +9,48 @@ from django.utils.formats import date_format
 
 from .models import Service, Project, Client, GalleryImage, Review, News
 
+# Most tiles a home page section shows: 7 to 9 tiles take the same 3 bento rows (6 on mobile), a 10th would start a new one.
+# A section with more links to its own page, which shows them all.
+HOME_SECTION_SIZE = 9
+
+
+def home_section(queryset):
+    """Tiles of a home page section and whether its own page has more of them."""
+    # One item over the limit tells whether there are more than the home page shows
+    items = list(queryset[:HOME_SECTION_SIZE + 1])
+    return items[:HOME_SECTION_SIZE], len(items) > HOME_SECTION_SIZE
+
+
+def visible_reviews():
+    return Review.objects.filter(is_active=True).exclude(video__isnull=True).exclude(video='').order_by('-id')
+
+
+def latest_projects():
+    return Project.objects.prefetch_related("project_images").order_by('-finished_date', '-id')
+
 
 def home_page(request):
     services = Service.objects.order_by('order')
-    projects = Project.objects.prefetch_related("project_images")
     clients = Client.objects.all()
-    reviews = Review.objects.filter(is_active=True).exclude(video__isnull=True).exclude(video='').order_by('id')
     gallery_images = GalleryImage.objects.all()
+    home_services, more_services = home_section(services)
+    home_reviews, more_reviews = home_section(visible_reviews())
+    home_projects, more_projects = home_section(latest_projects())
+    home_news, more_news = home_section(News.objects.prefetch_related("media"))
 
     context = {
         "home_page": True,
-        "reviews": reviews,
         "services": services,
-        "projects": projects,
         "clients": clients,
         "gallery_images": gallery_images,
+        "home_services": home_services,
+        "more_services": more_services,
+        "home_reviews": home_reviews,
+        "more_reviews": more_reviews,
+        "home_projects": home_projects,
+        "more_projects": more_projects,
+        "home_news": home_news,
+        "more_news": more_news,
     }
     return render(request, "app_main/index2.html", context)
 
@@ -63,14 +90,33 @@ def our_services(request):
     return render(request, "app_main/our_services.html", context)
 
 
-def news(request):
+def reviews(request):
     services = Service.objects.order_by('order')
-    news_list = list(News.objects.prefetch_related("media"))
 
     context = {
         "services": services,
-        "featured": news_list[0] if news_list else None,
-        "news_list": news_list[1:],
+        "reviews": visible_reviews(),
+    }
+    return render(request, "app_main/reviews.html", context)
+
+
+def projects(request):
+    services = Service.objects.order_by('order')
+
+    context = {
+        "services": services,
+        "projects": latest_projects(),
+    }
+    return render(request, "app_main/projects.html", context)
+
+
+def news(request):
+    services = Service.objects.order_by('order')
+    news_list = News.objects.prefetch_related("media")
+
+    context = {
+        "services": services,
+        "news_list": news_list,
     }
     return render(request, "app_main/news.html", context)
 

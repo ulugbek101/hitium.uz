@@ -727,3 +727,34 @@ msgstr "sanoat uskunalarini montaj qilish, sanoat uskunalarini o'rnatish, ishga 
 #: app_main/templates/app_main/our_services.html
 msgid "Полный список инженерных услуг компании HITIUM в Узбекистане."
 msgstr "O‘zbekistondagi HITIUM kompaniyasining muhandislik xizmatlari to‘liq ro‘yxati."
+
+#: app_main/templates/app_main/index2.html
+msgid "Смотреть все новости"
+msgstr "Barcha yangiliklarni ko‘rish"
+
+#: app_main/templates/app_main/index2.html
+msgid "Смотреть все услуги"
+msgstr "Barcha xizmatlarni ko‘rish"
+
+msgid "Смотреть все отзывы"
+msgstr "Barcha fikrlarni ko‘rish"
+
+msgid "Смотреть все проекты"
+msgstr "Barcha loyihalarni ko‘rish"
+
+#: app_main/templates/app_main/projects.html
+msgid "Наши проекты"
+msgstr "Loyihalarimiz"
+
+msgid "Завершённые проекты HITIUM: монтаж инженерных систем и промышленного оборудования."
+msgstr "HITIUMning yakunlangan loyihalari: muhandislik tizimlari va sanoat uskunalarini montaj qilish."
+
+#: app_main/templates/app_main/reviews.html
+msgid "Отзывы клиентов"
+msgstr "Mijozlar fikrlari"
+
+msgid "Видеоотзывы клиентов о работе с HITIUM."
+msgstr "Mijozlarning HITIUM bilan ishlash haqidagi video fikrlari."
+
+msgid "Отзывов пока нет"
+msgstr "Hozircha fikrlar yo‘q"

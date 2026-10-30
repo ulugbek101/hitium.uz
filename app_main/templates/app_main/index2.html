@@ -40,99 +40,99 @@
         </div>
     </section>
 
+    {% if home_services %}
     <section id="services" class="max-w-5xl mx-auto px-1 lg:px-5 py-8 lg:py-16">
         <span class="font-accent text-[10px] lg:text-xs tracking-widest uppercase text-[#ff5a00] block text-center">HITIUM</span>
         <h2 class="font-display text-2xl lg:text-4xl text-white font-semibold text-center mt-1">{% trans 'Наши услуги' %}</h2>
         <div class="h-px w-full xl:w-64 bg-[#ff5a00]/30 m-auto my-3 lg:my-5"></div>
 
         <div class="{% bento_grid %} mt-7">
-            {% for service, span in services|bento %}
-                <a href="{% url 'service_detail' slug=service.slug id=service.id %}" title="{{ service.name }}"
-                   class="{{ span }} relative overflow-hidden rounded-xl bg-white/5 group">
-                    {% if service.header_bg %}
-                        <img src="{{ service.header_bg.url }}" alt="{{ service.name }}" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async"/>
-                    {% endif %}
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent"></div>
-                    <h3 class="absolute inset-x-0 bottom-0 p-3 lg:p-4 font-display text-sm lg:text-lg leading-snug text-white group-hover:text-[#ff5a00] transition line-clamp-2">{{ service.name }}</h3>
-                </a>
+            {% for service, span in home_services|featured_bento %}
+                {% include 'app_main/_service_tile.html' %}
             {% endfor %}
         </div>
+        {% if more_services %}
+            {% include 'app_main/_see_all.html' with url_name='our_services' label=_('Смотреть все услуги') %}
+        {% endif %}
     </section>
+    {% endif %}
 
+    {% if home_reviews %}
     <section id="reviews" class="max-w-5xl mx-auto px-1 lg:px-5 py-8 lg:py-16">
         <span class="font-accent text-[10px] lg:text-xs tracking-widest uppercase text-[#ff5a00] block text-center">{% trans 'Отзывы' %}</span>
         <h2 class="font-display text-2xl lg:text-4xl text-white font-semibold text-center mt-1">{% trans 'Отзывы' %}</h2>
         <div class="h-px w-full xl:w-64 bg-[#ff5a00]/30 m-auto my-3 lg:my-5"></div>
 
         <div class="{% bento_grid %} mt-4">
-            {% for review, span in reviews|bento %}
-                <div class="{{ span }} js-video relative overflow-hidden rounded-xl bg-black cursor-pointer group"
-                     data-src="{{ review.video.url }}" data-title="{{ review.fullname }}">
-                    <video data-src="{{ review.video.url }}#t=0.1" class="absolute inset-0 w-full h-full object-cover" preload="none" muted playsinline></video>
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent"></div>
-                    <span class="material-symbols-outlined absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white bg-[#ff5a00] rounded-full p-3 group-hover:scale-110 transition-transform" style="font-size:28px;">play_arrow</span>
-                    <h3 class="absolute inset-x-0 bottom-0 p-3 lg:p-4 font-accent font-semibold text-sm lg:text-base text-white line-clamp-2">{{ review.fullname }}</h3>
-                </div>
+            {% for review, span in home_reviews|featured_bento %}
+                {% include 'app_main/_review_tile.html' %}
             {% endfor %}
         </div>
+        {% if more_reviews %}
+            {% include 'app_main/_see_all.html' with url_name='reviews' label=_('Смотреть все отзывы') %}
+        {% endif %}
     </section>
+    {% endif %}
 
+    {% if home_projects %}
     <section id="projects" class="max-w-5xl mx-auto px-1 lg:px-5 py-8 lg:py-16">
         <span class="font-accent text-[10px] lg:text-xs tracking-widest uppercase text-[#ff5a00] block text-center">{% trans 'Проекты' %}</span>
         <h2 class="font-display text-2xl lg:text-4xl text-white font-semibold text-center mt-1">{% trans 'Проекты' %}</h2>
         <div class="h-px w-full xl:w-64 bg-[#ff5a00]/30 m-auto my-3 lg:my-5"></div>
-        {% if projects.exists %}
-            <div class="{% bento_grid %} px-4 lg:px-0">
-                {% for project, span in projects|bento %}
-                    {% with cover=project.project_images.all.0 %}
-                    <a href="{% url 'project_detail' slug=project.slug id=project.id %}" title="{{ project.name }}"
-                       class="{{ span }} relative overflow-hidden rounded-xl bg-white/5 group">
-                        {% if cover %}
-                            <img src="{{ cover.image.url }}" alt="{{ project.name }}" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async"/>
-                        {% else %}
-                            <div class="absolute inset-0 flex items-center justify-center">
-                                <span class="material-symbols-outlined text-white/20" style="font-size:48px;">image</span>
-                            </div>
-                        {% endif %}
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent"></div>
-                        <h3 class="absolute inset-x-0 bottom-0 p-3 lg:p-4 font-display text-sm lg:text-lg leading-snug text-white group-hover:text-[#ff5a00] transition line-clamp-2">{{ project.name }}</h3>
-                    </a>
-                    {% endwith %}
-                {% endfor %}
-            </div>
-        {% else %}
-            <p class="text-[#a5a5a5] mt-2 text-center">{% trans 'Проекты пока не добавлены' %}</p>
+        <div class="{% bento_grid %} px-4 lg:px-0">
+            {% for project, span in home_projects|featured_bento %}
+                {% include 'app_main/_project_tile.html' %}
+            {% endfor %}
+        </div>
+        {% if more_projects %}
+            {% include 'app_main/_see_all.html' with url_name='projects' label=_('Смотреть все проекты') %}
         {% endif %}
     </section>
+    {% endif %}
 
+    {% if clients %}
     <section id="clients" class="max-w-5xl mx-auto px-1 lg:px-5 py-8 lg:py-16">
         <span class="font-accent text-[10px] lg:text-xs tracking-widest uppercase text-[#ff5a00] block text-center">{% trans 'Наши клиенты' %}</span>
         <h2 class="font-display text-2xl lg:text-4xl text-white font-semibold text-center mt-1">{% trans 'Наши клиенты' %}</h2>
         <div class="h-px w-full xl:w-64 bg-[#ff5a00]/30 m-auto my-3 lg:my-5"></div>
-        {% if clients.exists %}
-            <div class="grid grid-cols-12 gap-y-6 gap-x-4">
-                {% for client in clients %}
-                    <div class="flex flex-col items-center gap-2 col-span-6 lg:col-span-3">
-                        <div class="w-full flex flex-col items-center rounded-xl p-3 lg:p-4 text-center text-[#a5a5a5] hover:text-[#ff5a00] transition">
-                            <img src="{{ client.image.url }}" alt="{{ client.name }}"
-                                 class="h-auto max-h-20 w-auto max-w-full mx-auto block mb-3"
-                                 loading="lazy" decoding="async"/>
-                            <h3 class="font-accent text-sm font-medium">{{ client.name }}</h3>
-                        </div>
-                        {% if client.link %}
-                            <a href="{{ client.link }}" target="_blank" rel="noopener noreferrer"
-                               class="flex flex-row items-center gap-1 text-xs text-[#a5a5a5] hover:text-blue-400 transition">
-                                {% trans 'Сайт организации' %}
-                                <span class="material-symbols-outlined" style="font-size:14px;">arrow_outward</span>
-                            </a>
-                        {% endif %}
+        <div class="grid grid-cols-12 gap-y-6 gap-x-4">
+            {% for client in clients %}
+                <div class="flex flex-col items-center gap-2 col-span-6 lg:col-span-3">
+                    <div class="w-full flex flex-col items-center rounded-xl p-3 lg:p-4 text-center text-[#a5a5a5] hover:text-[#ff5a00] transition">
+                        <img src="{{ client.image.url }}" alt="{{ client.name }}"
+                             class="h-auto max-h-20 w-auto max-w-full mx-auto block mb-3"
+                             loading="lazy" decoding="async"/>
+                        <h3 class="font-accent text-sm font-medium">{{ client.name }}</h3>
                     </div>
-                {% endfor %}
-            </div>
-        {% else %}
-            <p class="text-[#a5a5a5] mt-2 text-center">{% trans 'Клиенты пока не добавлены' %}</p>
+                    {% if client.link %}
+                        <a href="{{ client.link }}" target="_blank" rel="noopener noreferrer"
+                           class="flex flex-row items-center gap-1 text-xs text-[#a5a5a5] hover:text-blue-400 transition">
+                            {% trans 'Сайт организации' %}
+                            <span class="material-symbols-outlined" style="font-size:14px;">arrow_outward</span>
+                        </a>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+
+    {% if home_news %}
+    <section id="news" class="max-w-5xl mx-auto px-1 lg:px-5 py-8 lg:py-16">
+        <span class="font-accent text-[10px] lg:text-xs tracking-widest uppercase text-[#ff5a00] block text-center">{% trans 'Новости' %}</span>
+        <h2 class="font-display text-2xl lg:text-4xl text-white font-semibold text-center mt-1">{% trans 'Новости компании' %}</h2>
+        <div class="h-px w-full xl:w-64 bg-[#ff5a00]/30 m-auto my-3 lg:my-5"></div>
+
+        <div class="{% bento_grid %} mt-4">
+            {% for item, span in home_news|featured_bento %}
+                {% include 'app_main/_news_tile.html' %}
+            {% endfor %}
+        </div>
+        {% if more_news %}
+            {% include 'app_main/_see_all.html' with url_name='news' label=_('Смотреть все новости') %}
         {% endif %}
     </section>
+    {% endif %}
 
     <!-- Image modal (for gallery usage) -->
     <div id="imageModal"
