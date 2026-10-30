@@ -579,3 +579,34 @@ msgstr "industrial equipment installation, industrial equipment assembly, commis
 #: app_main/templates/app_main/our_services.html
 msgid "Полный список инженерных услуг компании HITIUM в Узбекистане."
 msgstr "Full list of HITIUM engineering services in Uzbekistan."
+
+#: app_main/templates/app_main/index2.html
+msgid "Смотреть все новости"
+msgstr "See all news"
+
+#: app_main/templates/app_main/index2.html
+msgid "Смотреть все услуги"
+msgstr "See all services"
+
+msgid "Смотреть все отзывы"
+msgstr "See all reviews"
+
+msgid "Смотреть все проекты"
+msgstr "See all projects"
+
+#: app_main/templates/app_main/projects.html
+msgid "Наши проекты"
+msgstr "Our projects"
+
+msgid "Завершённые проекты HITIUM: монтаж инженерных систем и промышленного оборудования."
+msgstr "Completed HITIUM projects: installation of engineering systems and industrial equipment."
+
+#: app_main/templates/app_main/reviews.html
+msgid "Отзывы клиентов"
+msgstr "Client reviews"
+
+msgid "Видеоотзывы клиентов о работе с HITIUM."
+msgstr "Video reviews from clients about working with HITIUM."
+
+msgid "Отзывов пока нет"
+msgstr "No reviews yet"

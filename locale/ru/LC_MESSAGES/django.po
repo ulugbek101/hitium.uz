@@ -648,3 +648,34 @@ msgstr ""
 #: app_main/templates/app_main/our_services.html
 msgid "Полный список инженерных услуг компании HITIUM в Узбекистане."
 msgstr ""
+
+#: app_main/templates/app_main/index2.html
+msgid "Смотреть все новости"
+msgstr ""
+
+#: app_main/templates/app_main/index2.html
+msgid "Смотреть все услуги"
+msgstr ""
+
+msgid "Смотреть все отзывы"
+msgstr ""
+
+msgid "Смотреть все проекты"
+msgstr ""
+
+#: app_main/templates/app_main/projects.html
+msgid "Наши проекты"
+msgstr ""
+
+msgid "Завершённые проекты HITIUM: монтаж инженерных систем и промышленного оборудования."
+msgstr ""
+
+#: app_main/templates/app_main/reviews.html
+msgid "Отзывы клиентов"
+msgstr ""
+
+msgid "Видеоотзывы клиентов о работе с HITIUM."
+msgstr ""
+
+msgid "Отзывов пока нет"
+msgstr ""
